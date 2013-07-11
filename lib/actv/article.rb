@@ -7,7 +7,7 @@ module ACTV
     def author_footer
       @author_footer ||= description_by_type 'authorFooter'
     end
-    
+
     def by_line
       @author ||= description_by_type 'articleByLine'
     end
