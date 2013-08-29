@@ -20,7 +20,7 @@ module ACTV
       # @see http://staff.tumblr.com/post/287703110/api
       # @see http://developer.typepad.com/typepad-twitter-api/twitter-api.html
       def endpoint
-        @endpoint ||= 'https://api.active.com'
+        @endpoint ||= 'http://api.amp.active.com'
       end
 
       def media_endpoint
