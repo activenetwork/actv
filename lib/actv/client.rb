@@ -14,6 +14,7 @@ require 'actv/event_search_results'
 require 'actv/popular_interest_search_results'
 require 'actv/user'
 require 'simple_oauth'
+require 'active_support/core_ext/hash/indifferent_access'
 
 module ACTV
   # Wrapper for the ACTV REST API
@@ -121,10 +122,11 @@ module ACTV
     def event(id, params={})
       request_string = "/v2/assets/#{id}"
 
-      if params.has_key? "preview"
-        request_string += '/preview' if params["preview"] == "true"
+      params = params.with_indifferent_access
+      if params.has_key? :preview
+        request_string += '/preview' if params[:preview] == "true"
 
-        params.delete "preview"
+        params.delete :preview
       end
 
       response = get("#{request_string}.json", params)
