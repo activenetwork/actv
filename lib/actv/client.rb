@@ -58,15 +58,7 @@ module ACTV
     # @example Return the asset with the id BA288960-2718-4B20-B380-8F939596B123
     #   ACTV.asset("BA288960-2718-4B20-B380-8F939596B123")
     def asset(id, params={})
-      request_string = "/v2/assets/#{id}"
-
-      if params.has_key? :preview
-        request_string += '/preview' if params[:preview] == "true"
-
-        params.delete :preview
-      end
-
-      response = get("#{request_string}.json", params)
+      response = get("/v2/assets/#{id}.json", params)
 
       if response[:body].is_a? Array
         results = []
@@ -126,8 +118,17 @@ module ACTV
       ACTV::EventSearchResults.from_response(response)
     end
 
-    def event(id)
-      response = get("/v2/assets/#{id}.json")
+    def event(id, params={})
+      request_string = "/v2/assets/#{id}"
+
+      if params.has_key? :preview
+        request_string += '/preview' if params[:preview] == "true"
+
+        params.delete :preview
+      end
+
+      response = get("#{request_string}.json", params)
+
       event = ACTV::Event.from_response(response)
       event = ACTV::Evergreen.new(event) if event.evergreen?
       event.is_article? ? nil : event
