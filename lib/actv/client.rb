@@ -60,8 +60,8 @@ module ACTV
     def asset(id, params={})
       request_string = "/v2/assets/#{id}"
 
-      if params.has_key?(:preview) && params[:preview] == "true"
-        request_string += '/preview'
+      if params.has_key? :preview
+        request_string += '/preview' if params[:preview] == "true"
 
         params.delete :preview
       end

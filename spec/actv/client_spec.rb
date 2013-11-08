@@ -146,13 +146,26 @@ describe ACTV::Client do
     end
 
     context 'preview asset' do
-      before do
-        stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id/preview.json").
-          to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+      context 'when set to true' do
+        before do
+          stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id/preview.json").
+            to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+        end
+
+        it 'should make preview call' do
+          client.asset('asset_id', {preview: 'true'})[0].should be_a ACTV::Asset
+        end
       end
 
-      it 'should make preview call' do
-        client.asset('asset_id', {preview: 'true'})[0].should be_a ACTV::Asset
+      context 'when set to false' do
+        before do
+          stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
+            to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+        end
+
+        it 'should make a normal asset call' do
+          client.asset('asset_id', {preview: 'false'})[0].should be_a ACTV::Asset
+        end
       end
     end
   end
