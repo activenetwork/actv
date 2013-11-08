@@ -131,6 +131,32 @@ describe ACTV::Client do
     # end
   end
 
+  describe '#asset' do
+    let(:client) { ACTV::Client.new({:consumer_key => "CK", :consumer_secret => "CS", :oauth_token => "OT", :oauth_token_secret => "OS"}) }
+
+    context 'find asset' do
+      before do
+        stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
+          to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+      end
+
+      it 'should make a normal asset call' do
+        client.asset('asset_id')[0].should be_a ACTV::Asset
+      end
+    end
+
+    context 'preview asset' do
+      before do
+        stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id/preview.json").
+          to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+      end
+
+      it 'should make preview call' do
+        client.asset('asset_id', {preview: 'true'})[0].should be_a ACTV::Asset
+      end
+    end
+  end
+
   ACTV::Configurable::CONFIG_KEYS.each do |key|
     it "has a default #{key.to_s.gsub('_', ' ')}" do
       subject.send(key).should eq ACTV::Default.options[key]

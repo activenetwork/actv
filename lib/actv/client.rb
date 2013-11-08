@@ -58,19 +58,27 @@ module ACTV
     # @example Return the asset with the id BA288960-2718-4B20-B380-8F939596B123
     #   ACTV.asset("BA288960-2718-4B20-B380-8F939596B123")
     def asset(id, params={})
-      response = get("/v2/assets/#{id}.json", params)
+      request_string = "/v2/assets/#{id}"
 
-      if response[:body].is_a? Array 
+      if params.has_key?(:preview) && params[:preview] == "true"
+        request_string += '/preview'
+
+        params.delete :preview
+      end
+
+      response = get("#{request_string}.json", params)
+
+      if response[:body].is_a? Array
         results = []
         response[:body].each do |item|
           results << ACTV::Asset.from_response({body: item})
         end
         results
-      else        
+      else
         [ACTV::Asset.from_response(response)]
-      end    
+      end
     end
-    
+
     # Returns an asset with the specified url path
     #
     # @authentication_required No
