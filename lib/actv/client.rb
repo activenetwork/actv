@@ -121,10 +121,10 @@ module ACTV
     def event(id, params={})
       request_string = "/v2/assets/#{id}"
 
-      if params.has_key? :preview
-        request_string += '/preview' if params[:preview] == "true"
+      if params.has_key? "preview"
+        request_string += '/preview' if params["preview"] == "true"
 
-        params.delete :preview
+        params.delete "preview"
       end
 
       response = get("#{request_string}.json", params)
