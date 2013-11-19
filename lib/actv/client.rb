@@ -59,13 +59,17 @@ module ACTV
     # @example Return the asset with the id BA288960-2718-4B20-B380-8F939596B123
     #   ACTV.asset("BA288960-2718-4B20-B380-8F939596B123")
     def asset(id, params={})
-      response = get("/v2/assets/#{id}.json", params)
+      request_string = "/v2/assets/#{id}"
+      request_string += '/preview' if params_include_preview? params
+
+      response = get("#{request_string}.json", params)
 
       if response[:body].is_a? Array
         results = []
         response[:body].each do |item|
           results << ACTV::Asset.from_response({body: item})
         end
+
         results
       else
         [ACTV::Asset.from_response(response)]
@@ -121,13 +125,7 @@ module ACTV
 
     def event(id, params={})
       request_string = "/v2/assets/#{id}"
-
-      params = params.with_indifferent_access
-      if params.has_key? :preview
-        request_string += '/preview' if params[:preview] == "true"
-
-        params.delete :preview
-      end
+      request_string += '/preview' if params_include_preview? params
 
       response = get("#{request_string}.json", params)
 
@@ -335,6 +333,17 @@ module ACTV
         :token => @oauth_token
         # :token_secret => @oauth_token_secret,
       }
+    end
+
+    def params_include_preview? params
+      params = params.with_indifferent_access
+      if params.has_key? :preview
+        params.delete :preview
+
+        params[:preview] == "true"
+      else
+        false
+      end
     end
 
   end
