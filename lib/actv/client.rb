@@ -337,13 +337,7 @@ module ACTV
 
     def params_include_preview? params
       params = params.with_indifferent_access
-      if params.has_key? :preview
-        params.delete :preview
-
-        params[:preview] == "true"
-      else
-        false
-      end
+      params.delete(:preview) == "true"
     end
 
   end
