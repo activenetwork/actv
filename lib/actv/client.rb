@@ -60,7 +60,8 @@ module ACTV
     #   ACTV.asset("BA288960-2718-4B20-B380-8F939596B123")
     def asset(id, params={})
       request_string = "/v2/assets/#{id}"
-      request_string += '/preview' if params_include_preview? params
+      is_preview, params = params_include_preview? params
+      request_string += '/preview' if is_preview
 
       response = get("#{request_string}.json", params)
 
@@ -125,7 +126,8 @@ module ACTV
 
     def event(id, params={})
       request_string = "/v2/assets/#{id}"
-      request_string += '/preview' if params_include_preview? params
+      is_preview, params = params_include_preview? params
+      request_string += '/preview' if is_preview
 
       response = get("#{request_string}.json", params)
 
@@ -337,7 +339,7 @@ module ACTV
 
     def params_include_preview? params
       params = params.with_indifferent_access
-      params.delete(:preview) == "true"
+      return params.delete(:preview) == "true", params
     end
 
   end
