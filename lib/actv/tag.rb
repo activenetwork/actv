@@ -1,5 +1,5 @@
 module ACTV
-  class Tag < ACTV::Identity
+  class Tag < Base
     attr_reader :tagId, :tagName, :tagDescription
 
     alias id tagId
