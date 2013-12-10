@@ -1,7 +1,7 @@
 require 'actv/identity'
 
 module ACTV
-  class Place < ACTV::Identity
+  class Place < Base
 
     attr_reader :placeGuid, :placeName, :placeDsc, :placeUrlAdr, :addressLine1Txt, :addressLine2Txt, :cityName,
         :stateProvinceCode, :localityName, :postalCode, :countryName, :countryCode, :latitude, :longitude,
