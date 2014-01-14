@@ -214,6 +214,10 @@ module ACTV
       self.sourceSystem[:legacyGuid].upcase == "2BA50ABA-080E-4E3D-A01C-1B4F56648A2E" rescue false
     end
 
+    def activenet?
+      self.sourceSystem[:legacyGuid].upcase == "FB27C928-54DB-4ECD-B42F-482FC3C8681F" rescue false
+    end
+
     def registration_status
       @registration_status ||= nil
     end
