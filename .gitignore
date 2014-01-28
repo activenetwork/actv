@@ -17,6 +17,7 @@ test/tmp
 test/version_tmp
 tmp
 .DS_Store
+.rvmrc
 
 /.idea/.rakeTasks
 /.idea/active-a3pi-gem.iml

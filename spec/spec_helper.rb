@@ -1,6 +1,10 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simplecov'
+SimpleCov.start
+
 
 require 'actv'
+
 Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each {|file| require file }
 
 RSpec.configure do |config|

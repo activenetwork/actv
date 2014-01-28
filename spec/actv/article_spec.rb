@@ -17,4 +17,28 @@ describe ACTV::Article do
     it { should respond_to :inline_ad }
     it { should respond_to :inline_ad? }
   end
+
+  describe '#inline_ad?' do
+    context 'if inlindead is set to true' do
+      let(:article) { ACTV::Article.new(assetGuid: 1, assetTags: [ { tag: { tagId: '1', tagName: 'true', tagDescription: 'inlinead' } } ]) }
+      it 'should return true' do
+        article.inline_ad?.should eq true
+      end
+    end
+
+    context 'if inlindead is set to false' do
+      let(:article) { ACTV::Article.new(assetGuid: 1, assetTags: [ { tag: { tagId: '1', tagName: 'false', tagDescription: 'inlinead' } } ]) }
+      it 'should return false' do
+        article.inline_ad?.should eq false
+      end
+    end
+
+    context 'if inlindead is not set' do
+      let(:article) { ACTV::Article.new assetGuid: 1 }
+
+      it 'should return true' do
+        article.inline_ad?.should eq true
+      end
+    end
+  end
 end

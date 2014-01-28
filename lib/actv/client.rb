@@ -14,6 +14,7 @@ require 'actv/event_search_results'
 require 'actv/popular_interest_search_results'
 require 'actv/user'
 require 'simple_oauth'
+require 'active_support/core_ext/hash/indifferent_access'
 
 module ACTV
   # Wrapper for the ACTV REST API
@@ -49,7 +50,7 @@ module ACTV
     end
     alias search assets
 
-    # Returns an asset with the specified ID
+    # Returns an asset with the specified ID in an array
     #
     # @authentication_required No
     # @return [ACTV::Asset] The requested asset.
@@ -58,7 +59,35 @@ module ACTV
     # @example Return the asset with the id BA288960-2718-4B20-B380-8F939596B123
     #   ACTV.asset("BA288960-2718-4B20-B380-8F939596B123")
     def asset(id, params={})
-      response = get("/v2/assets/#{id}.json", params)
+      request_string = "/v2/assets/#{id}"
+      is_preview, params = params_include_preview? params
+      request_string += '/preview' if is_preview
+
+      response = get("#{request_string}.json", params)
+
+      if response[:body].is_a? Array
+        results = []
+        response[:body].each do |item|
+          results << ACTV::Asset.from_response({body: item})
+        end
+
+        results
+      else
+        [ACTV::Asset.from_response(response)]
+      end
+    end
+
+    # Returns an asset with the specified url path
+    #
+    # @authentication_required No
+    # @return [ACTV::Asset] The requested asset
+    # @param path [String]
+    # @example Return an asset with the url http://www.active.com/miami-fl/running/miami-marathon-and-half-marathon-2014
+    #   ACTV.asset_by_path("http://www.active.com/miami-fl/running/miami-marathon-and-half-marathon-2014")
+    def find_asset_by_url(url)
+      url_md5 = Digest::MD5.hexdigest(url)
+      response = get("/v2/seourls/#{url_md5}?load_asset=true")
+
       ACTV::Asset.from_response(response)
     end
 
@@ -95,8 +124,13 @@ module ACTV
       ACTV::EventSearchResults.from_response(response)
     end
 
-    def event(id)
-      response = get("/v2/assets/#{id}.json")
+    def event(id, params={})
+      request_string = "/v2/assets/#{id}"
+      is_preview, params = params_include_preview? params
+      request_string += '/preview' if is_preview
+
+      response = get("#{request_string}.json", params)
+
       event = ACTV::Event.from_response(response)
       event = ACTV::Evergreen.new(event) if event.evergreen?
       event.is_article? ? nil : event
@@ -255,6 +289,7 @@ module ACTV
       uri = URI(uri) unless uri.respond_to?(:host)
       uri += path
       request_headers = {}
+      params[:api_key] = @api_key unless @api_key.nil?
 
       if self.credentials?
         # When posting a file, don't sign any params
@@ -300,6 +335,11 @@ module ACTV
         :token => @oauth_token
         # :token_secret => @oauth_token_secret,
       }
+    end
+
+    def params_include_preview? params
+      params = params.with_indifferent_access
+      return params.delete(:preview) == "true", params
     end
 
   end

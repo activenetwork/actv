@@ -25,7 +25,7 @@ module ACTV
 
         image_node = get_from_author_footer('div.signature-block-photo img')
         if !image_node.nil?
-          image = ACTV::AssetImage.new({imageUrlAdr: image_node.attribute('src').text})
+          image = ACTV::AssetImage.new({imageUrlAdr: image_node.attribute('src').text}) if image_node.attribute 'src'
         end
 
         image
@@ -60,7 +60,14 @@ module ACTV
     end
 
     def inline_ad
-      @inline_ad ||= tag_by_description 'inlinead'
+      @inline_ad ||= begin
+        val = tag_by_description 'inlinead'
+        if val
+          val.downcase == 'true'
+        else
+          true
+        end
+      end
     end
     alias inline_ad? inline_ad
 

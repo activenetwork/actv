@@ -36,32 +36,44 @@ module ACTV
     alias author_name authorName
 
     def place
-      @place ||= ACTV::Place.fetch_or_new(@attrs[:place]) unless @attrs[:place].nil?
+      @place ||= ACTV::Place.new(@attrs[:place]) unless @attrs[:place].nil?
+    end
+
+    def place_timezone
+      @place_timezone ||= place[:timezone] unless place[:timezone].nil?
+    end
+
+    def org_timezone
+      @org_timezone ||= @attrs[:localTimeZoneId] unless @attrs[:localTimeZoneId].nil?
+    end
+
+    def version
+      @asset_version ||= @attrs[:assetVersion] unless @attrs[:assetVersion].nil?
     end
 
     def descriptions
       @descriptions ||= Array(@attrs[:assetDescriptions]).map do |description|
-        ACTV::AssetDescription.fetch_or_new(description)
+        ACTV::AssetDescription.new(description)
       end
     end
     alias asset_descriptions descriptions
     alias assetDescriptions descriptions
 
     def status
-      @status ||= ACTV::AssetStatus.fetch_or_new(@attrs[:assetStatus]) unless @attrs[:assetStatus].nil?
+      @status ||= ACTV::AssetStatus.new(@attrs[:assetStatus]) unless @attrs[:assetStatus].nil?
     end
     alias asset_status status
     alias assetStatus status
 
     def legacy_data
-      @legacy_data ||= ACTV::AssetLegacyData.fetch_or_new(@attrs[:assetLegacyData]) unless @attrs[:assetLegacyData].nil?
+      @legacy_data ||= ACTV::AssetLegacyData.new(@attrs[:assetLegacyData]) unless @attrs[:assetLegacyData].nil?
     end
     alias asset_legacy_data legacy_data
     alias assetLegacyData legacy_data
 
     def channels
       @asset_channels ||= Array(@attrs[:assetChannels]).map do |channel|
-        ACTV::AssetChannel.fetch_or_new(channel)
+        ACTV::AssetChannel.new(channel)
       end
     end
     alias asset_channels channels
@@ -69,7 +81,7 @@ module ACTV
 
     def images
       @images ||= Array(@attrs[:assetImages]).map do |img|
-        ACTV::AssetImage.fetch_or_new(img)
+        ACTV::AssetImage.new(img)
       end
     end
     alias asset_images images
@@ -77,7 +89,7 @@ module ACTV
 
     def tags
       @asset_tags ||= Array(@attrs[:assetTags]).map do |tag|
-        ACTV::AssetTag.fetch_or_new(tag)
+        ACTV::AssetTag.new(tag)
       end
     end
     alias asset_tags tags
@@ -85,7 +97,7 @@ module ACTV
 
     def components
       @asset_components ||= Array(@attrs[:assetComponents]).map do |component|
-        ACTV::AssetComponent.fetch_or_new(component)
+        ACTV::AssetComponent.new(component)
       end
     end
     alias asset_components components
@@ -93,7 +105,7 @@ module ACTV
 
     def prices
       @asset_prices ||= Array(@attrs[:assetPrices]).map do |price|
-        ACTV::AssetPrice.fetch_or_new(price)
+        ACTV::AssetPrice.new(price)
       end
     end
     alias asset_prices prices
@@ -101,7 +113,7 @@ module ACTV
 
     def topics
       @asset_topics ||= Array(@attrs[:assetTopics]).map do |topic|
-        ACTV::AssetTopic.fetch_or_new(topic)
+        ACTV::AssetTopic.new(topic)
       end
     end
     alias asset_topics topics
@@ -109,7 +121,7 @@ module ACTV
 
     def seo_urls
       @seo_urls ||= Array(@attrs[:assetSeoUrls]).map do |seo_url|
-        ACTV::AssetSeoUrl.fetch_or_new(seo_url)
+        ACTV::AssetSeoUrl.new(seo_url)
       end
     end
     alias asset_seo_urls seo_urls
@@ -170,8 +182,40 @@ module ACTV
       is_article
     end
 
+    def has_location?
+      self.place && place.has_lat_long?
+    end
+
     def evergreen?
-      self.evergreenAssetFlag.to_bool rescue false
+      self.evergreenAssetFlag.downcase == 'true' rescue false
+    end
+
+    def regcenter?
+      self.sourceSystem[:legacyGuid].upcase == "EA4E860A-9DCD-4DAA-A7CA-4A77AD194F65" rescue false
+    end
+
+    def regcenter2?
+      self.sourceSystem[:legacyGuid].upcase == "3BF82BBE-CF88-4E8C-A56F-78F5CE87E4C6" rescue false
+    end
+
+    def awendurance?
+      self.sourceSystem[:legacyGuid].upcase == "DFAA997A-D591-44CA-9FB7-BF4A4C8984F1" rescue false
+    end
+
+    def awsports?
+      self.sourceSystem[:legacyGuid].upcase == "F036B0FF-2B21-43A9-8C20-7F447D3AB105" rescue false
+    end
+
+    def awcamps?
+      self.sourceSystem[:legacyGuid].upcase == "2B22B4E6-5AA4-44D7-BF06-F7A71F9FA8A6" rescue false
+    end
+
+    def thriva?
+      self.sourceSystem[:legacyGuid].upcase == "2BA50ABA-080E-4E3D-A01C-1B4F56648A2E" rescue false
+    end
+
+    def activenet?
+      self.sourceSystem[:legacyGuid].upcase == "FB27C928-54DB-4ECD-B42F-482FC3C8681F" rescue false
     end
 
     def registration_status

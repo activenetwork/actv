@@ -1,12 +1,13 @@
-require 'actv/identity_map'
-# require 'twitter/rate_limit'
+require 'forwardable'
+require 'actv/null_object'
+require 'uri'
 
 module ACTV
   class Base
+    extend Forwardable
     attr_reader :attrs
     alias body attrs
-
-    @@identity_map = IdentityMap.new
+    def_delegators :attrs, :delete, :update
 
     # Define methods that retrieve the value from an initialized instance variable Hash, using the attribute as a key
     #
@@ -16,54 +17,85 @@ module ACTV
     #   @param attrs [Array<Symbol>]
     def self.attr_reader(*attrs)
       attrs.each do |attribute|
-        class_eval do
-          define_method attribute do
-            @attrs[attribute.to_sym]
+        define_attribute_method(attribute)
+        define_predicate_method(attribute)
+      end
+    end
+
+    def self.object_attr_reader(klass, key1, key2=nil)
+      define_attribute_method(key1, kass, key2)
+      define_predicate_method(key1)
+    end
+
+    def self.uri_attr_reader(*attrs)
+      attrs.each do |uri_key|
+        array = uri_key.to_s.split("_")
+        index = array.index("uri")
+        array[index] = "url"
+        url_key = array.join("_").to_sym
+        define_uri_method(uri_key, url_key)
+        define_predicate_method(uri_key, url_key)
+
+        alias_method(url_key, uri_key)
+        alias_method("#{url_key}?", "#{uri_key}?")
+      end
+    end
+
+    def self.define_uri_method(key1, key2)
+      define_method(key1) do
+        memoize(key1) do
+          ::URI.parse(@attrs[key2]) if @attrs[key2]
+        end
+      end
+    end
+
+    def self.define_attribute_method(key1, klass=nil, key2=nil)
+      define_method(key1) do
+        memoize(key1) do
+          if klass.nil?
+            @attrs[key1]
+          else
+            if @attrs[key1]
+              if key2.nil?
+                ACTV.const_get(klass).new(@attrs[key1])
+              else
+                attrs = @attrs.dup
+                value = attrs.delete(key1)
+                ACTV.const_get(klass).new(value.update(key2 => attrs))
+              end
+            else
+              ACTV::NullObject.instance
+            end
           end
         end
       end
     end
 
-    def self.fetch(attrs)
-      @@identity_map[self] ||= {}
-      @@identity_map[self][Marshal.dump(attrs)]
+    def self.define_predicate_method(key1, key2=key1)
+      define_method(:"#{key1}?") do
+        !!@attrs[key2]
+      end
     end
 
     def self.from_response(response={})
-      self.fetch(response[:body]) || self.new(response[:body])
+      new(response[:body])
     end
 
-    def self.fetch_or_new(attrs={})
-      self.fetch(attrs) || self.new(attrs)
-    end
-
-    # Initializes a new object
-    #
-    # @param attrs [Hash]
-    # @return [ACTV::Base]
     def initialize(attrs={})
-      self.update(attrs)
-      @@identity_map[self.class] ||= {}
-      @@identity_map[self.class][Marshal.dump(attrs)] = self
+      @attrs = attrs || {}
     end
 
-    # Fetches an attribute of an object using hash notation
-    #
-    # @param method [String, Symbol] Message to send to the object
     def [](method)
-      self.send(method.to_sym)
+      send(method)
     rescue NoMethodError
       nil
     end
 
-    # Update the attributes of an object
-    #
-    # @param attrs [Hash]
-    # @return [ACTV::Base]
-    def update(attrs)
-      @attrs ||= {}
-      @attrs.update(attrs)
-      self
+    def memoize(key, &block)
+      ivar = :"@#{key}"
+      return instance_variable_get(ivar) if instance_variable_defined?(ivar)
+      result = block.call
+      instance_variable_set(ivar, result)
     end
 
     def method_missing(meth, *args, &block)
@@ -103,13 +135,13 @@ module ACTV
     # @param other [ACTV::Base]
     # @return [Boolean]
     def attr_equal(attr, other)
-      self.class == other.class && !other.send(attr).nil? && self.send(attr) == other.send(attr)
+      self.class == other.class && !other.send(attr).nil? && send(attr) == other.send(attr)
     end
 
     # @param other [ACTV::Base]
     # @return [Boolean]
     def attrs_equal(other)
-      self.class == other.class && !other.attrs.empty? && self.attrs == other.attrs
+      self.class == other.class && !other.attrs.empty? && attrs == other.attrs
     end
 
   end

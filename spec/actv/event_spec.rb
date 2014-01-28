@@ -11,6 +11,7 @@ describe ACTV::Event do
   def format_date date
     date.strftime('%Y-%m-%dT%H:%M:%S')
   end
+
   def format_date_in_utc date
     format_date(date) << ' UTC'
   end
@@ -26,17 +27,27 @@ describe ACTV::Event do
 
   describe '#online_registration_available?' do
     context 'when online_registration_available is true' do
-      before { subject.legacy_data.stub(:onlineRegistration).and_return("true") }
+      before do
+        subject.legacy_data.stub(:onlineRegistration).and_return("true")
+        subject.stub(:registrationUrlAdr).and_return("something")
+      end
+
       its(:online_registration_available?) { should be_true }
     end
 
     context "when online_registration_available is not true" do
-      before { subject.legacy_data.stub(:onlineRegistration).and_return("false") }
+      before do
+        subject.legacy_data.stub(:onlineRegistration).and_return("false")
+        subject.stub(:registrationUrlAdr).and_return("something")
+      end
+
       its(:online_registration_available?) { should be_false }
     end
 
     context "when online_registration_available is not present" do
-      before { subject.legacy_data.stub(:onlineRegistration).and_return(nil) }
+      before do
+        subject.legacy_data.stub(:onlineRegistration).and_return(nil)
+      end
 
       context "when registrationUrlAdr is present" do
         before { subject.stub(:registrationUrlAdr).and_return("something") }
@@ -104,6 +115,7 @@ describe ACTV::Event do
       context 'when now is before the date' do
         before do
           subject.stub(:sales_start_date).and_return format_date 1.day.from_now
+          subject.stub(:registrationUrlAdr).and_return("something")
         end
         its(:registration_not_yet_open?) { should be_true }
       end
@@ -144,6 +156,7 @@ describe ACTV::Event do
       context 'when now is after the date' do
         before do
           subject.stub(:sales_end_date).and_return format_date 1.day.ago
+          subject.stub(:registrationUrlAdr).and_return("something")
         end
         its(:registration_closed?) { should be_true }
       end
@@ -162,6 +175,7 @@ describe ACTV::Event do
         context 'when now is after the date' do
           before do
             subject.stub(:activity_end_date).and_return format_date 1.day.ago
+            subject.stub(:registrationUrlAdr).and_return("something")
           end
           its(:registration_closed?) { should be_true }
         end
@@ -193,6 +207,7 @@ describe ACTV::Event do
         before do
           subject.stub(:sales_start_date).and_return format_date 1.day.ago
           subject.stub(:sales_end_date).and_return format_date 1.day.from_now
+          subject.stub(:registrationUrlAdr).and_return("something")
         end
         its(:registration_open?) { should be_true }
       end
@@ -228,6 +243,7 @@ describe ACTV::Event do
           before do
             subject.stub(:activity_start_date).and_return format_date 2.days.ago
             subject.stub(:activity_end_date).and_return format_date 2.days.from_now
+            subject.stub(:registrationUrlAdr).and_return("something")
           end
           its(:registration_open?) { should be_true }
         end
@@ -243,12 +259,13 @@ describe ACTV::Event do
         before do
           subject.stub(:activity_start_date).and_return nil
           subject.stub(:activity_end_date).and_return nil
+          subject.stub(:registrationUrlAdr).and_return("something")
         end
         its(:registration_open?) { should be_true } # Huiwen says this is correct
       end
     end
   end
-  
+
   describe "Fixes for LH bugs" do
     describe "LH-925" do
       context "when the sales dates are not available" do
@@ -260,6 +277,7 @@ describe ACTV::Event do
           before do
             subject.stub(:activity_start_date).and_return format_date 1.month.ago
             subject.stub(:activity_end_date).and_return format_date Date.today
+            subject.stub(:registrationUrlAdr).and_return("something")
           end
           its(:event_ended?) { should be_false }
           its(:registration_open?) { should be_true }
@@ -274,10 +292,39 @@ describe ACTV::Event do
           subject.stub(:sales_end_date).and_return format_date 2.days.ago
           subject.stub(:activity_start_date).and_return format_date 1.day.ago
           subject.stub(:activity_end_date).and_return format_date 1.day.from_now
+          subject.stub(:registrationUrlAdr).and_return("something")
         end
         its(:registration_not_yet_open?)  { should be_false }
         its(:registration_open?)          { should be_false }
         its(:registration_closed?)        { should be_true }
+      end
+    end
+  end
+
+  describe '#disply_close_date' do
+    context 'when tag is not set' do
+      before do
+        subject.stub(:tag_by_description).with("displayclosedate").and_return nil
+      end
+
+      its(:display_close_date?) { should eq true }
+    end
+
+    context 'when tag is set' do
+      context 'when true' do
+        before do
+          subject.stub(:tag_by_description).with("displayclosedate").and_return 'true'
+        end
+
+        its(:display_close_date?) { should eq true }
+      end
+
+      context 'when false' do
+        before do
+          subject.stub(:tag_by_description).with("displayclosedate").and_return 'false'
+        end
+
+        its(:display_close_date?) { should eq false }
       end
     end
   end

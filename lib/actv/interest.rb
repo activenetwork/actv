@@ -5,7 +5,7 @@ require 'actv/asset_topic'
 module ACTV
   class Interest < ACTV::Identity
 
-    attr_reader :interestGuid, :interestName, :urlAdr, :imgUrlAdr, :sorCreatedBy, :sorModifiedBy, :createdDate, 
+    attr_reader :interestGuid, :interestName, :urlAdr, :imgUrlAdr, :sorCreatedBy, :sorModifiedBy, :createdDate,
         :modifiedDate, :interestTags, :interestAttributes, :interestTopics, :assetServiceHostName
 
     alias id interestGuid
@@ -21,7 +21,7 @@ module ACTV
 
     def tags
       @asset_tags ||= Array(@attrs[:interestTags]).map do |tag|
-        ACTV::AssetTag.fetch_or_new(tag)
+        ACTV::AssetTag.new(tag)
       end
     end
     alias interest_tags tags
@@ -29,7 +29,7 @@ module ACTV
 
     def topics
       @asset_topics ||= Array(@attrs[:interestTopics]).map do |topic|
-        ACTV::AssetTopic.fetch_or_new(topic)
+        ACTV::AssetTopic.new(topic)
       end
     end
     alias interest_topics topics

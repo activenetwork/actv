@@ -6,7 +6,7 @@ module ACTV
     attr_reader :sequence
 
     def channel
-      @channel ||= ACTV::Channel.fetch_or_new(@attrs[:channel]) unless @attrs[:channel].nil?
+      @channel ||= ACTV::Channel.new(@attrs[:channel]) unless @attrs[:channel].nil?
     end
 
   end

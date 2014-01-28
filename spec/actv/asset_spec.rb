@@ -145,16 +145,16 @@ describe ACTV::Asset do
   describe "is_article?" do
     before(:each) do
         stub_get("/v2/assets/valid_article.json").
-        to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
+          to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
     end
 
     it "should return true if the asset has Articles as an assetCategory" do
-      asset = ACTV.asset('valid_article')
+      asset = ACTV.asset('valid_article')[0]
       asset.is_article?.should be_true
     end
 
     it "should return true if the asset has no assetCategories but the sourceSystem is Active.com Articles" do
-      asset = ACTV.asset('valid_article')
+      asset = ACTV.asset('valid_article')[0]
       asset.stub(:assetCategories).and_return([])
       asset.is_article?.should be_true
     end
@@ -163,7 +163,7 @@ describe ACTV::Asset do
       stub_get("/v2/assets/valid_event.json").
         to_return(body: fixture("valid_event.json"), headers: { content_type: "application/json; charset=utf-8" })
 
-      asset = ACTV.asset('valid_event')
+      asset = ACTV.asset('valid_event')[0]
       asset.is_article?.should be_false
     end
 

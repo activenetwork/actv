@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe ACTV::Client do
-  
+
   subject do
     client = ACTV::Client.new
     # client.class_eval{public *ACTV::Client.private_instance_methods}
     client
   end
-  
+
   context "with module configuration" do
-    
+
     before  do
       ACTV.configure do |config|
         ACTV::Configurable.keys.each do |key|
@@ -17,20 +17,20 @@ describe ACTV::Client do
         end
       end
     end
-    
+
     after do
       ACTV.reset!
     end
-    
+
     it "inherits the module configuration" do
       client = ACTV::Client.new
       ACTV::Configurable.keys.each do |key|
         client.instance_variable_get("@#{key}").should eq key
       end
     end
-    
+
     context "with class configuration" do
-      
+
       before do
         @configuration = {
           :connection_options => {:timeout => 10},
@@ -42,9 +42,10 @@ describe ACTV::Client do
           :oauth_token => 'OT',
           :oauth_token_secret => 'OS',
           :search_endpoint => 'http://search.twitter.com',
+          :api_key => 'TEST'
         }
       end
-      
+
       context "during initialization" do
         it "overrides the module configuration" do
           client = ACTV::Client.new(@configuration)
@@ -53,7 +54,7 @@ describe ACTV::Client do
           end
         end
       end
-      
+
       context "after initilization" do
         it "overrides the module configuration after initialization" do
           client = ACTV::Client.new
@@ -67,11 +68,11 @@ describe ACTV::Client do
           end
         end
       end
-      
+
     end
-    
+
   end
-  
+
   describe "#credentials?" do
     it "returns true if all credentials are present" do
       client = ACTV::Client.new(:consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
@@ -82,7 +83,7 @@ describe ACTV::Client do
     #   client.credentials?.should be_false
     # end
   end
-  
+
   describe "#connection" do
     it "looks like Faraday connection" do
       subject.connection.should respond_to(:run_request)
@@ -92,20 +93,20 @@ describe ACTV::Client do
       c1.object_id.should eq c2.object_id
     end
   end
-  
+
   describe "#request" do
     before do
       @client = ACTV::Client.new({:consumer_key => "CK", :consumer_secret => "CS", :oauth_token => "OT", :oauth_token_secret => "OS"})
     end
-    
+
     it "does something" do
-      stub_request(:get, "https://api.active.com/system_health").
+      stub_request(:get, "http://api.amp.active.com/system_health").
         with(:headers => {'Accept'=>'application/json'}).
         to_return(:status => 200, :body => '{"status":"not implemented"}', :headers => {})
-      
+
       @client.request(:get, "/system_health", {}, {})[:body].should eql({status: "not implemented"})
     end
-    
+
     it "encodes the entire body when no uploaded media is present" do
     #   stub_post("/1/statuses/update.json").
     #     with(:body => {:status => "Update"}).
@@ -129,11 +130,50 @@ describe ACTV::Client do
     #   end.should raise_error(Twitter::Error::ClientError, "Oups")
     # end
   end
-  
+
+  describe '#event' do
+    let(:client) { ACTV::Client.new({:consumer_key => "CK", :consumer_secret => "CS", :oauth_token => "OT", :oauth_token_secret => "OS"}) }
+
+    context 'find event' do
+      before do
+        stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
+          to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+      end
+
+      it 'should make a normal asset call' do
+        client.event('asset_id').should be_a ACTV::Event
+      end
+    end
+
+    context 'preview event' do
+      context 'when set to true' do
+        before do
+          stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id/preview.json").
+            to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+        end
+
+        it 'should make preview call' do
+          client.event('asset_id', {preview: 'true'}).should be_a ACTV::Event
+        end
+      end
+
+      context 'when set to false' do
+        before do
+          stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
+            to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+        end
+
+        it 'should make a normal asset call' do
+          client.event('asset_id', {preview: 'false'}).should be_a ACTV::Event
+        end
+      end
+    end
+  end
+
   ACTV::Configurable::CONFIG_KEYS.each do |key|
     it "has a default #{key.to_s.gsub('_', ' ')}" do
       subject.send(key).should eq ACTV::Default.options[key]
     end
   end
-  
+
 end

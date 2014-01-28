@@ -10,9 +10,9 @@ describe ACTV::Client do
     context "with a valid asset ID passed" do
       before do
         stub_get("/v2/assets/valid_asset.json").
-        to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+          to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
 
-        @asset = @client.asset("valid_asset")
+        @asset = @client.asset("valid_asset")[0]
       end
 
       it "requests the correct asset" do
@@ -58,6 +58,29 @@ describe ACTV::Client do
         @asset.topics.first.topic.name.should eq "Duathlon"
         @asset.topics.first.topic.taxonomy.should eq "Endurance/Duathlon"
       end
+    end
+  end
+
+  describe "#asset_by_path" do
+    context "with a valid url passed" do
+      before do
+        @seo_url = "http://www.active.com/san-francisco-ca/running/crazy-eight-fall-2013"
+        @seo_url_md5 = Digest::MD5.hexdigest(@seo_url )
+
+        stub_get("/v2/seourls/#{@seo_url_md5}?load_asset=true").
+          to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+
+        @asset = @client.find_asset_by_url(@seo_url)
+      end
+
+      it "returns the correct url" do
+        @asset.seo_url.should eq @seo_url
+      end
+
+      it "returns the correct status" do
+        @asset.status.name.should eq 'VISIBLE'
+      end
+
     end
   end
 

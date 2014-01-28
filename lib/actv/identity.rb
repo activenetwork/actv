@@ -1,7 +1,7 @@
 require 'actv/base'
 
 module ACTV
-  class Identity < Base
+  class Identity < ACTV::Base
 
     # Initializes a new object
     #
@@ -9,20 +9,14 @@ module ACTV
     # @raise [ArgumentError] Error raised when supplied argument is missing an :id key.
     # @return [ACTV::Base]
     def initialize(attrs={})
-      self.update(attrs)
-
-      if self.id
-        @@identity_map[self.class] ||= {}
-        @@identity_map[self.class][self.id] = self
-      else
-        raise ArgumentError, "argument (#{self.class}) must have an :id key"
-      end
+      super
+      raise ArgumentError, 'argument must have an :id key' unless id
     end
 
     # @param other [ACTV::Identity]
     # @return [Boolean]
     def ==(other)
-      super || self.attr_equal(:id, other) || self.attrs_equal(other)
+      super || attr_equal(:id, other) || attrs_equal(other)
     end
 
     # @return [Integer]

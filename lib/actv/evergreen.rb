@@ -6,12 +6,14 @@ module ACTV
 
     def initialize asset
       super asset
+      @asset = asset
       @events = []
       @current_event = {}
       asset.evergreenAssets.each do |sub_asset|
         @events << SubEvent.new(sub_asset)
         @current_event = sub_asset if Time.parse(sub_asset.fetch(:activityEndDate, "1970-01-01T00:00:01")) > Time.parse(@current_event.fetch(:activityEndDate, "1970-01-01T00:00:01"))
       end
+      @events = @events.sort_by { |event| event.end_date }.reverse
       @current_event = ACTV.event @current_event[:assetGuid]
 
       self
@@ -19,6 +21,14 @@ module ACTV
 
     def evergreen?
       true
+    end
+
+    def components
+      @current_event.components
+    end
+
+    def legacy_data
+      @current_event.legacy_data
     end
 
     def description_by_type type
@@ -32,7 +42,11 @@ module ACTV
     end
 
     def method_missing method, *args, &block
-      @current_event.send method, *args
+      begin
+        @asset.send(method, *args)
+      rescue NoMethodError => e
+        @current_event.send(method, *args)
+      end
     end
   end
 end
