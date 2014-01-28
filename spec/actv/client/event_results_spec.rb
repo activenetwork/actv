@@ -21,8 +21,9 @@ describe ACTV::Client do
 
     context "performs a search with no results" do
       before do
-        stub_get("/v2/events/popular?topic=asdf").
-        to_return(body: fixture("valid_search_no_event_results.json"), headers: { content_type: "application/json; charset=utf-8" })        
+        stub_request(:get, "http://api.amp.active.com/api/v1/events/asdf/asdf.json").
+                   with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Active Ruby Gem 1.1.9'}).
+                            to_return(:status => 200, :body => "", :headers => {})
       end
 
       it 'returns nil' do
