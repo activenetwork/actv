@@ -2,7 +2,7 @@
 require File.expand_path('../lib/actv/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.add_dependency 'faraday', '~> 0.8'
+  gem.add_dependency 'faraday', '~> 0.8.0'
   gem.add_dependency 'multi_json', '~> 1.3'
   gem.add_dependency 'simple_oauth', '~> 0.1.6'
   gem.add_dependency 'nokogiri'
