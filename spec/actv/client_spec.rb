@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe ACTV::Client do
 
@@ -42,7 +43,8 @@ describe ACTV::Client do
           :oauth_token => 'OT',
           :oauth_token_secret => 'OS',
           :search_endpoint => 'http://search.twitter.com',
-          :api_key => 'TEST'
+          :api_key => 'TEST',
+          :default_radius => 50
         }
       end
 
@@ -105,6 +107,38 @@ describe ACTV::Client do
         to_return(:status => 200, :body => '{"status":"not implemented"}', :headers => {})
 
       @client.request(:get, "/system_health", {}, {})[:body].should eql({status: "not implemented"})
+    end
+
+    it "has a default radius when near is specificed" do
+      stub_request(:get, "http://api.amp.active.com/request_with_near?near=San%20Diego,%20Ca&radius=50").
+        to_return(body: fixture("valid_search.json"), headers: { content_type: "application/json; charset=utf-8" })
+
+      response  =  @client.request(:get, "request_with_near", {near: "San Diego, Ca"}, {})
+      response[:url].to_s.should include 'radius=50'
+    end
+
+    it "has a default radius when lat_lon is specified" do
+      stub_request(:get, "http://api.amp.active.com/request_with_lat_lon?lat_lon=43.2,-118&radius=50").
+        to_return(body: fixture("valid_search.json"), headers: { content_type: "application/json; charset=utf-8" })
+
+      response  =  @client.request(:get, "request_with_lat_lon", {lat_lon: "43.2,-118"}, {})
+      response[:url].to_s.should include 'radius=50'
+    end
+
+    it "should not have a default radius when lat_lon or near are not defined" do
+      stub_request(:get, "http://api.amp.active.com/call_without_near_or_lat_lon").
+        to_return(body: fixture("valid_search.json"), headers: { content_type: "application/json; charset=utf-8" })
+
+      response  =  @client.request(:get, "call_without_near_or_lat_lon", {}, {})
+      response[:url].to_s.should_not include 'radius'
+    end
+
+    it "should overwrite the default radius when at radius is specified" do
+       stub_request(:get, "http://api.amp.active.com/call_with_radius?radius=100").
+        to_return(body: fixture("valid_search.json"), headers: { content_type: "application/json; charset=utf-8" })
+
+      response  =  @client.request(:get, "call_with_radius", {radius: '100'}, {})
+      response[:url].to_s.should include 'radius=100'
     end
 
     it "encodes the entire body when no uploaded media is present" do
