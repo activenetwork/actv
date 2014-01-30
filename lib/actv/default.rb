@@ -44,10 +44,6 @@ module ACTV
         }
       end
 
-      def default_radius
-        @default_radius ||= 50
-      end
-
       # @note Faraday's middleware stack implementation is comparable to that of Rack middleware.  The order of middleware is important: the first middleware on the list wraps all others, while the last middleware is the innermost one.
       # @see https://github.com/technoweenie/faraday#advanced-middleware-usage
       # @see http://mislav.uniqpath.com/2011/07/faraday-advanced-http/

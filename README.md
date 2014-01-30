@@ -26,7 +26,6 @@ Require the gem, then configure the endpoint and your api key:
     ACTV.configure do |config|
       config.endpoint = "http://api.amp.active.com"
       config.api_key = "YOUR_API_KEY"
-      config.default_radius = 50
     end
 
 ## Usage Examples

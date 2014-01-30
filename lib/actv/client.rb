@@ -291,10 +291,6 @@ module ACTV
       request_headers = {}
       params[:api_key] = @api_key unless @api_key.nil?
 
-      if params[:near] || params[:lat_lon]
-        params[:radius] = @default_radius unless params[:radius]
-      end
-
       if self.credentials?
         # When posting a file, don't sign any params
         signature_params = if [:post, :put].include?(method.to_sym) && params.values.any?{|value| value.is_a?(File) || (value.is_a?(Hash) && (value[:io].is_a?(IO) || value[:io].is_a?(StringIO)))}

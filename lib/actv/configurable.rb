@@ -13,8 +13,7 @@ module ACTV
       :media_endpoint,
       :middleware,
       :search_endpoint,
-      :api_key,
-      :default_radius
+      :api_key
     ] unless defined? CONFIG_KEYS
 
     attr_accessor *CONFIG_KEYS
