@@ -7,6 +7,7 @@ require 'actv/error/forbidden'
 require 'actv/error/not_found'
 require 'actv/event'
 require 'actv/event_result'
+require 'actv/asset_stats_result'
 require 'actv/evergreen'
 require 'actv/sub_event'
 require 'actv/search_results'
@@ -215,6 +216,17 @@ module ACTV
         response = get("/api/v1/events/#{assetId}/#{assetTypeId}.json", {}, options)
         ACTV::EventResult.from_response(response)
       rescue
+        nil
+      end
+    end
+
+    def asset_stats(asset_id)
+      begin
+        if asset_id
+          response = get("/v2/asset/#{asset_id}/stats")
+          ACTV::AssetStatsResult.from_response(response)
+        end
+      rescue 
         nil
       end
     end
