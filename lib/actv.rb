@@ -13,20 +13,20 @@ module ACTV
     def client
       ACTV::Client.new(options)
     end
-    
+
     def options
       @options = {}
       ACTV::Configurable.keys.each do |key|
         @options[key] = instance_variable_get("@#{key}")
       end
-      
+
       @options
     end
 
     def respond_to?(method, include_private=false)
       self.client.respond_to?(method, include_private) || super
     end
-    
+
     def reset!
       ACTV::Configurable.keys.each do |key|
         instance_variable_set("@#{key}", ACTV::Default.options[key])
