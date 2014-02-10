@@ -222,5 +222,44 @@ module ACTV
       @registration_status ||= nil
     end
     alias reg_status registration_status
+
+    def attributes
+      @attributes ||= assetAttributes.sort_by do |attribute|
+        attribute[:attribute][:attributeType]
+      end.map do |attribute|
+        attribute[:attribute][:attributeValue]
+      end
+    end
+
+    def meta_interests
+      @meta_interests ||= attrs[:assetMetaInterests].sort_by do |interest|
+        interest[:sequence]
+      end.map do |interest|
+        interest[:metaInterest][:metaInterestName]
+      end
+    end
+
+    def location
+      @location ||= "#{place.cityName} #{place.stateProvinceCode}".downcase.gsub ' ','-'
+    end
+
+    def first_topic
+      get_first_topic_taxonomy[0]
+    end
+
+    def sub_topic
+      get_first_topic_taxonomy[1]
+    end
+
+    def sub_2_topic
+      get_first_topic_taxonomy[2]
+    end
+
+    private
+
+    def get_first_topic_taxonomy
+      @first_topic_taxonomy ||= assetTopics.sort_by(&:sequence).first.topic.topicTaxonomy.split '/'
+    end
+
   end
 end

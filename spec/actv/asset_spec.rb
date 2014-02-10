@@ -166,6 +166,67 @@ describe ACTV::Asset do
       asset = ACTV.asset('valid_event')[0]
       asset.is_article?.should be_false
     end
+  end
+
+  describe "#attributes" do
+    it "returns the attribute values ordered by type" do
+      attributes = [ { attribute: { attributeType: 'thing b', attributeValue: 'bbb' } },
+                     { attribute: { attributeType: 'thing a', attributeValue: 'aaa' } } ]
+      asset = ACTV::Asset.new assetGuid: 1, assetAttributes: attributes
+      asset.attributes.should == [ 'aaa', 'bbb' ]
+    end
+  end
+
+  describe "#meta_interests" do
+    it "returns the meta interest names ordered by sequence" do
+      meta_interests = [ { sequence: '2', metaInterest: { metaInterestName: 'sq2' } },
+                         { sequence: '1', metaInterest: { metaInterestName: 'sq1' } } ]
+      asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
+      asset.meta_interests.should == [ 'sq1', 'sq2' ]
+    end
+  end
+
+  describe "#location" do
+    it "returns the formatted location" do
+      asset = ACTV::Asset.new assetGuid: 1, place: { cityName: "My City", stateProvinceCode: "AA" }
+      asset.location.should == 'my-city-aa'
+    end
+  end
+
+  describe "topic methods" do
+    let(:assetTopics) do
+      [ { sequence: '2', topic: { topicTaxonomy: "forth/fifth/sixth" } },
+        { sequence: '1', topic: { topicTaxonomy: "first/second/third" } } ]
+    end
+    let(:asset) { ACTV::Asset.new assetGuid: 1, assetTopics: assetTopics }
+
+    describe "#first_topic" do
+      it "returns the first part of the first asset topic" do
+        asset.first_topic.should == 'first'
+      end
+    end
+
+    describe "#sub_topic" do
+      it "returns the second part of the first asset topic" do
+        asset.sub_topic.should == 'second'
+      end
+    end
+
+    describe "#sub_2_topic" do
+      it "returns the third part of the first asset topic" do
+        asset.sub_2_topic.should == 'third'
+      end
+    end
+
+    context "when there is no sub_2_topic" do
+      let(:assetTopics) { [ { sequence: '1', topic: { topicTaxonomy: "first/second" } } ] }
+      describe "#sub_2_topic" do
+        it "is nil" do
+          asset.sub_2_topic.should be_nil
+        end
+      end
+    end
+
 
   end
 
