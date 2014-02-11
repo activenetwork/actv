@@ -166,7 +166,68 @@ describe ACTV::Asset do
       asset = ACTV.asset('valid_event')[0]
       asset.is_article?.should be_false
     end
+  end
 
+  describe "#attribute_paths" do
+    it "returns the attribute values ordered by type" do
+      attributes = [ { attribute: { attributeType: 'thing b', attributeValue: 'Bbb' } },
+                     { attribute: { attributeType: 'thing a', attributeValue: 'Aaa' } } ]
+      asset = ACTV::Asset.new assetGuid: 1, assetAttributes: attributes
+      asset.stub sub_topic: "Topic"
+      asset.attribute_paths.should == [ 'topic/aaa', 'topic/bbb' ]
+    end
+  end
+
+  describe "#meta_interest_paths" do
+    it "returns the meta interest names ordered by sequence" do
+      meta_interests = [ { sequence: '2', metaInterest: { metaInterestName: 'Sq2' } },
+                         { sequence: '1', metaInterest: { metaInterestName: 'Sq1' } } ]
+      asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
+      asset.stub sub_topic: "Topic"
+      asset.meta_interest_paths.should == [ 'topic/sq1', 'topic/sq2' ]
+    end
+  end
+
+  describe "#location_path" do
+    it "returns the formatted location" do
+      asset = ACTV::Asset.new assetGuid: 1, place: { cityName: "My City", stateProvinceCode: "AA" }
+      asset.location_path.should == 'my-city-aa'
+    end
+  end
+
+  describe "topic path methods" do
+    let(:assetTopics) do
+      [ { sequence: '2', topic: { topicTaxonomy: "Forth/Fifth/Sixth" } },
+        { sequence: '1', topic: { topicTaxonomy: "First/Second/Third" } } ]
+    end
+    let(:asset) { ACTV::Asset.new assetGuid: 1, assetTopics: assetTopics }
+
+    describe "#first_topic_path" do
+      it "returns the first part of the first asset topic" do
+        asset.first_topic_path.should == 'first'
+      end
+    end
+
+    describe "#sub_topic_path" do
+      it "returns the second part of the first asset topic" do
+        asset.sub_topic_path.should == 'second'
+      end
+    end
+
+    describe "#sub_2_topic_path" do
+      it "returns the third part of the first asset topic" do
+        asset.sub_2_topic_path.should == 'second/third'
+      end
+    end
+
+    context "when there is no sub_2_topic" do
+      let(:assetTopics) { [ { sequence: '1', topic: { topicTaxonomy: "first/second" } } ] }
+      describe "#sub_2_topic_path" do
+        it "has a blank sub 2 topic" do
+          asset.sub_2_topic_path.should == "second/"
+        end
+      end
+    end
   end
 
 end
