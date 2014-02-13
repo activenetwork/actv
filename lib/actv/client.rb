@@ -223,10 +223,10 @@ module ACTV
     def asset_stats(asset_id)
       begin
         if asset_id
-          response = get("/v2/asset/#{asset_id}/stats")
+          response = get("/v2/assets/#{asset_id}/stats")
           ACTV::AssetStatsResult.from_response(response)
         end
-      rescue 
+      rescue
         nil
       end
     end
