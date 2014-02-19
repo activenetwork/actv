@@ -13,6 +13,7 @@ module ACTV
         ACTV::Asset.new(asset)
       end
     end
+    alias to_a results
 
     # @return [Array<ACTV::Facet>]
     def facets
