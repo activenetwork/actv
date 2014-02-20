@@ -279,23 +279,17 @@ module ACTV
       urlize "#{sub_topic_path}/#{sub_2_topic}"
     end
 
-    def image_without_default
-      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
-      image = ''
-      assetImages.each do |i|
-        if i.imageUrlAdr.downcase != defaultImage
-          image = i.imageUrlAdr
-          break
-        end
+    def image_with_placeholder
+      if image_path.blank?
+        "/images/logo-active-icon-gray.gif"
+      else
+        image_path
       end
-
-      image
     end
 
-    def image
+    def image_path
       defaultImage = 'http://www.active.com/images/events/hotrace.gif'
-
-      image = image_without_default
+      image = image_without_placeholder.imageUrlAdr rescue ""
 
       if image.blank? and (logoUrlAdr && logoUrlAdr != defaultImage && (logoUrlAdr =~ URI::regexp).present?)
           image = logoUrlAdr
@@ -305,10 +299,28 @@ module ACTV
     end
 
     def media_url
-      image_without_default
+      image_without_placeholder.imageUrlAdr rescue ""
+    end
+
+    def image
+      image_without_placeholder
     end
 
     private
+
+    def image_without_placeholder
+      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
+      current_image = nil
+
+      assetImages.each do |i|
+        if i.imageUrlAdr.downcase != defaultImage
+          current_image = i
+          break
+        end
+      end
+
+      current_image
+    end
 
     def get_first_topic_taxonomy
       @first_topic_taxonomy ||= assetTopics.sort_by(&:sequence).first
