@@ -220,15 +220,9 @@ module ACTV
       end
     end
 
-    def asset_stats(asset_id)
-      begin
-        if asset_id
-          response = get("/v2/asset/#{asset_id}/stats")
-          ACTV::AssetStatsResult.from_response(response)
-        end
-      rescue 
-        nil
-      end
+    def asset_stats asset_id
+      response = get("/v2/assets/#{asset_id}/stats")
+      ACTV::AssetStatsResult.new response[:body]
     end
 
     # Returns the currently logged in user
