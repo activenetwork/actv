@@ -279,6 +279,35 @@ module ACTV
       urlize "#{sub_topic_path}/#{sub_2_topic}"
     end
 
+    def image_without_default
+      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
+      image = ''
+      assetImages.each do |i|
+        if i.imageUrlAdr.downcase != defaultImage
+          image = i.imageUrlAdr
+          break
+        end
+      end
+
+      image
+    end
+
+    def image
+      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
+
+      image = image_without_default
+
+      if image.blank? and (logoUrlAdr && logoUrlAdr != defaultImage && (logoUrlAdr =~ URI::regexp).present?)
+          image = logoUrlAdr
+      end
+
+      image
+    end
+
+    def media_url
+      image_without_default
+    end
+
     private
 
     def get_first_topic_taxonomy
