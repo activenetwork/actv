@@ -280,7 +280,7 @@ module ACTV
     end
 
     def image_with_placeholder
-      if image_path.blank?
+      if image_path.empty?
         "/images/logo-active-icon-gray.gif"
       else
         image_path
@@ -291,7 +291,7 @@ module ACTV
       defaultImage = 'http://www.active.com/images/events/hotrace.gif'
       image = image_without_placeholder.imageUrlAdr rescue ""
 
-      if image.blank? and (logoUrlAdr && logoUrlAdr != defaultImage && (logoUrlAdr =~ URI::regexp).present?)
+      if image.empty? and (logoUrlAdr && logoUrlAdr != defaultImage && !(logoUrlAdr =~ URI::regexp).nil?)
           image = logoUrlAdr
       end
 
