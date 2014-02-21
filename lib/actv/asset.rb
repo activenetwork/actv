@@ -288,10 +288,10 @@ module ACTV
     end
 
     def image_path
-      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
+      default_image = 'http://www.active.com/images/events/hotrace.gif'
       image = image_without_placeholder.imageUrlAdr rescue ""
 
-      if image.empty? and (logoUrlAdr && logoUrlAdr != defaultImage && !(logoUrlAdr =~ URI::regexp).nil?)
+      if image.empty? and (logoUrlAdr && logoUrlAdr != default_image && !(logoUrlAdr =~ URI::regexp).nil?)
           image = logoUrlAdr
       end
 
@@ -309,11 +309,11 @@ module ACTV
     private
 
     def image_without_placeholder
-      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
+      default_image = 'http://www.active.com/images/events/hotrace.gif'
       current_image = nil
 
-      assetImages.each do |i|
-        if i.imageUrlAdr.downcase != defaultImage
+      asset_images.each do |i|
+        if i.imageUrlAdr.downcase != default_image
           current_image = i
           break
         end
