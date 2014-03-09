@@ -258,7 +258,7 @@ module ACTV
     def first_topic
       get_first_topic_taxonomy[0]
     end
-    alias topic first_name
+    alias topic first_topic
 
     def first_topic_path
       urlize first_topic
