@@ -258,6 +258,7 @@ module ACTV
     def first_topic
       get_first_topic_taxonomy[0]
     end
+    alias topic first_name
 
     def first_topic_path
       urlize first_topic
@@ -277,6 +278,22 @@ module ACTV
 
     def sub_2_topic_path
       urlize "#{sub_topic_path}/#{sub_2_topic}"
+    end
+
+    def sub_3_topic
+      get_first_topic_taxonomy[3]
+    end
+
+    def sub_3_topic_path
+      urlize "#{sub_2_topic_path}/#{sub_3_topic}"
+    end
+
+    def sub_4_topic
+      get_first_topic_taxonomy[4]
+    end
+
+    def sub_4_topic_path
+      urlize "#{sub_3_topic_path}/#{sub_4_topic}"
     end
 
     def image_with_placeholder

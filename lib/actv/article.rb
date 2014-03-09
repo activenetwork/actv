@@ -47,6 +47,10 @@ module ACTV
       @type ||= tag_by_description 'articleType'
     end
 
+    def media_gallery?
+      self.type and self.type.downcase == "mediagallery"
+    end
+
     def image
       @image ||= image_by_name 'image2'
     end
