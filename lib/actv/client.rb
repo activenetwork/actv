@@ -14,6 +14,7 @@ require 'actv/search_results'
 require 'actv/event_search_results'
 require 'actv/popular_interest_search_results'
 require 'actv/user'
+require 'actv/organizer'
 require 'simple_oauth'
 require 'active_support/core_ext/hash/indifferent_access'
 
@@ -76,6 +77,41 @@ module ACTV
       else
         [ACTV::Asset.from_response(response)]
       end
+    end
+
+    # Returns an organizer with the specified ID
+    #
+    # @authentication_required No
+    # @return ACTV::Organizer The requested organizer.
+    # @param id [String] An assset ID.
+    # @param options [Hash] A customizable set of options.
+    # @example Return the organizer with the id AA388860-2718-4B20-B380-8F939596B123
+    #   ACTV.organizer("AA388860-2718-4B20-B380-8F939596B123")
+    def organizer(id, params={})
+      request_string = "/v3/organizers/#{id}"
+      response = get("#{request_string}.json", params)
+      ACTV::Organizer.from_response response
+    end
+
+
+    # Returns all organizers
+    #
+    # @authentication_required No
+    # @param options [Hash] A customizable set of options.
+    # @return [ACTV::Organizer] Return organizations
+    # @example Returns organizers
+    #   ACTV.organizers
+    #   ACTV.organizers({per_page: 8, current_page: 2})
+    def organizers(params={})
+      request_string = "/v3/organizers"
+      response = get("#{request_string}.json", params)
+
+      results = []
+      response[:body].each do |organizer|
+        results.push ACTV::Organizer.from_response body: organizer
+      end
+
+      results
     end
 
     # Returns an asset with the specified url path
