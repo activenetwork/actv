@@ -1,0 +1,42 @@
+[
+  {
+    "organizationDsc": "test org dsc",
+    "organizationGuid": "3f9d9266-1e44-4871-a9cb-48d876fcdcd0",
+    "addressCityName": "city",
+    "fax": "999 444 8888",
+    "sourceSystemGuid": "ea4e860a-9dcd-4daa-a7ca-4a77ad194f65",
+    "addressPostalCd": "82828",
+    "organizationName": "test org name",
+    "addressStateProvinceCode": "CA",
+    "addressCountryCd": "US ",
+    "primaryContactPhone": "org contact phone",
+    "addressLine1Txt": "addy 1",
+    "primaryContactEmailAdr": "org email",
+    "organizationUrlAdr": "my org url",
+    "hideOrganizationContact": false,
+    "addressLocalityName": "locality",
+    "showOrganizationName": false,
+    "primaryContactName": "org contact name",
+    "addressLine2Txt": "addy 2"
+  },
+  {
+    "organizationDsc": "test org dsc",
+    "organizationGuid": "48ae0fca-3d5f-4869-8ae0-41fb1c53a393",
+    "addressCityName": "city",
+    "fax": "999 444 8888",
+    "sourceSystemGuid": "ecffc8b6-51ed-43af-82d3-540e607e5af5",
+    "addressPostalCd": "82828",
+    "organizationName": "test org name",
+    "addressStateProvinceCode": "CA",
+    "addressCountryCd": "US ",
+    "primaryContactPhone": "org contact phone",
+    "addressLine1Txt": "addy 1",
+    "primaryContactEmailAdr": "org email",
+    "organizationUrlAdr": "my org url",
+    "hideOrganizationContact": false,
+    "addressLocalityName": "locality",
+    "showOrganizationName": false,
+    "primaryContactName": "org contact name",
+    "addressLine2Txt": "addy 2"
+  }
+]

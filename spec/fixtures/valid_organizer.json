@@ -1,0 +1,20 @@
+{
+  "organizationDsc": "test org dsc",
+  "organizationGuid": "3f9d9266-1e44-4871-a9cb-48d876fcdcd0",
+  "addressCityName": "city",
+  "fax": "999 444 8888",
+  "sourceSystemGuid": "ea4e860a-9dcd-4daa-a7ca-4a77ad194f65",
+  "addressPostalCd": "82828",
+  "organizationName": "test org name",
+  "addressStateProvinceCode": "CA",
+  "addressCountryCd": "US",
+  "primaryContactPhone": "888-555-1234",
+  "addressLine1Txt": "addy 1",
+  "primaryContactEmailAdr": "org email",
+  "organizationUrlAdr": "my org url",
+  "hideOrganizationContact": false,
+  "addressLocalityName": "locality",
+  "showOrganizationName": false,
+  "primaryContactName": "org contact name",
+  "addressLine2Txt": "addy 2"
+}
