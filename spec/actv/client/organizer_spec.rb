@@ -67,8 +67,8 @@ describe ACTV::Client do
         @organizers = @client.organizers
      end
      it "returns an array of organizers" do
-       @organizers.should have(2).items
-       @organizers.first.should be_a ACTV::Organizer
+       @organizers.total.should == 34968
+       @organizers.results.first.should be_a ACTV::Organizer
      end
     end
   end

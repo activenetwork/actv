@@ -6,7 +6,7 @@ module ACTV
       end
     end
     def total
-      @total ||= Array(@attrs[:total])
+      @total ||= @attrs[:total]
     end
   end
 end
