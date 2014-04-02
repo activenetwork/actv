@@ -15,6 +15,7 @@ require 'actv/event_search_results'
 require 'actv/popular_interest_search_results'
 require 'actv/user'
 require 'actv/organizer'
+require 'actv/organizer_results'
 require 'simple_oauth'
 require 'active_support/core_ext/hash/indifferent_access'
 
@@ -105,13 +106,7 @@ module ACTV
     def organizers(params={})
       request_string = "/v3/organizers"
       response = get("#{request_string}.json", params)
-
-      results = []
-      response[:body].each do |organizer|
-        results.push ACTV::Organizer.from_response body: organizer
-      end
-
-      results
+      ACTV::OrganizerResults.from_response response
     end
 
     # Returns an asset with the specified url path
