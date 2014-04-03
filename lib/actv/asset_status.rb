@@ -13,5 +13,8 @@ module ACTV
     alias created_at createdDate
     alias updated_at modifiedDate
 
+    def visible?
+      id == '2'
+    end
   end
 end

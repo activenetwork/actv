@@ -65,6 +65,10 @@ module ACTV
     alias asset_status status
     alias assetStatus status
 
+    def visible?
+      asset_status.visible?
+    end
+
     def legacy_data
       @legacy_data ||= ACTV::AssetLegacyData.new(@attrs[:assetLegacyData]) unless @attrs[:assetLegacyData].nil?
     end
