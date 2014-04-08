@@ -65,6 +65,10 @@ module ACTV
     alias asset_status status
     alias assetStatus status
 
+    def visible?
+      asset_status.visible?
+    end
+
     def legacy_data
       @legacy_data ||= ACTV::AssetLegacyData.new(@attrs[:assetLegacyData]) unless @attrs[:assetLegacyData].nil?
     end
@@ -258,6 +262,7 @@ module ACTV
     def first_topic
       get_first_topic_taxonomy[0]
     end
+    alias topic first_topic
 
     def first_topic_path
       urlize first_topic
@@ -279,25 +284,35 @@ module ACTV
       urlize "#{sub_topic_path}/#{sub_2_topic}"
     end
 
-    def image_without_default
-      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
-      image = ''
-      assetImages.each do |i|
-        if i.imageUrlAdr.downcase != defaultImage
-          image = i.imageUrlAdr
-          break
-        end
-      end
-
-      image
+    def sub_3_topic
+      get_first_topic_taxonomy[3]
     end
 
-    def image
-      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
+    def sub_3_topic_path
+      urlize "#{sub_2_topic_path}/#{sub_3_topic}"
+    end
 
-      image = image_without_default
+    def sub_4_topic
+      get_first_topic_taxonomy[4]
+    end
 
-      if image.blank? and (logoUrlAdr && logoUrlAdr != defaultImage && (logoUrlAdr =~ URI::regexp).present?)
+    def sub_4_topic_path
+      urlize "#{sub_3_topic_path}/#{sub_4_topic}"
+    end
+
+    def image_with_placeholder
+      if image_path.empty?
+        "/images/logo-active-icon-gray.gif"
+      else
+        image_path
+      end
+    end
+
+    def image_path
+      default_image = 'http://www.active.com/images/events/hotrace.gif'
+      image = image_without_placeholder.imageUrlAdr rescue ""
+
+      if image.empty? and (logoUrlAdr && logoUrlAdr != default_image && !(logoUrlAdr =~ URI::regexp).nil?)
           image = logoUrlAdr
       end
 
@@ -305,10 +320,28 @@ module ACTV
     end
 
     def media_url
-      image_without_default
+      image_without_placeholder.imageUrlAdr rescue ""
+    end
+
+    def image
+      image_without_placeholder
     end
 
     private
+
+    def image_without_placeholder
+      default_image = 'http://www.active.com/images/events/hotrace.gif'
+      current_image = nil
+
+      asset_images.each do |i|
+        if i.imageUrlAdr.downcase != default_image
+          current_image = i
+          break
+        end
+      end
+
+      current_image
+    end
 
     def get_first_topic_taxonomy
       @first_topic_taxonomy ||= assetTopics.sort_by(&:sequence).first

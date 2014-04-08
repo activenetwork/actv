@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe ACTV::Asset do
 
@@ -225,6 +226,104 @@ describe ACTV::Asset do
       describe "#sub_2_topic_path" do
         it "has a blank sub 2 topic" do
           asset.sub_2_topic_path.should == "second/"
+        end
+      end
+    end
+  end
+
+  describe 'recommended events' do
+    let(:asset) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetImages: [{ imageUrlAdr: "img1.jpg" }, { imageUrlAdr: "img2.jpg" }]) }
+    let(:empty_asset) { ACTV::Asset.new assetGuid: 1 }
+
+    describe "#image_with_placeholder" do
+      context "when image_path is empty" do
+        it "returns the placeholder image path" do
+          asset.stub image_path: ""
+          asset.image_with_placeholder.should == "/images/logo-active-icon-gray.gif"
+        end
+      end
+
+      context "when image_path is not empty" do
+        it "returns the image_path" do
+          asset.image_with_placeholder.should == "img1.jpg"
+        end
+      end
+    end
+
+    describe "#image_path" do
+      context "when image_without_placeholder is nil" do
+        it "returns an empty string" do
+          asset.stub(:logoUrlAdr) { "" }
+          asset.stub(:image_without_placeholder) { nil }
+          asset.image_path.should == ""
+        end
+      end
+
+      context "when image_without_placeholder is an empty string" do
+        it "returns an empty string" do
+          asset.stub(:logoUrlAdr) { "" }
+          asset.stub(:image_without_placeholder) { "" }
+          asset.image_path.should == ""
+        end
+      end
+
+      context "when there is a imageUrlAdr" do
+        it "returns the imageUrlAdr" do
+          asset.image_path.should == "img1.jpg"
+        end
+      end
+
+      context "when there is no imageUrlAdr" do
+        context "when there is a logoUrlAdr" do
+          it "returns the logoUrlAdr" do
+            empty_asset.stub(:logoUrlAdr) { "http://example.com/logo.jpg" }
+            empty_asset.image_path.should == "http://example.com/logo.jpg"
+          end
+        end
+
+        context "when there is no logoUrlAdr" do
+          it "returns an empty string" do
+            empty_asset.stub(:logoUrlAdr) { "" }
+            empty_asset.image_path.should == ""
+          end
+        end
+      end
+    end
+
+    describe "#media_url" do
+      context "when image_without_placeholder is present" do
+        context "when imageUrlAdr is present" do
+          it "returns the value of imageUrlAdr" do
+            asset.media_url.should == "img1.jpg"
+          end
+        end
+
+        context "when imageUrlAdr is not present" do
+          it "returns an empty string" do
+           empty_asset.media_url.should == ""
+          end
+        end
+
+       end
+
+      context "when image_without_placeholder is nil" do
+        it "returns an empty string" do
+          asset.stub(:image_without_placeholder) { nil }
+          asset.media_url.should == ""
+        end
+      end
+    end
+
+    describe "#image" do
+      context "the asset has images" do
+        it "returns an AssetImage object" do
+          asset.image.should be_a ACTV::AssetImage
+        end
+      end
+
+      context "the asset does not have images" do
+        it "returns nil" do
+          empty_asset.image.should be_nil
         end
       end
     end
