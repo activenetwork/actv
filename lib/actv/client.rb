@@ -89,8 +89,7 @@ module ACTV
     # @example Return the organizer with the id AA388860-2718-4B20-B380-8F939596B123
     #   ACTV.organizer("AA388860-2718-4B20-B380-8F939596B123")
     def organizer(id, params={})
-      request_string = "/v3/organizers/#{id}"
-      response = get("#{request_string}.json", params)
+      response = get("/v3/organizers/#{id}.json", params)
       ACTV::Organizer.from_response response
     end
 
@@ -104,8 +103,7 @@ module ACTV
     #   ACTV.organizers
     #   ACTV.organizers({per_page: 8, current_page: 2})
     def organizers(params={})
-      request_string = "/v3/organizers"
-      response = get("#{request_string}.json", params)
+      response = get("/v3/organizers.json", params)
       ACTV::OrganizerResults.from_response response
     end
 
