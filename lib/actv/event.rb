@@ -5,8 +5,6 @@ module ACTV
     attr_reader :salesStartDate, :salesEndDate, :activityStartDate, :activityEndDate
     alias sales_start_date salesStartDate
     alias sales_end_date salesEndDate
-    alias activity_start_date activityStartDate
-    alias activity_end_date activityEndDate
 
     def online_registration_available?
       if is_present?(self.registrationUrlAdr)

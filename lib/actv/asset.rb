@@ -34,6 +34,8 @@ module ACTV
     alias created_at createdDate
     alias updated_at modifiedDate
     alias author_name authorName
+    alias activity_start_date activityStartDate
+    alias activity_end_date activityEndDate
 
     def place
       @place ||= ACTV::Place.new(@attrs[:place]) unless @attrs[:place].nil?
