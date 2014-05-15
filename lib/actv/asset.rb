@@ -16,7 +16,7 @@ module ACTV
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
-      :authorName, :is_event, :is_article
+      :authorName, :is_event, :is_article, :currencyCd
 
     alias id assetGuid
     alias title assetName
@@ -36,6 +36,7 @@ module ACTV
     alias author_name authorName
     alias activity_start_date activityStartDate
     alias activity_end_date activityEndDate
+    alias currency_code currencyCd
 
     def place
       @place ||= ACTV::Place.new(@attrs[:place]) unless @attrs[:place].nil?
