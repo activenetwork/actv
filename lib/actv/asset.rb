@@ -16,7 +16,7 @@ module ACTV
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
-      :authorName, :is_event, :is_article, :currencyCd
+      :authorName, :is_event, :is_article, :currencyCd, :contactTxt
 
     alias id assetGuid
     alias title assetName
@@ -29,6 +29,7 @@ module ACTV
     alias contact_name contactName
     alias contact_email contactEmailAdr
     alias contact_phone contactPhone
+    alias contact_txt contactTxt
     alias show_contact? showContact
     alias published_at publishDate
     alias created_at createdDate
