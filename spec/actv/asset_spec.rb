@@ -179,6 +179,53 @@ describe ACTV::Asset do
     end
   end
 
+  describe "#activekids?" do
+    context "when kids meta-interest" do
+      let(:meta_interests) do
+          [ { sequence: '2', metaInterest: { metaInterestName: 'Family' } },
+            { sequence: '1', metaInterest: { metaInterestName: 'Kids' } } ]
+      end 
+      it "evaluates to true" do
+        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
+        asset.stub activenet?: true
+        asset.activekids?.should eq true
+      end
+    end
+
+    context "when other meta-interest" do
+      let(:meta_interests) do
+          [ { sequence: '2', metaInterest: { metaInterestName: 'NoFamily' } },
+            { sequence: '1', metaInterest: { metaInterestName: 'NoKids' } } ]
+      end 
+      it "evaluates to false" do
+        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
+        asset.stub activenet?: true
+        asset.activekids?.should eq false
+      end
+    end
+
+    context "when no meta-interest" do
+      let(:meta_interests) {}
+      it "evaluates to false" do
+        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
+        asset.stub activenet?: true
+        asset.activekids?.should eq false
+      end
+    end
+
+    context "when source system is not activenet" do
+      let(:meta_interests) do
+          [ { sequence: '2', metaInterest: { metaInterestName: 'Family' } },
+            { sequence: '1', metaInterest: { metaInterestName: 'Kids' } } ]
+      end 
+      it "evaluates to false" do
+        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
+        asset.stub activenet?: false
+        asset.activekids?.should eq false
+      end
+    end
+  end
+
   describe "#meta_interest_paths" do
     it "returns the meta interest names ordered by sequence" do
       meta_interests = [ { sequence: '2', metaInterest: { metaInterestName: 'Sq2' } },
