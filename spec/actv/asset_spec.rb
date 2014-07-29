@@ -180,46 +180,68 @@ describe ACTV::Asset do
   end
 
   describe "#activekids?" do
-    context "when source system is Active Net" do
-      it "evaluates to true" do
-        asset = ACTV::Asset.new assetGuid: 1
-        asset.stub kidsinterest?: true
-        asset.stub activenet?: true
-        asset.stub awcamps?: false
-        asset.activekids?.should eq true
+    let(:asset) { ACTV::Asset.new assetGuid: 1 }
+    context 'when kidsinterest? is true' do
+      before { asset.stub kidsinterest?: true }
+
+      context "when source system is Active Net" do
+        before { asset.stub activenet?: true }
+
+        context 'when source system is AW Camps' do
+          before { asset.stub awcamps?: true }
+
+          it "evaluates to true" do
+            asset.activekids?.should eq true
+          end
+        end
+
+        context 'when source system is not AW Camps' do
+          before { asset.stub awcamps?: false }
+
+          it "evaluates to true" do
+            asset.activekids?.should eq true
+          end
+        end
+      end
+
+      context 'when source system is not Active Net' do
+        before { asset.stub activenet?: false }
+
+        context 'when source system is AW Camps' do
+          before { asset.stub awcamps?: true }
+
+          it "evaluates to true" do
+            asset.activekids?.should eq true
+          end
+        end
+
+        context 'when source system is not AW Camps' do
+          before { asset.stub awcamps?: false }
+
+          it "evaluates to true" do
+            asset.activekids?.should eq false
+          end
+        end
       end
     end
 
-    context "when source system is AW Camps" do
-      it "evaluates to true" do
-        asset = ACTV::Asset.new assetGuid: 1
-        asset.stub kidsinterest?: true
-        asset.stub activenet?: false
-        asset.stub awcamps?: true
-        asset.activekids?.should eq true
-      end
-    end
+    context 'when kidsinterest? is true' do
+      before { asset.stub kidsinterest?: false }
 
-    context "when source system is neither Active Net nor AW Camps" do
-      it "evaluates to false" do
-        asset = ACTV::Asset.new assetGuid: 1
-        asset.stub kidsinterest?: true
-        asset.stub activenet?: false
-        asset.stub awcamps?: false
+      it 'evaluates to false' do
         asset.activekids?.should eq false
       end
     end
-
   end
 
   describe "#kidsinterest?" do
+    let(:asset) { ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests }
     context "when kids meta-interest" do
       let(:meta_interests) do
           [ { sequence: '2', metaInterest: { metaInterestName: 'Family' } },
             { sequence: '1', metaInterest: { metaInterestName: 'Kids' } } ]
-      end 
+      end
       it "evaluates to true" do
-        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
         asset.kidsinterest?.should eq true
       end
     end
@@ -228,9 +250,8 @@ describe ACTV::Asset do
       let(:meta_interests) do
           [ { sequence: '2', metaInterest: { metaInterestName: 'NoFamily' } },
             { sequence: '1', metaInterest: { metaInterestName: 'NoKids' } } ]
-      end 
+      end
       it "evaluates to false" do
-        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
         asset.kidsinterest?.should eq false
       end
     end
@@ -238,7 +259,6 @@ describe ACTV::Asset do
     context "when no meta-interest" do
       let(:meta_interests) {}
       it "evaluates to false" do
-        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
         asset.kidsinterest?.should eq false
       end
     end
