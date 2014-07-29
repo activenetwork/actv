@@ -189,7 +189,6 @@ describe ACTV::Asset do
 
         context 'when source system is AW Camps' do
           before { asset.stub awcamps?: true }
-
           it "evaluates to true" do
             asset.activekids?.should eq true
           end
@@ -197,7 +196,6 @@ describe ACTV::Asset do
 
         context 'when source system is not AW Camps' do
           before { asset.stub awcamps?: false }
-
           it "evaluates to true" do
             asset.activekids?.should eq true
           end
@@ -209,7 +207,6 @@ describe ACTV::Asset do
 
         context 'when source system is AW Camps' do
           before { asset.stub awcamps?: true }
-
           it "evaluates to true" do
             asset.activekids?.should eq true
           end
@@ -217,7 +214,6 @@ describe ACTV::Asset do
 
         context 'when source system is not AW Camps' do
           before { asset.stub awcamps?: false }
-
           it "evaluates to true" do
             asset.activekids?.should eq false
           end
@@ -225,9 +221,8 @@ describe ACTV::Asset do
       end
     end
 
-    context 'when kidsinterest? is true' do
+    context 'when kidsinterest? is false' do
       before { asset.stub kidsinterest?: false }
-
       it 'evaluates to false' do
         asset.activekids?.should eq false
       end
