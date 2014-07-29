@@ -227,7 +227,7 @@ module ACTV
     end
 
     def activekids?
-      activenet? && kidsinterest?
+      (activenet? || awcamps?) && kidsinterest?
     end
 
     def kidsinterest?

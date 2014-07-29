@@ -180,6 +180,39 @@ describe ACTV::Asset do
   end
 
   describe "#activekids?" do
+    context "when source system is Active Net" do
+      it "evaluates to true" do
+        asset = ACTV::Asset.new assetGuid: 1
+        asset.stub kidsinterest?: true
+        asset.stub activenet?: true
+        asset.stub awcamps?: false
+        asset.activekids?.should eq true
+      end
+    end
+
+    context "when source system is AW Camps" do
+      it "evaluates to true" do
+        asset = ACTV::Asset.new assetGuid: 1
+        asset.stub kidsinterest?: true
+        asset.stub activenet?: false
+        asset.stub awcamps?: true
+        asset.activekids?.should eq true
+      end
+    end
+
+    context "when source system is neither Active Net nor AW Camps" do
+      it "evaluates to false" do
+        asset = ACTV::Asset.new assetGuid: 1
+        asset.stub kidsinterest?: true
+        asset.stub activenet?: false
+        asset.stub awcamps?: false
+        asset.activekids?.should eq false
+      end
+    end
+
+  end
+
+  describe "#kidsinterest?" do
     context "when kids meta-interest" do
       let(:meta_interests) do
           [ { sequence: '2', metaInterest: { metaInterestName: 'Family' } },
@@ -187,8 +220,7 @@ describe ACTV::Asset do
       end 
       it "evaluates to true" do
         asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
-        asset.stub activenet?: true
-        asset.activekids?.should eq true
+        asset.kidsinterest?.should eq true
       end
     end
 
@@ -199,8 +231,7 @@ describe ACTV::Asset do
       end 
       it "evaluates to false" do
         asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
-        asset.stub activenet?: true
-        asset.activekids?.should eq false
+        asset.kidsinterest?.should eq false
       end
     end
 
@@ -208,20 +239,7 @@ describe ACTV::Asset do
       let(:meta_interests) {}
       it "evaluates to false" do
         asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
-        asset.stub activenet?: true
-        asset.activekids?.should eq false
-      end
-    end
-
-    context "when source system is not activenet" do
-      let(:meta_interests) do
-          [ { sequence: '2', metaInterest: { metaInterestName: 'Family' } },
-            { sequence: '1', metaInterest: { metaInterestName: 'Kids' } } ]
-      end 
-      it "evaluates to false" do
-        asset = ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests
-        asset.stub activenet?: false
-        asset.activekids?.should eq false
+        asset.kidsinterest?.should eq false
       end
     end
   end
