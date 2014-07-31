@@ -179,6 +179,86 @@ describe ACTV::Asset do
     end
   end
 
+  describe "#activekids?" do
+    let(:asset) { ACTV::Asset.new assetGuid: 1 }
+    context 'when kidsinterest? is true' do
+      before { asset.stub kidsinterest?: true }
+
+      context "when source system is Active Net" do
+        before { asset.stub activenet?: true }
+
+        context 'when source system is AW Camps' do
+          before { asset.stub awcamps?: true }
+          it "evaluates to true" do
+            asset.activekids?.should eq true
+          end
+        end
+
+        context 'when source system is not AW Camps' do
+          before { asset.stub awcamps?: false }
+          it "evaluates to true" do
+            asset.activekids?.should eq true
+          end
+        end
+      end
+
+      context 'when source system is not Active Net' do
+        before { asset.stub activenet?: false }
+
+        context 'when source system is AW Camps' do
+          before { asset.stub awcamps?: true }
+          it "evaluates to true" do
+            asset.activekids?.should eq true
+          end
+        end
+
+        context 'when source system is not AW Camps' do
+          before { asset.stub awcamps?: false }
+          it "evaluates to true" do
+            asset.activekids?.should eq false
+          end
+        end
+      end
+    end
+
+    context 'when kidsinterest? is false' do
+      before { asset.stub kidsinterest?: false }
+      it 'evaluates to false' do
+        asset.activekids?.should eq false
+      end
+    end
+  end
+
+  describe "#kidsinterest?" do
+    let(:asset) { ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests }
+    context "when kids meta-interest" do
+      let(:meta_interests) do
+          [ { sequence: '2', metaInterest: { metaInterestName: 'Family' } },
+            { sequence: '1', metaInterest: { metaInterestName: 'Kids' } } ]
+      end
+      it "evaluates to true" do
+        asset.kidsinterest?.should eq true
+      end
+    end
+
+    context "when other meta-interest" do
+      let(:meta_interests) do
+          [ { sequence: '2', metaInterest: { metaInterestName: 'NoFamily' } },
+            { sequence: '1', metaInterest: { metaInterestName: 'NoKids' } } ]
+      end
+      it "evaluates to false" do
+        asset.kidsinterest?.should eq false
+      end
+    end
+
+    context "when no meta-interest" do
+      let(:meta_interests) {}
+      it "evaluates to false" do
+        asset.kidsinterest?.should eq false
+      end
+    end
+  end
+
   describe "#meta_interest_paths" do
     it "returns the meta interest names ordered by sequence" do
       meta_interests = [ { sequence: '2', metaInterest: { metaInterestName: 'Sq2' } },

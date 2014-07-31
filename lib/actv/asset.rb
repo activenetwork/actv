@@ -233,6 +233,17 @@ module ACTV
       self.sourceSystem[:legacyGuid].upcase == "FB27C928-54DB-4ECD-B42F-482FC3C8681F" rescue false
     end
 
+    def activekids?
+      (activenet? || awcamps?) && kidsinterest?
+    end
+
+    def kidsinterest?
+      interests = meta_interests.map(&:downcase)
+      ['kids', 'family'].any? { |tag| interests.include? tag } 
+    rescue
+      false
+    end
+
     def registration_status
       @registration_status ||= nil
     end
