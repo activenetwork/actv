@@ -252,7 +252,7 @@ describe ACTV::Asset do
     end
 
     context "when no meta-interest" do
-      let(:meta_interests) {}
+      let(:meta_interests) {[]}
       it "evaluates to false" do
         asset.kidsinterest?.should eq false
       end

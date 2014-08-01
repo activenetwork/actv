@@ -231,10 +231,8 @@ module ACTV
     end
 
     def kidsinterest?
-      interests = meta_interests.map(&:downcase)
+      interests = meta_interests.to_a.map(&:downcase)
       ['kids', 'family'].any? { |tag| interests.include? tag } 
-    rescue
-      false
     end
 
     def registration_status
