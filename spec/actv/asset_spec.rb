@@ -61,6 +61,22 @@ describe ACTV::Asset do
     end
   end
 
+  describe "#recurrences" do
+    it "returns a Recurrences when recurrences are set" do
+      recurrences = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1",
+                               activityRecurrences: [ {activityStartDate: '2014-09-16T08:30:00', activityEndDate: '2014-11-16T15:30:00',
+                                                      activityExclusions: [ {exclusionStartDate: '2012-06-07T00:00:00',
+                                                                           exclusionEndDate: '2012-06-10T00:00:00'} ],
+                                                      days: 'Mon, Wed, Fri' } ]).recurrences
+      recurrences[0].should be_a ACTV::Recurrence
+    end
+
+    it "returns nil when recurrences are not set" do
+      recurrences = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1").recurrences
+      recurrences[0].should be_nil
+    end
+  end
+
   describe "#legacy_data" do
     it "returns a Asset Legacy Data when assetLegacyData is set" do
       legacy_data = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetLegacyData: { assetTypeId: 1, typeName: "Legacy Data", isSearchable: true }).legacy_data

@@ -17,7 +17,7 @@ module ACTV
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
-      :authorName, :is_event, :is_article, :currencyCd, :contactTxt, :regReqMinAge, :regReqMaxAge
+      :authorName, :is_event, :is_article, :currencyCd, :contactTxt, :regReqMinAge, :regReqMaxAge, :regReqGenderCd
 
     alias id assetGuid
     alias title assetName
@@ -41,6 +41,7 @@ module ACTV
     alias currency_code currencyCd
     alias minimum_age regReqMinAge
     alias maximum_age regReqMaxAge
+    alias required_gender regReqGenderCd
 
     def recurrences
       @recurrences ||= Array(@attrs[:activityRecurrences]).map do | recurrence |

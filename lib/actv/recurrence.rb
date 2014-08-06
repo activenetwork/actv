@@ -7,7 +7,7 @@ module ACTV
                 :days, :monthWeekInterval, :activityExclusions
 
     alias start_date activityStartDate
-    alias startTime startTime
+    alias start_time startTime
     alias end_date activityEndDate
     alias end_time endTime
     alias frequency_interval frequencyInterval
