@@ -61,13 +61,34 @@ describe ACTV::Asset do
     end
   end
 
-  describe "#legacy_data" do
-    it "returns a Asset Legacy Data when assetLegacyData is set" do
-      legacy_data = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetLegacyData: { assetTypeId: 1, typeName: "Legacy Data", isSearchable: true }).legacy_data
-      legacy_data.should be_a ACTV::AssetLegacyData
+  describe "#recurrences" do
+    context 'when recurrences are set' do
+      let (:recurrences) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1",
+                                           activityRecurrences: [ {activityStartDate: '2014-09-16T08:30:00', activityEndDate: '2014-11-16T15:30:00',
+                                                                   days: 'Mon, Wed, Fri' } ]).recurrences }
+
+      it "returns a Recurrences" do
+        recurrences[0].should be_a ACTV::Recurrence
+      end
     end
 
-    it "returns nil when assetLegacyData is not set" do
+
+    context 'when recurrences are not set' do
+      let (:recurrences) {recurrences = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1").recurrences }
+
+      it "returns nil " do
+        recurrences[0].should be_nil
+      end
+    end
+  end
+
+    describe "#legacy_data" do
+      it "returns a Asset Legacy Data when assetLegacyData is set" do
+        legacy_data = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetLegacyData: { assetTypeId: 1, typeName: "Legacy Data", isSearchable: true }).legacy_data
+        legacy_data.should be_a ACTV::AssetLegacyData
+      end
+
+      it "returns nil when assetLegacyData is not set" do
       legacy_data = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1").legacy_data
       legacy_data.should be_nil
     end

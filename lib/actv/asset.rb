@@ -10,13 +10,14 @@ require 'actv/asset_topic'
 require 'actv/asset_seo_url'
 require 'actv/identity'
 require 'actv/place'
+require 'actv/recurrence'
 
 module ACTV
   class Asset < ACTV::Identity
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
-      :authorName, :is_event, :is_article, :currencyCd, :contactTxt
+      :authorName, :is_event, :is_article, :currencyCd, :contactTxt, :regReqMinAge, :regReqMaxAge, :regReqGenderCd
 
     alias id assetGuid
     alias title assetName
@@ -38,6 +39,15 @@ module ACTV
     alias activity_start_date activityStartDate
     alias activity_end_date activityEndDate
     alias currency_code currencyCd
+    alias minimum_age regReqMinAge
+    alias maximum_age regReqMaxAge
+    alias required_gender regReqGenderCd
+
+    def recurrences
+      @recurrences ||= Array(@attrs[:activityRecurrences]).map do | recurrence |
+        ACTV::Recurrence.new(recurrence)
+      end
+    end
 
     def place
       @place ||= ACTV::Place.new(@attrs[:place]) unless @attrs[:place].nil?
