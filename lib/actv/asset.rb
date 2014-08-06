@@ -42,8 +42,10 @@ module ACTV
     alias minimum_age regReqMinAge
     alias maximum_age regReqMaxAge
 
-    def recurrence
-      @recurrence ||= ACTV::Recurrence.new(@attrs[:activityRecurrences][0]) if @attrs[:activityRecurrences].present?
+    def recurrences
+      @recurrences ||= Array(@attrs[:activityRecurrences]).map do | recurrence |
+        ACTV::Recurrence.new(recurrence)
+      end
     end
 
     def place
