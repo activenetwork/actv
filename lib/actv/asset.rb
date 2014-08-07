@@ -228,6 +228,10 @@ module ACTV
       self.sourceSystem[:legacyGuid].upcase == "2B22B4E6-5AA4-44D7-BF06-F7A71F9FA8A6" rescue false
     end
 
+    def awcamps30?
+      self.sourceSystem[:legacyGuid].upcase == "89208DBA-F535-4950-880A-34A6888A184C" rescue false
+    end
+
     def thriva?
       self.sourceSystem[:legacyGuid].upcase == "2BA50ABA-080E-4E3D-A01C-1B4F56648A2E" rescue false
     end
@@ -236,7 +240,7 @@ module ACTV
       self.sourceSystem[:legacyGuid].upcase == "FB27C928-54DB-4ECD-B42F-482FC3C8681F" rescue false
     end
 
-    def activekids?
+    def kids?
       (activenet? || awcamps?) && kidsinterest?
     end
 

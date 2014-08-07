@@ -200,7 +200,7 @@ describe ACTV::Asset do
     end
   end
 
-  describe "#activekids?" do
+  describe "#kids?" do
     let(:asset) { ACTV::Asset.new assetGuid: 1 }
     context 'when kidsinterest? is true' do
       before { asset.stub kidsinterest?: true }
@@ -211,14 +211,14 @@ describe ACTV::Asset do
         context 'when source system is AW Camps' do
           before { asset.stub awcamps?: true }
           it "evaluates to true" do
-            asset.activekids?.should eq true
+            asset.kids?.should eq true
           end
         end
 
         context 'when source system is not AW Camps' do
           before { asset.stub awcamps?: false }
           it "evaluates to true" do
-            asset.activekids?.should eq true
+            asset.kids?.should eq true
           end
         end
       end
@@ -229,14 +229,14 @@ describe ACTV::Asset do
         context 'when source system is AW Camps' do
           before { asset.stub awcamps?: true }
           it "evaluates to true" do
-            asset.activekids?.should eq true
+            asset.kids?.should eq true
           end
         end
 
         context 'when source system is not AW Camps' do
           before { asset.stub awcamps?: false }
           it "evaluates to true" do
-            asset.activekids?.should eq false
+            asset.kids?.should eq false
           end
         end
       end
@@ -245,7 +245,7 @@ describe ACTV::Asset do
     context 'when kidsinterest? is false' do
       before { asset.stub kidsinterest?: false }
       it 'evaluates to false' do
-        asset.activekids?.should eq false
+        asset.kids?.should eq false
       end
     end
   end
