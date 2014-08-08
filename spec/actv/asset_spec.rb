@@ -203,20 +203,33 @@ describe ACTV::Asset do
   describe "#kids?" do
     let(:asset) { ACTV::Asset.new assetGuid: 1 }
     context 'when kidsinterest? is true' do
-      before { asset.stub kidsinterest?: true }
+      before do 
+        asset.stub kidsinterest?: true 
+        class Rails
+          def self.env
+            "development"
+          end
+        end
+      end
 
       context "when source system is Active Net" do
         before { asset.stub activenet?: true }
 
         context 'when source system is AW Camps' do
-          before { asset.stub awcamps?: true }
+          before do 
+            asset.stub awcamps?: true
+            asset.stub awcamps30?: true
+          end
           it "evaluates to true" do
             asset.kids?.should eq true
           end
         end
 
         context 'when source system is not AW Camps' do
-          before { asset.stub awcamps?: false }
+          before do 
+            asset.stub awcamps?: false 
+            asset.stub awcamps30?: false
+          end
           it "evaluates to true" do
             asset.kids?.should eq true
           end
@@ -227,15 +240,21 @@ describe ACTV::Asset do
         before { asset.stub activenet?: false }
 
         context 'when source system is AW Camps' do
-          before { asset.stub awcamps?: true }
+          before do 
+            asset.stub awcamps?: true 
+            asset.stub awcamps30?: true
+          end
           it "evaluates to true" do
             asset.kids?.should eq true
           end
         end
 
         context 'when source system is not AW Camps' do
-          before { asset.stub awcamps?: false }
-          it "evaluates to true" do
+          before do 
+            asset.stub awcamps?: false 
+            asset.stub awcamps30?: false
+          end
+          it "evaluates to false" do
             asset.kids?.should eq false
           end
         end

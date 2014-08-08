@@ -241,7 +241,8 @@ module ACTV
     end
 
     def kids?
-      (activenet? || awcamps?) && kidsinterest?
+      return false if Rails.env == 'production'
+      (activenet? || awcamps? || awcamps30?) && kidsinterest?
     end
 
     def kidsinterest?
