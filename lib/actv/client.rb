@@ -62,11 +62,16 @@ module ACTV
     # @example Return the asset with the id BA288960-2718-4B20-B380-8F939596B123
     #   ACTV.asset("BA288960-2718-4B20-B380-8F939596B123")
     def asset(id, params={})
-      request_string = "/v2/assets/#{id}"
       is_preview, params = params_include_preview? params
-      request_string += '/preview' if is_preview
 
-      response = get("#{request_string}.json", params)
+      if is_preview
+        request_string = "/v2/assets/#{id}/preview"
+        response = get("#{request_string}.json", params)
+      else
+        request_string = "/v2/assets"
+        params = params.merge :id => id
+        response = post("#{request_string}.json", params)
+      end
 
       if response[:body].is_a? Array
         results = []
