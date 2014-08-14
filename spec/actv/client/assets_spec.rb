@@ -9,14 +9,14 @@ describe ACTV::Client do
   describe "#asset" do
     context "with a valid asset ID passed" do
       before do
-        stub_get("/v2/assets/valid_asset.json").
+        stub_post("/v2/assets.json").with(:body => {"id"=>"valid_asset"}).
           to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
 
         @asset = @client.asset("valid_asset")[0]
       end
 
       it "requests the correct asset" do
-        a_get("/v2/assets/valid_asset.json").should have_been_made
+        a_post("/v2/assets.json").should have_been_made
       end
 
       it "returns the correct place" do

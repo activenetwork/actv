@@ -166,7 +166,7 @@ describe ACTV::Asset do
 
   describe "is_article?" do
     before(:each) do
-        stub_get("/v2/assets/valid_article.json").
+        stub_post("/v2/assets.json").with(:body => {"id"=>"valid_article"}).
           to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
     end
 
@@ -182,7 +182,7 @@ describe ACTV::Asset do
     end
 
     it "should return false if no assetCategory of Article" do
-      stub_get("/v2/assets/valid_event.json").
+      stub_post("/v2/assets.json").with(:body => {"id"=>"valid_event"}).
         to_return(body: fixture("valid_event.json"), headers: { content_type: "application/json; charset=utf-8" })
 
       asset = ACTV.asset('valid_event')[0]

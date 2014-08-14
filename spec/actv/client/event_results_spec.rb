@@ -23,7 +23,7 @@ describe ACTV::Client do
       before do
         stub_request(:get, "http://api.amp.active.com/api/v1/events/asdf/asdf.json").
                    with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
-                            to_return(:status => 200, :body => "", :headers => {})
+                            to_return(:status => 500, :body => "", :headers => {})
       end
 
       it 'returns nil' do
