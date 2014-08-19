@@ -74,12 +74,9 @@ module ACTV
       end
 
       if response[:body].is_a? Array
-        results = []
-        response[:body].each do |item|
-          results << ACTV::Asset.from_response({body: item})
+        response[:body].map do |item|
+          ACTV::Asset.from_response body: item
         end
-
-        results
       else
         [ACTV::Asset.from_response(response)]
       end
@@ -166,9 +163,15 @@ module ACTV
 
       response = get("#{request_string}.json", params)
 
-      event = ACTV::Event.from_response(response)
-      event = ACTV::Evergreen.new(event) if event.evergreen?
-      event.is_article? ? nil : event
+      if response[:body].is_a? Array
+        response[:body].map do |item|
+          ACTV::Event.from_response body: item
+        end
+      else
+        event = ACTV::Event.from_response(response)
+        event = ACTV::Evergreen.new(event) if event.evergreen?
+        event.is_article? ? nil : event
+      end
     end
 
     # Returns popular assets that match a specified query.
