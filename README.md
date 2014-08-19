@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/activenetwork/actv.png)](https://travis-ci.org/activenetwork/actv)
+[![Code
+Climate](https://codeclimate.com/github/activenetwork/actv/badges/gpa.svg)](https://codeclimate.com/github/activenetwork/actv)
 
 # ACTV
 
