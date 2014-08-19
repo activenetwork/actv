@@ -145,6 +145,20 @@ describe ACTV::Client do
       end
     end
 
+    context 'when mutiple event ids' do
+      before do
+        stub_request(:get, "http://api.amp.active.com/v2/assets/asset_ids.json").
+          to_return(body: fixture("valid_assets.json"), headers: { content_type: "application/json; charset=utf-8" })
+      end
+
+      it 'returns an Array of Event' do
+        client.event('asset_ids').should be_a Array
+        client.event('asset_ids').first.should be_a ACTV::Event
+        client.event('asset_ids').last.should  be_a ACTV::Event
+      end
+
+    end
+
     context 'preview event' do
       context 'when set to true' do
         before do
