@@ -296,6 +296,10 @@ module ACTV
       urlize first_topic
     end
 
+    def first_topic_name
+      topics.first.topic.name
+    end
+
     def sub_topic
       get_first_topic_taxonomy[1]
     end
