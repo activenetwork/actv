@@ -376,7 +376,7 @@ module ACTV
     end
 
     def get_first_topic_taxonomy
-      @first_topic_taxonomy ||= assetTopics.sort_by(&:sequence).first
+      @first_topic_taxonomy ||= assetTopics.first
       if @first_topic_taxonomy
         @first_topic_taxonomy.topic.topicTaxonomy.split '/'
       else
