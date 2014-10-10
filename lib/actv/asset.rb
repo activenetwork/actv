@@ -132,7 +132,7 @@ module ACTV
     def topics
       @asset_topics ||= Array(@attrs[:assetTopics]).map do |topic|
         ACTV::AssetTopic.new(topic)
-      end
+      end.sort
     end
     alias asset_topics topics
     alias assetTopics topics

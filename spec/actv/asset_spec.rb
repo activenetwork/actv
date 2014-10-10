@@ -162,6 +162,11 @@ describe ACTV::Asset do
       topics.should be_a Array
       topics.should eq []
     end
+
+    it "returns an Array of Assets that are sorted by sequence" do
+      topics = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetTopics: [{ sequence: "2", topic: { topicId: "28", topicName: "Triathlon" } }, { sequence: "1", topic: { topicId: "27", topicName: "Running" } }]).topics
+      topics.first.sequence.should eq "1"
+    end
   end
 
   describe "is_article?" do
