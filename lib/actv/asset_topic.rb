@@ -7,5 +7,9 @@ module ACTV
     def topic
       @topic ||= ACTV::Topic.new(@attrs[:topic]) unless @attrs[:topic].nil?
     end
+
+    def <=> topic
+       sequence <=> topic.sequence
+    end
   end
 end
