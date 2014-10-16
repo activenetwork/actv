@@ -215,9 +215,7 @@ describe ACTV::Asset do
       before { asset.stub kids_friendly_source_system?: true }
 
       context 'when kids_interest? is true' do
-        before do 
-          asset.stub kids_interest?: true 
-        end
+        before { asset.stub kids_interest?: true }
 
         it 'evaluates to true' do
           asset.kids?.should eq true
