@@ -82,13 +82,13 @@ describe ACTV::Asset do
     end
   end
 
-    describe "#legacy_data" do
-      it "returns a Asset Legacy Data when assetLegacyData is set" do
-        legacy_data = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetLegacyData: { assetTypeId: 1, typeName: "Legacy Data", isSearchable: true }).legacy_data
-        legacy_data.should be_a ACTV::AssetLegacyData
-      end
+  describe "#legacy_data" do
+    it "returns a Asset Legacy Data when assetLegacyData is set" do
+      legacy_data = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetLegacyData: { assetTypeId: 1, typeName: "Legacy Data", isSearchable: true }).legacy_data
+      legacy_data.should be_a ACTV::AssetLegacyData
+    end
 
-      it "returns nil when assetLegacyData is not set" do
+    it "returns nil when assetLegacyData is not set" do
       legacy_data = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1").legacy_data
       legacy_data.should be_nil
     end
@@ -202,9 +202,9 @@ describe ACTV::Asset do
 
   describe "#kids?" do
     let(:asset) { ACTV::Asset.new assetGuid: 1 }
-    context 'when kidsinterest? is true' do
+    context 'when kids_interest? is true' do
       before do 
-        asset.stub kidsinterest?: true 
+        asset.stub kids_interest?: true 
         class Rails
           def self.env
             "development"
@@ -212,89 +212,36 @@ describe ACTV::Asset do
         end
       end
 
-      context "when source system is Active Net" do
-        before { asset.stub activenet?: true }
+      context "when kids_friendly_source_system? is true" do 
+        before { asset.stub kids_friendly_source_system?: true }
 
-        context 'when source system is AW Camps' do
-          before do 
-            asset.stub awcamps?: true
-            asset.stub awcamps30?: true
-          end
-          it "evaluates to true" do
-            asset.kids?.should eq true
-          end
-        end
-
-        context 'when source system is not AW Camps' do
-          before do 
-            asset.stub awcamps?: false 
-            asset.stub awcamps30?: false
-          end
-          it "evaluates to true" do
-            asset.kids?.should eq true
-          end
+        it 'evaluates to true' do
+          asset.kids?.should eq true
         end
       end
 
-      context 'when source system is not Active Net' do
-        before { asset.stub activenet?: false }
+      context "when kids_friendly_source_system? is false" do 
+        before { asset.stub kids_friendly_source_system?: false }
 
-        context 'when source system is AW Camps' do
-          before do 
-            asset.stub awcamps?: true 
-            asset.stub awcamps30?: true
-          end
-          it "evaluates to true" do
-            asset.kids?.should eq true
-          end
-        end
-
-        context 'when source system is not AW Camps' do
-          before do 
-            asset.stub awcamps?: false 
-            asset.stub awcamps30?: false
-          end
-          it "evaluates to false" do
-            asset.kids?.should eq false
-          end
+        it 'evaluates to false' do
+          asset.kids?.should eq false
         end
       end
     end
 
-    context 'when kidsinterest? is false' do
-      before { asset.stub kidsinterest?: false }
+    context 'when kids_interest? is false' do
+      before { asset.stub kids_interest?: false }
+      
       it 'evaluates to false' do
         asset.kids?.should eq false
       end
     end
-  end
 
-  describe "#kidsinterest?" do
-    let(:asset) { ACTV::Asset.new assetGuid: 1, assetMetaInterests: meta_interests }
-    context "when kids meta-interest" do
-      let(:meta_interests) do
-          [ { sequence: '2', metaInterest: { metaInterestName: 'Family' } },
-            { sequence: '1', metaInterest: { metaInterestName: 'Kids' } } ]
-      end
-      it "evaluates to true" do
-        asset.kidsinterest?.should eq true
-      end
-    end
+    context "when kids_friendly_source_system? is false" do 
+      before { asset.stub kids_friendly_source_system?: false }
 
-    context "when other meta-interest" do
-      let(:meta_interests) do
-          [ { sequence: '2', metaInterest: { metaInterestName: 'NoFamily' } },
-            { sequence: '1', metaInterest: { metaInterestName: 'NoKids' } } ]
-      end
-      it "evaluates to false" do
-        asset.kidsinterest?.should eq false
-      end
-    end
-
-    context "when no meta-interest" do
-      let(:meta_interests) {[]}
-      it "evaluates to false" do
-        asset.kidsinterest?.should eq false
+      it 'evaluates to false' do
+        asset.kids?.should eq false
       end
     end
   end

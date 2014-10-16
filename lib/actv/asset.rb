@@ -191,10 +191,7 @@ module ACTV
         end
       else
         # no categories so check the sourceSystem
-        # this guid is equal to the Active.com Articles
-        if self.sourceSystem.fetch(:legacyGuid, "").upcase == "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"
-          is_article = true
-        end
+        is_article = articles_source?
       end
 
       is_article
@@ -242,12 +239,7 @@ module ACTV
 
     def kids?
       return false if Rails.env == 'production'
-      (activenet? || awcamps? || awcamps30?) && kidsinterest?
-    end
-
-    def kidsinterest?
-      interests = meta_interests.to_a.map(&:downcase)
-      ['kids', 'family'].any? { |tag| interests.include? tag } 
+       kids_friendly_source_system? && kids_interest?
     end
 
     def registration_status
@@ -386,6 +378,21 @@ module ACTV
       else
         ""
       end
+    end
+
+private 
+    def kids_interest?
+      interests = meta_interests.to_a.map(&:downcase)
+      ['kids', 'family'].any? { |tag| interests.include? tag } 
+    end
+  
+    def kids_friendly_source_system?
+      activenet? || awcamps? || awcamps30? || articles_source?
+    end
+
+    def articles_source?
+      # this guid is equal to the Active.com Articles
+      self.sourceSystem.fetch(:legacyGuid, "").upcase == "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"
     end
 
   end
