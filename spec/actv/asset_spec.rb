@@ -202,38 +202,34 @@ describe ACTV::Asset do
 
   describe "#kids?" do
     let(:asset) { ACTV::Asset.new assetGuid: 1 }
-    context 'when kids_interest? is true' do
-      before do 
-        asset.stub kids_interest?: true 
-        class Rails
-          def self.env
-            "development"
-          end
+
+    before do 
+      class Rails
+        def self.env
+          "development"
         end
       end
+    end
 
-      context "when kids_friendly_source_system? is true" do 
-        before { asset.stub kids_friendly_source_system?: true }
+    context "when kids_friendly_source_system? is true" do 
+      before { asset.stub kids_friendly_source_system?: true }
+
+      context 'when kids_interest? is true' do
+        before do 
+          asset.stub kids_interest?: true 
+        end
 
         it 'evaluates to true' do
           asset.kids?.should eq true
         end
       end
 
-      context "when kids_friendly_source_system? is false" do 
-        before { asset.stub kids_friendly_source_system?: false }
-
+      context 'when kids_interest? is false' do
+        before { asset.stub kids_interest?: false }
+        
         it 'evaluates to false' do
           asset.kids?.should eq false
         end
-      end
-    end
-
-    context 'when kids_interest? is false' do
-      before { asset.stub kids_interest?: false }
-      
-      it 'evaluates to false' do
-        asset.kids?.should eq false
       end
     end
 
