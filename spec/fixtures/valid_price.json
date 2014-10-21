@@ -1,0 +1,12 @@
+[{
+  "effectiveUntilDate" : "2970-01-01T00:00:00",
+  "priceAmt" : "75",
+  "maxPriceAmt" : null,
+  "minPriceAmt" : null
+},
+{
+  "effectiveUntilDate" : "2970-01-02T00:00:00",
+  "priceAmt" : "70",
+  "maxPriceAmt" : null,
+  "minPriceAmt" : null
+}]
