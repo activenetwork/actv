@@ -162,6 +162,11 @@ describe ACTV::Asset do
       topics.should be_a Array
       topics.should eq []
     end
+
+    it "returns an Array of Assets that are sorted by sequence" do
+      topics = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetTopics: [{ sequence: "2", topic: { topicId: "28", topicName: "Triathlon" } }, { sequence: "1", topic: { topicId: "27", topicName: "Running" } }]).topics
+      topics.first.sequence.should eq "1"
+    end
   end
 
   describe "is_article?" do
@@ -324,10 +329,17 @@ describe ACTV::Asset do
 
   describe "topic path methods" do
     let(:assetTopics) do
-      [ { sequence: '2', topic: { topicTaxonomy: "Forth/Fifth/Sixth" } },
-        { sequence: '1', topic: { topicTaxonomy: "First/Second/Third" } } ]
+      [ { sequence: '2', topic: { topicTaxonomy: "Forth/Fifth/Sixth", topicName: "Triathlon" } },
+        { sequence: '1', topic: { topicTaxonomy: "First/Second/Third", topicName: "Running" } } ]
     end
     let(:asset) { ACTV::Asset.new assetGuid: 1, assetTopics: assetTopics }
+
+
+    describe '#first_topic_name' do
+      it "returns the first topics name" do
+        asset.first_topic_name.should == "Running"
+      end
+    end
 
     describe "#first_topic_path" do
       it "returns the first part of the first asset topic" do

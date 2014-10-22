@@ -132,7 +132,7 @@ module ACTV
     def topics
       @asset_topics ||= Array(@attrs[:assetTopics]).map do |topic|
         ACTV::AssetTopic.new(topic)
-      end
+      end.sort
     end
     alias asset_topics topics
     alias assetTopics topics
@@ -288,6 +288,10 @@ module ACTV
       urlize first_topic
     end
 
+    def first_topic_name
+      topics.first.topic.name
+    end
+
     def sub_topic
       get_first_topic_taxonomy[1]
     end
@@ -364,7 +368,7 @@ module ACTV
     end
 
     def get_first_topic_taxonomy
-      @first_topic_taxonomy ||= assetTopics.sort_by(&:sequence).first
+      @first_topic_taxonomy ||= assetTopics.first
       if @first_topic_taxonomy
         @first_topic_taxonomy.topic.topicTaxonomy.split '/'
       else
