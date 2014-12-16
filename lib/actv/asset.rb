@@ -289,7 +289,7 @@ module ACTV
     end
 
     def first_topic_name
-      topics.first.topic.name
+      topics.first.topic.name unless topics.empty?
     end
 
     def sub_topic
