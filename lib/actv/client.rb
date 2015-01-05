@@ -123,6 +123,16 @@ module ACTV
       ACTV::Asset.from_response(response)
     end
 
+    AWE_LEGACY_GUID = 'DFAA997A-D591-44CA-9FB7-BF4A4C8984F1'
+    def find_by_endurance_id endurance_id
+      params = {
+        'asset.registrationUrlAdr' => endurance_id,
+        'asset.sourceSystem.legacyGuid' => AWE_LEGACY_GUID
+      }
+      response = get("/v2/search.json", params)
+      ACTV::SearchResults.from_response(response).results
+    end
+
     # Returns articles that match a specified query.
     #
     # @authentication_required No
