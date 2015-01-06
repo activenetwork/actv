@@ -126,7 +126,7 @@ module ACTV
     def find_by_endurance_id endurance_id
       response = get "/v2/search.json", find_by_endurance_id_params(endurance_id)
       ACTV::SearchResults.from_response(response).results.select do |asset|
-        registrationUrlAdr.end_with?("#{endurance_id}") and assetParentAsset[:assetGuid].nil?
+        asset.registrationUrlAdr.end_with?("#{endurance_id}") and asset.assetParentAsset[:assetGuid].nil?
       end
     end
 
