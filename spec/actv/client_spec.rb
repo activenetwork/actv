@@ -124,10 +124,10 @@ describe ACTV::Client do
   describe "#credentials?" do
     it "returns true if all credentials are present" do
       client = ACTV::Client.new(consumer_key: 'CK', consumer_secret: 'CS', oauth_token: 'OT', oauth_token_secret: 'OS')
-      expect(client.credentials?).to be_truthy
+      expect(client.credentials?).to be_true
     end
     it "returns false if any credentials are missing" do
-      expect(client.credentials?).to be_falsey
+      expect(client.credentials?).to be_false
     end
   end
 
