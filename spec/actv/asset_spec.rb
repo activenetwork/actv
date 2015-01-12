@@ -3,6 +3,27 @@ require 'pry'
 
 describe ACTV::Asset do
 
+  describe '#endurance_id' do
+    let(:endurance_id) { 'endurance id' }
+    subject(:asset) { ACTV::Asset.new assetGuid: 'asset guid' }
+
+    context 'when asset is awe' do
+      before do
+        allow(asset).to receive(:registrationUrlAdr).and_return "https://endurancecui-vip.qa.aw.dev.activenetwork.com/event-reg/select-race?e=#{endurance_id}"
+        allow(asset).to receive(:awendurance?).and_return true
+      end
+      it 'returns the endurance id' do
+        expect(asset.endurance_id).to eq endurance_id
+      end
+    end
+    context 'when asset is not awe' do
+      before { allow(asset).to receive(:awendurance?).and_return false }
+      it 'is nil' do
+        expect(asset.endurance_id).to be_nil
+      end
+    end
+  end
+
   describe "#==" do
     it "return true when objects IDs are the same" do
       asset = ACTV::Asset.new(assetGuid: 1, assetName: "Title 1")
