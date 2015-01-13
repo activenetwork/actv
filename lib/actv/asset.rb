@@ -45,7 +45,9 @@ module ACTV
 
     def endurance_id
       if self.awendurance?
-        Addressable::URI.parse(registrationUrlAdr.to_s).query_values.to_h.fetch 'e', nil
+        query_values = Addressable::URI.parse(registrationUrlAdr.to_s).query_values
+        query_values ||= {}
+        query_values.fetch 'e', nil
       end
     end
 
