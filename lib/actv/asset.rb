@@ -45,8 +45,7 @@ module ACTV
 
     def endurance_id
       if self.awendurance?
-        query = URI(registrationUrlAdr).query
-        CGI::parse(query)["e"].first
+        Addressable::URI.parse(registrationUrlAdr).query_values.fetch "e", nil
       end
     end
 
