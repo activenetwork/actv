@@ -44,7 +44,10 @@ module ACTV
     alias required_gender regReqGenderCd
 
     def endurance_id
-      registrationUrlAdr.split('=').last if self.awendurance?
+      if self.awendurance?
+        query = URI(registrationUrlAdr).query
+        CGI::parse(query)["e"].first
+      end
     end
 
     def recurrences

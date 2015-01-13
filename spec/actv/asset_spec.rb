@@ -4,8 +4,8 @@ require 'pry'
 describe ACTV::Asset do
 
   describe '#endurance_id' do
-    let(:endurance_id) { 'endurance id' }
-    subject(:asset) { ACTV::Asset.new assetGuid: 'asset guid' }
+    let(:endurance_id) { 'enduranceid' }
+    subject(:asset) { ACTV::Asset.new assetGuid: 'assetguid' }
 
     context 'when asset is awe' do
       before do
