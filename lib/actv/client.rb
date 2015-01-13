@@ -126,7 +126,7 @@ module ACTV
     def find_by_endurance_id endurance_id
       response = get "/v2/search.json", find_by_endurance_id_params(endurance_id)
       ACTV::SearchResults.from_response(response).results.select do |asset|
-        asset.registrationUrlAdr.end_with?("#{endurance_id}") and asset.assetParentAsset[:assetGuid].nil?
+        asset.registrationUrlAdr.end_with?(endurance_id.to_s) and asset.assetParentAsset[:assetGuid].nil?
       end
     end
 
@@ -378,7 +378,7 @@ module ACTV
     def find_by_endurance_id_params endurance_id
       awe_legacy_guid = 'DFAA997A-D591-44CA-9FB7-BF4A4C8984F1'
       params = {
-        'asset.registrationUrlAdr' => "#{endurance_id}",
+        'asset.registrationUrlAdr' => endurance_id.to_s,
         'asset.sourceSystem.legacyGuid' => awe_legacy_guid
       }
     end
