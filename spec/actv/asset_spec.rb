@@ -357,8 +357,17 @@ describe ACTV::Asset do
 
 
     describe '#first_topic_name' do
-      it "returns the first topics name" do
-        asset.first_topic_name.should == "Running"
+      context 'when asset has topics' do
+        it "returns the first topics name" do
+          asset.first_topic_name.should == "Running"
+        end
+      end
+
+      context 'when asset has empty topics' do
+        let(:assetTopics) {[]}
+        it 'returns nil' do
+          expect(asset.first_topic_name).to be_nil
+        end
       end
     end
 
