@@ -43,6 +43,12 @@ module ACTV
     alias maximum_age regReqMaxAge
     alias required_gender regReqGenderCd
 
+    def endurance_id
+      if self.awendurance?
+        Addressable::URI.parse(registrationUrlAdr).query_values.fetch "e", nil
+      end
+    end
+
     def recurrences
       @recurrences ||= Array(@attrs[:activityRecurrences]).map do | recurrence |
         ACTV::Recurrence.new(recurrence)
