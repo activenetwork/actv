@@ -24,7 +24,7 @@ describe ACTV::AssetPrice do
   context "when haven't effectiveUntilDate set " do
     price = ACTV::AssetPrice.new(priceAmt: '10', maxPriceAmt: '15', minPriceAmt: '5')
     it 'should return the default "2200-01-01T00:00:00" value for the "effectiveUntilDate"' do
-      expect(price.effectiveUntilDate).should eq '2200-01-01T00:00:00'
+      expect(price.effectiveUntilDate).to eq '2200-01-01T00:00:00'
     end
   end
 
