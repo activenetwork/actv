@@ -43,6 +43,14 @@ module ACTV
     alias maximum_age regReqMaxAge
     alias required_gender regReqGenderCd
 
+    def endurance_id
+      if self.awendurance?
+        query_values = Addressable::URI.parse(registrationUrlAdr.to_s).query_values
+        query_values ||= {}
+        query_values.fetch 'e', nil
+      end
+    end
+
     def recurrences
       @recurrences ||= Array(@attrs[:activityRecurrences]).map do | recurrence |
         ACTV::Recurrence.new(recurrence)
@@ -289,7 +297,7 @@ module ACTV
     end
 
     def first_topic_name
-      topics.first.topic.name
+      topics.first.topic.name unless topics.empty?
     end
 
     def sub_topic
