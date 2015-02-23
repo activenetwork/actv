@@ -18,6 +18,8 @@ test/version_tmp
 tmp
 .DS_Store
 .rvmrc
+.ruby-version
+.ruby-gemset
 
 /.idea/.rakeTasks
 /.idea/active-a3pi-gem.iml
