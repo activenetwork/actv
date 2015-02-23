@@ -4,7 +4,7 @@ module ACTV
     attr_reader :priceAmt, :maxPriceAmt, :minPriceAmt
 
     def effectiveUntilDate
-      @effectiveUntilDate.nil? ? "2200-01-01T00:00:00" : @effectiveUntilDate
+      @attrs[:effectiveUntilDate] || '2200-01-01T00:00:00'
     end
 
     alias effective_date effectiveUntilDate
