@@ -246,7 +246,6 @@ module ACTV
     end
 
     def kids?
-      return false if Rails.env == 'production'
        kids_friendly_source_system? && kids_interest?
     end
 
