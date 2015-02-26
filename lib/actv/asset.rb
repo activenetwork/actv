@@ -247,7 +247,7 @@ module ACTV
 
     def kids?
       return false if Rails.env == 'production'
-       kids_friendly_source_system? && kids_interest?
+      kids_interest?
     end
 
     def registration_status
@@ -392,14 +392,10 @@ module ACTV
       end
     end
 
-private 
+private
     def kids_interest?
       interests = meta_interests.to_a.map(&:downcase)
-      ['kids', 'family'].any? { |tag| interests.include? tag } 
-    end
-  
-    def kids_friendly_source_system?
-      activenet? || awcamps? || awcamps30? || articles_source?
+      ['kids', 'family'].any? { |tag| interests.include? tag }
     end
 
     def articles_source?
