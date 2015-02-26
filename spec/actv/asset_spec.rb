@@ -229,7 +229,7 @@ describe ACTV::Asset do
   describe "#kids?" do
     let(:asset) { ACTV::Asset.new assetGuid: 1 }
 
-    before do 
+    before do
       class Rails
         def self.env
           "development"
@@ -237,96 +237,19 @@ describe ACTV::Asset do
       end
     end
 
-    context "when kids_friendly_source_system? is true" do 
-      context "by stubbing kids_friendly_source_system?" do 
-        before { asset.stub kids_friendly_source_system?: true }
+    context 'when kids_interest? is true' do
+      before { asset.stub kids_interest?: true }
 
-        context 'when kids_interest? is true' do
-          before { asset.stub kids_interest?: true }
-
-          it 'evaluates to true' do
-            asset.kids?.should eq true
-          end
-        end
-
-        context 'when kids_interest? is false' do
-          before { asset.stub kids_interest?: false }
-          
-          it 'evaluates to false' do
-            asset.kids?.should eq false
-          end
-        end
-      end
-
-      context "and activenet? returns true" do 
-        let(:asset) { ACTV::Asset.new assetGuid: 1, sourceSystem: {legacyGuid: "FB27C928-54DB-4ECD-B42F-482FC3C8681F"} }
-
-        context 'and kids_interest? is true' do
-          before { asset.stub kids_interest?: true }
-
-          it 'evaluates to true' do
-            asset.kids?.should eq true
-          end
-        end
-      end
-
-      context "and awcamps? returns true" do 
-        let(:asset) { ACTV::Asset.new assetGuid: 1, sourceSystem: {legacyGuid: "2B22B4E6-5AA4-44D7-BF06-F7A71F9FA8A6"} }
-
-        context 'and kids_interest? is true' do
-          before { asset.stub kids_interest?: true }
-
-          it 'evaluates to true' do
-            asset.kids?.should eq true
-          end
-        end
-      end
-
-      context "and awcamps30? returns true" do 
-        let(:asset) { ACTV::Asset.new assetGuid: 1, sourceSystem: {legacyGuid: "89208DBA-F535-4950-880A-34A6888A184C"} }
-
-        context 'and kids_interest? is true' do
-          before { asset.stub kids_interest?: true }
-
-          it 'evaluates to true' do
-            asset.kids?.should eq true
-          end
-        end
-      end
-
-      context "and articles_source? returns true" do 
-        let(:asset) { ACTV::Asset.new assetGuid: 1, sourceSystem: {legacyGuid: "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"} }
-
-        context 'and kids_interest? is true' do
-          before { asset.stub kids_interest?: true }
-
-          it 'evaluates to true' do
-            asset.kids?.should eq true
-          end
-        end
+      it 'evaluates to true' do
+        asset.kids?.should eq true
       end
     end
 
-    context "when kids_friendly_source_system? is false" do 
-      context "by stubbing kids_friendly_source_system?" do 
-        before { asset.stub kids_friendly_source_system?: false }
+    context 'when kids_interest? is false' do
+      before { asset.stub kids_interest?: false }
 
-        it 'evaluates to false' do
-          asset.kids?.should eq false
-        end
-      end
-
-      context "and all source systems return false" do 
-        before do
-          asset.stub activenet?: false
-          asset.stub awcamps?: false
-          asset.stub awcamps30?: false
-          asset.stub articles_source?: false
-        end
-        
-        it 'evaluates to false' do
-          asset.kids?.should eq false
-        end
+      it 'evaluates to false' do
+        asset.kids?.should eq false
       end
     end
   end
