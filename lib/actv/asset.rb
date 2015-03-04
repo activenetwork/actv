@@ -246,7 +246,7 @@ module ACTV
     end
 
     def kids?
-      kids_interest?
+      kids_friendly_source_system? && kids_interest?
     end
 
     def registration_status
@@ -392,9 +392,14 @@ module ACTV
     end
 
 private
+
     def kids_interest?
       interests = meta_interests.to_a.map(&:downcase)
       ['kids', 'family'].any? { |tag| interests.include? tag }
+    end
+
+    def kids_friendly_source_system?
+      activenet? || awcamps30? || articles_source?
     end
 
     def articles_source?
