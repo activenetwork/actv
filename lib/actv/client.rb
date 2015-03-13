@@ -379,7 +379,8 @@ module ACTV
       awe_legacy_guid = 'DFAA997A-D591-44CA-9FB7-BF4A4C8984F1'
       params = {
         'asset.registrationUrlAdr' => endurance_id.to_s,
-        'asset.sourceSystem.legacyGuid' => awe_legacy_guid
+        'asset.sourceSystem.legacyGuid' => awe_legacy_guid,
+        'searchable_only' => false
       }
     end
 
