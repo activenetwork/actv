@@ -157,6 +157,50 @@ describe ACTV::Client do
     end
   end
 
+  describe '#article' do
+    let(:configuration) do
+      { consumer_key: "CK",
+        consumer_secret: "CS",
+        oauth_token: "OT",
+        oauth_token_secret: "OS"}
+    end
+
+    context 'find event' do
+      before do
+        stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
+          to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
+      end
+
+      it 'makes a normal asset call' do
+        expect(client.article 'asset_id').to be_an ACTV::Article
+      end
+    end
+
+    context 'preview event' do
+      context 'when preview is true' do
+        before do
+          stub_request(:get, "http://api.amp.active.com/preview.json").
+            to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
+        end
+
+        it 'returns an event' do
+          expect(client.article 'asset_id', preview: 'true').to be_an ACTV::Article
+        end
+      end
+
+      context 'when preview is false' do
+        before do
+          stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
+            to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
+        end
+
+        it 'returns an event' do
+          expect(client.article 'asset_id', preview: 'false').to be_an ACTV::Article
+        end
+      end
+    end
+  end
+
   describe '#event' do
     let(:configuration) do
       { consumer_key: "CK",
