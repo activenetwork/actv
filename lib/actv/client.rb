@@ -157,9 +157,9 @@ module ACTV
       is_preview, params = params_include_preview? params
       request_string = '/preview' if is_preview
 
-      response = get("#{request_string}.json", params)
+      response = get "#{request_string}.json", params
 
-      article = ACTV::Article.from_response(response)
+      article = ACTV::Article.from_response response
       article.is_article? ? article : nil
     end
 
