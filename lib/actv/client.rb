@@ -152,9 +152,14 @@ module ACTV
     # @param options [Hash] A customizable set of options.
     # @example Return the article with the id BA288960-2718-4B20-B380-8F939596B123
     #   ACTV.article("BA288960-2718-4B20-B380-8F939596B123")
-    def article(id)
-      response = get("/v2/assets/#{id}.json")
-      article = ACTV::Article.from_response(response)
+    def article id, params={}
+      request_string = "/v2/assets/#{id}"
+      is_preview, params = params_include_preview? params
+      request_string = '/preview' if is_preview
+
+      response = get "#{request_string}.json", params
+
+      article = ACTV::Article.from_response response
       article.is_article? ? article : nil
     end
 
