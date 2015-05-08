@@ -165,7 +165,7 @@ describe ACTV::Client do
         oauth_token_secret: "OS"}
     end
 
-    context 'find event' do
+    context 'find article' do
       before do
         stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
           to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
@@ -176,14 +176,14 @@ describe ACTV::Client do
       end
     end
 
-    context 'preview event' do
+    context 'preview article' do
       context 'when preview is true' do
         before do
-          stub_request(:get, "http://api.amp.active.com/preview.json").
+          stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id/preview.json").
             to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
         end
 
-        it 'returns an event' do
+        it 'returns an article' do
           expect(client.article 'asset_id', preview: 'true').to be_an ACTV::Article
         end
       end
@@ -194,7 +194,7 @@ describe ACTV::Client do
             to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
         end
 
-        it 'returns an event' do
+        it 'returns an article' do
           expect(client.article 'asset_id', preview: 'false').to be_an ACTV::Article
         end
       end
