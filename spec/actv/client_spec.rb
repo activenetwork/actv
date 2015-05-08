@@ -179,7 +179,7 @@ describe ACTV::Client do
     context 'preview article' do
       context 'when preview is true' do
         before do
-          stub_request(:get, "http://api.amp.active.com/preview.json").
+          stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id/preview.json").
             to_return(body: fixture("valid_article.json"), headers: { content_type: "application/json; charset=utf-8" })
         end
 
