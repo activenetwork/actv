@@ -245,6 +245,10 @@ module ACTV
       self.sourceSystem[:legacyGuid].upcase == "FB27C928-54DB-4ECD-B42F-482FC3C8681F" rescue false
     end
 
+    def researched?
+      self.sourceSystem[:legacyGuid].upcase == "B47B0828-23ED-4D85-BDF0-B22819F53332" rescue false
+    end
+
     def kids?
       kids_friendly_source_system? && kids_interest?
     end
@@ -399,7 +403,7 @@ private
     end
 
     def kids_friendly_source_system?
-      activenet? || awcamps30? || articles_source?
+      activenet? || awcamps30? || articles_source? || researched?
     end
 
     def articles_source?
