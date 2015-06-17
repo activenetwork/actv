@@ -141,6 +141,10 @@ module ACTV
       image
     end
 
+    def is_event?
+      true
+    end
+
     alias online_registration? online_registration_available?
     alias reg_open? registration_open?
     alias reg_closed? registration_closed?
