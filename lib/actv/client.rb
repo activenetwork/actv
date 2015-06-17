@@ -2,6 +2,8 @@ require 'faraday'
 require 'actv/article'
 require 'actv/article_search_results'
 require 'actv/asset'
+require 'actv/asset_factory'
+require 'actv/author'
 require 'actv/configurable'
 require 'actv/error/forbidden'
 require 'actv/error/not_found'
@@ -53,33 +55,10 @@ module ACTV
     end
     alias search assets
 
-    # Returns an asset with the specified ID in an array
-    #
-    # @authentication_required No
-    # @return [ACTV::Asset] The requested asset.
-    # @param id [String] An assset ID.
-    # @param options [Hash] A customizable set of options.
-    # @example Return the asset with the id BA288960-2718-4B20-B380-8F939596B123
-    #   ACTV.asset("BA288960-2718-4B20-B380-8F939596B123")
-    def asset(id, params={})
-      is_preview, params = params_include_preview? params
-
-      if is_preview
-        request_string = "/v2/assets/#{id}/preview"
-        response = get("#{request_string}.json", params)
-      else
-        request_string = "/v2/assets"
-        params = params.merge :id => id
-        response = post("#{request_string}.json", params)
-      end
-
-      if response[:body].is_a? Array
-        response[:body].map do |item|
-          ACTV::Asset.from_response body: item
-        end
-      else
-        [ACTV::Asset.from_response(response)]
-      end
+    def asset id, params={}
+      is_preview = params.delete(:preview) == "true"
+      response = request_response id, params, is_preview
+      asset_from_response response
     end
 
     # Returns an organizer with the specified ID
@@ -380,6 +359,39 @@ module ACTV
 
     private
 
+    def request_response id, params, is_preview
+      if is_preview
+        asset_response_with_preview id, params
+      else
+        asset_response_without_preview id, params
+      end
+    end
+
+    def asset_response_with_preview id, params
+      request_string = "/v2/assets/#{id}/preview"
+      get "#{request_string}.json", params
+    end
+
+    def asset_response_without_preview id, params
+      request_string = "/v2/assets"
+      params = params.merge :id => id
+      post "#{request_string}.json", params
+    end
+
+    def asset_from_response response
+      if response[:body].is_a? Array
+        collect_assets response
+      else
+        Array(ACTV::Asset.from_response response)
+      end
+    end
+
+    def collect_assets response
+      response[:body].map do |response|
+        ACTV::Asset.from_response body: response
+      end
+    end
+
     def find_by_endurance_id_params endurance_id
       awe_legacy_guid = 'DFAA997A-D591-44CA-9FB7-BF4A4C8984F1'
       params = {
@@ -405,6 +417,5 @@ module ACTV
       params = params.with_indifferent_access
       return params.delete(:preview) == "true", params
     end
-
   end
 end
