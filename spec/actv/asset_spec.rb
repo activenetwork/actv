@@ -3,6 +3,30 @@ require 'pry'
 
 describe ACTV::Asset do
 
+  describe '#references' do
+    let(:asset_references) { [] }
+    let(:response) { { assetGuid: 1, assetReferences: asset_references } }
+    let(:asset) { ACTV::Asset.new response }
+    context 'when there are asset references' do
+      let(:asset_references) { [ { referenceAsset: { assetGuid: "123" },
+                                   referenceType: { referenceTypeName: "author" } } ] }
+      it 'returns an array of asset reference objects' do
+        expect(asset.references.first).to be_a ACTV::AssetReference
+      end
+    end
+    context 'when there are no asset references' do
+      it 'returns an empty array' do
+        expect(asset.references).to be_empty
+      end
+    end
+    context 'when there is no asset references field' do
+      let(:response) { { assetGuid: 1 } }
+      it 'returns an empty array' do
+        expect(asset.references).to be_empty
+      end
+    end
+  end
+
   describe '#endurance_id' do
     let(:endurance_id) { 'enduranceid' }
     subject(:asset) { ACTV::Asset.new assetGuid: 'assetguid' }
@@ -190,6 +214,32 @@ describe ACTV::Asset do
     end
   end
 
+  describe "is_event?" do
+    before(:each) do
+        stub_post("/v2/assets.json").with(:body => {"id"=>"valid_event"}).
+          to_return(body: fixture("valid_event.json"))
+    end
+
+    it "should return true if the asset has Events as an assetCategory" do
+      asset = ACTV.asset('valid_event').first
+      asset.is_event?.should be_true
+    end
+
+    it "should return true if the asset has no assetCategories but the sourceSystem is Active.com Articles" do
+      asset = ACTV.asset('valid_event').first
+      asset.stub(:assetCategories).and_return([])
+      asset.is_event?.should be_true
+    end
+
+    it "should return false if no assetCategory of Event" do
+      stub_post("/v2/assets.json").with(:body => {"id"=>"valid_article"}).
+        to_return(body: fixture("valid_article.json"))
+
+      asset = ACTV.asset('valid_article').first
+      asset.is_event?.should be_false
+    end
+  end
+
   describe "is_article?" do
     before(:each) do
         stub_post("/v2/assets.json").with(:body => {"id"=>"valid_article"}).
@@ -282,7 +332,7 @@ describe ACTV::Asset do
         end
       end
 
-      context "and articles_source? returns true" do
+      context "and acm? returns true" do
         let(:asset) { ACTV::Asset.new assetGuid: 1, sourceSystem: {legacyGuid: "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"} }
 
         context 'and kids_interest? is true' do
@@ -309,7 +359,7 @@ describe ACTV::Asset do
           asset.stub activenet?: false
           asset.stub awcamps?: false
           asset.stub awcamps30?: false
-          asset.stub articles_source?: false
+          asset.stub acm?: false
         end
 
         it 'evaluates to false' do
