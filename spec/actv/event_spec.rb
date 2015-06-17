@@ -16,15 +16,6 @@ describe ACTV::Event do
     format_date(date) << ' UTC'
   end
 
-  # describe "available methods" do
-  #   subject { ACTV::Event.new(assetGuid: 1) }
-  #   it { should respond_to :online_registration_available? }
-  #   it { should respond_to :registration_not_yet_open? }
-  #   it { should respond_to :registration_open? }
-  #   it { should respond_to :registration_closed? }
-  #   it { should respond_to :event_ended? }
-  # end
-
   describe '#online_registration_available?' do
     context 'when online_registration_available is true' do
       before do
