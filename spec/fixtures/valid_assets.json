@@ -1,548 +1,62 @@
 [
   {
-    "assetVersion": 245,
-    "detailPageTemplateId": "",
-    "salesStartDate": "2014-01-27T16:08:00",
-    "assetChannels": [
-      {
-        "sequence": "1",
-        "channel": {
-          "channelName": "Triathlon",
-          "channelId": "1027",
-          "channelDsc": "Triathlon"
-        }
-      },
-      {
-        "sequence": "2",
-        "channel": {
-          "channelName": "Duathlon",
-          "channelId": "1007",
-          "channelDsc": "Duathlon"
-        }
-      }
-    ],
-    "assetDsc": "",
-    "salesEndDate": "2014-09-03T15:08:00",
-    "sorId": "",
-    "assetDescriptions": [
-      {
-        "description": "<p>Pacific Coast Triathlon offers something for everyone! This sprint distance race is as challenging as it is scenic. Taking place at Crystal Cove State Park. There is a triathlon, duathlon, aquathlon and a super sprint that is great for kids and first timers! Come on out.</p><h4>Event details and schedule</h4><p></p>",
-        "descriptionType": {
-          "descriptionTypeName": "Standard",
-          "descriptionTypeId": "6"
-        }
-      }
-    ],
-    "alternateName": "",
-    "currencyCd": "USD",
-    "teamUrlAdr": "",
-    "timezone": "UTC",
-    "evergreenAssetFlag": "false",
-    "assetImages": [
-      {
-        "linkUrl": "",
-        "imageCaptionTxt": "",
-        "imageName": "",
-        "linkTarget": "",
-        "imageUrlAdr": "http://photos-images.active.com/file/3/1/original/a3e9a23f-a0fa-4481-b5d5-010dd53e3bcd.jpg"
-      }
-    ],
-    "localTimeZoneId": "US/Pacific",
-    "assetLegacyData": {
-      "participationCriteriaTxt": "Family||Kids",
-      "trackbackUrl": "",
-      "userCommentTxt": "",
-      "onlineMembershipCostAmt": "",
-      "estParticipantNb": "",
-      "isSearchable": "false",
-      "priceExtensionTxt": "",
-      "eventCategories": "",
-      "onlineMembership": "",
-      "uploadSearchUrlAdr": "",
-      "costAmt": "",
-      "createdDate": "2014-01-23T04:07:57",
-      "substitutionUrl": "E-00745Z8R",
-      "minGuaranteedGameNb": "",
-      "genderRequirementTxt": "",
-      "onlineRegistration": "true",
-      "modifiedDate": "2014-08-13T09:11:14",
-      "searchWeight": "",
-      "typeName": "",
-      "avgUserRatingTxt": "",
-      "onlineDonation": "",
-      "maxTeamNb": "",
-      "assetTypeId": "dfaa997a-d591-44ca-9fb7-bf4a4c8984f1",
-      "seoUrl": "http://www.active.com/triathlon/laguna-beach-ca/pc-triathlon-2014",
-      "authorName": "",
-      "multipleStartDate": ""
-    },
-    "retryDate": "2014-08-07T12:25:57",
-    "registrationUrlAdr": "https://endurancecui.active.com/event-reg/select-race?e=6589554",
-    "place": {
-      "timezoneDST": 1,
-      "localityName": "",
-      "countryName": "United States",
-      "dma": {
-        "dmaName": "Los Angeles",
-        "dmaId": "803"
-      },
-      "cityName": "Laguna Beach",
-      "countryCode": "USA",
-      "timezoneOffset": -8,
-      "placeName": "Crystal Cove State Park",
-      "addressLine1Txt": "8471 N Coast Hwy",
-      "directionsTxt": "",
-      "placeGuid": "4e75d289-7f13-44ab-a2f1-6c2d84311aa5",
-      "placeDsc": "",
-      "timezone": "America/Los_Angeles",
-      "geoPoint": {
-        "lon": "-117.825637",
-        "lat": "33.564242"
-      },
-      "postalCode": "92651",
-      "stateProvinceCode": "CA",
-      "placeUrlAdr": "",
-      "longitude": "-117.825637",
-      "latitude": "33.564242",
-      "addressLine2Txt": ""
-    },
-    "overrideSeourlFlag": "false",
-    "createdDate": "2014-01-23T04:07:57",
-    "activityEndDate": "2014-09-08T06:59:59",
-    "publishDate": null,
-    "activenetTopGraphic": {},
-    "resultsUrlAdr": "",
-    "assetCategories": [
-      {
-        "category": {
-          "categoryName": "Races",
-          "categoryId": "22",
-          "categoryTaxonomy": "Event/Races"
-        },
-        "sequence": "1"
-      }
-    ],
-    "contactEmailAdr": "",
-    "retryCounter": "2",
-    "assetSeoUrls": [
-      {
-        "statusCode": "true",
-        "seoSystemName": "as3",
-        "urlAdr": "http://www.active.com/laguna-beach-ca/duathlon/races/pc-triathlon-2014"
-      }
-    ],
-    "homePageUrlAdr": "http://www.octriseries.com",
-    "assetDeals": [],
-    "assetStatus": {
-      "assetStatusName": "VISIBLE",
-      "assetStatusId": "2"
-    },
-    "market": {
-      "marketId": "10",
-      "marketName": "endurance-triathlon"
-    },
-    "assetInterests": [],
-    "sourceSystem": {
-      "affiliate": "true",
-      "legacyGuid": "DFAA997A-D591-44CA-9FB7-BF4A4C8984F1",
-      "sourceSystemName": "ActiveWorks Endurance"
-    },
-    "contactName": "",
-    "assetMediaTypes": [
-      {
-        "sequence": "1",
-        "mediaType": {
-          "mediaTypeId": "78",
-          "mediaTypeDsc": "",
-          "mediaTypeName": "difficulty:Beginner"
-        }
-      },
-      {
-        "sequence": "2",
-        "mediaType": {
-          "mediaTypeId": "8",
-          "mediaTypeDsc": "",
-          "mediaTypeName": "Other"
-        }
-      },
-      {
-        "sequence": "3",
-        "mediaType": {
-          "mediaTypeId": "166",
-          "mediaTypeDsc": "",
-          "mediaTypeName": "difficulty:Intermediate"
-        }
-      },
-      {
-        "sequence": "4",
-        "mediaType": {
-          "mediaTypeId": "170",
-          "mediaTypeDsc": "",
-          "mediaTypeName": "Super Sprint"
-        }
-      },
-      {
-        "sequence": "5",
-        "mediaType": {
-          "mediaTypeId": "139",
-          "mediaTypeDsc": "",
-          "mediaTypeName": "difficulty:Advanced"
-        }
-      },
-      {
-        "sequence": "6",
-        "mediaType": {
-          "mediaTypeId": "2",
-          "mediaTypeDsc": "",
-          "mediaTypeName": "Event"
-        }
-      },
-      {
-        "sequence": "7",
-        "mediaType": {
-          "mediaTypeId": "3",
-          "mediaTypeDsc": "",
-          "mediaTypeName": "Sprint"
-        }
-      }
-    ],
-    "showContact": "false",
-    "authorName": "",
-    "assetAttributes": [
-      {
-        "attribute": {
-          "attributeValue": "Sprint",
-          "attributeType": "Distance (triathlon)",
-          "tagId": "58720"
-        }
-      },
-      {
-        "attribute": {
-          "attributeValue": "Advanced",
-          "attributeType": "Skill level",
-          "tagId": "58740"
-        }
-      },
-      {
-        "attribute": {
-          "attributeValue": "Super sprint",
-          "attributeType": "Distance (triathlon)",
-          "tagId": "58721"
-        }
-      },
-      {
-        "attribute": {
-          "attributeValue": "Beginner",
-          "attributeType": "Skill level",
-          "tagId": "58738"
-        }
-      },
-      {
-        "attribute": {
-          "attributeValue": "Intermediate",
-          "attributeType": "Skill level",
-          "tagId": "58739"
-        }
-      }
-    ],
-    "localeCd": "",
-    "assetComponents": [
-      {
-        "assetName": "Age Grouper - Triathlon - Individual Age Group/Clydes/Athena/Open",
-        "assetGuid": "9686dbdc-e3fa-4ec8-b3a3-a37a3405fa9c",
-        "sequence": "1",
-        "activityEndDate": "2014-09-08T06:59:59",
-        "assetSeoUrls": [],
-        "activityStartDate": "2014-09-07T07:00:00"
-      },
-      {
-        "assetName": "HEROES - Triathlon - Individual Age group/open",
-        "assetGuid": "6f2951b2-8fcc-4a56-a424-83622946bf4e",
-        "sequence": "2",
-        "activityEndDate": "2014-09-08T06:59:59",
-        "assetSeoUrls": [],
-        "activityStartDate": "2014-09-07T07:00:00"
-      },
-      {
-        "assetName": "RELAY - Triathlon - Relay (registering 2-3 members)",
-        "assetGuid": "76f635d8-38f0-49de-a21d-b8a23d9d4b7c",
-        "sequence": "3",
-        "activityEndDate": "2014-09-08T06:59:59",
-        "assetSeoUrls": [],
-        "activityStartDate": "2014-09-07T07:00:00"
-      },
-      {
-        "assetName": "Duathlon-1k beach run/12m bike/3 m run - Individual Age group/open",
-        "assetGuid": "94cb6e18-4c47-4c1d-8fb2-51c5d938cc98",
-        "sequence": "5",
-        "activityEndDate": "2014-09-08T06:59:59",
-        "assetSeoUrls": [],
-        "activityStartDate": "2014-09-07T07:00:00"
-      },
-      {
-        "assetName": "Triathlon-Super Sprint and KID's TRIATHLON - Individual Age group/open",
-        "assetGuid": "8ce41087-8adf-4141-b81d-5d968995bf63",
-        "sequence": "6",
-        "activityEndDate": "2014-09-08T06:59:59",
-        "assetSeoUrls": [],
-        "activityStartDate": "2014-09-07T07:00:00"
-      },
-      {
-        "assetName": "Aquathlon - Individual Age group/open",
-        "assetGuid": "4cfb31b6-c800-41f5-bf0d-6e974d0c5ffb",
-        "sequence": "7",
-        "activityEndDate": "2014-09-08T06:59:59",
-        "assetSeoUrls": [],
-        "activityStartDate": "2014-09-07T07:00:00"
-      },
-      {
-        "assetName": "KID'S DUATHLON - KId's Duathlon",
-        "assetGuid": "1b060ecd-2795-404c-950a-04f36f0f98e4",
-        "sequence": "9",
-        "activityEndDate": "2014-09-08T06:59:59",
-        "assetSeoUrls": [],
-        "activityStartDate": "2014-09-07T07:00:00"
-      }
-    ],
-    "assetPopularity": {
-      "rank": 12219,
-      "results": 544,
-      "views": 2579,
-      "createdAt": 1408407161,
-      "clicks": 1653,
-      "searches": 70,
-      "A3Rank": 1000,
-      "clickTypes": {
-        "otherActive": 1014,
-        "nonActive": 98,
-        "registration": 541
-      }
-    },
-    "socialMedia": [],
-    "contactTxt": "",
-    "sorCreateUserId": "",
-    "evergreenAssets": [],
-    "regReqMinAge": "",
-    "assetRootAsset": {},
-    "preferredUrlAdr": "",
-    "registrantSearchUrlAdr": "https://myevents.active.com/search/registration-search.faces?e=6589554&a=283659003",
-    "regReqGenderCd": "",
-    "organization": {
-      "organizationGuid": "51d612db-cea3-497e-a026-723afad616c2",
-      "organizationDsc": "",
-      "addressCityName": "Westlake Village",
-      "fax": "",
-      "addressPostalCd": "91361",
-      "sourceSystemGuid": "dfaa997a-d591-44ca-9fb7-bf4a4c8984f1",
-      "organizationName": "Pelican Promotions, Inc",
-      "addressStateProvinceCode": "CA",
-      "addressCountryCd": "USA",
-      "primaryContactPhone": "208-771-0266",
-      "addressLine1Txt": "30941 Agoura Road",
-      "primaryContactEmailAdr": "pelicanpromotions@gmail.com",
-      "imageUrlAdr": "",
-      "organizationUrlAdr": "http://octriseries.com",
-      "shortDsc": "",
-      "hideOrganizationContact": "false",
-      "addressLocalityName": "",
-      "showOrganizationName": "false",
-      "addressLine2Txt": "Suite 210",
-      "primaryContactName": "Bryan Ogle"
-    },
-    "evergreenParentAsset": {},
-    "assetQuantity": {},
-    "assetName": "PC Triathlon",
-    "contactPhone": "",
-    "assetMetaInterests": [
-      {
-        "metaInterest": {
-          "metaInterestName": "Family",
-          "metaInterestId": "2",
-          "metaInterestTaxonomy": "Family"
-        },
-        "sequence": "1"
-      }
-    ],
-    "componentInUrlAdr": {},
-    "assetServiceHostName": "as-app01.active.tan",
-    "modifiedDate": "2014-08-13T09:11:16",
-    "assetPrices": [],
-    "assetTopics": [
-      {
-        "topic": {
-          "topicId": "26",
-          "topicTaxonomy": "Endurance/Duathlon",
-          "topicName": "Duathlon"
-        },
-        "sequence": "1"
-      },
-      {
-        "topic": {
-          "topicId": "28",
-          "topicTaxonomy": "Endurance/Triathlon",
-          "topicName": "Triathlon"
-        },
-        "sequence": "2"
-      }
-    ],
-    "assetGuid": "6776f4c6-aa2e-4a07-b90e-e2774d37b327",
-    "regReqMaxAge": "",
-    "donationUrlAdr": "",
-    "timezoneAbb": "",
-    "activityRecurrences": [],
-    "assetTags": [
-      {
-        "tag": {
-          "tagName": "Advanced",
-          "tagDescription": "Skill level",
-          "tagId": "58740"
-        }
-      },
-      {
-        "tag": {
-          "tagName": "Intermediate",
-          "tagDescription": "Skill level",
-          "tagId": "58739"
-        }
-      },
-      {
-        "tag": {
-          "tagName": "true",
-          "tagDescription": "usatsanctioned",
-          "tagId": "125980"
-        }
-      },
-      {
-        "tag": {
-          "tagName": "Beginner",
-          "tagDescription": "Skill level",
-          "tagId": "58738"
-        }
-      },
-      {
-        "tag": {
-          "tagName": "Sprint",
-          "tagDescription": "Distance (triathlon)",
-          "tagId": "58720"
-        }
-      },
-      {
-        "tag": {
-          "tagName": "Super sprint",
-          "tagDescription": "Distance (triathlon)",
-          "tagId": "58721"
-        }
-      },
-      {
-        "tag": {
-          "tagName": "true",
-          "tagDescription": "activeadvantage",
-          "tagId": "32308"
-        }
-      }
-    ],
-    "childIndex": "",
-    "assetParentAsset": {},
-    "urlAdr": "",
-    "activityStartDate": "2014-09-07T07:00:00",
-    "sorCreateDtm": null,
-    "timezoneName": "",
-    "logoUrlAdr": "http://photos-images.active.com/file/3/1/original/a3e9a23f-a0fa-4481-b5d5-010dd53e3bcd.jpg",
-    "salesStatus": "registration-open"
-  },
-  {
-    "assetVersion": 6,
     "assetStatus": {
       "assetStatusId": "2",
       "assetStatusName": "VISIBLE"
     },
-    "organization": {
-      "organizationGuid": "51d612db-cea3-497e-a026-723afad616c2",
-      "organizationName": "Pelican Promotions, Inc",
-      "organizationDsc": "",
-      "organizationUrlAdr": "http://octriseries.com",
-      "addressLine1Txt": "30941 Agoura Road",
-      "addressLine2Txt": "Suite 210",
-      "addressCityName": "Westlake Village",
-      "addressStateProvinceCode": "CA",
-      "addressLocalityName": "",
-      "addressPostalCd": "91361",
-      "addressCountryCd": "USA",
-      "fax": "",
-      "sourceSystemGuid": "dfaa997a-d591-44ca-9fb7-bf4a4c8984f1",
-      "primaryContactEmailAdr": "pelicanpromotions@gmail.com",
-      "primaryContactPhone": "208-771-0266",
-      "primaryContactName": "Bryan Ogle",
-      "imageUrlAdr": "",
-      "shortDsc": "",
-      "showOrganizationName": "false",
-      "hideOrganizationContact": "false"
-    },
+    "organization": {},
     "place": {
-      "placeGuid": "4e75d289-7f13-44ab-a2f1-6c2d84311aa5",
-      "placeName": "Crystal Cove State Park",
+      "placeGuid": "0b794135-fa1a-41b4-90da-c29a381929c1",
+      "placeName": "Author",
       "placeDsc": "",
       "placeUrlAdr": "",
-      "addressLine1Txt": "8471 N Coast Hwy",
+      "addressLine1Txt": " ",
       "addressLine2Txt": "",
-      "cityName": "Laguna Beach",
-      "stateProvinceCode": "CA",
+      "cityName": " ",
+      "stateProvinceCode": " ",
       "localityName": "",
-      "postalCode": "92651",
-      "countryName": "United States",
-      "countryCode": "USA",
-      "timezone": "America/Los_Angeles",
-      "timezoneOffset": -8,
-      "timezoneDST": 1,
-      "latitude": "33.564242",
-      "longitude": "-117.825637",
-      "directionsTxt": "",
-      "geoPoint": {
-        "lat": "33.564242",
-        "lon": "-117.825637"
-      },
-      "dma": {
-        "dmaId": "803",
-        "dmaName": "Los Angeles"
-      }
+      "postalCode": " ",
+      "countryName": "",
+      "countryCode": "",
+      "timezone": "",
+      "timezoneOffset": null,
+      "timezoneDST": null,
+      "latitude": "",
+      "longitude": "",
+      "directionsTxt": ""
     },
     "evergreenParentAsset": {},
     "sourceSystem": {
-      "sourceSystemName": "ActiveWorks Endurance",
-      "legacyGuid": "DFAA997A-D591-44CA-9FB7-BF4A4C8984F1",
-      "affiliate": "true"
+      "sourceSystemName": "Active.com Articles",
+      "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+      "affiliate": "false"
     },
     "assetRootAsset": {},
-    "assetParentAsset": {
-      "assetGuid": "6776f4c6-aa2e-4a07-b90e-e2774d37b327"
-    },
-    "market": {
-      "marketId": "6",
-      "marketName": "endurance-duathlon"
-    },
-    "assetGuid": "6f2951b2-8fcc-4a56-a424-83622946bf4e",
-    "assetName": "HEROES - Triathlon - Individual Age group/open",
+    "assetParentAsset": {},
+    "market": {},
+    "assetGuid": "34f4d344-97b0-4c2a-8920-f026f51742b2",
+    "assetName": "Jacquie Cattanach",
     "assetDsc": "",
     "alternateName": "",
-    "timezone": "UTC",
-    "localTimeZoneId": "US/Pacific",
+    "timezone": "",
+    "localTimeZoneId": "",
     "timezoneAbb": "",
     "timezoneName": "",
-    "currencyCd": "USD",
+    "currencyCd": "",
     "localeCd": "",
-    "salesStartDate": "2014-01-27T16:08:00",
-    "salesEndDate": "2014-09-03T15:08:00",
+    "salesStartDate": null,
+    "salesEndDate": null,
     "urlAdr": "",
     "detailPageTemplateId": "",
     "preferredUrlAdr": "",
-    "logoUrlAdr": "http://photos-images.active.com/file/3/1/original/a3e9a23f-a0fa-4481-b5d5-010dd53e3bcd.jpg",
-    "activityStartDate": "2014-09-07T07:00:00",
-    "activityEndDate": "2014-09-08T06:59:59",
+    "logoUrlAdr": "",
+    "activityStartDate": null,
+    "activityEndDate": null,
     "donationUrlAdr": "",
     "teamUrlAdr": "",
-    "homePageUrlAdr": "http://www.octriseries.com",
-    "registrationUrlAdr": "https://endurancecui.active.com/event-reg/select-race?e=6589554",
-    "registrantSearchUrlAdr": "https://myevents.active.com/search/registration-search.faces?e=6589554&a=283659003",
+    "homePageUrlAdr": "",
+    "registrationUrlAdr": "",
+    "registrantSearchUrlAdr": "",
     "regReqMinAge": "",
     "regReqMaxAge": "",
     "regReqGenderCd": "",
@@ -556,269 +70,47 @@
     "sorCreateDtm": null,
     "sorCreateUserId": "",
     "authorName": "",
-    "childIndex": "2",
+    "childIndex": "",
     "publishDate": null,
-    "createdDate": "2014-08-07T11:32:44",
-    "modifiedDate": "2014-08-07T16:16:02",
-    "retryDate": "2014-08-07T12:26:02",
+    "createdDate": "2015-06-15T20:42:05",
+    "modifiedDate": "2015-06-15T21:24:50",
+    "retryDate": "2015-06-15T17:34:46",
     "retryCounter": "2",
     "activityRecurrences": [],
     "assetQuantity": {},
-    "assetLegacyData": {
-      "assetTypeId": "dfaa997a-d591-44ca-9fb7-bf4a4c8984f1",
-      "typeName": "",
-      "uploadSearchUrlAdr": "",
-      "authorName": "",
-      "onlineRegistration": "true",
-      "onlineDonation": "",
-      "onlineMembership": "",
-      "onlineMembershipCostAmt": "",
-      "costAmt": "",
-      "avgUserRatingTxt": "",
-      "estParticipantNb": "",
-      "maxTeamNb": "",
-      "minGuaranteedGameNb": "",
-      "multipleStartDate": "",
-      "genderRequirementTxt": "",
-      "participationCriteriaTxt": "Family||Kids",
-      "userCommentTxt": "",
-      "priceExtensionTxt": "",
-      "searchWeight": "",
-      "seoUrl": "",
-      "substitutionUrl": "E-00745Z8R",
-      "trackbackUrl": "",
-      "eventCategories": "",
-      "isSearchable": "false",
-      "createdDate": "2014-08-07T11:32:44",
-      "modifiedDate": "2014-08-07T11:32:44"
-    },
-    "assetTags": [
-      {
-        "tag": {
-          "tagId": "58740",
-          "tagName": "Advanced",
-          "tagDescription": "Skill level"
-        }
-      },
-      {
-        "tag": {
-          "tagId": "32308",
-          "tagName": "true",
-          "tagDescription": "activeadvantage"
-        }
-      },
-      {
-        "tag": {
-          "tagId": "58720",
-          "tagName": "Sprint",
-          "tagDescription": "Distance (triathlon)"
-        }
-      },
-      {
-        "tag": {
-          "tagId": "58739",
-          "tagName": "Intermediate",
-          "tagDescription": "Skill level"
-        }
-      },
-      {
-        "tag": {
-          "tagId": "58738",
-          "tagName": "Beginner",
-          "tagDescription": "Skill level"
-        }
-      },
-      {
-        "tag": {
-          "tagId": "125980",
-          "tagName": "true",
-          "tagDescription": "usatsanctioned"
-        }
-      },
-      {
-        "tag": {
-          "tagId": "58721",
-          "tagName": "Super sprint",
-          "tagDescription": "Distance (triathlon)"
-        }
-      }
-    ],
-    "assetAttributes": [
-      {
-        "attribute": {
-          "tagId": "58739",
-          "attributeValue": "Intermediate",
-          "attributeType": "Skill level"
-        }
-      },
-      {
-        "attribute": {
-          "tagId": "58721",
-          "attributeValue": "Super sprint",
-          "attributeType": "Distance (triathlon)"
-        }
-      },
-      {
-        "attribute": {
-          "tagId": "58738",
-          "attributeValue": "Beginner",
-          "attributeType": "Skill level"
-        }
-      },
-      {
-        "attribute": {
-          "tagId": "58740",
-          "attributeValue": "Advanced",
-          "attributeType": "Skill level"
-        }
-      },
-      {
-        "attribute": {
-          "tagId": "58720",
-          "attributeValue": "Sprint",
-          "attributeType": "Distance (triathlon)"
-        }
-      }
-    ],
-    "assetPrices": [
-      {
-        "effectiveUntilDate": "2014-03-02T07:59:00",
-        "priceAmt": "105",
-        "maxPriceAmt": null,
-        "minPriceAmt": null
-      },
-      {
-        "effectiveUntilDate": "2014-08-09T06:59:00",
-        "priceAmt": "115",
-        "maxPriceAmt": null,
-        "minPriceAmt": null
-      },
-      {
-        "effectiveUntilDate": "2970-01-01T00:00:00",
-        "priceAmt": "125",
-        "maxPriceAmt": null,
-        "minPriceAmt": null
-      }
-    ],
+    "assetLegacyData": {},
+    "assetTags": [],
+    "assetAttributes": [],
+    "assetPrices": [],
     "assetDescriptions": [
       {
         "descriptionType": {
-          "descriptionTypeId": "6",
-          "descriptionTypeName": "Standard"
+          "descriptionTypeId": "28",
+          "descriptionTypeName": "authorFooter"
         },
-        "description": "<p>Pacific Coast Triathlon offers something for everyone! This sprint distance race is as challenging as it is scenic. Taking place at Crystal Cove State Park. There is a triathlon, duathlon, aquathlon and a super sprint that is great for kids and first timers! Come on out.</p><h4>Event details and schedule</h4><p></p>"
+        "description": "<div class=\"article-signature-block\"><div class=\"signature-block-photo\"><img alt=\"\" width=\"58\" height=\"58\" src=\"http://www.active.com/Assets/Running/Bios/jacquie-cattanach-bio.jpg\" /></div><div class=\"author-info\"><p><span class=\"author-link\"><a href=\"http://search.active.com/search?f=articles&amp;v=list&amp;k=%22jacquie+cattanach%22\" title=\"Jacquie Cattanach\">More Articles by Jacquie?</a></span><span class=\"author-name\">Jacquie Cattanach</span></p><p><span class=\"author-name\"></span></p><div class=\"author-text\">Jacquie Cattanach is an avid runner and triathlete whose  biggest achievements have been 15 marathons and Ironman Canada.  She has learned and experienced a lot of  trials and tribulations along the way and she loves to write about them in her blog <a href=\"http://online-running-gear.com/blog/\" title=\"http://online-running-gear.com/blog/\" target=\"_blank\">Online Running Gear Blog</a>, where she also researches, reviews and recommends running products such as the <a href=\"http://online-running-gear.com/blog/running-gear-3/garmin-forerunner-405-review\" title=\"http://online-running-gear.com/blog/running-gear-3/garmin-forerunner-405-review\" target=\"_blank\">Garmin Forerunner 405</a> and the <a href=\"http://online-running-gear.com/blog/running-gear-3/p90x-review/\" title=\"http://online-running-gear.com/blog/running-gear-3/p90x-review/\" target=\"_blank\">P90X Workout Review</a>.</div></div></div>"
       }
     ],
-    "assetChannels": [
-      {
-        "sequence": "1",
-        "channel": {
-          "channelId": "1007",
-          "channelName": "Duathlon",
-          "channelDsc": "Duathlon"
-        }
-      },
-      {
-        "sequence": "2",
-        "channel": {
-          "channelId": "1027",
-          "channelName": "Triathlon",
-          "channelDsc": "Triathlon"
-        }
-      }
-    ],
+    "assetChannels": [],
     "assetMediaTypes": [
       {
         "sequence": "1",
         "mediaType": {
-          "mediaTypeId": "78",
-          "mediaTypeName": "difficulty:Beginner",
-          "mediaTypeDsc": ""
-        }
-      },
-      {
-        "sequence": "2",
-        "mediaType": {
-          "mediaTypeId": "8",
-          "mediaTypeName": "Other",
-          "mediaTypeDsc": ""
-        }
-      },
-      {
-        "sequence": "3",
-        "mediaType": {
-          "mediaTypeId": "166",
-          "mediaTypeName": "difficulty:Intermediate",
-          "mediaTypeDsc": ""
-        }
-      },
-      {
-        "sequence": "4",
-        "mediaType": {
-          "mediaTypeId": "170",
-          "mediaTypeName": "Super Sprint",
-          "mediaTypeDsc": ""
-        }
-      },
-      {
-        "sequence": "5",
-        "mediaType": {
-          "mediaTypeId": "139",
-          "mediaTypeName": "difficulty:Advanced",
-          "mediaTypeDsc": ""
-        }
-      },
-      {
-        "sequence": "6",
-        "mediaType": {
-          "mediaTypeId": "2",
-          "mediaTypeName": "Event",
-          "mediaTypeDsc": ""
-        }
-      },
-      {
-        "sequence": "7",
-        "mediaType": {
-          "mediaTypeId": "3",
-          "mediaTypeName": "Sprint",
+          "mediaTypeId": "327",
+          "mediaTypeName": "Features & News",
           "mediaTypeDsc": ""
         }
       }
     ],
-    "assetImages": [
-      {
-        "imageUrlAdr": "http://photos-images.active.com/file/3/1/original/a3e9a23f-a0fa-4481-b5d5-010dd53e3bcd.jpg",
-        "imageName": "",
-        "linkUrl": "",
-        "linkTarget": "",
-        "imageCaptionTxt": ""
-      }
-    ],
-    "assetTopics": [
-      {
-        "sequence": "1",
-        "topic": {
-          "topicId": "26",
-          "topicTaxonomy": "Endurance/Duathlon",
-          "topicName": "Duathlon"
-        }
-      },
-      {
-        "sequence": "2",
-        "topic": {
-          "topicId": "28",
-          "topicTaxonomy": "Endurance/Triathlon",
-          "topicName": "Triathlon"
-        }
-      }
-    ],
+    "assetImages": [],
+    "assetTopics": [],
     "assetCategories": [
       {
         "sequence": "1",
         "category": {
-          "categoryId": "2",
-          "categoryTaxonomy": "Event",
-          "categoryName": "Event"
+          "categoryId": "290",
+          "categoryTaxonomy": "Person/Author",
+          "categoryName": "Author"
         }
       }
     ],
@@ -827,13 +119,393 @@
     "assetDeals": [],
     "socialMedia": [],
     "assetComponents": [],
-    "assetServiceHostName": "as-app01.active.tan",
+    "assetServiceHostName": "as-app-qa02",
     "componentInUrlAdr": {},
-    "assetSeoUrls": [],
+    "assetSeoUrls": [
+      {
+        "seoSystemName": "as3",
+        "statusCode": "true",
+        "urlAdr": "http://www.active.com/articles/jacquie-cattanach"
+      }
+    ],
     "overrideSeourlFlag": "false",
     "activenetTopGraphic": {},
     "evergreenAssetFlag": "false",
     "evergreenAssets": [],
-    "salesStatus": "registration-open"
+    "assetReferences": []
+  },
+  {
+    "assetStatus": {
+      "assetStatusId": "2",
+      "assetStatusName": "VISIBLE",
+      "isSearchable": "true",
+      "isDeleted": "false",
+      "createdDate": "2012-05-09T22:37:09",
+      "modifiedDate": "2012-05-09T22:37:09"
+    },
+    "organization": { },
+    "place": {
+      "placeGuid": "91a9a869-e74e-4016-ba1e-2aafb17a9acc",
+      "placeName": "Article",
+      "placeDsc": "",
+      "placeUrlAdr": "",
+      "addressLine1Txt": "Article",
+      "addressLine2Txt": "",
+      "cityName": "Article",
+      "stateProvinceCode": "CA",
+      "localityName": "",
+      "postalCode": "00000",
+      "countryName": "USA",
+      "countryCode": "",
+      "latitude": "37.271875",
+      "longitude": "-119.270229",
+      "directionsTxt": "",
+      "geoPoint": {
+        "lat": "37.271875",
+        "lon": "-119.270229"
+      }
+    },
+    "evergreenAsset": { },
+    "dma": { },
+    "sourceSystem": {
+      "sourceSystemName": "Active.com Articles",
+      "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"
+    },
+    "assetRootAsset": { },
+    "assetParentAsset": { },
+    "market": {
+      "marketId": "8",
+      "marketName": "endurance-running"
+    },
+    "assetGuid": "63e030f3-3df4-402c-9617-d37f6fb2c11a",
+    "assetName": "4 Tips on Running Your Best 10K",
+    "assetDsc": "",
+    "alternateName": "",
+    "timezone": "",
+    "timezoneAbb": "",
+    "timezoneName": "",
+    "currencyCd": "",
+    "localeCd": "",
+    "salesStartDate": null,
+    "salesEndDate": null,
+    "urlAdr": "http://www.active.com/running/Articles/4-Tips-on-Running-Your-Best-10k.htm",
+    "detailPageTemplateId": "",
+    "preferredUrlAdr": "",
+    "logoUrlAdr": "",
+    "activityStartDate": null,
+    "activityStartTime": "",
+    "activityEndDate": null,
+    "activityEndTime": "",
+    "donationUrlAdr": "",
+    "teamUrlAdr": "",
+    "homePageUrlAdr": "",
+    "registrationUrlAdr": "",
+    "regReqMinAge": "",
+    "regReqMaxAge": "",
+    "regReqGenderCd": "",
+    "resultsUrlAdr": "",
+    "isRecurring": "false",
+    "contactName": "",
+    "contactEmailAdr": "",
+    "contactPhone": "",
+    "contactTxt": "",
+    "showContact": "false",
+    "sorId": "",
+    "sorCreateDtm": null,
+    "sorCreateUserId": "",
+    "authorName": "Greg Tymon, M.Ed., C.S.C.S.",
+    "publishDate": "2012-07-01T12:12:00",
+    "createdDate": "2012-07-06T15:51:52",
+    "modifiedDate": "2012-07-09T20:56:06",
+    "activityRecurrences": [ ],
+    "assetQuantity": { },
+    "assetLegacyData": { },
+    "assetTags": [
+      {
+        "tag": {
+          "tagId": "3162",
+          "tagName": "Article",
+          "tagDescription": "articleType"
+        }
+      }
+    ],
+    "assetPrices": [ ],
+    "assetDescriptions": [
+      {
+        "descriptionType": {
+          "descriptionTypeId": "4",
+          "descriptionTypeName": "summary"
+        },
+        "description": "Running can be endlessly challenging for any participant. There is always another mile or a faster time that you can work towards. Use these tips to push it a little harder on your next run."
+      },
+      {
+        "descriptionType": {
+          "descriptionTypeId": "6",
+          "descriptionTypeName": "Standard"
+        },
+        "description": "<p> One of the great virtues of the sport of running is that it can be endlessly challenging for every participant. There is always a greater distance or a faster time just waiting for you to take it on. For beginners, just completing your first three-mile training run can be celebrated as a tremendous accomplishment. </p> <p> For seasoned runners, shaving time from a personal record is its own form of winning. As you age, your progress within age groups may account for new personal bests. And for every runner, it is the running itself that is its own reward.<br /> <br /> If you're relatively new to running, adding up mileage works physiological magic-increasing your stamina, your strength, and your speed. But if you've built a good base of about 25 to 30 miles a week or more and have been running in your comfort zone for a while, you will need to introduce some new training techniques and tweak your habits here and there to get faster. </p> <p> What you need is a well-rounded <a href=/Page23545.aspx title=Your 3-Part Training Plan>training program</a> that incorporates speed work, long runs, and adequate rest and recovery. Here is a quick guide for improving your 10K race time: </p> <h2>Adding Speed Work</h2> <p> The human body adapts very specifically to the demands placed upon it. If you run long and slow, your body will become very efficient at running long and slow. For example, if you run a total of 40 miles per week at a constant pace, you will train the energy...</p>"
+      },
+      {
+        "descriptionType": {
+          "descriptionTypeId": "8",
+          "descriptionTypeName": "articleSource"
+        },
+        "description": "<a href=http://www.americanrunning.org/><i>American Running Association</i></a>"
+      },
+      {
+        "descriptionType": {
+          "descriptionTypeId": "9",
+          "descriptionTypeName": "articleByline"
+        },
+        "description": "By Greg Tymon, M.Ed., C.S.C.S."
+      },
+      {
+        "descriptionType": {
+          "descriptionTypeId": "10",
+          "descriptionTypeName": "articleAuthorBio"
+        },
+        "description": "Author Bio"
+      },
+      {
+        "descriptionType": {
+          "descriptionTypeId": "28",
+          "descriptionTypeName": "authorFooter"
+        },
+        "description": "<div class=\"article-signature-block\"> <div class=\"signature-block-photo\"><img width=\"60\" height=\"60\" src=\"/Assets/Running/Experts/Jeff+Galloway_120.jpg\" /></div> <div class=\"author-info\"> <span class=\"author-link\"><a href=\"http://www.active.com/running/experts/jeffgalloway/\" title=\"Jeff Galloway\">Jeff's Bio</a></span> <span class=\"author-name\">Jeff Galloway</span><span class=\"author-title\"> Active.com Running Expert</span> </div> <div class=\"author-text\">Olympian Jeff Galloway has helped over a million runners through his running schools, training programs, beach and Tahoe retreats, books and training programs?which are fun and offer individualized coaching from Jeff. To subscribe to his free newsletter visit <a target=\"_blank\" href=\"http://www.JeffGalloway.com\">JeffGalloway.com</a> </div> </div>"
+      }
+    ],
+    "assetChannels": [
+      {
+        "sequence": "1",
+        "channel": {
+          "channelId": "1020",
+          "channelName": "Running",
+          "channelDsc": "Running"
+        }
+      }
+    ],
+    "assetMediaTypes": [ ],
+    "assetImages": [
+      {
+        "imageUrlAdr": "http://www.active.com/AssetFactory.aspx?did=50534",
+        "imageName": "image1",
+        "imageCaptionTxt": ""
+      },
+      {
+        "imageUrlAdr": "http://www.active.com/AssetFactory.aspx?did=50534",
+        "imageName": "authorImage",
+        "imageCaptionTxt": "Author"
+      }
+    ],
+    "assetTopics": [
+      {
+        "sequence": "1",
+        "topic": {
+          "topicId": "27",
+          "topicName": "Running"
+        }
+      }
+    ],
+    "assetCategories": [
+      {
+        "sequence": "1",
+        "category": {
+          "categoryId": "7",
+          "categoryName": "Articles",
+          "categoryTaxonomy": "Creative Work/Articles"
+        }
+      }
+    ],
+    "assetMetaInterests": [ ],
+    "assetComponents": [ ],
+    "assetServiceHostName": "int-asset-403"
+  },
+{
+  "assetStatus": {
+    "assetStatusId": "2",
+    "assetStatusName": "VISIBLE",
+    "isSearchable": "true",
+    "isDeleted": "false",
+    "createdDate": "2012-05-17T18:19:49",
+    "modifiedDate": "2012-05-17T18:19:49"
+  },
+  "organization": {},
+  "place": {
+    "timezoneOffset": -5,
+    "timezoneDST": 1,
+    "placeGuid": "3993F0DC-2168-4497-943D-C64334CC8714",
+    "placeName": "Kingwood Park New Jersey",
+    "placeDsc": "",
+    "placeUrlAdr": "",
+    "addressLine1Txt": "200 Union Road",
+    "addressLine2Txt": "",
+    "cityName": "Frenchtown",
+    "stateProvinceCode": "",
+    "localityName": "New Jersey",
+    "postalCode": "08825",
+    "countryName": "United States",
+    "countryCode": "",
+    "latitude": "40.504792",
+    "longitude": "-75.001827",
+    "directionsTxt": "",
+    "geoPoint": {
+      "lat": "40.504792",
+      "lon": "-75.001827"
+    }
+  },
+  "evergreenAsset": {},
+  "dma": {
+    "dmaId": "52",
+    "dmaName": "New York"
+  },
+  "sourceSystem": {
+    "sourceSystemName": "RegCenter",
+    "legacyGuid": "EA4E860A-9DCD-4DAA-A7CA-4A77AD194F65"
+  },
+  "assetRootAsset": {},
+  "assetParentAsset": {},
+  "market": {},
+  "assetGuid": "BA288960-2718-4B20-B380-8F939596BB59",
+  "assetName": "Run Daddy Run 5k Race, 2 Mile Walk & Kids Fun Run",
+  "assetDsc": "The Run Daddy Run Event is the HCM Foundation way to bring the community together on Fathers Day Weekend to celebrate Fathers and their families.  100% of the proceeds will go to HCM service & scholarship programs.",
+  "alternateName": "",
+  "timezone": "",
+  "timezoneAbb": "",
+  "timezoneName": "",
+  "currencyCd": "",
+  "localeCd": "",
+  "salesStartDate": "2012-06-24T00:00:00",
+  "salesEndDate": "2012-07-24T00:00:00",
+  "urlAdr": "",
+  "detailPageTemplateId": "",
+  "preferredUrlAdr": "",
+  "logoUrlAdr": "",
+  "activityStartDate": "2012-06-24T00:00:00",
+  "activityStartTime": "9:00:00",
+  "activityEndDate": "2012-07-24T00:00:00",
+  "activityEndTime": "9:00:00",
+  "donationUrlAdr": "",
+  "teamUrlAdr": "",
+  "homePageUrlAdr": "http://www.hcmfoundation.org",
+  "registrationUrlAdr": "https://www.active.com/register/index.cfm?EVENT_ID=2028700",
+  "regReqMinAge": "",
+  "regReqMaxAge": "",
+  "regReqGenderCd": "",
+  "resultsUrlAdr": "",
+  "isRecurring": "false",
+  "contactName": "Mike Marsteller",
+  "contactEmailAdr": "hcmfund@gmail.com",
+  "contactPhone": "484-347-3993",
+  "contactTxt": "",
+  "showContact": "true",
+  "sorId": "",
+  "sorCreateDtm": null,
+  "sorCreateUserId": "",
+  "authorName": "",
+  "publishDate": null,
+  "createdDate": "2012-04-19T18:16:06",
+  "modifiedDate": "2012-05-17T18:29:18",
+  "activityRecurrences": [],
+  "assetQuantity": {},
+  "assetLegacyData": {
+    "assetTypeId": "",
+    "typeName": "",
+    "uploadSearchUrlAdr": "",
+    "authorName": "",
+    "onlineRegistration": "true",
+    "onlineDonation": "",
+    "onlineMembership": "",
+    "onlineMembershipCostAmt": "",
+    "costAmt": "",
+    "avgUserRatingTxt": "",
+    "estParticipantNb": "",
+    "maxTeamNb": "",
+    "minGuaranteedGameNb": "",
+    "multipleStartDate": "",
+    "genderRequirementTxt": "",
+    "participationCriteriaTxt": "",
+    "userCommentTxt": "",
+    "priceExtensionTxt": "",
+    "searchWeight": "",
+    "seoUrl": "http://www.active.com/running/frenchtown-nj/run-daddy-run-5k-race-2-mile-walk-and-kids-fun-run-2012",
+    "substitutionUrl": "2028700",
+    "trackbackUrl": "",
+    "eventCategories": "",
+    "isSearchable": "true",
+    "createdDate": "2012-04-19T18:16:06",
+    "modifiedDate": "2012-05-17T18:29:19"
+  },
+  "assetTags": [],
+  "assetPrices": [{
+    "effectiveDate": "2012-08-03T06:59:00",
+    "priceAmt": "10",
+    "maxPriceAmt": "",
+    "minPriceAmt": ""
+  }],
+  "assetDescriptions": [{
+    "descriptionType": {
+      "descriptionTypeId": "1",
+      "descriptionTypeName": "PRIMARY"
+    },
+    "description": "The Run Daddy Run Event is the HCM Foundation way to bring the community together on Fathers Day Weekend to celebrate Fathers and their families.  100% of the proceeds will go to HCM service & scholarship programs."
+  }],
+  "assetChannels": [{
+    "sequence": "1",
+    "channel": {
+      "channelId": "1020",
+      "channelName": "Running",
+      "channelDsc": "Running"
+    }
+  }, {
+  "sequence": "2",
+  "channel": {
+    "channelId": "1148",
+    "channelName": "Running\\Cross Country",
+    "channelDsc": ""
   }
+  }],
+  "assetMediaTypes": [{
+    "sequence": "2",
+    "mediaType": {
+      "mediaTypeId": "256",
+      "mediaTypeName": "Event\\5K",
+      "mediaTypeDsc": ""
+    }
+  }, {
+  "sequence": "1",
+  "mediaType": {
+    "mediaTypeId": "2",
+    "mediaTypeName": "Event",
+    "mediaTypeDsc": ""
+  }
+  }],
+  "assetImages": [],
+  "assetTopics": [{
+    "sequence": "3",
+    "topic": {
+      "topicId": "26",
+      "topicTaxonomy": "Endurance/Duathlon",
+      "topicName": "Duathlon"
+    }
+  }],
+  "assetCategories": [
+    {
+      "category": {
+        "categoryName": "Races",
+        "categoryId": "22",
+        "categoryTaxonomy": "Event/Races"
+      },
+      "sequence": "1"
+    }],
+    "assetMetaInterests": [],
+    "assetComponents": [
+      {
+        "assetGuid": "63e030f3-3df4-402c-9617-d37f6fb2c11b"
+      },
+      {
+        "assetGuid": "63e030f3-3df4-402c-9617-d37f6fb2c11c"
+      }
+    ],
+    "assetServiceHostName": "asset-03"
+}
 ]

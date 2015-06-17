@@ -1,187 +1,186 @@
 {
-
-    "assetStatus": {
-        "assetStatusId": "2",
-        "assetStatusName": "VISIBLE",
-        "isSearchable": "true",
-        "isDeleted": "false",
-        "createdDate": "2012-05-09T22:37:09",
-        "modifiedDate": "2012-05-09T22:37:09"
+  "assetStatus": {
+    "assetStatusId": "2",
+    "assetStatusName": "VISIBLE",
+    "isSearchable": "true",
+    "isDeleted": "false",
+    "createdDate": "2012-05-09T22:37:09",
+    "modifiedDate": "2012-05-09T22:37:09"
+  },
+  "organization": { },
+  "place": {
+    "placeGuid": "91a9a869-e74e-4016-ba1e-2aafb17a9acc",
+    "placeName": "Article",
+    "placeDsc": "",
+    "placeUrlAdr": "",
+    "addressLine1Txt": "Article",
+    "addressLine2Txt": "",
+    "cityName": "Article",
+    "stateProvinceCode": "CA",
+    "localityName": "",
+    "postalCode": "00000",
+    "countryName": "USA",
+    "countryCode": "",
+    "latitude": "37.271875",
+    "longitude": "-119.270229",
+    "directionsTxt": "",
+    "geoPoint": {
+      "lat": "37.271875",
+      "lon": "-119.270229"
+    }
+  },
+  "evergreenAsset": { },
+  "dma": { },
+  "sourceSystem": {
+    "sourceSystemName": "Active.com Articles",
+    "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"
+  },
+  "assetRootAsset": { },
+  "assetParentAsset": { },
+  "market": {
+    "marketId": "8",
+    "marketName": "endurance-running"
+  },
+  "assetGuid": "63e030f3-3df4-402c-9617-d37f6fb2c11a",
+  "assetName": "4 Tips on Running Your Best 10K",
+  "assetDsc": "",
+  "alternateName": "",
+  "timezone": "",
+  "timezoneAbb": "",
+  "timezoneName": "",
+  "currencyCd": "",
+  "localeCd": "",
+  "salesStartDate": null,
+  "salesEndDate": null,
+  "urlAdr": "http://www.active.com/running/Articles/4-Tips-on-Running-Your-Best-10k.htm",
+  "detailPageTemplateId": "",
+  "preferredUrlAdr": "",
+  "logoUrlAdr": "",
+  "activityStartDate": null,
+  "activityStartTime": "",
+  "activityEndDate": null,
+  "activityEndTime": "",
+  "donationUrlAdr": "",
+  "teamUrlAdr": "",
+  "homePageUrlAdr": "",
+  "registrationUrlAdr": "",
+  "regReqMinAge": "",
+  "regReqMaxAge": "",
+  "regReqGenderCd": "",
+  "resultsUrlAdr": "",
+  "isRecurring": "false",
+  "contactName": "",
+  "contactEmailAdr": "",
+  "contactPhone": "",
+  "contactTxt": "",
+  "showContact": "false",
+  "sorId": "",
+  "sorCreateDtm": null,
+  "sorCreateUserId": "",
+  "authorName": "Greg Tymon, M.Ed., C.S.C.S.",
+  "publishDate": "2012-07-01T12:12:00",
+  "createdDate": "2012-07-06T15:51:52",
+  "modifiedDate": "2012-07-09T20:56:06",
+  "activityRecurrences": [ ],
+  "assetQuantity": { },
+  "assetLegacyData": { },
+  "assetTags": [
+    {
+      "tag": {
+        "tagId": "3162",
+        "tagName": "Article",
+        "tagDescription": "articleType"
+      }
+    }
+  ],
+  "assetPrices": [ ],
+  "assetDescriptions": [
+    {
+      "descriptionType": {
+        "descriptionTypeId": "4",
+        "descriptionTypeName": "summary"
+      },
+      "description": "Running can be endlessly challenging for any participant. There is always another mile or a faster time that you can work towards. Use these tips to push it a little harder on your next run."
     },
-    "organization": { },
-    "place": {
-        "placeGuid": "91a9a869-e74e-4016-ba1e-2aafb17a9acc",
-        "placeName": "Article",
-        "placeDsc": "",
-        "placeUrlAdr": "",
-        "addressLine1Txt": "Article",
-        "addressLine2Txt": "",
-        "cityName": "Article",
-        "stateProvinceCode": "CA",
-        "localityName": "",
-        "postalCode": "00000",
-        "countryName": "USA",
-        "countryCode": "",
-        "latitude": "37.271875",
-        "longitude": "-119.270229",
-        "directionsTxt": "",
-        "geoPoint": {
-            "lat": "37.271875",
-            "lon": "-119.270229"
-        }
+    {
+      "descriptionType": {
+        "descriptionTypeId": "6",
+        "descriptionTypeName": "Standard"
+      },
+      "description": "<p> One of the great virtues of the sport of running is that it can be endlessly challenging for every participant. There is always a greater distance or a faster time just waiting for you to take it on. For beginners, just completing your first three-mile training run can be celebrated as a tremendous accomplishment. </p> <p> For seasoned runners, shaving time from a personal record is its own form of winning. As you age, your progress within age groups may account for new personal bests. And for every runner, it is the running itself that is its own reward.<br /> <br /> If you're relatively new to running, adding up mileage works physiological magic-increasing your stamina, your strength, and your speed. But if you've built a good base of about 25 to 30 miles a week or more and have been running in your comfort zone for a while, you will need to introduce some new training techniques and tweak your habits here and there to get faster. </p> <p> What you need is a well-rounded <a href=/Page23545.aspx title=Your 3-Part Training Plan>training program</a> that incorporates speed work, long runs, and adequate rest and recovery. Here is a quick guide for improving your 10K race time: </p> <h2>Adding Speed Work</h2> <p> The human body adapts very specifically to the demands placed upon it. If you run long and slow, your body will become very efficient at running long and slow. For example, if you run a total of 40 miles per week at a constant pace, you will train the energy...</p>"
     },
-    "evergreenAsset": { },
-    "dma": { },
-    "sourceSystem": {
-        "sourceSystemName": "Active.com Articles",
-        "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"
+    {
+      "descriptionType": {
+        "descriptionTypeId": "8",
+        "descriptionTypeName": "articleSource"
+      },
+      "description": "<a href=http://www.americanrunning.org/><i>American Running Association</i></a>"
     },
-    "assetRootAsset": { },
-    "assetParentAsset": { },
-    "market": {
-        "marketId": "8",
-        "marketName": "endurance-running"
+    {
+      "descriptionType": {
+        "descriptionTypeId": "9",
+        "descriptionTypeName": "articleByline"
+      },
+      "description": "By Greg Tymon, M.Ed., C.S.C.S."
     },
-    "assetGuid": "63e030f3-3df4-402c-9617-d37f6fb2c11a",
-    "assetName": "4 Tips on Running Your Best 10K",
-    "assetDsc": "",
-    "alternateName": "",
-    "timezone": "",
-    "timezoneAbb": "",
-    "timezoneName": "",
-    "currencyCd": "",
-    "localeCd": "",
-    "salesStartDate": null,
-    "salesEndDate": null,
-    "urlAdr": "http://www.active.com/running/Articles/4-Tips-on-Running-Your-Best-10k.htm",
-    "detailPageTemplateId": "",
-    "preferredUrlAdr": "",
-    "logoUrlAdr": "",
-    "activityStartDate": null,
-    "activityStartTime": "",
-    "activityEndDate": null,
-    "activityEndTime": "",
-    "donationUrlAdr": "",
-    "teamUrlAdr": "",
-    "homePageUrlAdr": "",
-    "registrationUrlAdr": "",
-    "regReqMinAge": "",
-    "regReqMaxAge": "",
-    "regReqGenderCd": "",
-    "resultsUrlAdr": "",
-    "isRecurring": "false",
-    "contactName": "",
-    "contactEmailAdr": "",
-    "contactPhone": "",
-    "contactTxt": "",
-    "showContact": "false",
-    "sorId": "",
-    "sorCreateDtm": null,
-    "sorCreateUserId": "",
-    "authorName": "Greg Tymon, M.Ed., C.S.C.S.",
-    "publishDate": "2012-07-01T12:12:00",
-    "createdDate": "2012-07-06T15:51:52",
-    "modifiedDate": "2012-07-09T20:56:06",
-    "activityRecurrences": [ ],
-    "assetQuantity": { },
-    "assetLegacyData": { },
-    "assetTags": [
-        {
-            "tag": {
-                "tagId": "3162",
-                "tagName": "Article",
-                "tagDescription": "articleType"
-            }
-        }
-    ],
-    "assetPrices": [ ],
-    "assetDescriptions": [
-        {
-            "descriptionType": {
-                "descriptionTypeId": "4",
-                "descriptionTypeName": "summary"
-            },
-            "description": "Running can be endlessly challenging for any participant. There is always another mile or a faster time that you can work towards. Use these tips to push it a little harder on your next run."
-        },
-        {
-            "descriptionType": {
-                "descriptionTypeId": "6",
-                "descriptionTypeName": "Standard"
-            },
-            "description": "<p> One of the great virtues of the sport of running is that it can be endlessly challenging for every participant. There is always a greater distance or a faster time just waiting for you to take it on. For beginners, just completing your first three-mile training run can be celebrated as a tremendous accomplishment. </p> <p> For seasoned runners, shaving time from a personal record is its own form of winning. As you age, your progress within age groups may account for new personal bests. And for every runner, it is the running itself that is its own reward.<br /> <br /> If you're relatively new to running, adding up mileage works physiological magic-increasing your stamina, your strength, and your speed. But if you've built a good base of about 25 to 30 miles a week or more and have been running in your comfort zone for a while, you will need to introduce some new training techniques and tweak your habits here and there to get faster. </p> <p> What you need is a well-rounded <a href=/Page23545.aspx title=Your 3-Part Training Plan>training program</a> that incorporates speed work, long runs, and adequate rest and recovery. Here is a quick guide for improving your 10K race time: </p> <h2>Adding Speed Work</h2> <p> The human body adapts very specifically to the demands placed upon it. If you run long and slow, your body will become very efficient at running long and slow. For example, if you run a total of 40 miles per week at a constant pace, you will train the energy...</p>"
-        },
-        {
-            "descriptionType": {
-                "descriptionTypeId": "8",
-                "descriptionTypeName": "articleSource"
-            },
-            "description": "<a href=http://www.americanrunning.org/><i>American Running Association</i></a>"
-        },
-        {
-            "descriptionType": {
-                "descriptionTypeId": "9",
-                "descriptionTypeName": "articleByline"
-            },
-            "description": "By Greg Tymon, M.Ed., C.S.C.S."
-        },
-        {
-            "descriptionType": {
-                "descriptionTypeId": "10",
-                "descriptionTypeName": "articleAuthorBio"
-            },
-            "description": "Author Bio"
-        },
-        {
-            "descriptionType": {
-                "descriptionTypeId": "28",
-                "descriptionTypeName": "authorFooter"
-            },
-            "description": "<div class=\"article-signature-block\"> <div class=\"signature-block-photo\"><img width=\"60\" height=\"60\" src=\"/Assets/Running/Experts/Jeff+Galloway_120.jpg\" /></div> <div class=\"author-info\"> <span class=\"author-link\"><a href=\"http://www.active.com/running/experts/jeffgalloway/\" title=\"Jeff Galloway\">Jeff's Bio</a></span> <span class=\"author-name\">Jeff Galloway</span><span class=\"author-title\"> Active.com Running Expert</span> </div> <div class=\"author-text\">Olympian Jeff Galloway has helped over a million runners through his running schools, training programs, beach and Tahoe retreats, books and training programs?which are fun and offer individualized coaching from Jeff. To subscribe to his free newsletter visit <a target=\"_blank\" href=\"http://www.JeffGalloway.com\">JeffGalloway.com</a> </div> </div>"
-        }
-    ],
-    "assetChannels": [
-        {
-            "sequence": "1",
-            "channel": {
-                "channelId": "1020",
-                "channelName": "Running",
-                "channelDsc": "Running"
-            }
-        }
-    ],
-    "assetMediaTypes": [ ],
-    "assetImages": [
-        {
-            "imageUrlAdr": "http://www.active.com/AssetFactory.aspx?did=50534",
-            "imageName": "image1",
-            "imageCaptionTxt": ""
-        },
-        {
-            "imageUrlAdr": "http://www.active.com/AssetFactory.aspx?did=50534",
-            "imageName": "authorImage",
-            "imageCaptionTxt": "Author"
-        }
-    ],
-    "assetTopics": [
-        {
-            "sequence": "1",
-            "topic": {
-                "topicId": "27",
-                "topicName": "Running"
-            }
-        }
-    ],
-    "assetCategories": [
-        {
-            "sequence": "1",
-            "category": {
-                "categoryId": "7",
-                "categoryName": "Articles"
-            }
-        }
-    ],
-    "assetMetaInterests": [ ],
-    "assetComponents": [ ],
-    "assetServiceHostName": "int-asset-403"
-
+    {
+      "descriptionType": {
+        "descriptionTypeId": "10",
+        "descriptionTypeName": "articleAuthorBio"
+      },
+      "description": "Author Bio"
+    },
+    {
+      "descriptionType": {
+        "descriptionTypeId": "28",
+        "descriptionTypeName": "authorFooter"
+      },
+      "description": "<div class=\"article-signature-block\"> <div class=\"signature-block-photo\"><img width=\"60\" height=\"60\" src=\"/Assets/Running/Experts/Jeff+Galloway_120.jpg\" /></div> <div class=\"author-info\"> <span class=\"author-link\"><a href=\"http://www.active.com/running/experts/jeffgalloway/\" title=\"Jeff Galloway\">Jeff's Bio</a></span> <span class=\"author-name\">Jeff Galloway</span><span class=\"author-title\"> Active.com Running Expert</span> </div> <div class=\"author-text\">Olympian Jeff Galloway has helped over a million runners through his running schools, training programs, beach and Tahoe retreats, books and training programs?which are fun and offer individualized coaching from Jeff. To subscribe to his free newsletter visit <a target=\"_blank\" href=\"http://www.JeffGalloway.com\">JeffGalloway.com</a> </div> </div>"
+    }
+  ],
+  "assetChannels": [
+    {
+      "sequence": "1",
+      "channel": {
+        "channelId": "1020",
+        "channelName": "Running",
+        "channelDsc": "Running"
+      }
+    }
+  ],
+  "assetMediaTypes": [ ],
+  "assetImages": [
+    {
+      "imageUrlAdr": "http://www.active.com/AssetFactory.aspx?did=50534",
+      "imageName": "image1",
+      "imageCaptionTxt": ""
+    },
+    {
+      "imageUrlAdr": "http://www.active.com/AssetFactory.aspx?did=50534",
+      "imageName": "authorImage",
+      "imageCaptionTxt": "Author"
+    }
+  ],
+  "assetTopics": [
+    {
+      "sequence": "1",
+      "topic": {
+        "topicId": "27",
+        "topicName": "Running"
+      }
+    }
+  ],
+  "assetCategories": [
+    {
+      "sequence": "1",
+      "category": {
+        "categoryId": "7",
+        "categoryName": "Articles",
+        "categoryTaxonomy": "Creative Work/Articles"
+      }
+    }
+  ],
+  "assetMetaInterests": [ ],
+  "assetComponents": [ ],
+  "assetServiceHostName": "int-asset-403"
 }
