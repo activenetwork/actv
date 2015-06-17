@@ -21,11 +21,17 @@ describe ACTV::AssetFactory do
       it 'returns an actv article' do
         expect(asset).to be_a ACTV::Article
       end
+      it 'sets is_article? to true' do
+        expect(asset.is_article?).to be_true
+      end
     end
     context 'the response is from ACM' do
       let(:legacy_guid) { "CA4EA0B1-7377-470D-B20D-BF6BEA23F040" }
       it 'returns an actv article' do
         expect(asset).to be_a ACTV::Article
+      end
+      it 'sets is_article? to true' do
+        expect(asset.is_article?).to be_true
       end
     end
     context 'the response has an event category' do
@@ -33,11 +39,17 @@ describe ACTV::AssetFactory do
       it 'returns an actv event' do
         expect(asset).to be_a ACTV::Event
       end
+      it 'sets is_event? to true' do
+        expect(asset.is_event?).to be_true
+      end
     end
     context 'the response has an event taxonomy' do
       let(:category_taxonomy) { "Race/Event" }
       it 'returns an actv event' do
         expect(asset).to be_a ACTV::Event
+      end
+      it 'sets is_event? to true' do
+        expect(asset.is_event?).to be_true
       end
     end
     context 'the response has an author category' do
