@@ -1,13 +1,10 @@
-require 'forwardable'
 require 'actv/null_object'
 require 'uri'
 
 module ACTV
   class Base
-    extend Forwardable
     attr_reader :attrs
     alias body attrs
-    def_delegators :attrs, :delete, :update
 
     # Define methods that retrieve the value from an initialized instance variable Hash, using the attribute as a key
     #
@@ -77,12 +74,20 @@ module ACTV
       end
     end
 
-    def self.from_response(response={})
-      new(response[:body])
+    def self.from_response response={}
+      new response[:body]
     end
 
-    def initialize(attrs={})
+    def initialize attrs={}
       @attrs = attrs || {}
+    end
+
+    def delete arg
+      attrs.delete arg
+    end
+
+    def update arg
+      attrs.update arg
     end
 
     def [](method)
