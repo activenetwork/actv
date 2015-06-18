@@ -6,8 +6,10 @@ describe ACTV::Author do
   let(:response) { { assetGuid: "777",
                      assetDescriptions: asset_descriptions,
                      authorName: author_name} }
-  subject(:author) { ACTV::Author.new response }
-  subject(:author_from_article) { ACTV::Author.build_from_article response }
+  subject(:author) { ACTV::Author.new JSON.parse(fixture('valid_author.json').read).deep_symbolize_keys }
+  let(:author_from_article) { ACTV::Author.build_from_article response }
+
+  its(:footer) { should start_with '<div class="article-signature-block">'}
 
   describe '#name' do
     let(:asset_descriptions) { [ { descriptionType: { descriptionTypeId: "3",
