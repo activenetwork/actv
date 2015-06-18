@@ -2,12 +2,12 @@ require 'actv/asset'
 require 'active_support/core_ext/object/blank'
 module ACTV
   class Author < Asset
-    def self.build_from_article article
-      new article
+    def self.build_from_article article_hash
+      new article_hash
     end
 
     def name
-      self.author_name.presence || name_from_footer.presence
+      name_from_footer.presence || self.author_name.presence
     end
 
     def footer
