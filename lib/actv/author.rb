@@ -24,8 +24,8 @@ module ACTV
     def photo
       @photo ||= begin
         image_node = get_from_footer 'div.signature-block-photo img'
-        image_node = image_node.attribute 'src'
-        image = ACTV::AssetImage.new imageUrlAdr: image_node
+        url = image_node.attribute('src').to_s
+        ACTV::AssetImage.new imageUrlAdr: url
       end
     end
 
