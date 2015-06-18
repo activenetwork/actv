@@ -2,30 +2,6 @@ require 'spec_helper'
 
 describe ACTV::Asset do
 
-  describe '#references' do
-    let(:asset_references) { [] }
-    let(:response) { { assetGuid: 1, assetReferences: asset_references } }
-    let(:asset) { ACTV::Asset.new response }
-    context 'when there are asset references' do
-      let(:asset_references) { [ { referenceAsset: { assetGuid: "123" },
-                                   referenceType: { referenceTypeName: "author" } } ] }
-      it 'returns an array of asset reference objects' do
-        expect(asset.references.first).to be_a ACTV::AssetReference
-      end
-    end
-    context 'when there are no asset references' do
-      it 'returns an empty array' do
-        expect(asset.references).to be_empty
-      end
-    end
-    context 'when there is no asset references field' do
-      let(:response) { { assetGuid: 1 } }
-      it 'returns an empty array' do
-        expect(asset.references).to be_empty
-      end
-    end
-  end
-
   describe '#endurance_id' do
     let(:endurance_id) { 'enduranceid' }
     subject(:asset) { ACTV::Asset.new assetGuid: 'assetguid' }
@@ -530,6 +506,78 @@ describe ACTV::Asset do
         it "returns nil" do
           empty_asset.image.should be_nil
         end
+      end
+    end
+  end
+
+  describe '#references' do
+    let(:asset_references) { [] }
+    let(:response) { { assetGuid: 1, assetReferences: asset_references } }
+    let(:asset) { ACTV::Asset.new response }
+    context 'when there are asset references' do
+      let(:asset_references) { [ { referenceAsset: { assetGuid: "123" },
+                                   referenceType: { referenceTypeName: "author" } } ] }
+      it 'returns an array of asset reference objects' do
+        expect(asset.references.first).to be_a ACTV::AssetReference
+      end
+    end
+    context 'when there are no asset references' do
+      it 'returns an empty array' do
+        expect(asset.references).to be_empty
+      end
+    end
+    context 'when there is no asset references field' do
+      let(:response) { { assetGuid: 1 } }
+      it 'returns an empty array' do
+        expect(asset.references).to be_empty
+      end
+    end
+  end
+
+  describe "#taxonomy_has?" do
+    let(:asset_categories) { [] }
+    let(:response) { { assetGuid: 1, assetCategories: asset_categories } }
+    let(:taxonomy_has_author) { ACTV::Asset.new(response).taxonomy_has? "Author" }
+    context "when the asset has categories" do
+      context "when a category taxonomy matches the search term" do
+        let(:asset_categories) { [ { category: { categoryTaxonomy: "Person/Author" } } ] }
+        it "returns true" do
+          expect(taxonomy_has_author).to be_true
+        end
+      end
+      context "when a category taxonomy does not match the search term" do
+        it "returns false" do
+          expect(taxonomy_has_author).to be_false
+        end
+      end
+    end
+    context "when the asset does not have categories" do
+      it "returns false" do
+        expect(taxonomy_has_author).to be_false
+      end
+    end
+  end
+
+  describe "#category_is?" do
+    let(:asset_categories) { [] }
+    let(:response) { { assetGuid: 1, assetCategories: asset_categories } }
+    let(:category_is_author) { ACTV::Asset.new(response).category_is? "Author" }
+    context "when the asset has categories" do
+      context "when a category name matches the search term" do
+        let(:asset_categories) { [ { category: { categoryName: "Author" } } ] }
+        it "returns true" do
+          expect(category_is_author).to be_true
+        end
+      end
+      context "when a category name does not match the search term" do
+        it "returns false" do
+          expect(category_is_author).to be_false
+        end
+      end
+    end
+    context "when the asset does not have categories" do
+      it "returns false" do
+        expect(category_is_author).to be_false
       end
     end
   end
