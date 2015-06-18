@@ -15,6 +15,7 @@ require 'actv/recurrence'
 
 module ACTV
   class Asset < ACTV::Identity
+    TYPES = []
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
@@ -46,6 +47,18 @@ module ACTV
 
     def self.from_response response={}
       AssetFactory.new(response[:body]).asset
+    end
+
+    def self.inherited base
+      TYPES << base
+    end
+
+    def self.types
+      TYPES
+    end
+
+    def valid?
+      true
     end
 
     def endurance_id
@@ -361,6 +374,18 @@ module ACTV
     end
     alias assetReferences references
     alias asset_references references
+
+    def taxonomy_has? name
+      self.assetCategories.any? do |cat|
+        cat[:category][:categoryTaxonomy].downcase.include? name.downcase
+      end if self.assetCategories
+    end
+
+    def category_is? name
+      self.assetCategories.any? do |cat|
+        cat[:category][:categoryName].downcase == name.downcase
+      end if self.assetCategories
+    end
 
     private
 
