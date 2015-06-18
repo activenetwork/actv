@@ -14,10 +14,6 @@ module ACTV
       @footer ||= description_by_type 'authorFooter'
     end
 
-    def by_line
-      @author ||= description_by_type 'articleByLine'
-    end
-
     def bio
       @bio ||= begin
         bio_node = get_from_footer('div.author-text')

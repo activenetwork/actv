@@ -6,7 +6,6 @@ module ACTV
   class Article < ACTV::Asset
     attr_reader :author
     delegate :image_url, :footer, :bio, :photo, :name_from_footer, to: :author, prefix: true
-    delegate :by_line, to: :author
 
     def source
       @source ||= description_by_type 'articleSource'
@@ -39,6 +38,10 @@ module ACTV
 
     def author
       @author ||= author_from_reference || author_from_article
+    end
+
+    def by_line
+      @author ||= description_by_type 'articleByLine'
     end
 
     def is_article?
