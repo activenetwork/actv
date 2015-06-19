@@ -368,12 +368,10 @@ module ACTV
     end
 
     def references
-      @asset_references ||= Array(@attrs[:assetReferences]).map do |reference|
+      @references ||= Array(@attrs[:assetReferences]).map do |reference|
         ACTV::AssetReference.new reference
       end
     end
-    alias assetReferences references
-    alias asset_references references
 
     def taxonomy_has? name
       self.assetCategories.any? do |cat|
