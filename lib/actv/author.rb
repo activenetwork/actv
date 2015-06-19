@@ -21,14 +21,14 @@ module ACTV
 
     def bio
       @bio ||= begin
-        bio_node = get_from_footer('div.author-text')
+        bio_node = from_footer 'div.author-text'
         bio_node.inner_html unless bio_node.nil?
       end
     end
 
     def photo
       @photo ||= begin
-        image_node = get_from_footer 'div.signature-block-photo img'
+        image_node = from_footer 'div.signature-block-photo img'
         url = image_node.attribute('src').to_s
         ACTV::AssetImage.new imageUrlAdr: url
       end
@@ -44,22 +44,18 @@ module ACTV
 
     def name_from_footer
       @name_from_footer ||= begin
-        name_node = get_from_footer('span.author-name')
+        name_node = from_footer 'span.author-name'
         name_node.text unless name_node.nil?
       end
     end
 
     private
 
-    def get_from_footer(selector)
-      node = nil
-
-      if !footer.nil? && !footer.empty?
-        doc = Nokogiri::HTML(footer)
-        node = doc.css(selector).first
+    def from_footer selector
+      if footer.present?
+        doc = Nokogiri::HTML footer
+        doc.css(selector).first
       end
-
-      node
     end
   end
 end
