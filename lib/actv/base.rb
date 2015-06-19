@@ -82,12 +82,12 @@ module ACTV
       @attrs = attrs || {}
     end
 
-    def delete arg
-      attrs.delete arg
+    def delete key
+      attrs.delete key
     end
 
-    def update arg
-      attrs.update arg
+    def update key
+      attrs.update key
     end
 
     def [](method)
