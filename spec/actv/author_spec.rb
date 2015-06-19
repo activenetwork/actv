@@ -15,6 +15,29 @@ describe ACTV::Author do
     its(:name_from_footer) { should eq 'Jacquie Cattanach'}
   end
 
+  describe '#valid?' do
+    context 'when the category name is author' do
+      let(:asset_categories) { [ { category: { categoryName: "Author", categoryTaxonomy: "" } } ] }
+      before do
+        allow(author).to receive(:assetCategories).and_return asset_categories
+      end
+      its(:valid?) { should be_true }
+    end
+    context 'when the category taxonomy is author' do
+      let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "Person/Author" } } ] }
+      before do
+        allow(author).to receive(:assetCategories).and_return asset_categories
+      end
+      its(:valid?) { should be_true }
+    end
+    context 'when there is no category taxonomy or name' do
+      before do
+        allow(author).to receive(:assetCategories).and_return []
+      end
+      its(:valid?) { should be_false }
+    end
+  end
+
   describe '#image_url' do
     context 'when photo url is a fully qualified url' do
       it 'returns the photo url' do
