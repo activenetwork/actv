@@ -1,9 +1,14 @@
 require 'actv/asset'
 require 'active_support/core_ext/object/blank'
+
 module ACTV
   class Author < Asset
     def self.build_from_article article_hash
       new article_hash
+    end
+
+    def valid?
+      category_is?('author') || taxonomy_has?('author')
     end
 
     def name
