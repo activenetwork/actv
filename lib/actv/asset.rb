@@ -15,7 +15,7 @@ require 'actv/recurrence'
 
 module ACTV
   class Asset < ACTV::Identity
-    TYPES = []
+    @types = []
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
@@ -45,16 +45,16 @@ module ACTV
     alias maximum_age regReqMaxAge
     alias required_gender regReqGenderCd
 
-    def self.from_response response={}
-      AssetFactory.new(response[:body]).asset
-    end
-
     def self.inherited base
-      TYPES << base
+      @types << base
     end
 
     def self.types
-      TYPES
+      @types
+    end
+
+    def self.from_response response={}
+      AssetFactory.new(response[:body]).asset
     end
 
     def valid?
@@ -353,7 +353,7 @@ module ACTV
       image = image_without_placeholder.imageUrlAdr rescue ""
 
       if image.empty? and (logoUrlAdr && logoUrlAdr != default_image && !(logoUrlAdr =~ URI::regexp).nil?)
-          image = logoUrlAdr
+        image = logoUrlAdr
       end
 
       image
