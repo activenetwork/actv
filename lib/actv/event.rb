@@ -6,6 +6,10 @@ module ACTV
     alias sales_start_date salesStartDate
     alias sales_end_date salesEndDate
 
+    def valid?
+      category_is?('event') || taxonomy_has?('event')
+    end
+
     def online_registration_available?
       if is_present?(self.registrationUrlAdr)
         if is_present?(self.legacy_data) && is_present?(self.legacy_data.onlineRegistration)
@@ -120,8 +124,6 @@ module ACTV
       place.timezoneOffset + place.timezoneDST
     end
 
-    ############
-
     def image_url
       defaultImage = 'http://www.active.com/images/events/hotrace.gif'
       image = ''
@@ -208,7 +210,6 @@ module ACTV
       return nil if time_string.nil? or time_string.empty?
       return Time.parse(time_string).utc
     end
-
   end
 end
 
