@@ -13,15 +13,21 @@ describe ACTV::Article do
                      assetDescriptions: descriptions,
                      assetTags: asset_tags,
                      assetImages: asset_images,
+                     assetCategories: asset_categories,
                      assetReferences: asset_references } }
   subject(:article) { ACTV::Article.new response }
 
   describe '#valid?' do
     context 'when the category name is articles' do
-      let(:asset_categories) { [ { category: { categoryName: "Articles" } } ] }
+      let(:asset_categories) { [ { category: { categoryName: "Articles", categoryTaxonomy: "" } } ] }
+      its(:valid?) { should be_true }
     end
     context 'when the category taxonomy is articles' do
-      let(:asset_categories) { [ { category: { categoryTaxonomy: "Creative Work/Articles" } } ] }
+      let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "Creative Work/Articles" } } ] }
+      its(:valid?) { should be_true }
+    end
+    context 'when there is no category taxonomy or name' do
+      its(:valid?) { should be_false }
     end
   end
 
