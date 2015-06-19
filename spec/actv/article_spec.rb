@@ -1,9 +1,13 @@
 require 'spec_helper'
 
 describe ACTV::Article do
-  let(:descriptions) { [] }
-  let(:asset_tags) { [] }
+  let(:descriptions) { [ { description: "article source", descriptionType: { descriptionTypeId: "1", descriptionTypeName: "articleSource" } },
+                         { description: "article subtitle", descriptionType: { descriptionTypeId: "2", descriptionTypeName: "subtitle" } },
+                         { description: "by Yason", descriptionType: { descriptionTypeId: "3", descriptionTypeName: "articleByLine" } },
+                         { description: "article footer", descriptionType: { descriptionTypeId: "4", descriptionTypeName: "footer" } } ] }
   let(:asset_images) { [] }
+  let(:asset_categories) { [] }
+  let(:asset_tags) { [] }
   let(:asset_references) { [] }
   let(:response) { { assetGuid: 1,
                      assetDescriptions: descriptions,
@@ -12,51 +16,42 @@ describe ACTV::Article do
                      assetReferences: asset_references } }
   subject(:article) { ACTV::Article.new response }
 
+  describe '#valid?' do
+    context 'when the category name is articles' do
+      let(:asset_categories) { [ { category: { categoryName: "Articles" } } ] }
+    end
+    context 'when the category taxonomy is articles' do
+      let(:asset_categories) { [ { category: { categoryTaxonomy: "Creative Work/Articles" } } ] }
+    end
+  end
+
   describe '#source' do
     context 'when an articleSource description exists' do
-      let(:descriptions) { [ { description: "article source",
-                               descriptionType: { descriptionTypeId: "1",
-                                                  descriptionTypeName: "articleSource" } } ] }
-      it 'returns the articleSource description' do
-        expect(article.source).to eq "article source"
-      end
+      its(:source) { should eq "article source" }
     end
     context 'when an articleSource description does not exist' do
-      it 'returns nil' do
-        expect(article.source).to be_nil
-      end
+      let(:descriptions) { [] }
+      its(:source) { should be_nil }
     end
   end
 
   describe '#type' do
     context 'when an articleType tag description exists' do
-      let(:asset_tags) { [ { tag: { tagId: '1',
-                                    tagName: 'article type',
-                                    tagDescription: 'articleType' } } ] }
-      it 'returns the articleType tag description name' do
-        expect(article.type).to eq "article type"
-      end
+      let(:asset_tags) { [ { tag: { tagId: '2', tagName: 'mediagallery', tagDescription: 'articleType' } } ] }
+      its(:type) { should eq "mediagallery" }
     end
     context 'when an articleType tag description does not exist' do
-      it 'returns nil' do
-        expect(article.type).to be_nil
-      end
+      its(:type) { should be_nil }
     end
   end
 
   describe '#media_gallery?' do
     context 'when the articleType tag is mediagallery' do
-      let(:asset_tags) { [ { tag: { tagId: '1',
-                                    tagName: 'mediagallery',
-                                    tagDescription: 'articleType' } } ] }
-      it 'returns true' do
-        expect(article.media_gallery?).to be_true
-      end
+      let(:asset_tags) { [ { tag: { tagId: '2', tagName: 'mediagallery', tagDescription: 'articleType' } } ] }
+      its(:media_gallery?) { should be_true }
     end
     context 'when the articleType tag is not mediagallery' do
-      it 'returns false' do
-        expect(article.media_gallery?).to be_false
-      end
+      its(:media_gallery?) { should be_false }
     end
   end
 
@@ -76,86 +71,77 @@ describe ACTV::Article do
 
   describe '#subtitle' do
     context 'when a subtitle description exists' do
-      let(:descriptions) { [ { description: "article subtitle",
-                               descriptionType: { descriptionTypeId: "1",
-                                                  descriptionTypeName: "subtitle" } } ] }
-      it 'returns the subtitle description' do
-        expect(article.subtitle).to eq "article subtitle"
-      end
+      its(:subtitle) { should eq "article subtitle" }
     end
     context 'when a subtitle description does not exist' do
-      it 'returns nil' do
-        expect(article.subtitle).to be_nil
-      end
+      let(:descriptions) { [] }
+      its(:subtitle) { should be_nil }
     end
   end
 
   describe '#footer' do
     context 'when a footer description exists' do
-      let(:descriptions) { [ { description: "article footer",
-                               descriptionType: { descriptionTypeId: "1",
-                                                  descriptionTypeName: "footer" } } ] }
-      it 'returns the footer description' do
-        expect(article.footer).to eq "article footer"
-      end
+      its(:footer) { should eq "article footer" }
     end
     context 'when a footer description does not exist' do
-      it 'returns nil' do
-        expect(article.footer).to be_nil
-      end
+      let(:descriptions) { [] }
+      its(:footer) { should be_nil }
     end
   end
 
   describe '#inline_ad?' do
     context 'if inlindead is set to true' do
-      let(:asset_tags) { [ { tag: { tagId: '1',
-                                    tagName: 'true',
-                                    tagDescription: 'inlinead' } } ] }
-      it 'should return true' do
-        article.inline_ad?.should eq true
-      end
+      let(:asset_tags) { [ { tag: { tagId: '1', tagName: 'true', tagDescription: 'inlinead' } } ] }
+      its(:inline_ad?) { should be_true }
     end
     context 'if inlindead is set to false' do
-      let(:asset_tags) { [ { tag: { tagId: '1',
-                                    tagName: 'false',
-                                    tagDescription: 'inlinead' } } ] }
-      it 'should return false' do
-        article.inline_ad?.should eq false
-      end
+      let(:asset_tags) { [ { tag: { tagId: '2', tagName: 'false', tagDescription: 'inlinead' } } ] }
+      its(:inline_ad?) { should be_false }
     end
     context 'if inlindead is not set' do
-      it 'should return true' do
-        article.inline_ad?.should eq true
-      end
+      its(:inline_ad?) { should be_true }
     end
   end
 
   describe '#author' do
     context 'when an author reference exists' do
+      let(:asset_references) { [ { referenceAsset: { assetGuid: "123" }, referenceType: { referenceTypeName: "author" } } ] }
       before do
         stub_request(:post, "http://api.amp.active.com/v2/assets.json").
           to_return(body: fixture("valid_author.json"))
       end
-      let(:asset_references) { [ { referenceAsset: { assetGuid: "123" },
-                                   referenceType: { referenceTypeName: "author" } } ] }
       context 'when the author exists in a3pi' do
-        it 'returns an author asset from a3pi' do
-          expect(article.author).to be_a ACTV::Author
-        end
+        its(:author) { should be_a ACTV::Author }
       end
       context 'when the author does not exist in a3pi' do
         before do
           allow(ACTV).to receive(:asset).and_raise ACTV::Error::NotFound
         end
-        it 'returns an author asset from the article hash' do
-          expect(article.author).to be_a ACTV::Author
-        end
+        its(:author) { should be_a ACTV::Author }
       end
     end
     context 'when an author reference does not exist' do
-      it 'returns an author asset' do
-        expect(article.author).to be_a ACTV::Author
+      its(:author) { should be_a ACTV::Author }
+    end
+  end
+
+  describe '#is_article?' do
+    its(:is_article?) { should be_true }
+  end
+
+  describe '#author_from_by_line' do
+    context 'when a by line is present' do
+      context 'when a match is found' do
+        its(:author_name_from_by_line) { should eq "Yason" }
       end
+      context 'when a match is not found' do
+        let(:descriptions) { [] }
+        its(:author_name_from_by_line) { should be_nil }
+      end
+    end
+    context 'when a by line is not present' do
+      let(:descriptions) { [] }
+      its(:author_name_from_by_line) { should be_nil }
     end
   end
 end
