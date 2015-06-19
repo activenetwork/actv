@@ -7,6 +7,10 @@ module ACTV
     attr_reader :author
     delegate :image_url, :footer, :bio, :photo, :name_from_footer, to: :author, prefix: true
 
+    def valid?
+      category_is?('articles') || taxonomy_has?('articles')
+    end
+
     def source
       @source ||= description_by_type 'articleSource'
     end
@@ -54,7 +58,6 @@ module ACTV
     end
 
     private
-
 
     def author_from_article
       ACTV::Author.build_from_article self.to_hash
