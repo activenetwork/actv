@@ -76,7 +76,7 @@ module ACTV
     end
 
     def resolve_inline_ad_tag
-      tag = tag_by_description('inlinead')
+      tag = tag_by_description 'inlinead'
       return false if tag && tag.downcase != 'true'
       true
     end
