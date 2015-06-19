@@ -58,23 +58,17 @@ describe ACTV::Author do
   describe '#name' do
     context 'when the author is created from an article' do
       let(:author_name) { "" }
-      let(:asset_descriptions) { {} }
-      let(:response) { { assetGuid: "777",
-                         assetDescriptions: asset_descriptions,
-                         authorName: author_name} }
+      let(:asset_descriptions) { [] }
+      let(:response) { { assetGuid: "777", assetDescriptions: asset_descriptions, authorName: author_name} }
       let(:author_from_article) { ACTV::Author.build_from_article response }
-
       context 'when author name exists in the author footer' do
-        let(:asset_descriptions) { [ { descriptionType: { descriptionTypeId: "3",
-                                                          descriptionTypeName: "authorFooter" },
-                                       description: "<span class='author-name'>Bob Marley</span>" } ] }
+        let(:asset_descriptions) { [ { descriptionType: { descriptionTypeId: "3", descriptionTypeName: "authorFooter" }, description: "<span class='author-name'>Bob Marley</span>" } ] }
         let(:author_name) { "Jimi Hendrix" }
 
         it 'returns the author name from the article footer' do
           expect(author_from_article.name).to eq "Bob Marley"
         end
       end
-
       context 'when author name exists only in the author name field' do
         let(:author_name) { "Jimi Hendrix" }
         it 'returns author name from the author name field' do
@@ -82,7 +76,6 @@ describe ACTV::Author do
         end
       end
     end
-
     context 'when the author is created from an author' do
       it 'returns the author name from the author footer' do
         expect(author.name).to eq "Jacquie Cattanach"
