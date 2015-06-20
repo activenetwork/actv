@@ -7,8 +7,8 @@ module ACTV
       new article_hash
     end
 
-    def valid?
-      category_is?('author') || taxonomy_has?('author')
+    def self.valid? response
+      ACTV::AuthorValidator.new(response).valid?
     end
 
     def name
