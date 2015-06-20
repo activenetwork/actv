@@ -16,26 +16,20 @@ describe ACTV::Event do
     format_date(date) << ' UTC'
   end
 
-  describe '#valid?' do
+  describe '#self.valid?' do
+    let(:asset_categories) { [] }
+    let(:response) { { assetGuid: 1, assetCategories: asset_categories } }
+    subject(:valid?) { ACTV::Event.valid? response }
     context 'when the category name is event' do
       let(:asset_categories) { [ { category: { categoryName: "Event", categoryTaxonomy: "" } } ] }
-      before do
-        allow(subject).to receive(:assetCategories).and_return asset_categories
-      end
-      its(:valid?) { should be_true }
+      it { should be_true }
     end
     context 'when the category taxonomy is event' do
       let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "Races/Event" } } ] }
-      before do
-        allow(subject).to receive(:assetCategories).and_return asset_categories
-      end
-      its(:valid?) { should be_true }
+      it { should be_true }
     end
     context 'when there is no category taxonomy or name' do
-      before do
-        allow(subject).to receive(:assetCategories).and_return []
-      end
-      its(:valid?) { should be_false }
+      it { should be_false }
     end
   end
 
