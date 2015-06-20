@@ -3,12 +3,12 @@ require 'nokogiri'
 require 'active_support/core_ext/module/delegation'
 
 module ACTV
-  class Article < ACTV::Asset
+  class Article < Asset
     attr_reader :author
     delegate :image_url, :footer, :bio, :photo, :name_from_footer, to: :author, prefix: true
 
-    def valid?
-      category_is?('articles') || taxonomy_has?('articles')
+    def self.valid? response
+      ACTV::ArticleValidator.new(response).valid?
     end
 
     def source
