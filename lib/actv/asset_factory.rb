@@ -7,11 +7,9 @@ module ACTV
     end
 
     def asset
-      ACTV::Asset.types.each do |type|
-        asset = type.new response
-        return asset if asset.valid?
-      end
-      ACTV::Asset.new response
+      types = ACTV::Asset.types
+      klass = types.find { |type| type.valid? response }
+      klass.new response
     end
   end
 end
