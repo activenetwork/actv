@@ -16,25 +16,19 @@ describe ACTV::Author do
   end
 
   describe '#valid?' do
+    let(:asset_categories) { [] }
+    let(:response) { { assetGuid: 1, assetCategories: asset_categories } }
+    subject(:valid?) { ACTV::Author.valid? response }
     context 'when the category name is author' do
       let(:asset_categories) { [ { category: { categoryName: "Author", categoryTaxonomy: "" } } ] }
-      before do
-        allow(author).to receive(:assetCategories).and_return asset_categories
-      end
-      its(:valid?) { should be_true }
+      it { should be_true }
     end
     context 'when the category taxonomy is author' do
       let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "Person/Author" } } ] }
-      before do
-        allow(author).to receive(:assetCategories).and_return asset_categories
-      end
-      its(:valid?) { should be_true }
+      it { should be_true }
     end
     context 'when there is no category taxonomy or name' do
-      before do
-        allow(author).to receive(:assetCategories).and_return []
-      end
-      its(:valid?) { should be_false }
+      it { should be_false }
     end
   end
 
