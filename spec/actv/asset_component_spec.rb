@@ -8,11 +8,10 @@ describe ACTV::AssetComponent do
   describe "#prices" do
     before(:each) do
       stub_post("/v2/assets.json").with(:body => {"id"=>true}).
-      to_return(body: fixture("valid_component_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+        to_return(body: fixture("valid_component_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
     end
 
     it 'returns the prices associated with the component' do
-      expect(subject.prices).to be_an(Array)
       expect(subject.prices.first).to be_an(ACTV::AssetPrice)
     end
   end
