@@ -50,15 +50,15 @@ module ACTV
     end
 
     def self.types
-      @types
+      @types + Array(self)
     end
 
     def self.from_response response={}
       AssetFactory.new(response[:body]).asset
     end
 
-    def valid?
-      true
+    def self.valid? response
+      AssetValidator.new(response).valid?
     end
 
     def endurance_id
@@ -368,23 +368,9 @@ module ACTV
     end
 
     def references
-      @asset_references ||= Array(@attrs[:assetReferences]).map do |reference|
+      @references ||= Array(@attrs[:assetReferences]).map do |reference|
         ACTV::AssetReference.new reference
       end
-    end
-    alias assetReferences references
-    alias asset_references references
-
-    def taxonomy_has? name
-      self.assetCategories.any? do |cat|
-        cat[:category][:categoryTaxonomy].downcase.include? name.downcase
-      end if self.assetCategories
-    end
-
-    def category_is? name
-      self.assetCategories.any? do |cat|
-        cat[:category][:categoryName].downcase == name.downcase
-      end if self.assetCategories
     end
 
     private
