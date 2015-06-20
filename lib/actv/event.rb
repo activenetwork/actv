@@ -1,13 +1,13 @@
 require 'actv/asset'
 
 module ACTV
-  class Event < ACTV::Asset
+  class Event < Asset
     attr_reader :salesStartDate, :salesEndDate, :activityStartDate, :activityEndDate
     alias sales_start_date salesStartDate
     alias sales_end_date salesEndDate
 
-    def valid?
-      category_is?('event') || taxonomy_has?('event')
+    def self.valid? response
+      ACTV::EventValidator.new(response).valid?
     end
 
     def online_registration_available?
