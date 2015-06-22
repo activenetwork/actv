@@ -12,16 +12,20 @@ module ACTV
 
     private
 
+    def asset_categories
+      response[:assetCategories] || []
+    end
+
     def taxonomy_has? name
-      response[:assetCategories].any? do |cat|
+      asset_categories.any? do |cat|
         cat[:category][:categoryTaxonomy].downcase.include? name.downcase
-      end if response[:assetCategories]
+      end
     end
 
     def category_is? name
-      response[:assetCategories].any? do |cat|
+      asset_categories.any? do |cat|
         cat[:category][:categoryName].downcase == name.downcase
-      end if response[:assetCategories]
+      end
     end
   end
 end
