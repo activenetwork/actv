@@ -298,7 +298,7 @@ describe ACTV::Client do
         expect(asset).to be_an ACTV::Author
       end
     end
-    context 'when mutiple asset guids are passed' do
+    context 'when multiple asset guids are passed' do
       let(:fixture_asset) { "valid_assets.json" }
       it 'returns an author' do
         expect(assets.first).to be_an ACTV::Author
