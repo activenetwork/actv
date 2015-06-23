@@ -4,6 +4,7 @@ require 'actv/asset_description'
 require 'actv/asset_image'
 require 'actv/asset_legacy_data'
 require 'actv/asset_price'
+require 'actv/asset_reference'
 require 'actv/asset_status'
 require 'actv/asset_tag'
 require 'actv/asset_topic'
@@ -14,6 +15,7 @@ require 'actv/recurrence'
 
 module ACTV
   class Asset < ACTV::Identity
+    @types = []
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
@@ -42,6 +44,22 @@ module ACTV
     alias minimum_age regReqMinAge
     alias maximum_age regReqMaxAge
     alias required_gender regReqGenderCd
+
+    def self.inherited base
+      @types << base
+    end
+
+    def self.types
+      @types + Array(self)
+    end
+
+    def self.from_response response={}
+      AssetFactory.new(response[:body]).asset
+    end
+
+    def self.valid? response
+      AssetValidator.new(response).valid?
+    end
 
     def endurance_id
       if self.awendurance?
@@ -181,28 +199,11 @@ module ACTV
     end
 
     def is_event?
-      self.assetCategories.each do |category|
-        if category[:category][:categoryTaxonomy].downcase.start_with?('event')
-          return true
-        end
-      end
       false
     end
 
     def is_article?
-      is_article = false
-      if self.assetCategories.any?
-        self.assetCategories.each do |category|
-          if category[:category][:categoryName].downcase == 'articles'
-            is_article = true
-          end
-        end
-      else
-        # no categories so check the sourceSystem
-        is_article = articles_source?
-      end
-
-      is_article
+      false
     end
 
     def has_location?
@@ -247,6 +248,10 @@ module ACTV
 
     def researched?
       self.sourceSystem[:legacyGuid].upcase == "B47B0828-23ED-4D85-BDF0-B22819F53332" rescue false
+    end
+
+    def acm?
+      self.sourceSystem[:legacyGuid].upcase == "CA4EA0B1-7377-470D-B20D-BF6BEA23F040" rescue false
     end
 
     def kids?
@@ -348,7 +353,7 @@ module ACTV
       image = image_without_placeholder.imageUrlAdr rescue ""
 
       if image.empty? and (logoUrlAdr && logoUrlAdr != default_image && !(logoUrlAdr =~ URI::regexp).nil?)
-          image = logoUrlAdr
+        image = logoUrlAdr
       end
 
       image
@@ -360,6 +365,12 @@ module ACTV
 
     def image
       image_without_placeholder
+    end
+
+    def references
+      @references ||= Array(@attrs[:assetReferences]).map do |reference|
+        ACTV::AssetReference.new reference
+      end
     end
 
     private
@@ -395,20 +406,13 @@ module ACTV
       end
     end
 
-private
-
     def kids_interest?
       interests = meta_interests.to_a.map(&:downcase)
       ['kids', 'family'].any? { |tag| interests.include? tag }
     end
 
     def kids_friendly_source_system?
-      activenet? || awcamps30? || articles_source? || researched?
-    end
-
-    def articles_source?
-      # this guid is equal to the Active.com Articles
-      self.sourceSystem.fetch(:legacyGuid, "").upcase == "CA4EA0B1-7377-470D-B20D-BF6BEA23F040"
+      activenet? || awcamps30? || acm? || researched?
     end
 
   end

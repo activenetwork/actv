@@ -1,0 +1,135 @@
+{
+  "assetStatus": {
+    "assetStatusId": "2",
+    "assetStatusName": "VISIBLE"
+  },
+  "organization": {},
+  "place": {
+    "placeGuid": "0b794135-fa1a-41b4-90da-c29a381929c1",
+    "placeName": "Author",
+    "placeDsc": "",
+    "placeUrlAdr": "",
+    "addressLine1Txt": " ",
+    "addressLine2Txt": "",
+    "cityName": " ",
+    "stateProvinceCode": " ",
+    "localityName": "",
+    "postalCode": " ",
+    "countryName": "",
+    "countryCode": "",
+    "timezone": "",
+    "timezoneOffset": null,
+    "timezoneDST": null,
+    "latitude": "",
+    "longitude": "",
+    "directionsTxt": ""
+  },
+  "evergreenParentAsset": {},
+  "sourceSystem": {
+    "sourceSystemName": "Active.com Articles",
+    "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+    "affiliate": "false"
+  },
+  "assetRootAsset": {},
+  "assetParentAsset": {},
+  "market": {},
+  "assetGuid": "34f4d344-97b0-4c2a-8920-f026f51742b2",
+  "assetName": "Jacquie Cattanach",
+  "assetDsc": "",
+  "alternateName": "",
+  "timezone": "",
+  "localTimeZoneId": "",
+  "timezoneAbb": "",
+  "timezoneName": "",
+  "currencyCd": "",
+  "localeCd": "",
+  "salesStartDate": null,
+  "salesEndDate": null,
+  "urlAdr": "",
+  "detailPageTemplateId": "",
+  "preferredUrlAdr": "",
+  "logoUrlAdr": "",
+  "activityStartDate": null,
+  "activityEndDate": null,
+  "donationUrlAdr": "",
+  "teamUrlAdr": "",
+  "homePageUrlAdr": "",
+  "registrationUrlAdr": "",
+  "registrantSearchUrlAdr": "",
+  "regReqMinAge": "",
+  "regReqMaxAge": "",
+  "regReqGenderCd": "",
+  "resultsUrlAdr": "",
+  "contactName": "",
+  "contactEmailAdr": "",
+  "contactPhone": "",
+  "contactTxt": "",
+  "showContact": "false",
+  "sorId": "",
+  "sorCreateDtm": null,
+  "sorCreateUserId": "",
+  "authorName": "",
+  "childIndex": "",
+  "publishDate": null,
+  "createdDate": "2015-06-15T20:42:05",
+  "modifiedDate": "2015-06-15T21:24:50",
+  "retryDate": "2015-06-15T17:34:46",
+  "retryCounter": "2",
+  "activityRecurrences": [],
+  "assetQuantity": {},
+  "assetLegacyData": {},
+  "assetTags": [],
+  "assetAttributes": [],
+  "assetPrices": [],
+  "assetDescriptions": [
+    {
+      "descriptionType": {
+        "descriptionTypeId": "28",
+        "descriptionTypeName": "authorFooter"
+      },
+      "description": "<div class=\"article-signature-block\"><div class=\"signature-block-photo\"><img alt=\"\" width=\"58\" height=\"58\" src=\"http://www.active.com/Assets/Running/Bios/jacquie-cattanach-bio.jpg\" /></div><div class=\"author-info\"><p><span class=\"author-link\"><a href=\"http://search.active.com/search?f=articles&amp;v=list&amp;k=%22jacquie+cattanach%22\" title=\"Jacquie Cattanach\">More Articles by Jacquie?</a></span><span class=\"author-name\">Jacquie Cattanach</span></p><p><span class=\"author-name\"></span></p><div class=\"author-text\">Jacquie Cattanach is an avid runner and triathlete whose  biggest achievements have been 15 marathons and Ironman Canada.  She has learned and experienced a lot of  trials and tribulations along the way and she loves to write about them in her blog <a href=\"http://online-running-gear.com/blog/\" title=\"http://online-running-gear.com/blog/\" target=\"_blank\">Online Running Gear Blog</a>, where she also researches, reviews and recommends running products such as the <a href=\"http://online-running-gear.com/blog/running-gear-3/garmin-forerunner-405-review\" title=\"http://online-running-gear.com/blog/running-gear-3/garmin-forerunner-405-review\" target=\"_blank\">Garmin Forerunner 405</a> and the <a href=\"http://online-running-gear.com/blog/running-gear-3/p90x-review/\" title=\"http://online-running-gear.com/blog/running-gear-3/p90x-review/\" target=\"_blank\">P90X Workout Review</a>.</div></div></div>"
+    }
+  ],
+  "assetChannels": [],
+  "assetMediaTypes": [
+    {
+      "sequence": "1",
+      "mediaType": {
+        "mediaTypeId": "327",
+        "mediaTypeName": "Features & News",
+        "mediaTypeDsc": ""
+      }
+    }
+  ],
+  "assetImages": [],
+  "assetTopics": [],
+  "assetCategories": [
+    {
+      "sequence": "1",
+      "category": {
+        "categoryId": "290",
+        "categoryTaxonomy": "Person/Author",
+        "categoryName": "Author"
+      }
+    }
+  ],
+  "assetMetaInterests": [],
+  "assetInterests": [],
+  "assetDeals": [],
+  "socialMedia": [],
+  "assetComponents": [],
+  "assetServiceHostName": "as-app-qa02",
+  "componentInUrlAdr": {},
+  "assetSeoUrls": [
+    {
+      "seoSystemName": "as3",
+      "statusCode": "true",
+      "urlAdr": "http://www.active.com/articles/jacquie-cattanach"
+    }
+  ],
+  "overrideSeourlFlag": "false",
+  "activenetTopGraphic": {},
+  "evergreenAssetFlag": "false",
+  "evergreenAssets": [],
+  "assetReferences": []
+}

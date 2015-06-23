@@ -1,42 +1,14 @@
 require 'actv/asset'
 require 'nokogiri'
+require 'active_support/core_ext/module/delegation'
 
 module ACTV
-  class Article < ACTV::Asset
+  class Article < Asset
+    attr_reader :author
+    delegate :image_url, :footer, :bio, :photo, :name_from_footer, to: :author, prefix: true
 
-    def author_footer
-      @author_footer ||= description_by_type 'authorFooter'
-    end
-
-    def by_line
-      @author ||= description_by_type 'articleByLine'
-    end
-
-    def author_bio
-      @author_bio ||= begin
-        bio_node = get_from_author_footer('div.author-text')
-        bio_node.inner_html unless bio_node.nil?
-      end
-    end
-
-    def author_photo
-      @author_photo ||= begin
-        image = nil
-
-        image_node = get_from_author_footer('div.signature-block-photo img')
-        if !image_node.nil?
-          image = ACTV::AssetImage.new({imageUrlAdr: image_node.attribute('src').text}) if image_node.attribute 'src'
-        end
-
-        image
-      end
-    end
-
-    def author_name_from_footer
-      @author_name_from_footer ||= begin
-        name_node = get_from_author_footer('span.author-name')
-        name_node.text unless name_node.nil?
-      end
+    def self.valid? response
+      ACTV::ArticleValidator.new(response).valid?
     end
 
     def source
@@ -48,7 +20,7 @@ module ACTV
     end
 
     def media_gallery?
-      self.type and self.type.downcase == "mediagallery"
+      type && type.downcase == "mediagallery"
     end
 
     def image
@@ -64,30 +36,49 @@ module ACTV
     end
 
     def inline_ad
-      @inline_ad ||= begin
-        val = tag_by_description 'inlinead'
-        if val
-          val.downcase == 'true'
-        else
-          true
-        end
-      end
+      @inline_ad ||= resolve_inline_ad_tag
     end
     alias inline_ad? inline_ad
 
+    def author
+      @author ||= author_from_reference || author_from_article
+    end
+
+    def by_line
+      @by_line ||= description_by_type 'articleByLine'
+    end
+
+    def is_article?
+      true
+    end
+
+    def author_name_from_by_line
+      author_name_regex = /by (.*)/i.match by_line
+      author_name_regex[1].strip if author_name_regex.present?
+    end
+
     private
 
-      def get_from_author_footer(selector)
-        node = nil
+    def author_from_article
+      ACTV::Author.build_from_article self.to_hash
+    end
 
-        if !author_footer.nil? && !author_footer.empty?
-          doc = Nokogiri::HTML(author_footer)
-          node = doc.css(selector).first
-        end
-
-        node
+    def author_from_reference
+      if author_reference
+        ACTV.asset(author_reference.id).first
       end
+    rescue ACTV::Error::NotFound
+      nil
+    end
+
+    def author_reference
+      references.find { |reference| reference.type == "author" }
+    end
+
+    def resolve_inline_ad_tag
+      tag = tag_by_description 'inlinead'
+      return false if tag && tag.downcase != 'true'
+      true
+    end
   end
 end
-
-

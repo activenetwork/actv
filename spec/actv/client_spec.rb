@@ -212,7 +212,7 @@ describe ACTV::Client do
     context 'find event' do
       before do
         stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
-          to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+          to_return(body: fixture("valid_event.json"), headers: { content_type: "application/json; charset=utf-8" })
       end
 
       it 'makes a normal asset call' do
@@ -220,10 +220,10 @@ describe ACTV::Client do
       end
     end
 
-    context 'when mutiple event ids' do
+    context 'when multiple event ids' do
       before do
         stub_request(:get, "http://api.amp.active.com/v2/assets/asset_ids.json").
-          to_return(body: fixture("valid_assets.json"), headers: { content_type: "application/json; charset=utf-8" })
+          to_return(body: fixture("valid_events.json"), headers: { content_type: "application/json; charset=utf-8" })
       end
 
       it 'returns an Array of Events' do
@@ -237,7 +237,7 @@ describe ACTV::Client do
       context 'when preview is true' do
         before do
           stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id/preview.json").
-            to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+            to_return(body: fixture("valid_event.json"), headers: { content_type: "application/json; charset=utf-8" })
         end
 
         it 'returns an event' do
@@ -248,11 +248,82 @@ describe ACTV::Client do
       context 'when preview is false' do
         before do
           stub_request(:get, "http://api.amp.active.com/v2/assets/asset_id.json").
-            to_return(body: fixture("valid_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
+            to_return(body: fixture("valid_event.json"), headers: { content_type: "application/json; charset=utf-8" })
         end
 
         it 'returns an event' do
           expect(client.event 'asset_id', preview: 'false').to be_an ACTV::Event
+        end
+      end
+    end
+  end
+
+  describe '#asset' do
+    let(:configuration) do
+      { consumer_key: "CK",
+        consumer_secret: "CS",
+        oauth_token: "OT",
+        oauth_token_secret: "OS"}
+    end
+    let(:fixture_asset) { "valid_asset.json" }
+    let(:request_type) { :post }
+    let(:endpoint) { "http://api.amp.active.com/v2/assets.json" }
+    let(:asset) { client.asset('asset_id').first }
+    let(:assets) { client.asset('author_guid,article_guid,event_guid') }
+    before do
+      stub_request(request_type, endpoint).
+        to_return(body: fixture(fixture_asset), headers: { content_type: "application/json; charset=utf-8" })
+    end
+
+    context 'when an asset guid with no category is passed' do
+      it 'returns an event' do
+        expect(asset).to be_an ACTV::Asset
+      end
+    end
+    context 'when an event guid is passed' do
+      let(:fixture_asset) { "valid_event.json" }
+      it 'returns an event' do
+        expect(asset).to be_an ACTV::Event
+      end
+    end
+    context 'when an article guid is passed' do
+      let(:fixture_asset) { "valid_article.json" }
+      it 'returns an article' do
+        expect(asset).to be_an ACTV::Article
+      end
+    end
+    context 'when an author guid is passed' do
+      let(:fixture_asset) { "valid_author.json" }
+      it 'returns an author' do
+        expect(asset).to be_an ACTV::Author
+      end
+    end
+    context 'when multiple asset guids are passed' do
+      let(:fixture_asset) { "valid_assets.json" }
+      it 'returns an author' do
+        expect(assets.first).to be_an ACTV::Author
+      end
+      it 'returns an article' do
+        expect(assets[1]).to be_an ACTV::Article
+      end
+      it 'returns an event' do
+        expect(assets.last).to be_an ACTV::Event
+      end
+    end
+    context 'when a preview key is provided' do
+      context 'when preview is true' do
+        let(:request_type) { :get }
+        let(:endpoint) { "http://api.amp.active.com/v2/assets/asset_id/preview.json" }
+        let(:asset) { client.asset('asset_id', preview: 'true').first }
+        it 'returns an asset' do
+          expect(asset).to be_an ACTV::Asset
+        end
+      end
+      context 'when preview is false' do
+        let(:endpoint) { "http://api.amp.active.com/v2/assets.json" }
+        let(:asset) { client.asset('asset_id', preview: 'false').first }
+        it 'returns an asset' do
+          expect(asset).to be_an ACTV::Asset
         end
       end
     end

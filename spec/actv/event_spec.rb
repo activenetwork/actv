@@ -16,14 +16,22 @@ describe ACTV::Event do
     format_date(date) << ' UTC'
   end
 
-  # describe "available methods" do
-  #   subject { ACTV::Event.new(assetGuid: 1) }
-  #   it { should respond_to :online_registration_available? }
-  #   it { should respond_to :registration_not_yet_open? }
-  #   it { should respond_to :registration_open? }
-  #   it { should respond_to :registration_closed? }
-  #   it { should respond_to :event_ended? }
-  # end
+  describe '#self.valid?' do
+    let(:asset_categories) { [] }
+    let(:response) { { assetGuid: 1, assetCategories: asset_categories } }
+    subject(:valid?) { ACTV::Event.valid? response }
+    context 'when the category name is event' do
+      let(:asset_categories) { [ { category: { categoryName: "Event", categoryTaxonomy: "" } } ] }
+      it { should be_true }
+    end
+    context 'when the category taxonomy is event' do
+      let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "Races/Event" } } ] }
+      it { should be_true }
+    end
+    context 'when there is no category taxonomy or name' do
+      it { should be_false }
+    end
+  end
 
   describe '#online_registration_available?' do
     context 'when online_registration_available is true' do

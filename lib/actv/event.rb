@@ -1,10 +1,14 @@
 require 'actv/asset'
 
 module ACTV
-  class Event < ACTV::Asset
+  class Event < Asset
     attr_reader :salesStartDate, :salesEndDate, :activityStartDate, :activityEndDate
     alias sales_start_date salesStartDate
     alias sales_end_date salesEndDate
+
+    def self.valid? response
+      ACTV::EventValidator.new(response).valid?
+    end
 
     def online_registration_available?
       if is_present?(self.registrationUrlAdr)
@@ -120,8 +124,6 @@ module ACTV
       place.timezoneOffset + place.timezoneDST
     end
 
-    ############
-
     def image_url
       defaultImage = 'http://www.active.com/images/events/hotrace.gif'
       image = ''
@@ -139,6 +141,10 @@ module ACTV
         end
       end
       image
+    end
+
+    def is_event?
+      true
     end
 
     alias online_registration? online_registration_available?
@@ -204,7 +210,6 @@ module ACTV
       return nil if time_string.nil? or time_string.empty?
       return Time.parse(time_string).utc
     end
-
   end
 end
 
