@@ -60,6 +60,7 @@ module ACTV
     alias search assets
 
     def asset id, params={}
+      params = params.with_indifferent_access
       is_preview = params.delete(:preview) == "true"
       response = request_response id, params, is_preview
       asset_from_response response
