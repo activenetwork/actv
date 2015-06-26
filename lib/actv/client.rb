@@ -143,7 +143,7 @@ module ACTV
 
       response = get "#{request_string}.json", params
 
-      article = ACTV::Article.from_response response
+      article = ACTV::Article.new response[:body]
       article.is_article? ? article : nil
     end
 
@@ -161,10 +161,10 @@ module ACTV
 
       if response[:body].is_a? Array
         response[:body].map do |item|
-          ACTV::Event.from_response body: item
+          ACTV::Event.new item
         end
       else
-        event = ACTV::Event.from_response(response)
+        event = ACTV::Event.new response[:body]
         event = ACTV::Evergreen.new(event) if event.evergreen?
         event.is_article? ? nil : event
       end
