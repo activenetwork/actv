@@ -32,6 +32,18 @@ describe ACTV::Author do
     end
   end
 
+  describe '#photo' do
+    context 'when the footer has an image' do
+      its(:photo) { should be_a ACTV::AssetImage }
+    end
+    context 'when the footer does not have an image' do
+      before do
+        allow(author).to receive(:from_footer).with("div.signature-block-photo img").and_return nil
+      end
+      its(:photo) { should be_nil }
+    end
+  end
+
   describe '#image_url' do
     context 'when photo url is a fully qualified url' do
       it 'returns the photo url' do
