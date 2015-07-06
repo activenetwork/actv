@@ -37,10 +37,11 @@ module ACTV
             :accept => 'application/json',
             :user_agent => "Active Ruby Gem #{ACTV::VERSION}"
           },
-          :open_timeout => 5,
-          :raw => true,
-          :ssl => {:verify => false},
-          :timeout => 10,
+          :request => {
+            :open_timeout => 5,
+            :timeout => 10
+          },
+          :ssl => {:verify => false}
         }
       end
 
