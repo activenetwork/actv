@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard-rspec'
   gem.add_development_dependency 'activesupport'
 
-  
+
   gem.authors       = ["Nathaniel Barnes"]
   gem.email         = ["Nathaniel.Barnes@activenetwork.com"]
   gem.description   = %q{A Ruby wrapper for the Active API}
