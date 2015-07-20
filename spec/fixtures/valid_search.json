@@ -186,7 +186,8 @@
                     "sequence": "2",
                     "category": {
                         "categoryId": "28",
-                        "categoryName": "Experts"
+                        "categoryName": "Experts",
+                        "categoryTaxonomy": "Person/Experts"
                     }
                 }
             ],
@@ -411,7 +412,7 @@
                     }
                 }
             ],
-            "assetCategories": "",
+            "assetCategories": [ ],
             "assetMetaInterests": "",
             "assetComponents": [ ],
             "assetServiceHostName": "asset-01"
@@ -1207,7 +1208,8 @@
                     "sequence": "2",
                     "category": {
                         "categoryId": "22",
-                        "categoryName": "Races"
+                        "categoryName": "Races",
+                        "categoryTaxonomy": "Event/Races"
                     }
                 }
             ],
