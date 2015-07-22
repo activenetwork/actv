@@ -8,7 +8,7 @@ describe ACTV::AssetComponent do
   describe "#prices" do
     before(:each) do
       stub_request(:post, "http://api.amp.active.com/v2/assets.json").
-        with(:body => {"id"=>""}, :headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Active Ruby Gem 1.4.4'}).
+        with(:body => {"id"=>""}, :headers => {'Accept'=>'application/json', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent' => "Active Ruby Gem #{ACTV::VERSION}"}).
         to_return(body: fixture("valid_component_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
     end
 
