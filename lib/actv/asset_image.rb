@@ -9,7 +9,7 @@ module ACTV
     alias link    linkUrl
     alias target  linkTarget
 
-    def is_video?
+    def video?
       target == "VIDEO" || type == "VIDEO"
     end
   end

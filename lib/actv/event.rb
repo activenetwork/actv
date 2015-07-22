@@ -148,7 +148,7 @@ module ACTV
     end
 
     def video
-      self.images.detect { |i| i.is_video? }
+      self.images.detect { |i| i.video? }
     end
 
     alias online_registration? online_registration_available?
