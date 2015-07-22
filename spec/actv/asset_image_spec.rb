@@ -3,9 +3,14 @@ require 'spec_helper'
 describe ACTV::AssetImage do
   let(:imageType) { 'IMAGE' }
   let(:linkTarget) { '_blank' }
-  subject(:img) { ACTV::AssetImage.new(imageUrlAdr: 'http://test.com/1.jpg',
-    imageName: 'image1', imageType: imageType, imageCaptionTxt: 'caption1', linkUrl: 'http://test.com/',
-    linkTarget: linkTarget) }
+  subject(:img) { ACTV::AssetImage.new({
+    imageUrlAdr: 'http://test.com/1.jpg',
+    imageName: 'image1',
+    imageType: imageType,
+    imageCaptionTxt: 'caption1',
+    linkUrl: 'http://test.com/',
+    linkTarget: linkTarget
+    }) }
 
   describe "attribute accessors and aliases" do
     its(:url){ should eq 'http://test.com/1.jpg' }
