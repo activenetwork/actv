@@ -356,33 +356,25 @@ describe ACTV::Event do
       it 'returns the video AssetImage' do
         subject.video.should eq image1
       end
-    end
 
-    context 'when the event has more than one video AssetImage' do
+      context 'when the event has more than one video AssetImage' do
 
-      let(:image1) { ACTV::AssetImage.new({
-        imageUrlAdr: 'http://test.com/1.jpg',
-        imageName: 'image1',
-        imageType: 'VIDEO',
-        imageCaptionTxt: 'caption1',
-        linkUrl: 'http://test.com/',
-        linkTarget: 'VIDEO'
-        }) }
-      let(:image2) { ACTV::AssetImage.new({
-        imageUrlAdr: 'http://test.com/2.jpg',
-        imageName: 'image2',
-        imageType: 'VIDEO',
-        imageCaptionTxt: 'caption2',
-        linkUrl: 'http://test.com/',
-        linkTarget: 'VIDEO'
-        }) }
-        
-      before do
-        allow(subject).to receive(:images).and_return([image1, image2])
-      end
+        let(:image2) { ACTV::AssetImage.new({
+          imageUrlAdr: 'http://test.com/2.jpg',
+          imageName: 'image2',
+          imageType: 'VIDEO',
+          imageCaptionTxt: 'caption2',
+          linkUrl: 'http://test.com/',
+          linkTarget: 'VIDEO'
+          }) }
 
-      it 'returns the first video AssetImage' do
-        subject.video.should eq image1
+        before do
+          allow(subject).to receive(:images).and_return([image1, image2])
+        end
+
+        it 'returns the first video AssetImage' do
+          subject.video.should eq image1
+        end
       end
     end
 
