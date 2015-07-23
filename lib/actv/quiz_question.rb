@@ -5,7 +5,7 @@ module ACTV
     end
 
     def answers
-      @answers ||= children_assets_filtered_by_category 'answer'
+      @answers ||= child_assets_filtered_by_category 'answer'
     end
   end
 end
