@@ -15,7 +15,7 @@ describe ACTV::QuizQuestion do
         allow(not_answer).to receive(:category_is?).with('answer') { false }
         components = [answer, not_answer]
         allow(question).to receive(:components) { components }
-        allow(ACTV).to receive(:asset).and_return components
+        allow(ACTV).to receive(:asset) { components }
 
         expect(answers).to eq [answer]
       end
