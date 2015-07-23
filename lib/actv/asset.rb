@@ -381,10 +381,10 @@ module ACTV
 
     private
 
-    def children_assets_filtered_by_category category
-      if components && components.any?
-        cmps = ACTV.asset components.map(&:assetGuid)
-        cmps.select { |c| c.category_is? category }
+    def child_assets_filtered_by_category category
+      if components.any?
+        children = ACTV.asset components.map(&:assetGuid)
+        children.select { |child| child.category_is? category }
       end || []
     end
 
