@@ -8,7 +8,6 @@ describe ACTV::AssetComponent do
   describe "#prices" do
     before(:each) do
       stub_request(:post, "http://api.amp.active.com/v2/assets.json").
-        with(:body => {"id"=>""}).
         to_return(body: fixture("valid_component_asset.json"), headers: { content_type: "application/json; charset=utf-8" })
     end
 
