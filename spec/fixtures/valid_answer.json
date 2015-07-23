@@ -1,0 +1,244 @@
+{
+  "assetVersion": 9,
+  "assetStatus": {
+    "assetStatusId": "2",
+    "assetStatusName": "VISIBLE"
+  },
+  "organization": {
+    "organizationGuid": "8d8fddd9-2bcc-4261-94c1-21680df04237",
+    "organizationName": "Article",
+    "organizationDsc": "",
+    "organizationUrlAdr": "",
+    "addressLine1Txt": "",
+    "addressLine2Txt": "",
+    "addressCityName": "",
+    "addressStateProvinceCode": "",
+    "addressLocalityName": "",
+    "addressPostalCd": "",
+    "addressCountryCd": "",
+    "fax": "",
+    "sourceSystemGuid": "ca4ea0b1-7377-470d-b20d-bf6bea23f040",
+    "primaryContactEmailAdr": "",
+    "primaryContactPhone": "",
+    "primaryContactName": "",
+    "imageUrlAdr": "",
+    "shortDsc": "",
+    "showOrganizationName": "false",
+    "hideOrganizationContact": "false",
+    "isDeleted": "false"
+  },
+  "place": {
+    "placeGuid": "0b794135-fa1a-41b4-90da-c29a381929c1",
+    "placeName": "Article",
+    "placeDsc": "",
+    "placeUrlAdr": "",
+    "addressLine1Txt": " ",
+    "addressLine2Txt": "",
+    "cityName": " ",
+    "stateProvinceCode": " ",
+    "localityName": "",
+    "postalCode": " ",
+    "countryName": "",
+    "countryCode": "",
+    "timezone": "",
+    "timezoneOffset": null,
+    "timezoneDST": null,
+    "latitude": "",
+    "longitude": "",
+    "directionsTxt": ""
+  },
+  "evergreenParentAsset": {
+    
+  },
+  "sourceSystem": {
+    "sourceSystemName": "Active.com Articles",
+    "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+    "affiliate": "false"
+  },
+  "assetRootAsset": {
+    
+  },
+  "assetParentAsset": {
+    "assetGuid": "250356a6-d8c0-4b0a-a358-2ff74e29aaac"
+  },
+  "market": {
+    
+  },
+  "assetGuid": "472e2d47-4b47-4e77-a49b-38bc8ea37533",
+  "assetName": "e",
+  "assetDsc": "",
+  "alternateName": "e",
+  "timezone": "",
+  "localTimeZoneId": "",
+  "timezoneAbb": "",
+  "timezoneName": "",
+  "currencyCd": "",
+  "localeCd": "",
+  "salesStartDate": null,
+  "salesEndDate": null,
+  "urlAdr": "http:\/\/www.active.com\/quizzes\/what-movie-should-you-run-in",
+  "detailPageTemplateId": "",
+  "preferredUrlAdr": "",
+  "logoUrlAdr": "",
+  "activityStartDate": null,
+  "activityEndDate": null,
+  "donationUrlAdr": "",
+  "teamUrlAdr": "",
+  "homePageUrlAdr": "",
+  "registrationUrlAdr": "",
+  "registrantSearchUrlAdr": "",
+  "regReqMinAge": null,
+  "regReqMaxAge": null,
+  "regReqGenderCd": "",
+  "resultsUrlAdr": "",
+  "contactName": "",
+  "contactEmailAdr": "",
+  "contactPhone": "",
+  "contactTxt": "",
+  "showContact": "false",
+  "sorId": "",
+  "sorCreateDtm": null,
+  "sorCreateUserId": "",
+  "authorName": "Melanie Clancy",
+  "childIndex": "5",
+  "publishDate": null,
+  "createdDate": "2015-07-16T18:13:24",
+  "modifiedDate": "2015-07-22T10:01:15",
+  "retryDate": "2015-07-22T10:01:15",
+  "retryCounter": "1",
+  "activityRecurrences": [
+    
+  ],
+  "assetQuantity": {
+    
+  },
+  "assetLegacyData": {
+    "assetTypeId": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+    "typeName": "",
+    "uploadSearchUrlAdr": "",
+    "authorName": "Melanie Clancy",
+    "onlineRegistration": "",
+    "onlineDonation": "",
+    "onlineMembership": "",
+    "onlineMembershipCostAmt": "",
+    "costAmt": "",
+    "avgUserRatingTxt": "",
+    "estParticipantNb": "",
+    "maxTeamNb": "",
+    "minGuaranteedGameNb": "",
+    "multipleStartDate": "",
+    "genderRequirementTxt": "",
+    "participationCriteriaTxt": "",
+    "userCommentTxt": "",
+    "priceExtensionTxt": "",
+    "searchWeight": "",
+    "seoUrl": "",
+    "substitutionUrl": "\/quizzes\/what-movie-should-you-run-in",
+    "trackbackUrl": "http:\/\/www.active.com\/quizzes\/what-movie-should-you-run-in",
+    "eventCategories": "",
+    "isSearchable": "true",
+    "createdDate": "2015-07-16T18:13:25",
+    "modifiedDate": "2015-07-22T10:01:15"
+  },
+  "assetTags": [
+    {
+      "tag": {
+        "tagId": "232486",
+        "tagName": "content",
+        "tagDescription": "feature"
+      }
+    }
+  ],
+  "assetAttributes": [
+    
+  ],
+  "assetPrices": [
+    
+  ],
+  "assetDescriptions": [
+    {
+      "descriptionType": {
+        "descriptionTypeId": "6",
+        "descriptionTypeName": "Standard"
+      },
+      "description": "At the gym."
+    }
+  ],
+  "assetChannels": [
+    
+  ],
+  "assetMediaTypes": [
+    {
+      "sequence": "1",
+      "mediaType": {
+        "mediaTypeId": "327",
+        "mediaTypeName": "Features & News",
+        "mediaTypeDsc": ""
+      }
+    }
+  ],
+  "assetImages": [
+    {
+      "imageUrlAdr": "http:\/\/www.active.com\/Assets\/san-elijo-state-beach.jpg",
+      "imageName": "image2",
+      "linkUrl": "",
+      "linkTarget": "",
+      "imageCaptionTxt": "",
+      "imageType": "IMAGE"
+    }
+  ],
+  "assetTopics": [
+    
+  ],
+  "assetCategories": [
+    {
+      "sequence": "1",
+      "category": {
+        "categoryId": "306",
+        "categoryTaxonomy": "Creative Work\/Quiz\/Question\/Answer",
+        "categoryName": "Answer"
+      }
+    }
+  ],
+  "assetMetaInterests": [
+    
+  ],
+  "assetInterests": [
+    
+  ],
+  "assetDeals": [
+    
+  ],
+  "socialMedia": [
+    
+  ],
+  "assetComponents": [
+    
+  ],
+  "assetServiceHostName": "as-app-qa02",
+  "componentInUrlAdr": {
+    
+  },
+  "assetSeoUrls": [
+    
+  ],
+  "overrideSeourlFlag": "false",
+  "activenetTopGraphic": {
+    
+  },
+  "evergreenAssetFlag": "false",
+  "evergreenAssets": [
+    
+  ],
+  "assetReferences": [
+    {
+      "referenceAsset": {
+        "assetGuid": "04745751-2e92-4904-a126-09e516d9d661"
+      },
+      "referenceType": {
+        "referenceTypeName": "outcome"
+      }
+    }
+  ],
+  "salesStatus": "registration-unavailable"
+}

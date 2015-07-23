@@ -1,22 +1,31 @@
 require "spec_helper"
+
 describe ACTV::QuizAnswer do
-  let(:asset_categories) { [ { category: { categoryName: "Answer", categoryTaxonomy: "Creative Work:Quiz:Question:Answer" } } ] }
-  let(:response) { { body: { assetGuid: 1, assetCategories: asset_categories } } }
-  subject(:answer) { ACTV::Asset.from_response response }
+  before do
+    stub_post("/v2/assets.json").with(:body => {"id"=>"valid_answer"}).
+      to_return(body: fixture("valid_answer.json"))
+
+    stub_post("/v2/assets.json").with(:body => {"id"=>"04745751-2e92-4904-a126-09e516d9d661"}).
+      to_return(body: fixture("valid_outcome.json"))
+  end
+
+  subject(:answer) { ACTV.asset('valid_answer').first }
 
   describe '#outcome' do
     subject(:outcome) { answer.outcome }
     context 'when there is an outcome' do
       it 'returns an outcome asset' do
-        outcome_asset = double :outcome
-        references = [double(type:'outcome',full_asset:outcome_asset), double(type:'not_outcome')]
-        allow(answer).to receive(:references) { references }
-
-        expect(outcome).to eq outcome_asset
+        expect(answer.outcome.id).to eq answer.references[0].id
       end
     end
+
     context 'when there is not an outcome' do
+      before do
+        answer.stub(:references) { [] }
+      end
+
       it { should be_nil }
     end
+
   end
 end

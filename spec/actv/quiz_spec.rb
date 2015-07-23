@@ -1,4 +1,5 @@
 require "spec_helper"
+
 describe ACTV::Quiz do
   let(:asset_categories) { [ { category: { categoryName: "Quiz", categoryTaxonomy: "Creative Work:Quiz" } } ] }
   let(:response) { { body: { assetGuid: 1, assetCategories: asset_categories } } }
@@ -6,18 +7,21 @@ describe ACTV::Quiz do
 
   describe '#questions' do
     subject(:questions) { quiz.questions }
+
     context 'when there are question assets' do
       it 'returns an array of quiz questions' do
-        question = double(:question)
+        question = double(:question, assetGuid: 123)
         allow(question).to receive(:category_is?).with('question') { true }
-        not_question = double(:not_question)
+        not_question = double(:not_question, assetGuid: 234)
         allow(not_question).to receive(:category_is?).with('question') { false }
-        components = [double(full_asset:question), double(full_asset:not_question)]
+        components = [question, not_question]
         allow(quiz).to receive(:components) { components }
+        allow(ACTV).to receive(:asset).and_return components
 
         expect(questions).to eq [question]
       end
     end
+
     context 'when there are not question assets' do
       it { should be_empty }
     end
@@ -25,18 +29,21 @@ describe ACTV::Quiz do
 
   describe '#outcomes' do
     subject(:outcomes) { quiz.outcomes }
+
     context 'when there are outcome assets' do
       it 'returns an array of quiz outcomes' do
-        outcome = double(:outcome)
+        outcome = double(:outcome, assetGuid: 123)
         allow(outcome).to receive(:category_is?).with('outcome') { true }
-        not_outcome = double(:not_outcome)
+        not_outcome = double(:not_outcome, assetGuid: 234)
         allow(not_outcome).to receive(:category_is?).with('outcome') { false }
-        components = [double(full_asset:outcome), double(full_asset:not_outcome)]
+        components = [outcome, not_outcome]
         allow(quiz).to receive(:components) { components }
+        allow(ACTV).to receive(:asset).and_return components
 
         expect(outcomes).to eq [outcome]
       end
     end
+
     context 'when there are no outcome assets' do
       it { should be_empty }
     end
