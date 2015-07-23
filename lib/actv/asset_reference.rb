@@ -8,8 +8,5 @@ module ACTV
       @attrs[:referenceType][:referenceTypeName]
     end
 
-    def full_asset
-      ACTV.asset(id).first
-    end
   end
 end

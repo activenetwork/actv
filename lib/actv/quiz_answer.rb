@@ -5,10 +5,13 @@ module ACTV
     end
 
     def outcome
-      @outcome ||= references.find do |reference|
-        reference.type.downcase == 'outcome'
+      @outcome ||= begin
+        reference_id = references.find do |reference|
+          reference.type.downcase == 'outcome'
+        end
+
+        ACTV.asset(reference_id.id).first if reference_id
       end
-      @outcome.full_asset if @outcome
     end
   end
 end

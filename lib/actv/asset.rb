@@ -382,9 +382,10 @@ module ACTV
     private
 
     def children_assets_filtered_by_category category
-      components.select do |component|
-        component.full_asset.category_is? category
-      end.compact.map &:full_asset
+      if components && components.any?
+        cmps = ACTV.asset components.map(&:assetGuid)
+        cmps.select { |c| c.category_is? category }
+      end || []
     end
 
     def image_without_placeholder
