@@ -16,7 +16,7 @@ describe ACTV::Quiz do
         allow(not_question).to receive(:category_is?).with('question') { false }
         components = [question, not_question]
         allow(quiz).to receive(:components) { components }
-        allow(ACTV).to receive(:asset).and_return components
+        allow(ACTV).to receive(:asset) { components }
 
         expect(questions).to eq [question]
       end
@@ -38,7 +38,7 @@ describe ACTV::Quiz do
         allow(not_outcome).to receive(:category_is?).with('outcome') { false }
         components = [outcome, not_outcome]
         allow(quiz).to receive(:components) { components }
-        allow(ACTV).to receive(:asset).and_return components
+        allow(ACTV).to receive(:asset) { components }
 
         expect(outcomes).to eq [outcome]
       end
