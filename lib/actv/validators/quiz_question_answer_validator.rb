@@ -1,6 +1,6 @@
 require 'actv/validators/asset_validator'
 module ACTV
-  class QuizAnswerValidator < AssetValidator
+  class QuizQuestionAnswerValidator < AssetValidator
     def valid?
       category_is?('answer')
     end

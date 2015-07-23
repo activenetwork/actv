@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe ACTV::QuizAnswerValidator do
+describe ACTV::QuizQuestionAnswerValidator do
   let(:asset_categories) { [] }
   let(:response) { { assetGuid: 1, assetCategories: asset_categories } }
-  subject(:validator) { ACTV::QuizAnswerValidator.new(response).valid? }
+  subject(:validator) { ACTV::QuizQuestionAnswerValidator.new(response).valid? }
 
   describe '#valid?' do
     context 'when the response is valid' do
