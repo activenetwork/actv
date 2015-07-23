@@ -1,4 +1,4 @@
-require 'actv/asset_validator'
+require 'actv/validators/asset_validator'
 module ACTV
   class EventValidator < AssetValidator
     def valid?

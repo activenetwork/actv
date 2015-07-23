@@ -7,5 +7,6 @@ module ACTV
     def type
       @attrs[:referenceType][:referenceTypeName]
     end
+
   end
 end

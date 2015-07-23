@@ -7,10 +7,10 @@ module ACTV
   class SearchResults < ACTV::Base
     attr_reader :items_per_page, :start_index, :total_results, :original_query, :actual_query
 
-    # @return [Array<ACTV::Asset>]
     def results
       @results ||= Array(@attrs[:results]).map do |asset|
-        ACTV::Asset.new(asset)
+        response = { body: asset }
+        ACTV::Asset.from_response response
       end
     end
     alias to_a results

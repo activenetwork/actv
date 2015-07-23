@@ -1,4 +1,4 @@
-require 'actv/author_validator'
+require 'actv/validators/asset_validator'
 module ACTV
   class AuthorValidator < AssetValidator
     def valid?

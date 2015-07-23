@@ -373,7 +373,20 @@ module ACTV
       end
     end
 
+    def category_is? name
+      @attrs[:assetCategories].any? do |cat|
+        cat[:category][:categoryName].downcase == name.downcase
+      end
+    end
+
     private
+
+    def child_assets_filtered_by_category category
+      if components.any?
+        children = ACTV.asset components.map(&:assetGuid)
+        children.select { |child| child.category_is? category }
+      end || []
+    end
 
     def image_without_placeholder
       default_image = 'http://www.active.com/images/events/hotrace.gif'
@@ -414,6 +427,5 @@ module ACTV
     def kids_friendly_source_system?
       activenet? || awcamps30? || acm? || researched?
     end
-
   end
 end
