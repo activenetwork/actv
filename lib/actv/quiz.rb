@@ -5,11 +5,11 @@ module ACTV
     end
 
     def questions
-      @questions ||= children_assets_filtered_by_category 'question'
+      @questions ||= child_assets_filtered_by_category 'question'
     end
 
     def outcomes
-      @outcomes ||= children_assets_filtered_by_category 'outcome'
+      @outcomes ||= child_assets_filtered_by_category 'outcome'
     end
   end
 end
