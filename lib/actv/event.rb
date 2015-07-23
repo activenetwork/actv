@@ -147,6 +147,10 @@ module ACTV
       true
     end
 
+    def video
+      self.images.detect { |i| i.video? }
+    end
+
     alias online_registration? online_registration_available?
     alias reg_open? registration_open?
     alias reg_closed? registration_closed?
@@ -212,5 +216,3 @@ module ACTV
     end
   end
 end
-
-
