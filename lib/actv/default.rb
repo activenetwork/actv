@@ -49,7 +49,7 @@ module ACTV
       # @see https://github.com/technoweenie/faraday#advanced-middleware-usage
       # @see http://mislav.uniqpath.com/2011/07/faraday-advanced-http/
       def middleware
-        @middleware ||= Faraday::Builder.new(
+        @middleware ||= Faraday::RackBuilder.new(
           &Proc.new do |builder|
             builder.use ACTV::Request::MultipartWithFile # Convert file uploads to Faraday::UploadIO objects
             builder.use Faraday::Request::Multipart         # Checks for files in the payload
