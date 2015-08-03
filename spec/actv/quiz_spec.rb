@@ -48,4 +48,22 @@ describe ACTV::Quiz do
       it { should be_empty }
     end
   end
+
+  describe '#find_outcome_by_id' do
+    subject(:outcome) { quiz.find_outcome_by_id "123" }
+
+    context 'when the outcome exists' do
+      it 'returns an outcome' do
+        outcome_a = double(:outcome_a, assetGuid: "123")
+        outcome_b = double(:outcome_b, assetGuid: "234")
+        outcomes = [outcome_a, outcome_b]
+        allow(quiz).to receive(:outcomes) { outcomes }
+
+        expect(outcome).to eq outcome_a
+      end
+    end
+    context 'when the outcome does not exist' do
+      it { should be_nil }
+    end
+  end
 end
