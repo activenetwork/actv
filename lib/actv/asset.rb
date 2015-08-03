@@ -382,12 +382,15 @@ module ACTV
     private
 
     def child_assets_filtered_by_category category
-      @children ||= Array(child_assets).compact
-      @children.select { |child| child.category_is? category }
+      child_assets.select { |child| child.category_is? category }
     end
 
     def child_assets
-      ACTV.asset components.map(&:assetGuid) if components.any?
+      @child_assets ||= if components.any?
+                          ACTV.asset components.map(&:assetGuid)
+                        else
+                          []
+                        end
     end
 
     def image_without_placeholder
