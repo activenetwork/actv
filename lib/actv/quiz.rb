@@ -11,5 +11,11 @@ module ACTV
     def outcomes
       @outcomes ||= child_assets_filtered_by_category 'outcome'
     end
+
+    def find_outcome_by_id guid
+      outcomes.find do |outcome|
+        outcome.assetGuid == guid
+      end
+    end
   end
 end
