@@ -2,6 +2,20 @@ require 'spec_helper'
 
 describe ACTV::Asset do
 
+  describe '#organization' do
+    subject(:asset) { ACTV::Asset.new assetGuid: 'assetguid' }
+
+    context "when there is an organization field" do
+      before do
+        allow(asset).to receive(:organization).and_return({org: "test"})
+      end
+      its(:organization) { should eq({org: "test"}) }
+    end
+    context "where there is no organization field" do
+      its(:organization) { should eq({}) }
+    end
+  end
+
   describe '#endurance_id' do
     let(:endurance_id) { 'enduranceid' }
     subject(:asset) { ACTV::Asset.new assetGuid: 'assetguid' }
