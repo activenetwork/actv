@@ -383,6 +383,10 @@ module ACTV
       end
     end
 
+    def organization
+      @attrs[:organization] || {}
+    end
+
     private
 
     def child_assets_filtered_by_category category
