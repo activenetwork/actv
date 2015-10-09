@@ -258,6 +258,18 @@ module ACTV
       self.sourceSystem[:legacyGuid].upcase == "74742258-90FE-40ED-8A60-89F21DE93BFD" rescue false
     end
 
+    def tennislinkteam?
+      self.sourceSystem[:legacyGuid].upcase == "0206DC72-C167-4B39-B299-0F2A27D8CBEF" rescue false
+    end
+
+    def tennislinktournament?
+      self.sourceSystem[:legacyGuid].upcase == "71D917DE-FA90-448A-90DA-C8852F7E03E2" rescue false
+    end
+
+    def tennislinkusta?
+      self.sourceSystem[:legacyGuid].upcase == "3858B6E3-B52E-4E20-9A00-2AD8500B1BC3" rescue false
+    end
+
     def kids?
       kids_friendly_source_system? && kids_interest?
     end
@@ -438,7 +450,7 @@ module ACTV
     end
 
     def kids_friendly_source_system?
-      activenet? || awcamps30? || acm? || researched? || leagueone?
+      activenet? || awcamps30? || acm? || researched? || leagueone? || tennislinkteam? || tennislinktournament? || tennislinkusta?
     end
   end
 end
