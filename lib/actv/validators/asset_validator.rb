@@ -12,6 +12,16 @@ module ACTV
 
     private
 
+    def asset_media_types
+      response[:assetMediaTypes] || []
+    end
+
+    def media_type_is? name
+      asset_media_types.any? do |media_type|
+        media_type[:mediaType][:mediaTypeName].downcase == name.downcase
+      end
+    end
+
     def asset_categories
       response[:assetCategories] || []
     end
