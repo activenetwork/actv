@@ -131,8 +131,9 @@ module ACTV
     # @example Returns articles related to running
     #   ACTV.articles('running')
     #   ACTV.articles('running')
-    def articles(q, params={})
-      response = get("/v2/search.json", params.merge({query: q, category: 'articles'}))
+    def articles(q, params={}, categories=[])
+      categories.push('articles')
+      response = get("/v2/search.json", params.merge({query: q, category: categories * ' AND '}))
       ACTV::ArticleSearchResults.from_response(response)
     end
 
@@ -155,8 +156,9 @@ module ACTV
       article.is_article? ? article : nil
     end
 
-    def events(q, params={})
-      response = get("/v2/search.json", params.merge({query: q, category: 'event'}))
+    def events(q, params={}, categories=[])
+      categories.push('event')
+      response = get("/v2/search.json", params.merge({query: q, category: categories * ' AND '}))
       ACTV::EventSearchResults.from_response(response)
     end
 
