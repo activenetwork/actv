@@ -132,7 +132,7 @@ module ACTV
     #   ACTV.articles('running')
     #   ACTV.articles('running')
     def articles(q, params={}, categories=[])
-      categories.push('articles')
+      categories.push('articles').reject! &:blank?
       response = get("/v2/search.json", params.merge({query: q, category: categories * ' AND '}))
       ACTV::ArticleSearchResults.from_response(response)
     end
@@ -157,7 +157,7 @@ module ACTV
     end
 
     def events(q, params={}, categories=[])
-      categories.push('event')
+      categories.push('event').reject! &:blank?
       response = get("/v2/search.json", params.merge({query: q, category: categories * ' AND '}))
       ACTV::EventSearchResults.from_response(response)
     end

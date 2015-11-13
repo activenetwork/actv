@@ -1,0 +1,537 @@
+{
+  "retries": 0,
+  "total_results": 28,
+  "items_per_page": 2,
+  "start_index": 0,
+  "facets": [],
+  "facet_values": [],
+  "suggestions": [],
+  "results": [
+    {
+      "assetStatus": {
+        "assetStatusId": "2",
+        "assetStatusName": "VISIBLE"
+      },
+      "organization": {
+        "organizationGuid": "520598a9-c404-4cc5-9ede-eed7cd49d554",
+        "organizationName": "Article",
+        "organizationDsc": "",
+        "organizationUrlAdr": "",
+        "addressLine1Txt": "",
+        "addressLine2Txt": "",
+        "addressCityName": "",
+        "addressStateProvinceCode": "",
+        "addressLocalityName": "",
+        "addressPostalCd": "",
+        "addressCountryCd": "",
+        "fax": "",
+        "sourceSystemGuid": "ca4ea0b1-7377-470d-b20d-bf6bea23f040",
+        "primaryContactPhone": "",
+        "primaryContactName": "",
+        "imageUrlAdr": "",
+        "shortDsc": "",
+        "showOrganizationName": "false",
+        "hideOrganizationContact": "false"
+      },
+      "place": {},
+      "evergreenParentAsset": {},
+      "sourceSystem": {
+        "sourceSystemName": "Active.com Articles",
+        "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+        "affiliate": "false"
+      },
+      "assetRootAsset": {},
+      "assetParentAsset": {
+        "assetGuid": "3055a696-38b2-4836-a3eb-af13bff9779e"
+      },
+      "market": {
+        "marketId": "27",
+        "marketName": "international-any"
+      },
+      "assetGuid": "601d3146-6ed0-4a3b-bad4-2420276820f4",
+      "assetName": "Kentucky Volleyball Camps",
+      "assetDsc": "",
+      "alternateName": "Kentucky Volleyball Camps",
+      "timezone": "",
+      "localTimeZoneId": "",
+      "timezoneAbb": "",
+      "timezoneName": "",
+      "currencyCd": "",
+      "localeCd": "",
+      "salesStartDate": null,
+      "salesEndDate": null,
+      "urlAdr": "http://www.active.com/volleyball/articles/kentucky-volleyball-camps-3789695",
+      "detailPageTemplateId": "",
+      "preferredUrlAdr": "",
+      "logoUrlAdr": "",
+      "activityStartDate": null,
+      "activityEndDate": null,
+      "donationUrlAdr": "",
+      "teamUrlAdr": "",
+      "homePageUrlAdr": "",
+      "registrationUrlAdr": "",
+      "registrantSearchUrlAdr": "",
+      "regReqMinAge": "",
+      "regReqMaxAge": "",
+      "regReqGenderCd": "",
+      "resultsUrlAdr": "",
+      "contactName": "",
+      "contactEmailAdr": "",
+      "contactPhone": "",
+      "contactTxt": "",
+      "showContact": "false",
+      "sorId": "",
+      "sorCreateDtm": null,
+      "sorCreateUserId": "",
+      "authorName": "",
+      "childIndex": "1",
+      "publishDate": null,
+      "createdDate": "2013-09-09T17:39:57",
+      "modifiedDate": "2013-09-09T17:40:04",
+      "activityRecurrences": [],
+      "assetQuantity": {},
+      "assetLegacyData": {
+        "assetTypeId": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+        "typeName": "",
+        "uploadSearchUrlAdr": "",
+        "authorName": "",
+        "onlineRegistration": "",
+        "onlineDonation": "",
+        "onlineMembership": "",
+        "onlineMembershipCostAmt": "",
+        "costAmt": "",
+        "avgUserRatingTxt": "",
+        "estParticipantNb": "",
+        "maxTeamNb": "",
+        "minGuaranteedGameNb": "",
+        "multipleStartDate": "",
+        "genderRequirementTxt": "",
+        "participationCriteriaTxt": "",
+        "userCommentTxt": "",
+        "priceExtensionTxt": "",
+        "searchWeight": "",
+        "seoUrl": "",
+        "substitutionUrl": "/volleyball/Articles/Summer-College-Volleyball-Camps.htm",
+        "trackbackUrl": "http://www.active.com/volleyball/Articles/Summer-College-Volleyball-Camps.htm",
+        "eventCategories": "",
+        "isSearchable": "true",
+        "createdDate": "2013-09-09T17:39:57",
+        "modifiedDate": "2013-09-09T17:39:57"
+      },
+      "assetTags": [
+        {
+          "tag": {
+            "tagId": "232485",
+            "tagName": "0",
+            "tagDescription": "displayorder"
+          }
+        },
+        {
+          "tag": {
+            "tagId": "232484",
+            "tagName": "RaceAggregation",
+            "tagDescription": "articletype"
+          }
+        }
+      ],
+      "assetAttributes": [],
+      "assetPrices": [],
+      "assetDescriptions": [
+        {
+          "descriptionType": {
+            "descriptionTypeId": "25",
+            "descriptionTypeName": "subtitle"
+          },
+          "description": "Lexington, Kentucky - June 4-9 2011"
+        },
+        {
+          "descriptionType": {
+            "descriptionTypeId": "4",
+            "descriptionTypeName": "summary"
+          },
+          "description": "With a variety of position-based instruction this southern camp is the perfect way to raise your volleyball IQ and make yourself a more effective athlete."
+        }
+      ],
+      "assetChannels": [
+        {
+          "sequence": "1",
+          "channel": {
+            "channelId": "1028",
+            "channelName": "Volleyball",
+            "channelDsc": "Volleyball"
+          }
+        }
+      ],
+      "assetMediaTypes": [
+        {
+          "sequence": "1",
+          "mediaType": {
+            "mediaTypeId": "1",
+            "mediaTypeName": "Camp",
+            "mediaTypeDsc": ""
+          }
+        }
+      ],
+      "assetImages": [
+        {
+          "imageUrlAdr": "http://www.ukathletics.com/camps/",
+          "imageName": "primaryUrl",
+          "linkUrl": "http://www.ukathletics.com/camps/",
+          "linkTarget": "_blank",
+          "imageCaptionTxt": "Kentucky Volleyball Camps"
+        },
+        {
+          "imageUrlAdr": "http://www.active.com/Assets/Football/Kentucky+150x150.jpg",
+          "imageName": "image2",
+          "linkUrl": "",
+          "linkTarget": "",
+          "imageCaptionTxt": ""
+        },
+        {
+          "imageUrlAdr": "https://thriva.activenetwork.com/Reg4/Form.aspx?IDTD=692&RF=1300&mode=0",
+          "imageName": "registerUrl",
+          "linkUrl": "https://thriva.activenetwork.com/Reg4/Form.aspx?IDTD=692&RF=1300&mode=0",
+          "linkTarget": "_blank",
+          "imageCaptionTxt": "Register Today"
+        },
+        {
+          "imageUrlAdr": "http://www.ukathletics.com/camps/",
+          "imageName": "moreUrl",
+          "linkUrl": "http://www.ukathletics.com/camps/",
+          "linkTarget": "_blank",
+          "imageCaptionTxt": "Learn More"
+        }
+      ],
+      "assetTopics": [
+        {
+          "sequence": "1",
+          "topic": {
+            "topicId": "78",
+            "topicTaxonomy": "Sports/Volleyball",
+            "topicName": "Volleyball"
+          }
+        }
+      ],
+      "assetCategories": [
+        {
+          "sequence": "1",
+          "category": {
+            "categoryId": "7",
+            "categoryTaxonomy": "Creative Work/Articles",
+            "categoryName": "Articles"
+          }
+        },
+        {
+          "sequence": "3",
+          "category": {
+            "categoryId": "11",
+            "categoryTaxonomy": "Event/Camps",
+            "categoryName": "Camps"
+          }
+        }
+      ],
+      "assetMetaInterests": [],
+      "assetInterests": [],
+      "assetDeals": [],
+      "socialMedia": [],
+      "assetComponents": [],
+      "assetServiceHostName": "as-app02.active.tan",
+      "componentInUrlAdr": {},
+      "assetSeoUrls": [
+        {
+          "seoSystemName": "as3",
+          "statusCode": "true",
+          "urlAdr": "http://www.active.com/volleyball/articles/kentucky-volleyball-camps-3789695"
+        }
+      ],
+      "overrideSeourlFlag": "false",
+      "activenetTopGraphic": {},
+      "evergreenAssetFlag": "false",
+      "evergreenAssets": [],
+      "searchScore": 0.5,
+      "assetVersion": 1,
+      "salesStatus": "registration-unavailable"
+    },
+    {
+      "detailPageTemplateId": "",
+      "salesStartDate": null,
+      "assetChannels": [
+        {
+          "sequence": "1",
+          "channel": {
+            "channelName": "Volleyball",
+            "channelId": "1028",
+            "channelDsc": "Volleyball"
+          }
+        }
+      ],
+      "assetDsc": "",
+      "salesEndDate": null,
+      "sorId": "",
+      "assetDescriptions": [
+        {
+          "description": "Position-specific training camp, focused on technical aspects of each position. Perfect for young players from seventh grade to high school seniors. ",
+          "descriptionType": {
+            "descriptionTypeName": "summary",
+            "descriptionTypeId": "4"
+          }
+        },
+        {
+          "description": "Tuscaloosa, Alabama - July 8-9, 2011",
+          "descriptionType": {
+            "descriptionTypeName": "subtitle",
+            "descriptionTypeId": "25"
+          }
+        }
+      ],
+      "alternateName": "Ed Allen Volleyball Camp",
+      "currencyCd": "",
+      "teamUrlAdr": "",
+      "assetImages": [
+        {
+          "linkUrl": "https://thriva.activenetwork.com/Reg4/Form.aspx?IDTD=5407565&RF=3709104&mode=0",
+          "imageCaptionTxt": "Register Today",
+          "imageName": "registerUrl",
+          "linkTarget": "_blank",
+          "imageUrlAdr": "https://thriva.activenetwork.com/Reg4/Form.aspx?IDTD=5407565&RF=3709104&mode=0"
+        },
+        {
+          "linkUrl": "http://www.rolltide.com/camps/w-volley-camp.html",
+          "imageCaptionTxt": "Ed Allen Volleyball Camp",
+          "imageName": "primaryUrl",
+          "linkTarget": "_blank",
+          "imageUrlAdr": "http://www.rolltide.com/camps/w-volley-camp.html"
+        },
+        {
+          "linkUrl": "",
+          "imageCaptionTxt": "",
+          "imageName": "image2",
+          "linkTarget": "",
+          "imageUrlAdr": "http://www.active.com/Assets/Football/Alabama+150x150.jpg"
+        },
+        {
+          "linkUrl": "http://www.rolltide.com/camps/w-volley-camp.html",
+          "imageCaptionTxt": "Learn More",
+          "imageName": "moreUrl",
+          "linkTarget": "_blank",
+          "imageUrlAdr": "http://www.rolltide.com/camps/w-volley-camp.html"
+        }
+      ],
+      "localTimeZoneId": "",
+      "timezone": "",
+      "evergreenAssetFlag": "false",
+      "assetLegacyData": {
+        "participationCriteriaTxt": "",
+        "trackbackUrl": "http://www.active.com/volleyball/Articles/Summer-College-Volleyball-Camps.htm",
+        "userCommentTxt": "",
+        "onlineMembershipCostAmt": "",
+        "estParticipantNb": "",
+        "isSearchable": "true",
+        "priceExtensionTxt": "",
+        "eventCategories": "",
+        "onlineMembership": "",
+        "uploadSearchUrlAdr": "",
+        "costAmt": "",
+        "createdDate": "2013-09-09T17:39:59",
+        "substitutionUrl": "/volleyball/Articles/Summer-College-Volleyball-Camps.htm",
+        "minGuaranteedGameNb": "",
+        "genderRequirementTxt": "",
+        "onlineRegistration": "",
+        "modifiedDate": "2013-09-09T17:39:59",
+        "searchWeight": "",
+        "typeName": "",
+        "avgUserRatingTxt": "",
+        "onlineDonation": "",
+        "maxTeamNb": "",
+        "assetTypeId": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+        "seoUrl": "",
+        "authorName": "",
+        "multipleStartDate": ""
+      },
+      "registrationUrlAdr": "",
+      "place": {
+        "timezoneDST": null,
+        "localityName": "",
+        "countryName": " ",
+        "cityName": " ",
+        "countryCode": "",
+        "timezoneOffset": null,
+        "placeName": "Article",
+        "addressLine1Txt": " ",
+        "directionsTxt": "",
+        "placeGuid": "1f0ce944-c551-47f7-9888-194e83dd76c3",
+        "placeDsc": "",
+        "timezone": "",
+        "postalCode": " ",
+        "stateProvinceCode": " ",
+        "placeUrlAdr": "",
+        "longitude": "",
+        "latitude": "",
+        "addressLine2Txt": ""
+      },
+      "overrideSeourlFlag": "false",
+      "createdDate": "2013-09-09T17:39:59",
+      "activityEndDate": null,
+      "publishDate": null,
+      "activenetTopGraphic": {},
+      "resultsUrlAdr": "",
+      "assetCategories": [
+        {
+          "category": {
+            "categoryName": "Articles",
+            "categoryId": "7",
+            "categoryTaxonomy": "Creative Work/Articles"
+          },
+          "sequence": "1"
+        },
+        {
+          "category": {
+            "categoryName": "Camps",
+            "categoryId": "11",
+            "categoryTaxonomy": "Event/Camps"
+          },
+          "sequence": "3"
+        }
+      ],
+      "contactEmailAdr": "",
+      "assetSeoUrls": [
+        {
+          "statusCode": "true",
+          "seoSystemName": "as3",
+          "urlAdr": "http://www.active.com/volleyball/articles/ed-allen-volleyball-camp-3789714"
+        }
+      ],
+      "homePageUrlAdr": "",
+      "assetDeals": [],
+      "assetStatus": {
+        "assetStatusName": "VISIBLE",
+        "assetStatusId": "2"
+      },
+      "market": {
+        "marketId": "27",
+        "marketName": "international-any"
+      },
+      "assetInterests": [],
+      "sourceSystem": {
+        "affiliate": "false",
+        "legacyGuid": "CA4EA0B1-7377-470D-B20D-BF6BEA23F040",
+        "sourceSystemName": "Active.com Articles"
+      },
+      "contactName": "",
+      "assetMediaTypes": [
+        {
+          "sequence": "1",
+          "mediaType": {
+            "mediaTypeId": "1",
+            "mediaTypeDsc": "",
+            "mediaTypeName": "Camp"
+          }
+        }
+      ],
+      "showContact": "false",
+      "authorName": "",
+      "assetAttributes": [],
+      "localeCd": "",
+      "assetComponents": [],
+      "assetPopularity": {
+        "rank": 1,
+        "results": 0,
+        "views": 1,
+        "createdAt": 1406941026,
+        "clicks": 0,
+        "searches": 0,
+        "A3Rank": 1,
+        "clickTypes": {
+          "otherActive": 0,
+          "nonActive": 0,
+          "registration": 0
+        }
+      },
+      "socialMedia": [],
+      "contactTxt": "",
+      "sorCreateUserId": "",
+      "evergreenAssets": [],
+      "regReqMinAge": "",
+      "assetRootAsset": {},
+      "preferredUrlAdr": "",
+      "registrantSearchUrlAdr": "",
+      "regReqGenderCd": "",
+      "organization": {
+        "organizationGuid": "520598a9-c404-4cc5-9ede-eed7cd49d554",
+        "organizationDsc": "",
+        "addressCityName": "",
+        "fax": "",
+        "addressPostalCd": "",
+        "sourceSystemGuid": "ca4ea0b1-7377-470d-b20d-bf6bea23f040",
+        "organizationName": "Article",
+        "addressStateProvinceCode": "",
+        "addressCountryCd": "",
+        "primaryContactPhone": "",
+        "addressLine1Txt": "",
+        "imageUrlAdr": "",
+        "organizationUrlAdr": "",
+        "shortDsc": "",
+        "hideOrganizationContact": "false",
+        "addressLocalityName": "",
+        "showOrganizationName": "false",
+        "addressLine2Txt": "",
+        "primaryContactName": ""
+      },
+      "evergreenParentAsset": {},
+      "assetQuantity": {},
+      "assetName": "Ed Allen Volleyball Camp",
+      "contactPhone": "",
+      "assetMetaInterests": [],
+      "componentInUrlAdr": {},
+      "assetServiceHostName": "as-app02.active.tan",
+      "modifiedDate": "2013-09-09T17:40:04",
+      "assetPrices": [],
+      "assetTopics": [
+        {
+          "topic": {
+            "topicId": "78",
+            "topicTaxonomy": "Sports/Volleyball",
+            "topicName": "Volleyball"
+          },
+          "sequence": "1"
+        }
+      ],
+      "assetGuid": "66738618-a08f-48c9-a5f2-9310dfb6ffe7",
+      "regReqMaxAge": "",
+      "donationUrlAdr": "",
+      "timezoneAbb": "",
+      "activityRecurrences": [],
+      "assetTags": [
+        {
+          "tag": {
+            "tagName": "RaceAggregation",
+            "tagDescription": "articletype",
+            "tagId": "232484"
+          }
+        },
+        {
+          "tag": {
+            "tagName": "2",
+            "tagDescription": "displayorder",
+            "tagId": "234925"
+          }
+        }
+      ],
+      "childIndex": "3",
+      "assetParentAsset": {
+        "assetGuid": "3055a696-38b2-4836-a3eb-af13bff9779e"
+      },
+      "urlAdr": "http://www.active.com/volleyball/articles/ed-allen-volleyball-camp-3789714",
+      "activityStartDate": null,
+      "sorCreateDtm": null,
+      "timezoneName": "",
+      "logoUrlAdr": "",
+      "searchScore": 0.5,
+      "assetVersion": 1,
+      "salesStatus": "registration-unavailable"
+    }
+  ],
+  "radius": null,
+  "start_date": "",
+  "sort": null
+}
