@@ -1,0 +1,702 @@
+{
+  "retries": 0,
+  "total_results": 286619,
+  "items_per_page": 2,
+  "start_index": 0,
+  "facets": [],
+  "facet_values": [],
+  "suggestions": [],
+  "results": [
+    {
+      "assetStatus": {
+        "assetStatusId": "2",
+        "assetStatusName": "VISIBLE"
+      },
+      "organization": {
+        "organizationGuid": "8f51a3f2-34c3-4280-9af7-2a4619f98efa",
+        "organizationName": "VTO Sports",
+        "organizationDsc": "",
+        "organizationUrlAdr": "www.VTOsports.net",
+        "addressLine1Txt": "3020 - i Prosperity Church Road",
+        "addressLine2Txt": "",
+        "addressCityName": "Charlotte",
+        "addressStateProvinceCode": "NC",
+        "addressLocalityName": "",
+        "addressPostalCd": "28269",
+        "addressCountryCd": "USA",
+        "fax": "",
+        "primaryContactPhone": "800-516-8550",
+        "primaryContactName": "Terence Lawshe",
+        "showOrganizationName": "false",
+        "hideOrganizationContact": "false"
+      },
+      "place": {
+        "placeGuid": "b50daff4-1e8e-4912-bcb0-83682a5ba08b",
+        "placeName": "D1 Sports Birmingham",
+        "placeDsc": "",
+        "placeUrlAdr": "",
+        "addressLine1Txt": "1651 Independence Court",
+        "addressLine2Txt": "",
+        "cityName": "Homewood",
+        "stateProvinceCode": "AL",
+        "localityName": "",
+        "postalCode": "35209",
+        "countryName": "United States",
+        "countryCode": "USA",
+        "timezone": "America/Chicago",
+        "timezoneOffset": -6,
+        "timezoneDST": 1,
+        "latitude": "33.48061",
+        "longitude": "-86.787295",
+        "directionsTxt": "",
+        "geoPoint": {
+          "lat": "33.48061",
+          "lon": "-86.787295"
+        },
+        "dma": {
+          "dmaId": "630",
+          "dmaName": "Birmingham (Anniston and Tuscaloosa)"
+        }
+      },
+      "evergreenParentAsset": {},
+      "sourceSystem": {
+        "sourceSystemName": "ActiveWorks Endurance",
+        "legacyGuid": "DFAA997A-D591-44CA-9FB7-BF4A4C8984F1",
+        "affiliate": "true"
+      },
+      "assetRootAsset": {
+        "assetGuid": "9b4c93ab-b4e6-4dfb-b56b-ec06cbb41bc4"
+      },
+      "assetParentAsset": {
+        "assetGuid": "9b4c93ab-b4e6-4dfb-b56b-ec06cbb41bc4"
+      },
+      "market": {
+        "marketId": "34",
+        "marketName": "misc"
+      },
+      "assetGuid": "5d848c3a-9bdf-42fc-8a3c-b3093b0d5df6",
+      "assetName": "Combine - Athlete - Pay Online",
+      "assetDsc": "",
+      "alternateName": "",
+      "timezone": "UTC",
+      "localTimeZoneId": "US/Eastern",
+      "timezoneAbb": "",
+      "timezoneName": "",
+      "currencyCd": "USD",
+      "localeCd": "",
+      "salesStartDate": "2013-12-19T05:00:00",
+      "salesEndDate": "2019-02-09T04:59:59",
+      "urlAdr": "",
+      "detailPageTemplateId": "",
+      "preferredUrlAdr": "",
+      "logoUrlAdr": "http://photos-images.active.com/file/3/1/original/980a5ea6-f82c-4dbe-b3c8-14bed1ffc907.png",
+      "activityStartDate": "2014-02-09T05:00:00",
+      "activityEndDate": "2014-02-10T04:59:59",
+      "donationUrlAdr": "",
+      "teamUrlAdr": "",
+      "homePageUrlAdr": "http://vtosports.publishpath.com/vto-sports-combines",
+      "registrationUrlAdr": "https://endurancecui.active.com/event-reg/select-race?e=6046003",
+      "registrantSearchUrlAdr": "https://myevents.active.com/search/registration-search.faces?e=6046003&a=283665302",
+      "regReqMinAge": "",
+      "regReqMaxAge": "",
+      "regReqGenderCd": "",
+      "resultsUrlAdr": "",
+      "contactName": "",
+      "contactEmailAdr": "",
+      "contactPhone": "",
+      "contactTxt": "",
+      "showContact": "false",
+      "sorId": "",
+      "sorCreateDtm": null,
+      "sorCreateUserId": "",
+      "authorName": "",
+      "childIndex": "1",
+      "publishDate": null,
+      "createdDate": "2014-01-24T02:27:25",
+      "modifiedDate": "2014-01-24T14:21:42",
+      "activityRecurrences": [],
+      "assetQuantity": {},
+      "assetLegacyData": {
+        "assetTypeId": "dfaa997a-d591-44ca-9fb7-bf4a4c8984f1",
+        "typeName": "",
+        "uploadSearchUrlAdr": "",
+        "authorName": "",
+        "onlineRegistration": "true",
+        "onlineDonation": "",
+        "onlineMembership": "",
+        "onlineMembershipCostAmt": "",
+        "costAmt": "",
+        "avgUserRatingTxt": "",
+        "estParticipantNb": "",
+        "maxTeamNb": "",
+        "minGuaranteedGameNb": "",
+        "multipleStartDate": "",
+        "genderRequirementTxt": "",
+        "participationCriteriaTxt": "",
+        "userCommentTxt": "",
+        "priceExtensionTxt": "",
+        "searchWeight": "",
+        "seoUrl": "",
+        "substitutionUrl": "E-006JYCCC",
+        "trackbackUrl": "",
+        "eventCategories": "",
+        "isSearchable": "false",
+        "createdDate": "2014-01-24T14:21:42",
+        "modifiedDate": "2014-01-24T14:21:42"
+      },
+      "assetTags": [
+        {
+          "tag": {
+            "tagId": "58741",
+            "tagName": "Elite",
+            "tagDescription": "Skill level"
+          }
+        },
+        {
+          "tag": {
+            "tagId": "32308",
+            "tagName": "true",
+            "tagDescription": "activeadvantage"
+          }
+        },
+        {
+          "tag": {
+            "tagId": "125937",
+            "tagName": "false",
+            "tagDescription": "usatsanctioned"
+          }
+        },
+        {
+          "tag": {
+            "tagId": "58728",
+            "tagName": "Youth",
+            "tagDescription": "Age group"
+          }
+        }
+      ],
+      "assetAttributes": [
+        {
+          "attribute": {
+            "tagId": "58741",
+            "attributeValue": "Elite",
+            "attributeType": "Skill level"
+          }
+        },
+        {
+          "attribute": {
+            "tagId": "58728",
+            "attributeValue": "Youth",
+            "attributeType": "Age group"
+          }
+        }
+      ],
+      "assetPrices": [
+        {
+          "effectiveUntilDate": null,
+          "priceAmt": "85",
+          "maxPriceAmt": null,
+          "minPriceAmt": null
+        }
+      ],
+      "assetDescriptions": [
+        {
+          "descriptionType": {
+            "descriptionTypeId": "6",
+            "descriptionTypeName": "Standard"
+          },
+          "description": "<p>VTO Sports is the local industry leader in delivering the best student combine training methods on the market today.</p> <p><a href=\"http://youtu.be/8UKm9nhoLK4\" target=\"_blank\"><img style=\"float: right;\" src=\"https://evbdn.eventbrite.com/s3-s3/eventlogos/83293535/untitled.png\" alt=\"\" width=\"300\" height=\"185\" /></a></p> <p><strong>T3 TRAINING:</strong>&nbsp;The VTO Combine T3 Method has trained over 5,000 students across the country&hellip; Our unique methods &nbsp;First we TEACH the correct skills/form for standard combine tests. Then we TEST to see where you excel and where you need more training then we TEACH again to see those skills improve and give you advice for training. Standard combine T3 methods includes 40 yard dash, Pro shuttle, vertical jump, 3 cone drill and bench press</p> <p><strong>R3 EDUCATION:</strong>&nbsp; Most athelete don't know what it takes to be recruited and this can be a huge hazard to their recruiting chances. We work with experts in the industry to give you valuable information on the recruiting process the stages and were you need to concentrate to take advantage of scholarship opportunities.</p> <p><strong>Why VTO - Just look at some of our past participants:&nbsp;</strong></p> <div> <p>Da'shawn Hand,&nbsp;Leonard Fournette,&nbsp;Carl Lawson, &nbsp;Jaylon Smith,&nbsp;Kenny Bigelow,&nbsp;O.J. Howard,&nbsp;Max Browne,&nbsp;Marquez North,&nbsp;Derrick Green,&nbsp;D.J. Humphries,&nbsp;Jonathan Bullard,&nbsp;Jadeveon Clowney,&nbsp;Robert Crisp,&nbsp;Xavier Nixon ...</p> </div><h4>Event schedule and times</h4><p></p><p><strong>Registration starts at 8:30am</strong></p> <p><strong>Combines start at 9am and ends at 1pm</strong></p>"
+        }
+      ],
+      "assetChannels": [
+        {
+          "sequence": "1",
+          "channel": {
+            "channelId": "1015",
+            "channelName": "Miscellaneous",
+            "channelDsc": "Miscellaneous"
+          }
+        }
+      ],
+      "assetMediaTypes": [
+        {
+          "sequence": "1",
+          "mediaType": {
+            "mediaTypeId": "251",
+            "mediaTypeName": "Youth",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "2",
+          "mediaType": {
+            "mediaTypeId": "2",
+            "mediaTypeName": "Event",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "3",
+          "mediaType": {
+            "mediaTypeId": "1",
+            "mediaTypeName": "Camp",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "4",
+          "mediaType": {
+            "mediaTypeId": "42",
+            "mediaTypeName": "Clinic",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "5",
+          "mediaType": {
+            "mediaTypeId": "138",
+            "mediaTypeName": "One-Day",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "6",
+          "mediaType": {
+            "mediaTypeId": "368",
+            "mediaTypeName": "clinic",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "7",
+          "mediaType": {
+            "mediaTypeId": "369",
+            "mediaTypeName": "camp",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "8",
+          "mediaType": {
+            "mediaTypeId": "252",
+            "mediaTypeName": "Elite",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "9",
+          "mediaType": {
+            "mediaTypeId": "219",
+            "mediaTypeName": "Student",
+            "mediaTypeDsc": ""
+          }
+        }
+      ],
+      "assetImages": [
+        {
+          "imageUrlAdr": "http://photos-images.active.com/file/3/1/original/980a5ea6-f82c-4dbe-b3c8-14bed1ffc907.png",
+          "imageName": "",
+          "linkUrl": "",
+          "linkTarget": "",
+          "imageCaptionTxt": ""
+        }
+      ],
+      "assetTopics": [
+        {
+          "sequence": "1",
+          "topic": {
+            "topicId": "7",
+            "topicTaxonomy": "Sports",
+            "topicName": "Sports"
+          }
+        }
+      ],
+      "assetCategories": [
+        {
+          "sequence": "1",
+          "category": {
+            "categoryId": "2",
+            "categoryTaxonomy": "Event",
+            "categoryName": "Event"
+          }
+        },
+        {
+          "sequence": "2",
+          "category": {
+            "categoryId": "11",
+            "categoryTaxonomy": "Event/Camps",
+            "categoryName": "Camps"
+          }
+        },
+        {
+          "sequence": "3",
+          "category": {
+            "categoryId": "14",
+            "categoryTaxonomy": "Event/Clinics",
+            "categoryName": "Clinics"
+          }
+        }
+      ],
+      "assetMetaInterests": [],
+      "assetInterests": [],
+      "assetDeals": [],
+      "assetComponents": [],
+      "assetServiceHostName": "as-app02.active.tan",
+      "componentInUrlAdr": {},
+      "assetSeoUrls": [],
+      "overrideSeourlFlag": "false",
+      "activenetTopGraphic": {},
+      "evergreenAssetFlag": "false",
+      "evergreenAssets": [],
+      "searchScore": 1.9599999,
+      "assetVersion": 1,
+      "salesStatus": "registration-closed"
+    },
+    {
+      "assetStatus": {
+        "assetStatusId": "2",
+        "assetStatusName": "VISIBLE"
+      },
+      "organization": {
+        "organizationGuid": "8f51a3f2-34c3-4280-9af7-2a4619f98efa",
+        "organizationName": "VTO Sports",
+        "organizationDsc": "",
+        "organizationUrlAdr": "www.VTOsports.net",
+        "addressLine1Txt": "3020 - i Prosperity Church Road",
+        "addressLine2Txt": "",
+        "addressCityName": "Charlotte",
+        "addressStateProvinceCode": "NC",
+        "addressLocalityName": "",
+        "addressPostalCd": "28269",
+        "addressCountryCd": "USA",
+        "fax": "",
+        "primaryContactPhone": "800-516-8550",
+        "primaryContactName": "Terence Lawshe",
+        "showOrganizationName": "false",
+        "hideOrganizationContact": "false"
+      },
+      "place": {
+        "placeGuid": "b50daff4-1e8e-4912-bcb0-83682a5ba08b",
+        "placeName": "D1 Sports Birmingham",
+        "placeDsc": "",
+        "placeUrlAdr": "",
+        "addressLine1Txt": "1651 Independence Court",
+        "addressLine2Txt": "",
+        "cityName": "Homewood",
+        "stateProvinceCode": "AL",
+        "localityName": "",
+        "postalCode": "35209",
+        "countryName": "United States",
+        "countryCode": "USA",
+        "timezone": "America/Chicago",
+        "timezoneOffset": -6,
+        "timezoneDST": 1,
+        "latitude": "33.48061",
+        "longitude": "-86.787295",
+        "directionsTxt": "",
+        "geoPoint": {
+          "lat": "33.48061",
+          "lon": "-86.787295"
+        },
+        "dma": {
+          "dmaId": "630",
+          "dmaName": "Birmingham (Anniston and Tuscaloosa)"
+        }
+      },
+      "evergreenParentAsset": {},
+      "sourceSystem": {
+        "sourceSystemName": "ActiveWorks Endurance",
+        "legacyGuid": "DFAA997A-D591-44CA-9FB7-BF4A4C8984F1",
+        "affiliate": "true"
+      },
+      "assetRootAsset": {
+        "assetGuid": "9b4c93ab-b4e6-4dfb-b56b-ec06cbb41bc4"
+      },
+      "assetParentAsset": {
+        "assetGuid": "9b4c93ab-b4e6-4dfb-b56b-ec06cbb41bc4"
+      },
+      "market": {
+        "marketId": "34",
+        "marketName": "misc"
+      },
+      "assetGuid": "8543ea68-6b14-4f74-8ed8-446e704632a7",
+      "assetName": "Combine - Athlete - $85 - Pay at Door",
+      "assetDsc": "",
+      "alternateName": "",
+      "timezone": "UTC",
+      "localTimeZoneId": "US/Eastern",
+      "timezoneAbb": "",
+      "timezoneName": "",
+      "currencyCd": "USD",
+      "localeCd": "",
+      "salesStartDate": "2013-12-19T05:00:00",
+      "salesEndDate": "2019-02-09T04:59:59",
+      "urlAdr": "",
+      "detailPageTemplateId": "",
+      "preferredUrlAdr": "",
+      "logoUrlAdr": "http://photos-images.active.com/file/3/1/original/980a5ea6-f82c-4dbe-b3c8-14bed1ffc907.png",
+      "activityStartDate": "2014-02-09T05:00:00",
+      "activityEndDate": "2014-02-10T04:59:59",
+      "donationUrlAdr": "",
+      "teamUrlAdr": "",
+      "homePageUrlAdr": "http://vtosports.publishpath.com/vto-sports-combines",
+      "registrationUrlAdr": "https://endurancecui.active.com/event-reg/select-race?e=6046003",
+      "registrantSearchUrlAdr": "https://myevents.active.com/search/registration-search.faces?e=6046003&a=283665302",
+      "regReqMinAge": "",
+      "regReqMaxAge": "",
+      "regReqGenderCd": "",
+      "resultsUrlAdr": "",
+      "contactName": "",
+      "contactEmailAdr": "",
+      "contactPhone": "",
+      "contactTxt": "",
+      "showContact": "false",
+      "sorId": "",
+      "sorCreateDtm": null,
+      "sorCreateUserId": "",
+      "authorName": "",
+      "childIndex": "2",
+      "publishDate": null,
+      "createdDate": "2014-01-06T23:02:30",
+      "modifiedDate": "2014-01-17T03:20:32",
+      "activityRecurrences": [],
+      "assetQuantity": {},
+      "assetLegacyData": {
+        "assetTypeId": "dfaa997a-d591-44ca-9fb7-bf4a4c8984f1",
+        "typeName": "",
+        "uploadSearchUrlAdr": "",
+        "authorName": "",
+        "onlineRegistration": "true",
+        "onlineDonation": "",
+        "onlineMembership": "",
+        "onlineMembershipCostAmt": "",
+        "costAmt": "",
+        "avgUserRatingTxt": "",
+        "estParticipantNb": "",
+        "maxTeamNb": "",
+        "minGuaranteedGameNb": "",
+        "multipleStartDate": "",
+        "genderRequirementTxt": "",
+        "participationCriteriaTxt": "",
+        "userCommentTxt": "",
+        "priceExtensionTxt": "",
+        "searchWeight": "",
+        "seoUrl": "",
+        "substitutionUrl": "E-006JYCCC",
+        "trackbackUrl": "",
+        "eventCategories": "",
+        "isSearchable": "false",
+        "createdDate": "2014-01-17T03:20:32",
+        "modifiedDate": "2014-01-17T03:20:32"
+      },
+      "assetTags": [
+        {
+          "tag": {
+            "tagId": "58741",
+            "tagName": "Elite",
+            "tagDescription": "Skill level"
+          }
+        },
+        {
+          "tag": {
+            "tagId": "125937",
+            "tagName": "false",
+            "tagDescription": "usatsanctioned"
+          }
+        },
+        {
+          "tag": {
+            "tagId": "58728",
+            "tagName": "Youth",
+            "tagDescription": "Age group"
+          }
+        },
+        {
+          "tag": {
+            "tagId": "32308",
+            "tagName": "true",
+            "tagDescription": "activeadvantage"
+          }
+        }
+      ],
+      "assetAttributes": [
+        {
+          "attribute": {
+            "tagId": "58728",
+            "attributeValue": "Youth",
+            "attributeType": "Age group"
+          }
+        },
+        {
+          "attribute": {
+            "tagId": "58741",
+            "attributeValue": "Elite",
+            "attributeType": "Skill level"
+          }
+        }
+      ],
+      "assetPrices": [
+        {
+          "effectiveUntilDate": null,
+          "priceAmt": "0",
+          "maxPriceAmt": null,
+          "minPriceAmt": null
+        }
+      ],
+      "assetDescriptions": [
+        {
+          "descriptionType": {
+            "descriptionTypeId": "6",
+            "descriptionTypeName": "Standard"
+          },
+          "description": "<p>VTO Sports is the local industry leader in delivering the best student combine training methods on the market today.</p> <p><a href=\"http://youtu.be/8UKm9nhoLK4\" target=\"_blank\"><img style=\"float: right;\" src=\"https://evbdn.eventbrite.com/s3-s3/eventlogos/83293535/untitled.png\" alt=\"\" width=\"300\" height=\"185\" /></a></p> <p><strong>T3 TRAINING:</strong>&nbsp;The VTO Combine T3 Method has trained over 5,000 students across the country&hellip; Our unique methods &nbsp;First we TEACH the correct skills/form for standard combine tests. Then we TEST to see where you excel and where you need more training then we TEACH again to see those skills improve and give you advice for training. Standard combine T3 methods includes 40 yard dash, Pro shuttle, vertical jump, 3 cone drill and bench press</p> <p><strong>R3 EDUCATION:</strong>&nbsp; Most athelete don't know what it takes to be recruited and this can be a huge hazard to their recruiting chances. We work with experts in the industry to give you valuable information on the recruiting process the stages and were you need to concentrate to take advantage of scholarship opportunities.</p> <p><strong>Why VTO - Just look at some of our past participants:&nbsp;</strong></p> <div> <p>Da'shawn Hand,&nbsp;Leonard Fournette,&nbsp;Carl Lawson, &nbsp;Jaylon Smith,&nbsp;Kenny Bigelow,&nbsp;O.J. Howard,&nbsp;Max Browne,&nbsp;Marquez North,&nbsp;Derrick Green,&nbsp;D.J. Humphries,&nbsp;Jonathan Bullard,&nbsp;Jadeveon Clowney,&nbsp;Robert Crisp,&nbsp;Xavier Nixon ...</p> </div><h4>Event schedule and times</h4><p></p><p><strong>Registration starts at 8:30am</strong></p> <p><strong>Combines start at 9am and ends at 1pm</strong></p>"
+        }
+      ],
+      "assetChannels": [
+        {
+          "sequence": "1",
+          "channel": {
+            "channelId": "1015",
+            "channelName": "Miscellaneous",
+            "channelDsc": "Miscellaneous"
+          }
+        }
+      ],
+      "assetMediaTypes": [
+        {
+          "sequence": "1",
+          "mediaType": {
+            "mediaTypeId": "251",
+            "mediaTypeName": "Youth",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "2",
+          "mediaType": {
+            "mediaTypeId": "2",
+            "mediaTypeName": "Event",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "3",
+          "mediaType": {
+            "mediaTypeId": "1",
+            "mediaTypeName": "Camp",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "4",
+          "mediaType": {
+            "mediaTypeId": "42",
+            "mediaTypeName": "Clinic",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "5",
+          "mediaType": {
+            "mediaTypeId": "138",
+            "mediaTypeName": "One-Day",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "6",
+          "mediaType": {
+            "mediaTypeId": "368",
+            "mediaTypeName": "clinic",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "7",
+          "mediaType": {
+            "mediaTypeId": "369",
+            "mediaTypeName": "camp",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "8",
+          "mediaType": {
+            "mediaTypeId": "252",
+            "mediaTypeName": "Elite",
+            "mediaTypeDsc": ""
+          }
+        },
+        {
+          "sequence": "9",
+          "mediaType": {
+            "mediaTypeId": "219",
+            "mediaTypeName": "Student",
+            "mediaTypeDsc": ""
+          }
+        }
+      ],
+      "assetImages": [
+        {
+          "imageUrlAdr": "http://photos-images.active.com/file/3/1/original/980a5ea6-f82c-4dbe-b3c8-14bed1ffc907.png",
+          "imageName": "",
+          "linkUrl": "",
+          "linkTarget": "",
+          "imageCaptionTxt": ""
+        }
+      ],
+      "assetTopics": [
+        {
+          "sequence": "1",
+          "topic": {
+            "topicId": "7",
+            "topicTaxonomy": "Sports",
+            "topicName": "Sports"
+          }
+        }
+      ],
+      "assetCategories": [
+        {
+          "sequence": "1",
+          "category": {
+            "categoryId": "2",
+            "categoryTaxonomy": "Event",
+            "categoryName": "Event"
+          }
+        },
+        {
+          "sequence": "2",
+          "category": {
+            "categoryId": "11",
+            "categoryTaxonomy": "Event/Camps",
+            "categoryName": "Camps"
+          }
+        },
+        {
+          "sequence": "3",
+          "category": {
+            "categoryId": "14",
+            "categoryTaxonomy": "Event/Clinics",
+            "categoryName": "Clinics"
+          }
+        }
+      ],
+      "assetMetaInterests": [],
+      "assetInterests": [],
+      "assetDeals": [],
+      "assetComponents": [],
+      "assetServiceHostName": "as-app03.active.tan",
+      "componentInUrlAdr": {},
+      "assetSeoUrls": [],
+      "overrideSeourlFlag": "false",
+      "activenetTopGraphic": {},
+      "evergreenAssetFlag": "false",
+      "evergreenAssets": [],
+      "searchScore": 1.9599999,
+      "assetVersion": 1,
+      "salesStatus": "registration-closed"
+    }
+  ],
+  "radius": null,
+  "start_date": "",
+  "sort": null
+}

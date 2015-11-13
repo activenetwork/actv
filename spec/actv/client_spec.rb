@@ -157,6 +157,45 @@ describe ACTV::Client do
     end
   end
 
+  describe '#articles' do
+    before do
+      stub_request(:get, "http://api.amp.active.com/v2/search.json").with(query: {query: '', category: 'camps AND articles'}).
+          to_return(body: fixture("valid_articles.json"), headers: { content_type: "application/json; charset=utf-8" })
+    end
+    it 'should return 2 camps articles when request category is camps' do
+      articles = client.articles('', {}, ['camps']).results
+      expect(articles.size).to eq 2
+      expect(articles[0]).to be_an ACTV::Article
+      expect(articles[0].category_is?('camps')).to be_true
+      expect(articles[1].category_is?('camps')).to be_true
+    end
+  end
+
+  describe '#events' do
+    before do
+      stub_request(:get, "http://api.amp.active.com/v2/search.json").with(query: {query: '', category: 'camps AND event'}).
+          to_return(body: fixture("valid_camps_events.json"), headers: { content_type: "application/json; charset=utf-8" })
+      stub_request(:get, "http://api.amp.active.com/v2/search.json").with(query: {query: '', category: 'event'}).
+          to_return(body: fixture("valid_all_events.json"), headers: { content_type: "application/json; charset=utf-8" })
+    end
+    it 'should return 2 camps events when request category is camps' do
+      events = client.events('', {}, ['camps']).results
+      expect(events.size).to eq 2
+      expect(events[0]).to be_an ACTV::Event
+      expect(events[0].category_is?('camps')).to be_true
+      expect(events[1].category_is?('camps')).to be_true
+    end
+
+    it 'should return 3 events which are not camps when request category is camps' do
+      events = client.events('').results
+      expect(events.size).to eq 3
+      expect(events[0]).to be_an ACTV::Event
+      expect(events[0].category_is?('camps')).to be_false
+      expect(events[1].category_is?('camps')).to be_false
+      expect(events[2].category_is?('camps')).to be_false
+    end
+  end
+
   describe '#article' do
     let(:configuration) do
       { consumer_key: "CK",
