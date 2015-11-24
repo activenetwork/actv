@@ -105,13 +105,14 @@ module ACTV
     # Returns the asset's registration end date
     # in UTC.  This is pulled from the salesEndDate
     def registration_close_date
+      puts parse_date_with_correct_time_zone(authoritative_reg_end_date)
       Time.parse parse_date_with_correct_time_zone(authoritative_reg_end_date)
     end
 
     # Returns the asset's start date
     # in UTC.  This is pulled from the activityStartDate.
     def event_start_date
-      Time.parse "#{activity_start_date} #{format_timezone_offset(place.timezoneOffset)}"
+      Time.parse "#{activity_start_date} #{format_timezone_offset(timezone_offset)}"
     end
 
     # Returns the asset's end date

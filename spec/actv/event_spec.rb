@@ -84,16 +84,32 @@ describe ACTV::Event do
   end
 
   describe '#registration_open_date' do
-    before { subject.stub(:sales_start_date).and_return format_date 1.day.from_now }
-    it "returns the correct date in the correct timezone" do
-      subject.registration_open_date.should be_within(1.second).of Time.parse format_date_in_utc 1.day.from_now
+    before { subject.stub(:sales_start_date).and_return "2016-11-10T00:00:00" }
+      it "returns the correct date in correct timezone when asset belongs to camps or regcenter" do
+        expect(subject.registration_open_date).to eq '2016-11-10T00:00:00 -0500'
+      end
+    context 'when asset not belongs to camps or regcenter' do
+      before { subject.stub(:sourceSystem).and_return :legacyGuid => 'testid' }
+      it "returns the correct date in utc timezone" do
+        expect(subject.registration_open_date).to eq '2016-11-10T00:00:00 UTC'
+      end
     end
   end
 
   describe '#registration_close_date' do
-    before { subject.stub(:sales_end_date).and_return format_date 1.day.from_now }
-    it "returns the correct date in the correct timezone" do
-      subject.registration_close_date.should be_within(1.second).of Time.parse format_date_in_utc 1.day.from_now
+    before { subject.stub(:sales_end_date).and_return '2016-12-10T00:00:00' }
+    context 'when asset belongs to camps or regcenter' do
+      before { subject.stub(:awcamps?).and_return true }
+      it "returns the correct date in the correct timezone" do
+        expect(subject.registration_close_date).to eq '2016-12-10T00:00:00 -0500'
+      end
+    end
+
+    context 'when asset not belongs to camps or regcenter' do
+      before { subject.stub(:sourceSystem).and_return :legacyGuid => 'testid' }
+      it "returns the correct date in utc timezone" do
+        expect(subject.registration_close_date).to eq '2016-12-10T00:00:00 UTC'
+      end
     end
   end
 
