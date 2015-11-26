@@ -84,7 +84,7 @@ describe ACTV::Event do
   end
 
   describe '#registration_open_date' do
-    before { subject.stub(:sales_start_date).and_return "2016-11-10T00:00:00" }
+    before { subject.stub(:sales_start_date).and_return '2016-11-10T00:00:00' }
       it 'returns the correct date with correct timezone offset when asset belongs to camps or regcenter' do
         expect(subject.registration_open_date).to eq '2016-11-10T00:00:00 -0500'
       end
