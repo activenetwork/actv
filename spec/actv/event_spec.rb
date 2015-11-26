@@ -115,21 +115,21 @@ describe ACTV::Event do
 
   describe '#event_start_date' do
     before do
-      subject.stub(:activity_start_date).and_return("2013-05-10T00:00:00")
+      subject.stub(:activity_start_date).and_return('2013-05-10T00:00:00')
       subject.stub(:timezone_offset).and_return(-4)
     end
-    it "returns the correct date in the correct timezone" do
-      subject.event_start_date.should eq Time.parse "2013-05-10T00:00:00 -0400"
+    it 'returns the correct date in the correct timezone' do
+      subject.event_start_date.should eq Time.parse '2013-05-10T00:00:00 -0400'
     end
   end
 
   describe '#event_end_date' do
     before do
-      subject.stub(:activity_end_date).and_return("2013-05-10T00:00:00")
+      subject.stub(:activity_end_date).and_return('2013-05-10T00:00:00')
       subject.stub(:timezone_offset).and_return(-4)
     end
-    it "returns the correct date in the correct timezone" do
-      subject.event_end_date.should eq Time.parse "2013-05-10T00:00:00 -0400"
+    it 'returns the correct date in the correct timezone' do
+      subject.event_end_date.should eq Time.parse '2013-05-10T00:00:00 -0400'
     end
   end
 
