@@ -161,19 +161,17 @@ module ACTV
 
     private
 
-    def source_system_with_timezone
+    def source_system_with_timezone_exception?
       self.awcamps30? || self.awcamps? || self.regcenter2? || self.regcenter?
     end
 
     def parse_date_with_correct_timezone_or_offset date
-      if source_system_with_timezone
-        "#{date} #{format_timezone_offset(place.timezoneOffset)}"
-      end
+      "#{date} #{format_timezone_offset(place.timezoneOffset)}"
     end
 
     # EG: -7 => "-0700"
     def format_timezone_offset(offset)
-      if offset.present?
+      if offset.present? && source_system_with_timezone_exception?
         (offset < 0 ? "-" : "") << offset.abs.to_s.rjust(2,'0') << '00'
       else
         "UTC"
