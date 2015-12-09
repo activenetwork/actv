@@ -161,8 +161,12 @@ module ACTV
 
     private
 
+    def source_system_with_timezone
+      self.awcamps30? || self.awcamps? || self.regcenter2? || self.regcenter?
+    end
+
     def parse_date_with_correct_timezone_or_offset date
-      if self.awcamps30? || self.awcamps? || self.regcenter2? || self.regcenter?
+      if source_system_with_timezone && place.timezoneOffset.present?
         "#{date} #{format_timezone_offset(place.timezoneOffset)}"
       else
         "#{date} UTC"
