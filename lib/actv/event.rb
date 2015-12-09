@@ -166,16 +166,18 @@ module ACTV
     end
 
     def parse_date_with_correct_timezone_or_offset date
-      if source_system_with_timezone && place.timezoneOffset.present?
+      if source_system_with_timezone
         "#{date} #{format_timezone_offset(place.timezoneOffset)}"
-      else
-        "#{date} UTC"
       end
     end
 
     # EG: -7 => "-0700"
     def format_timezone_offset(offset)
-      (offset < 0 ? "-" : "") << offset.abs.to_s.rjust(2,'0') << '00'
+      if offset.present?
+        (offset < 0 ? "-" : "") << offset.abs.to_s.rjust(2,'0') << '00'
+      else
+        "UTC"
+      end
     end
 
     def authoritative_reg_end_date
