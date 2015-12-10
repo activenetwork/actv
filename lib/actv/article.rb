@@ -1,11 +1,12 @@
 require 'actv/asset'
 require 'nokogiri'
 require 'active_support/core_ext/module/delegation'
+require 'actv/authorable'
 
 module ACTV
   class Article < Asset
-    attr_reader :author
     include Authorable
+    attr_reader :author
     delegate :image_url, :footer, :bio, :photo, :name_from_footer, to: :author, prefix: true
 
     def self.valid? response
