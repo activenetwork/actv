@@ -85,9 +85,12 @@ describe ACTV::Event do
 
   describe '#registration_open_date' do
     before { subject.stub(:sales_start_date).and_return '2016-11-10T00:00:00' }
-      it 'returns the correct date with correct timezone offset when asset belongs to camps or regcenter' do
+    context 'when asset belongs to camps or regcenter' do
+      it 'returns the correct date with correct timezone offset' do
         expect(subject.registration_open_date).to eq '2016-11-10T00:00:00 -0500'
       end
+    end
+
     context 'when asset not belongs to camps or regcenter' do
       before { subject.stub(:sourceSystem).and_return :legacyGuid => 'testid' }
       it 'returns the correct date in utc timezone' do
@@ -115,21 +118,21 @@ describe ACTV::Event do
 
   describe '#event_start_date' do
     before do
-      subject.stub(:activity_start_date).and_return('2013-05-10T00:00:00')
+      subject.stub(:activity_start_date).and_return("2013-05-10T00:00:00")
       subject.stub(:timezone_offset).and_return(-4)
     end
-    it 'returns the correct date in the correct timezone' do
-      subject.event_start_date.should eq Time.parse '2013-05-10T00:00:00 -0400'
+    it "returns the correct date in the correct timezone" do
+      subject.event_start_date.should eq Time.parse "2013-05-10T00:00:00 -0400"
     end
   end
 
   describe '#event_end_date' do
     before do
-      subject.stub(:activity_end_date).and_return('2013-05-10T00:00:00')
+      subject.stub(:activity_end_date).and_return("2013-05-10T00:00:00")
       subject.stub(:timezone_offset).and_return(-4)
     end
-    it 'returns the correct date in the correct timezone' do
-      subject.event_end_date.should eq Time.parse '2013-05-10T00:00:00 -0400'
+    it "returns the correct date in the correct timezone" do
+      subject.event_end_date.should eq Time.parse "2013-05-10T00:00:00 -0400"
     end
   end
 
