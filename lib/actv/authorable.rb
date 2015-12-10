@@ -1,4 +1,4 @@
-module Authorable
+module ACTV::Article::Authorable
 
   def author
     @author ||= author_from_reference || author_from_article
