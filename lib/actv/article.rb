@@ -6,7 +6,6 @@ require 'actv/authorable'
 module ACTV
   class Article < Asset
     include Authorable
-    attr_reader :author
     delegate :image_url, :footer, :bio, :photo, :name_from_footer, to: :author, prefix: true
 
     def self.valid? response

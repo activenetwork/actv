@@ -1,5 +1,6 @@
 module ACTV
   module Authorable
+
     def author
       @author ||= author_from_reference || author_from_article
     end
@@ -31,7 +32,6 @@ module ACTV
       references.find { |reference| reference.type == "author" }
     end
   end
-
 end
 
 
