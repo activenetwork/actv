@@ -1,5 +1,7 @@
 module ACTV
   class Quiz < Asset
+    include Authorable
+
     def self.valid? response
       ACTV::QuizValidator.new(response).valid?
     end
