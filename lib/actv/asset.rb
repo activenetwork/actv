@@ -12,9 +12,12 @@ require 'actv/asset_seo_url'
 require 'actv/identity'
 require 'actv/place'
 require 'actv/recurrence'
+require 'actv/asset_source_system'
 
 module ACTV
   class Asset < ACTV::Identity
+    include AssetSourceSystem
+
     @types = []
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
@@ -214,62 +217,6 @@ module ACTV
       self.evergreenAssetFlag.downcase == 'true' rescue false
     end
 
-    def regcenter?
-      self.sourceSystem[:legacyGuid].upcase == "EA4E860A-9DCD-4DAA-A7CA-4A77AD194F65" rescue false
-    end
-
-    def regcenter2?
-      self.sourceSystem[:legacyGuid].upcase == "3BF82BBE-CF88-4E8C-A56F-78F5CE87E4C6" rescue false
-    end
-
-    def awendurance?
-      self.sourceSystem[:legacyGuid].upcase == "DFAA997A-D591-44CA-9FB7-BF4A4C8984F1" rescue false
-    end
-
-    def awsports?
-      self.sourceSystem[:legacyGuid].upcase == "F036B0FF-2B21-43A9-8C20-7F447D3AB105" rescue false
-    end
-
-    def awcamps?
-      self.sourceSystem[:legacyGuid].upcase == "2B22B4E6-5AA4-44D7-BF06-F7A71F9FA8A6" rescue false
-    end
-
-    def awcamps30?
-      self.sourceSystem[:legacyGuid].upcase == "89208DBA-F535-4950-880A-34A6888A184C" rescue false
-    end
-
-    def thriva?
-      self.sourceSystem[:legacyGuid].upcase == "2BA50ABA-080E-4E3D-A01C-1B4F56648A2E" rescue false
-    end
-
-    def activenet?
-      self.sourceSystem[:legacyGuid].upcase == "FB27C928-54DB-4ECD-B42F-482FC3C8681F" rescue false
-    end
-
-    def researched?
-      self.sourceSystem[:legacyGuid].upcase == "B47B0828-23ED-4D85-BDF0-B22819F53332" rescue false
-    end
-
-    def acm?
-      self.sourceSystem[:legacyGuid].upcase == "CA4EA0B1-7377-470D-B20D-BF6BEA23F040" rescue false
-    end
-
-    def leagueone?
-      self.sourceSystem[:legacyGuid].upcase == "74742258-90FE-40ED-8A60-89F21DE93BFD" rescue false
-    end
-
-    def tennislinkteam?
-      self.sourceSystem[:legacyGuid].upcase == "0206DC72-C167-4B39-B299-0F2A27D8CBEF" rescue false
-    end
-
-    def tennislinktournament?
-      self.sourceSystem[:legacyGuid].upcase == "71D917DE-FA90-448A-90DA-C8852F7E03E2" rescue false
-    end
-
-    def tennislinkusta?
-      self.sourceSystem[:legacyGuid].upcase == "3858B6E3-B52E-4E20-9A00-2AD8500B1BC3" rescue false
-    end
-
     def kids?
       kids_friendly_source_system? && kids_interest?
     end
@@ -447,10 +394,6 @@ module ACTV
     def kids_interest?
       interests = meta_interests.to_a.map(&:downcase)
       ['kids', 'family'].any? { |tag| interests.include? tag }
-    end
-
-    def kids_friendly_source_system?
-      activenet? || awcamps30? || acm? || researched? || leagueone? || tennislinkteam? || tennislinktournament? || tennislinkusta?
     end
   end
 end
