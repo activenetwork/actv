@@ -121,7 +121,7 @@ module ACTV
     end
 
     def timezone_offset
-      place.timezoneOffset + place.timezoneDST
+      place.timezoneOffset + place.timezoneDST.to_i
     end
 
     def image_url
