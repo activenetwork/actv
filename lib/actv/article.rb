@@ -45,6 +45,11 @@ module ACTV
       true
     end
 
+    def reference_articles
+      article_references = references.select { |ref| ref.type.downcase == 'reference-article' }
+      @reference_articles ||= ACTV.asset(article_references.map(&:id)) if article_references
+    end
+
     private
 
     def resolve_inline_ad_tag
