@@ -346,6 +346,10 @@ module ACTV
       @attrs[:organization] || {}
     end
 
+    def thumbnail
+      @thumbnail ||= image_by_name 'small'
+    end
+
     private
 
     def child_assets_filtered_by_category category
