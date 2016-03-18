@@ -47,7 +47,9 @@ module ACTV
 
     def reference_articles
       article_references = references.select { |ref| ref.type.downcase == 'reference-article' }
-      @reference_articles ||= ACTV.asset(article_references.map(&:id)) if article_references
+      if article_references.present?
+        @reference_articles ||= ACTV.asset(article_references.map(&:id))
+      end
     end
 
     private

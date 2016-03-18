@@ -12,5 +12,13 @@ module ACTV
     def video?
       target == "VIDEO" || type == "VIDEO"
     end
+
+    def to_str
+      imageUrlAdr
+    end
+
+    def to_s
+      imageUrlAdr
+    end
   end
 end
