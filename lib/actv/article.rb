@@ -28,6 +28,10 @@ module ACTV
       @image ||= image_by_name 'image2'
     end
 
+    def thumbnail
+      @thumbnail ||= image_by_name 'small'
+    end
+
     def subtitle
       @subtitle ||= description_by_type 'subtitle'
     end
