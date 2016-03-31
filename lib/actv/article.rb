@@ -28,6 +28,10 @@ module ACTV
       @image ||= image_by_name 'image2'
     end
 
+    def thumbnail
+      @thumbnail ||= image_by_name 'small'
+    end
+
     def subtitle
       @subtitle ||= description_by_type 'subtitle'
     end
@@ -43,6 +47,13 @@ module ACTV
 
     def is_article?
       true
+    end
+
+    def reference_articles
+      article_references = references.select { |ref| ref.type.downcase == 'reference-article' }
+      if article_references.present?
+        @reference_articles ||= ACTV.asset(article_references.map(&:id))
+      end
     end
 
     private

@@ -76,6 +76,21 @@ describe ACTV::Article do
     end
   end
 
+  describe '#thumbnail' do
+    context 'when article has an image named small' do
+      let(:asset_images) { [ { imageName: "small" } ] }
+      it 'returns the image' do
+        expect(article.thumbnail).to be_a ACTV::AssetImage
+      end
+    end
+
+    context 'when article does not have an image named small' do
+      it 'returns nil' do
+        expect(article.thumbnail).to be_nil
+      end
+    end
+  end
+
   describe '#subtitle' do
     context 'when a subtitle description exists' do
       its(:subtitle) { should eq "article subtitle" }
@@ -151,4 +166,16 @@ describe ACTV::Article do
       its(:author_name_from_by_line) { should be_nil }
     end
   end
+
+  describe '#reference_articles' do
+    let(:asset_references) { [ { referenceAsset: { assetGuid: "123" },
+                                  referenceType: { referenceTypeName: "reference-article" } } ] }
+    let(:article_asset) { double :article, id: "123" }
+    before { allow(ACTV).to receive(:asset) { [article_asset] } }
+
+    it 'returns reference articles if exist' do
+      expect(article.reference_articles.first.id).to eq article_asset.id
+    end
+  end
+
 end
