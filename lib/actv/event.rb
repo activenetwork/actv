@@ -11,14 +11,12 @@ module ACTV
     end
 
     def online_registration_available?
-      if is_present?(self.registrationUrlAdr)
-        if is_present?(self.legacy_data) && is_present?(self.legacy_data.onlineRegistration)
-          self.legacy_data.onlineRegistration.downcase == 'true'
-        else
-          true
-        end
+      return false unless is_present?(self.registrationUrlAdr)
+
+      if legacy_data_online_registration_is_a_string?
+        self.legacy_data.onlineRegistration.downcase == 'true'
       else
-        false
+        true
       end
     end
 
@@ -213,6 +211,10 @@ module ACTV
     def utc_time(time_string)
       return nil if time_string.nil? or time_string.empty?
       return Time.parse(time_string).utc
+    end
+
+    def legacy_data_online_registration_is_a_string?
+      is_present?(self.legacy_data) && is_present?(self.legacy_data.onlineRegistration) && self.legacy_data.onlineRegistration.is_a?(String)
     end
   end
 end
