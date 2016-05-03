@@ -19,5 +19,10 @@ module ACTV
         outcome.assetGuid == guid
       end
     end
+
+    def thumbnail
+      @thumbnail ||= image_by_name 'desktop'
+    end
+
   end
 end
