@@ -9,9 +9,12 @@ module ACTV
 
       def on_complete(env)
         status_code = env[:status].to_i
-        error_message = JSON.parse(env[:body])["error"]["message"]
         error_class = ACTV::Error::ServerError.errors[status_code]
-        raise error_class.new(error_message) if error_class
+
+        if error_class
+          error_message = JSON.parse(env[:body])["error"]["message"]
+          raise error_class.new(error_message)
+        end 
       end
 
     end
