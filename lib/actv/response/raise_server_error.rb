@@ -12,7 +12,7 @@ module ACTV
         error_class = ACTV::Error::ServerError.errors[status_code]
 
         if error_class
-          error_message = JSON.parse(env[:body])["error"]["message"]
+          error_message = env[:body][:error][:message]
           raise error_class.new(error_message)
         end 
       end
