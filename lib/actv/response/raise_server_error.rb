@@ -10,7 +10,11 @@ module ACTV
       def on_complete(env)
         status_code = env[:status].to_i
         error_class = ACTV::Error::ServerError.errors[status_code]
-        raise error_class.new if error_class
+
+        if error_class
+          error_message = env[:body][:error][:message]
+          raise error_class.new(error_message)
+        end 
       end
 
     end
