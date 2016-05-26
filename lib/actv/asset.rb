@@ -214,7 +214,7 @@ module ACTV
     end
 
     def evergreen?
-      self.evergreenAssetFlag.downcase == 'true' rescue false
+      self.evergreenAssetFlag.to_s.downcase == 'true' rescue false
     end
 
     def kids?

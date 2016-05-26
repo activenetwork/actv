@@ -312,24 +312,40 @@ describe ACTV::Event do
   describe '#disply_close_date' do
     context 'when tag is not set' do
       before do
-        subject.stub(:tag_by_description).with("displayclosedate").and_return nil
+        subject.stub(:tag_by_description).with('displayclosedate').and_return nil
       end
 
       its(:display_close_date?) { should eq true }
     end
 
     context 'when tag is set' do
-      context 'when true' do
+      context "when string 'true'" do
         before do
-          subject.stub(:tag_by_description).with("displayclosedate").and_return 'true'
+          subject.stub(:tag_by_description).with('displayclosedate').and_return 'true'
         end
 
         its(:display_close_date?) { should eq true }
       end
 
-      context 'when false' do
+      context 'when boolean true' do
         before do
-          subject.stub(:tag_by_description).with("displayclosedate").and_return 'false'
+          subject.stub(:tag_by_description).with('displayclosedate').and_return true
+        end
+
+        its(:display_close_date?) { should eq true }
+      end
+
+      context "when string 'false'" do
+        before do
+          subject.stub(:tag_by_description).with('displayclosedate').and_return 'false'
+        end
+
+        its(:display_close_date?) { should eq false }
+      end
+
+      context 'when boolean false' do
+        before do
+          subject.stub(:tag_by_description).with('displayclosedate').and_return false
         end
 
         its(:display_close_date?) { should eq false }
