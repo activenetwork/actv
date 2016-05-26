@@ -21,4 +21,17 @@ describe ACTV::AssetStatus do
       (asset == other).should be_false
     end
   end
+
+
+  describe '#visible?' do
+    it 'returns true when status assetStatusId is 2' do
+      asset = ACTV::AssetStatus.new(assetStatusId: 2, assetStatusName: "VISIBLE")
+      expect(asset.visible?).to eq true
+    end
+
+    it 'returns false when status assetStatusId is not 2' do
+      asset = ACTV::AssetStatus.new(assetStatusId: 1, assetStatusName: "INVISIBLE")
+      expect(asset.visible?).to eq false
+    end
+  end
 end
