@@ -554,13 +554,13 @@ describe ACTV::Asset do
 
     shared_examples 'asset#evergreen? with true value' do
       it 'returns true' do
-        expect(asset.evergreen?).to eq true
+        expect(asset.evergreen?).to be_true
       end
     end
 
     shared_examples 'asset#evergreen? with false value' do
       it 'returns true' do
-        expect(asset.evergreen?).to eq false
+        expect(asset.evergreen?).to be_false
       end
     end
 
