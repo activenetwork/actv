@@ -547,4 +547,53 @@ describe ACTV::Asset do
       end
     end
   end
+
+  describe '#evergreenAssetFlag?' do
+    let(:response) { {assetGuid: 1} }
+    let(:asset) { ACTV::Asset.new response }
+
+    shared_examples 'asset#evergreen? with true value' do
+      it 'returns true' do
+        expect(asset.evergreen?).to eq true
+      end
+    end
+
+    shared_examples 'asset#evergreen? with false value' do
+      it 'returns true' do
+        expect(asset.evergreen?).to eq false
+      end
+    end
+
+    context 'when evergreenAssetFlag is boolean true' do
+      before { allow(asset).to receive(:evergreenAssetFlag) { true } }
+
+      it_behaves_like 'asset#evergreen? with true value'
+    end
+
+    context "when evergreenAssetFlag is string 'true'" do
+      before { allow(asset).to receive(:evergreenAssetFlag) { true } }
+
+      it_behaves_like 'asset#evergreen? with true value'
+    end
+
+    context 'when evergreenAssetFlag is nil' do
+      before { allow(asset).to receive(:evergreenAssetFlag) { nil } }
+
+      it_behaves_like 'asset#evergreen? with false value'
+    end
+
+    context 'when evergreenAssetFlag is boolean false' do
+      before { allow(asset).to receive(:evergreenAssetFlag) { false } }
+
+      it_behaves_like 'asset#evergreen? with false value'
+    end
+
+    context "when evergreenAssetFlag is string 'false'" do
+      before { allow(asset).to receive(:evergreenAssetFlag) { false } }
+
+      it_behaves_like 'asset#evergreen? with false value'
+    end
+
+  end
+
 end

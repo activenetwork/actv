@@ -84,12 +84,9 @@ module ACTV
 
     def display_close_date
       @display_close_date ||= begin
-        val = tag_by_description 'displayclosedate'
-        if val
-          val.downcase == 'true'
-        else
-          true
-        end
+        val = tag_by_description('displayclosedate')
+
+        val.nil? ? true : val.to_s.downcase == 'true'
       end
     end
     alias display_close_date? display_close_date
