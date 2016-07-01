@@ -158,6 +158,10 @@ module ACTV
     alias asset_prices prices
     alias assetPrices prices
 
+    def has_volume_based_price?
+      prices.any? { |price| price.volume_pricing? }
+    end
+
     def topics
       @asset_topics ||= Array(@attrs[:assetTopics]).map do |topic|
         ACTV::AssetTopic.new(topic)

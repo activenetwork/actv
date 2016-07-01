@@ -7,6 +7,10 @@ module ACTV
       @attrs[:effectiveUntilDate] || '2200-01-01T00:00:00'
     end
 
+    def volume_pricing?
+      @attrs[:volumePricing].to_s.downcase == 'true'
+    end
+
     alias effective_date effectiveUntilDate
     alias amount priceAmt
     alias max_amount maxPriceAmt
