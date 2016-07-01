@@ -8,7 +8,7 @@ module ACTV
     end
 
     def volume_pricing?
-      @attrs[:volumePricing].to_s.downcase == 'true' || false
+      @attrs[:volumePricing].to_s.downcase == 'true'
     end
 
     alias effective_date effectiveUntilDate
