@@ -184,6 +184,15 @@ describe ACTV::Asset do
     end
   end
 
+  describe '#has_volume_based_price' do
+    subject(:asset) { ACTV::Asset.new(assetGuid: 1, assetName: 'Asset #1',
+                                      assetPrices: [{ volumePricing: 'true', dynamicPricing: 'false', maxPriceAmt: nil, priceAmt: 40,
+                                                      effectiveToVolume: '1', minPriceAmt: nil, effectiveUntilDate: nil, effectiveFromVolume: '0' }]) }
+    it 'returns true when there is any volume based prices in this asset' do
+      expect(asset.has_volume_based_price?).to be_true
+    end
+  end
+
   describe "#topics" do
     it "returns an Array of Asset Topics when assetTopics is set" do
       topics = ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetTopics: [{ sequence: "1", topic: { topicId: "27", topicName: "Running" } }]).topics

@@ -19,6 +19,18 @@ describe ACTV::AssetPrice do
       its(:maxPriceAmt){ should eq '15' }
       its(:minPriceAmt){ should eq '5' }
     end
+
+    context 'when this asset is a volume based one' do
+      subject(:price) { ACTV::AssetPrice.new(volumePricing: 'true', dynamicPricing: 'false', maxPriceAmt: nil, priceAmt: 40,
+                                             effectiveToVolume: '1', minPriceAmt: nil, effectiveUntilDate: nil, effectiveFromVolume: '0') }
+      it { expect(price.volume_pricing?).to be_true }
+    end
+
+    context 'when this asset is not a volume based one' do
+      subject(:price) { ACTV::AssetPrice.new(volumePricing: 'false', dynamicPricing: 'false', maxPriceAmt: 10000, priceAmt: 33,
+                                             effectiveToVolume: '0', minPriceAmt: 100, effectiveUntilDate: nil, effectiveFromVolume: '0') }
+      it { expect(price.volume_pricing?).to be_false }
+    end
   end
 
   context "when haven't effectiveUntilDate set " do
