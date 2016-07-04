@@ -23,6 +23,8 @@ require 'actv/quiz'
 require 'actv/quiz_outcome'
 require 'actv/quiz_question'
 require 'actv/quiz_question_answer'
+require 'actv/video'
+require 'actv/video_search_results'
 require 'actv/validators/article_validator'
 require 'actv/validators/asset_validator'
 require 'actv/validators/author_validator'
@@ -31,8 +33,8 @@ require 'actv/validators/quiz_validator'
 require 'actv/validators/quiz_outcome_validator'
 require 'actv/validators/quiz_question_validator'
 require 'actv/validators/quiz_question_answer_validator'
+require 'actv/validators/video_validator'
 require 'simple_oauth'
-
 module ACTV
   # Wrapper for the ACTV REST API
   #
@@ -176,6 +178,22 @@ module ACTV
         event = ACTV::Evergreen.new(event) if event.evergreen?
         event.is_article? ? nil : event
       end
+    end
+
+    def video(id, params={})
+      request_string = "/v2/assets/#{id}"
+      is_preview, params = params_include_preview? params
+      request_string += '/preview' if is_preview
+
+      response = get "#{request_string}.json", params
+
+      video = ACTV::Video.new response[:body]
+      video.is_video? ? video : nil
+    end
+
+    def videos(q, params={})
+      response = get("/v2/search.json", params.merge({query: q, category: 'videos'}))
+      ACTV::VideoSearchResults.from_response(response)
     end
 
     # Returns popular assets that match a specified query.
