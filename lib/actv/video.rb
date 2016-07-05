@@ -1,12 +1,16 @@
 require 'actv/asset'
 require 'nokogiri'
-require 'active_support/core_ext/module/delegation'
 
 module ACTV
   class Video < Asset
   	attr_reader :sorCreateDtm, :urlAdr, :keywords, :duration, :height, :type, :width, :filesize, :bitrate, :canonical_url, :image
   	alias publish_date sorCreateDtm
   	alias source urlAdr
+  	alias channel sub_topic
+
+  	def self.valid? response
+      ACTV::VideoValidator.new(response).valid?
+    end
 
   	def is_video?
   		true
@@ -48,8 +52,9 @@ module ACTV
   	def image
   		@image ||= image_by_name 'videoImage'
   	end
-  	alias cover image
-  	alias channel sub_topic
 
+  	def cover
+  		image.url if image
+  	end
   end
 end
