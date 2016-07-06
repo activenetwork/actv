@@ -58,7 +58,7 @@ module ACTV
     end
 
     def as_json
-      {image: cover, title: title, topic: sub_topic, duration: duration, keywords: keywords}
+      {image: cover, title: title, topic: sub_topic, duration: duration, keywords: keywords, src: urlAdr}
     end
   end
 end
