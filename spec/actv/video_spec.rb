@@ -1,48 +1,41 @@
 require 'spec_helper'
 
 describe ACTV::Video do
-	let(:asset_images) { [
-		{ :imageUrlAdr => "http://RODALE.images.worldnow.com/images/12508455_vtf.jpg", :imageName => "videoImage" }
-   		] }
+	let(:asset_images) { [ { :imageUrlAdr => "http://RODALE.images.worldnow.com/images/12508455_vtf.jpg", :imageName => "videoImage" } ] }
 	let(:urlAdr) { "http://rodale.videodownload.worldnow.com/RODALE_0906201614333627818AA.mp4" }
-	let(:asset_tags) { [
-		{ :tag => { :tagId => "1794337", :tagName => "video/mp4", :tagDescription => "type" } },
-		{ :tag => { :tagId => "1794525", :tagName => "640", :tagDescription => "width" } },
-		{ :tag => { :tagId => "1794598", :tagName => "997", :tagDescription => "bitrate" } },
-		{ :tag => { :tagId => "1794597", :tagName => "training,fitness,health & injuries", :tagDescription => "keywords" } },
-		{ :tag => { :tagId => "1794599", :tagName => "140", :tagDescription => "duration" } },
-		{ :tag => { :tagId => "1794526", :tagName => "360", :tagDescription => "height" } },
-		{ :tag => { :tagId => "1794600", :tagName => "18370674", :tagDescription => "filesize" } },
-     	{ :tag => { :tagId => "1795103", :tagName => "http://rodale.worldnow.com/clip/12508455/these-foam-rolling-moves-can-help-you-recover-faster", :tagDescription => "canonicalUrl" } },
-		] }
-	let(:asset_categories) { [ 
-		{ :sequence => "1", :category => { :categoryId => "8", :categoryTaxonomy => "Creative Work/Videos", :categoryName => "Videos" } } 
-    	] }
+	let(:asset_tags) { [ { :tag => { :tagId => "1794337", :tagName => "video/mp4", :tagDescription => "type" } },
+											 { :tag => { :tagId => "1794525", :tagName => "640", :tagDescription => "width" } },
+											 { :tag => { :tagId => "1794598", :tagName => "997", :tagDescription => "bitrate" } },
+											 { :tag => { :tagId => "1794597", :tagName => "training,fitness,health & injuries", :tagDescription => "keywords" } },
+											 { :tag => { :tagId => "1794599", :tagName => "140", :tagDescription => "duration" } },
+											 { :tag => { :tagId => "1794526", :tagName => "360", :tagDescription => "height" } },
+											 { :tag => { :tagId => "1794600", :tagName => "18370674", :tagDescription => "filesize" } },
+											 { :tag => { :tagId => "1795103", :tagName => "http://rodale.worldnow.com/clip/12508455/these-foam-rolling-moves-can-help-you-recover-faster", :tagDescription => "canonicalUrl" } } ] }
+	let(:asset_categories) { [ { :sequence => "1", :category => { :categoryId => "8", :categoryTaxonomy => "Creative Work/Videos", :categoryName => "Videos" } } ] }
 
 	let(:response) { { assetGuid: 1,
-	                 urlAdr: urlAdr,
-	                 assetTags: asset_tags,
-	                 assetImages: asset_images,
-	                 assetCategories: asset_categories } }
+										 urlAdr: urlAdr,
+										 assetTags: asset_tags,
+										 assetImages: asset_images,
+										 assetCategories: asset_categories } }
 	subject(:video) { ACTV::Video.new response }
 
 	describe '#self.valid?' do
 		subject(:valid?) { ACTV::Video.valid? response }
+		context 'when the category name is videos' do
+			let(:asset_categories) { [ { category: { categoryName: "Videos", categoryTaxonomy: "" } } ] }
+			it { should be_true }
+		end
 
-	    context 'when the category name is videos' do
-	      let(:asset_categories) { [ { category: { categoryName: "Videos", categoryTaxonomy: "" } } ] }
-	      it { should be_true }
-	    end
+		context 'when the category taxonomy is videos' do
+			let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "Creative Work/Videos" } } ] }
+			it { should be_true }
+		end
 
-	    context 'when the category taxonomy is videos' do
-	      let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "Creative Work/Videos" } } ] }
-	      it { should be_true }
-	    end
-
-	    context 'when there is no category name or category taxonomy' do
-		  let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "" } } ] }
-	      it { should be_false }
-	    end
+		context 'when there is no category name or category taxonomy' do
+		let(:asset_categories) { [ { category: { categoryName: "", categoryTaxonomy: "" } } ] }
+			it { should be_false }
+		end
 	end
 
 	describe '#source' do
@@ -104,5 +97,4 @@ describe ACTV::Video do
 			its(:cover) { should eq "http://RODALE.images.worldnow.com/images/12508455_vtf.jpg" }
 		end
 	end
-
 end

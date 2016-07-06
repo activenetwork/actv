@@ -57,8 +57,6 @@ describe ACTV::Client do
         @search_results.results.first.assetName.should eql 'Running 5K'
         @search_results.results.size.should eql 5
       end
-      
-     
     end 
   end
 end

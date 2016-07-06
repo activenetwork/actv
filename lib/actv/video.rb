@@ -8,23 +8,23 @@ module ACTV
   	alias channel sub_topic
 
   	def self.valid? response
-      ACTV::VideoValidator.new(response).valid?
-    end
+			ACTV::VideoValidator.new(response).valid?
+		end
 
   	def is_video?
   		true
   	end
 
   	def keywords
-  		@keywords ||= tag_by_description 'keywords'
+			@keywords ||= tag_by_description 'keywords'
   	end
 
   	def duration
-  		@duration ||= tag_by_description 'duration'
+			@duration ||= tag_by_description 'duration'
   	end
 
   	def height
-  		@height ||= tag_by_description 'height'
+			@height ||= tag_by_description 'height'
   	end
 
   	def type
@@ -36,24 +36,24 @@ module ACTV
   	end
 
   	def filesize
-  		@filesize ||= tag_by_description 'filesize'
+			@filesize ||= tag_by_description 'filesize'
   	end
 
   	def bitrate
-  		@bitrate ||= tag_by_description 'bitrate'
+			@bitrate ||= tag_by_description 'bitrate'
   	end
 
   	def canonicalUrl
-  		@canonical_url ||= tag_by_description 'canonicalUrl'
+			@canonical_url ||= tag_by_description 'canonicalUrl'
   	end
   	alias canonical_url canonicalUrl
 
   	def image
-  		@image ||= image_by_name 'videoImage'
+			@image ||= image_by_name 'videoImage'
   	end
 
   	def cover
-  		image.url if image
-  	end
+			image.url if image
+		end
   end
 end
