@@ -1,0 +1,247 @@
+{
+    "assetStatus": {
+        "assetStatusId": "2",
+        "assetStatusName": "VISIBLE"
+    },
+    "organization": {},
+    "place": {
+        "placeGuid": "b61c3acf-97b2-4411-ace6-62cef6dfc006",
+        "placeName": "Article",
+        "placeDsc": "",
+        "placeUrlAdr": "",
+        "addressLine1Txt": " ",
+        "addressLine2Txt": "",
+        "cityName": " ",
+        "stateProvinceCode": "AP",
+        "localityName": "",
+        "postalCode": "96373",
+        "countryName": "United States",
+        "countryCode": "USA",
+        "timezone": "",
+        "timezoneOffset": -10,
+        "timezoneDST": 0,
+        "latitude": "",
+        "longitude": "",
+        "directionsTxt": ""
+    },
+    "evergreenParentAsset": {},
+    "sourceSystem": {
+        "sourceSystemName": "Active.com Video",
+        "legacyGuid": "4D08F839-FC7B-4EA5-968F-E93BEB0894E7",
+        "affiliate": "false"
+    },
+    "assetRootAsset": {},
+    "assetParentAsset": {},
+    "market": {
+        "marketId": "5",
+        "marketName": "endurance-cycling"
+    },
+    "assetGuid": "6d3048c8-32eb-4920-8d9b-65c66baf3f52",
+    "assetName": "How the Topeak JoeBlow Booster Works",
+    "assetDsc": "",
+    "alternateName": "",
+    "timezone": "",
+    "localTimeZoneId": "",
+    "timezoneAbb": "",
+    "timezoneName": "",
+    "currencyCd": "",
+    "localeCd": "",
+    "salesStartDate": null,
+    "salesEndDate": null,
+    "urlAdr": "http://rodale.videodownload.worldnow.com/RODALE_2505201618134176078AA.mp4",
+    "detailPageTemplateId": "",
+    "preferredUrlAdr": "",
+    "logoUrlAdr": "",
+    "activityStartDate": null,
+    "activityEndDate": null,
+    "donationUrlAdr": "",
+    "teamUrlAdr": "",
+    "homePageUrlAdr": "",
+    "registrationUrlAdr": "",
+    "registrantSearchUrlAdr": "",
+    "regReqMinAge": null,
+    "regReqMaxAge": null,
+    "regReqGenderCd": "",
+    "resultsUrlAdr": "",
+    "contactName": "",
+    "contactEmailAdr": "",
+    "contactPhone": "",
+    "contactTxt": "",
+    "showContact": "false",
+    "sorId": "",
+    "sorCreateDtm": "2016-05-26T06:13:47",
+    "sorCreateUserId": "",
+    "authorName": "",
+    "childIndex": "",
+    "publishDate": null,
+    "createdDate": "2016-07-05T02:45:06",
+    "modifiedDate": "2016-07-05T02:45:06",
+    "retryDate": "2016-07-04T22:55:32",
+    "retryCounter": "2",
+    "activityRecurrences": [],
+    "assetQuantity": {},
+    "assetLegacyData": {},
+    "assetTags": [
+        {
+            "tag": {
+                "tagId": "1794498",
+                "tagName": "404",
+                "tagDescription": "height"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1794505",
+                "tagName": "tools,Topeak,Reviews",
+                "tagDescription": "keywords"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1794497",
+                "tagName": "720",
+                "tagDescription": "width"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1795507",
+                "tagName": "12463347",
+                "tagDescription": "clipid"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1795508",
+                "tagName": "http://rodale.worldnow.com/clip/12463347/how-the-topeak-joeblow-booster-works",
+                "tagDescription": "canonicalUrl"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1794337",
+                "tagName": "video/mp4",
+                "tagDescription": "type"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1794504",
+                "tagName": "8288063",
+                "tagDescription": "filesize"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1794506",
+                "tagName": "48",
+                "tagDescription": "duration"
+            }
+        },
+        {
+            "tag": {
+                "tagId": "1794496",
+                "tagName": "1296",
+                "tagDescription": "bitrate"
+            }
+        }
+    ],
+    "assetAttributes": [],
+    "assetPrices": [],
+    "assetDescriptions": [
+        {
+            "descriptionType": {
+                "descriptionTypeId": "6",
+                "descriptionTypeName": "Standard"
+            },
+            "description": "This floor pump has two modes: one that pumps up your tires normally, and another that acts like an air compressor to seat tubeless tires"
+        }
+    ],
+    "assetChannels": [
+        {
+            "sequence": "1",
+            "channel": {
+                "channelId": "1005",
+                "channelName": "Cycling",
+                "channelDsc": "Cycling"
+            }
+        }
+    ],
+    "assetMediaTypes": [
+        {
+            "sequence": "1",
+            "mediaType": {
+                "mediaTypeId": "2",
+                "mediaTypeName": "Event",
+                "mediaTypeDsc": ""
+            }
+        }
+    ],
+    "assetImages": [
+        {
+            "imageUrlAdr": "http://RODALE.images.worldnow.com/images/12463347_vtf.jpg",
+            "imageName": "videoImage",
+            "linkUrl": "",
+            "linkTarget": "",
+            "imageCaptionTxt": "",
+            "imageType": "IMAGE"
+        }
+    ],
+    "assetTopics": [
+        {
+            "sequence": "1",
+            "topic": {
+                "topicId": "25",
+                "topicTaxonomy": "Endurance/Cycling",
+                "topicName": "Cycling"
+            }
+        }
+    ],
+    "assetCategories": [
+        {
+            "sequence": "1",
+            "category": {
+                "categoryId": "8",
+                "categoryTaxonomy": "Creative Work/Videos",
+                "categoryName": "Videos"
+            }
+        },
+        {
+            "sequence": "2",
+            "category": {
+                "categoryId": "2",
+                "categoryTaxonomy": "Event",
+                "categoryName": "Event"
+            }
+        },
+        {
+            "sequence": "3",
+            "category": {
+                "categoryId": "13",
+                "categoryTaxonomy": "Event/Classes",
+                "categoryName": "Classes"
+            }
+        }
+    ],
+    "assetMetaInterests": [],
+    "assetInterests": [],
+    "assetDeals": [],
+    "socialMedia": [],
+    "assetComponents": [],
+    "assetServiceHostName": "as-app-qa01",
+    "componentInUrlAdr": {},
+    "assetSeoUrls": [
+        {
+            "seoSystemName": "as3",
+            "statusCode": "true",
+            "urlAdr": "http://www.active.com/ap/cycling/videos/how-the-topeak-joeblow-booster-works"
+        }
+    ],
+    "overrideSeourlFlag": "false",
+    "activenetTopGraphic": {},
+    "evergreenAssetFlag": "false",
+    "evergreenAssets": [],
+    "assetReferences": [],
+    "assetVersion": 3,
+    "salesStatus": "registration-unavailable"
+}

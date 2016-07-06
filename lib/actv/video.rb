@@ -1,5 +1,4 @@
 require 'actv/asset'
-require 'nokogiri'
 
 module ACTV
   class Video < Asset
