@@ -2,7 +2,7 @@ require 'actv/asset'
 
 module ACTV
   class Video < Asset
-    attr_reader :sorCreateDtm, :urlAdr, :keywords, :duration, :height, :type, :width, :filesize, :bitrate, :canonical_url, :image
+    attr_reader :sorCreateDtm, :urlAdr
     alias publish_date sorCreateDtm
     alias source urlAdr
     alias channel sub_topic
@@ -58,7 +58,7 @@ module ACTV
     end
 
     def as_json
-      {image: cover, title: title, topic: sub_topic, duration: duration, keywords: keywords}
+      { cover: cover, title: title, topic: sub_topic, duration: duration, keywords: keywords, source: source }
     end
   end
 end
