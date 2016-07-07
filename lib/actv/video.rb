@@ -58,7 +58,7 @@ module ACTV
     end
 
     def as_json
-      { cover: cover, title: title, topic: sub_topic, duration: duration, keywords: keywords, source: source }
+      { id: id, cover: cover, title: title, topic: sub_topic, duration: duration, keywords: keywords, type: type, source: source }
     end
   end
 end

@@ -99,7 +99,7 @@ describe ACTV::Video do
   end
 
   describe '#as_json' do
-    context 'return a hash include cover,title,topic,duration,keywords,source' do
+    context 'return a hash include cover,title,topic,duration,keywords,source,type,id' do
       its(:as_json){ should be_a Hash }
     end
   end
