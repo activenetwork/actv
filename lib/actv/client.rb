@@ -182,9 +182,6 @@ module ACTV
 
     def video(id, params={})
       request_string = "/v2/assets/#{id}"
-      is_preview, params = params_include_preview? params
-      request_string += '/preview' if is_preview
-
       response = get "#{request_string}.json", params
 
       video = ACTV::Video.new response[:body]

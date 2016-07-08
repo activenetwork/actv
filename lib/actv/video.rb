@@ -56,9 +56,5 @@ module ACTV
     def cover
       image.url if image
     end
-
-    def as_json
-      { id: id, cover: cover, title: title, topic: sub_topic, duration: duration, keywords: keywords, type: type, source: source }
-    end
   end
 end
