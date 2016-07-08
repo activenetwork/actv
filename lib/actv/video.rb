@@ -11,10 +11,6 @@ module ACTV
       ACTV::VideoValidator.new(response).valid?
     end
 
-    def is_video?
-      true
-    end
-
     def keywords
       @keywords ||= tag_by_description 'keywords'
     end

@@ -27,13 +27,8 @@ describe ACTV::Video do
       it { should be_true }
     end
 
-    context 'when the category taxonomy is videos' do
-      let(:asset_categories) { [{category: {categoryName: "", categoryTaxonomy: "Creative Work/Videos"}}] }
-      it { should be_true }
-    end
-
-    context 'when there is no category name or category taxonomy' do
-      let(:asset_categories) { [{category: {categoryName: "", categoryTaxonomy: ""}}] }
+    context 'when the category name is articles' do
+      let(:asset_categories) { [{category: {categoryName: "Articles", categoryTaxonomy: ""}}] }
       it { should be_false }
     end
   end

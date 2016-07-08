@@ -184,8 +184,7 @@ module ACTV
       request_string = "/v2/assets/#{id}"
       response = get "#{request_string}.json", params
 
-      video = ACTV::Video.new response[:body]
-      video.is_video? ? video : nil
+      ACTV::Video.new response[:body]
     end
 
     def videos(q, params={})
