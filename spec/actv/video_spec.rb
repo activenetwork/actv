@@ -18,78 +18,105 @@ describe ACTV::Video do
                     assetTags: asset_tags,
                     assetImages: asset_images,
                     assetCategories: asset_categories} }
-  subject(:video) { ACTV::Video.new response }
+  let(:video) { ACTV::Video.new response }
 
-  describe '#self.valid?' do
-    subject(:valid?) { ACTV::Video.valid? response }
-    context 'when the category name is videos' do
+  describe "#self.valid?" do
+    let(:valid) { ACTV::Video.valid? response }
+
+    context "when the category name is videos" do
       let(:asset_categories) { [{category: {categoryName: "Videos", categoryTaxonomy: ""}}] }
-      it { should be_true }
+
+      it "should return true" do
+        expect(valid).to be true
+      end
     end
 
-    context 'when the category name is articles' do
+    context "when the category name is articles" do
+
       let(:asset_categories) { [{category: {categoryName: "Articles", categoryTaxonomy: ""}}] }
-      it { should be_false }
+      it "should return false" do
+        expect(valid).to be false
+      end
     end
   end
 
-  describe '#source' do
-    context 'when a video source is exists' do
-      its(:source) { should eq urlAdr }
+  describe "#source" do
+    context "when a video source is exists" do
+      it "should return video play source" do
+        expect(video.source).to eq(urlAdr)
+      end
     end
   end
 
-  describe '#keywords' do
-    context 'when a video tag with tagDescription equal keywords exists' do
-      its(:keywords) { should eq "training,fitness,health & injuries" }
+  describe "#keywords" do
+    context "when a video tag with tagDescription equal keywords exists" do
+      it "should return keywords" do
+        expect(video.keywords).to eq("training,fitness,health & injuries")
+      end
     end
   end
 
-  describe '#type' do
-    context 'when a video tag with tagDescription equal type exists' do
-      its(:type) { should eq "video/mp4" }
+  describe "#type" do
+    context "when a video tag with tagDescription equal type exists" do
+      it "should return video type as 'video/mp4'" do
+        expect(video.type).to eq("video/mp4")
+      end
     end
   end
 
-  describe '#width' do
-    context 'when a video tag with tagDescription equal width exists' do
-      its(:width) { should eq "640" }
+  describe "#width" do
+    context "when a video tag with tagDescription equal width exists" do
+      it "should return video width" do
+        expect(video.width).to eq("640")
+      end
     end
   end
 
-  describe '#height' do
-    context 'when a video tag with tagDescription equal height exists' do
-      its(:height) { should eq "360" }
+  describe "#height" do
+    context "when a video tag with tagDescription equal height exists" do
+      it "should return video height" do
+        expect(video.height).to eq("360")
+      end
     end
   end
 
-  describe '#bitrate' do
-    context 'when a video tag with tagDescription equal bitrate exists' do
-      its(:bitrate) { should eq "997" }
+  describe "#bitrate" do
+    context "when a video tag with tagDescription equal bitrate exists" do
+      it "should return bitrate" do
+        expect(video.bitrate).to eq("997")
+      end
     end
   end
 
-  describe '#duration' do
+  describe "#duration" do
     context 'when a video tag with tagDescription equal duration exists' do
-      its(:duration) { should eq "140" }
+      it "should return duration" do
+        expect(video.duration).to eq("140")
+      end
     end
   end
 
-  describe '#filesize' do
-    context 'when a video tag with tagDescription equal filesize exists' do
-      its(:filesize) { should eq "18370674" }
+  describe "#filesize" do
+    context "when a video tag with tagDescription equal filesize exists" do
+      it "should return filesize" do
+        expect(video.filesize).to eq("18370674")
+      end
     end
   end
 
-  describe '#canonical_url' do
-    context 'when a video tag with tagDescription equal canonical_url exists' do
-      its(:canonical_url) { should eq "http://rodale.worldnow.com/clip/12508455/these-foam-rolling-moves-can-help-you-recover-faster" }
+  describe "#canonical_url" do
+    context "when a video tag with tagDescription equal canonical_url exists" do
+      it "should return canonical url" do
+        expect(video.canonical_url).to eq("http://rodale.worldnow.com/clip/12508455/these-foam-rolling-moves-can-help-you-recover-faster")
+      end
     end
   end
 
-  describe '#cover' do
-    context 'when a video image exists' do
-      its(:cover) { should eq "http://RODALE.images.worldnow.com/images/12508455_vtf.jpg" }
+  describe "#cover" do
+    context "when a video image exists" do
+      it "should return video cover" do
+        expect(video.cover).to eq("http://RODALE.images.worldnow.com/images/12508455_vtf.jpg")
+      end
     end
   end
 end
