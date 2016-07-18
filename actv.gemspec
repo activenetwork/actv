@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'timecop'
   gem.add_development_dependency 'webmock'
   gem.add_development_dependency 'yard'
-  gem.add_development_dependency 'activesupport'
+  gem.add_development_dependency 'activesupport', '4.2.6'
 
 
   gem.authors       = ["Nathaniel Barnes"]
