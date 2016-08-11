@@ -52,5 +52,9 @@ module ACTV
     def cover
       image.url if image
     end
+
+    def is_video?
+      true
+    end
   end
 end

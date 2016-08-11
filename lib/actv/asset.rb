@@ -213,6 +213,10 @@ module ACTV
       false
     end
 
+    def is_video?
+      false
+    end
+
     def has_location?
       self.place && place.has_lat_long?
     end
