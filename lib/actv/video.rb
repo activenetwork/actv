@@ -56,5 +56,9 @@ module ACTV
     def is_video?
       true
     end
+
+    def thumbnail
+      image
+    end
   end
 end
