@@ -56,6 +56,10 @@ module ACTV
       end
     end
 
+    def same_article? article
+      self == article
+    end
+
     private
 
     def resolve_inline_ad_tag

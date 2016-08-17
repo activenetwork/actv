@@ -34,9 +34,5 @@ module ACTV
         ACTV::Suggestion.new(suggestion)
       end
     end
-
-    def first_article? art
-      results.first == art
-    end
   end
 end
