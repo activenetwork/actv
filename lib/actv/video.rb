@@ -3,7 +3,7 @@ require 'actv/asset'
 module ACTV
   class Video < Asset
     attr_reader :sorCreateDtm, :urlAdr
-    alias publish_date sorCreateDtm
+    alias published_at sorCreateDtm
     alias source urlAdr
     alias channel sub_topic
 
