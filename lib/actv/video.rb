@@ -49,8 +49,15 @@ module ACTV
       @image ||= image_by_name 'videoImage'
     end
 
+    alias thumbnail image
+
     def cover
       image.url if image
     end
+
+    def is_video?
+      true
+    end
+
   end
 end

@@ -228,7 +228,7 @@ module ACTV
     #   ACTV.popular_articles("topic:running")
     def popular_articles(params={})
       response = get("/v2/articles/popular", params)
-      ACTV::ArticleSearchResults.from_response(response)
+      ACTV::SearchResults.from_response(response)
     end
 
     # Returns popular interests
