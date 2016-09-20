@@ -2,7 +2,7 @@ module ACTV
   class OrganizerResults < ACTV::Base
     def results
       @results ||= Array(@attrs[:results]).map do |organizer|
-        ACTV::Organizer.new(organizer)
+        ACTV::Organizer.new(organizer[:organization])
       end
     end
     def total
