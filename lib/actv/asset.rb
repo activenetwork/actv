@@ -64,6 +64,10 @@ module ACTV
       AssetValidator.new(response).valid?
     end
 
+    def course_map
+      @course_map ||= tag_by_description 'Camp type'
+    end
+
     def endurance_id
       if self.awendurance?
         query_values = Addressable::URI.parse(registrationUrlAdr.to_s).query_values
