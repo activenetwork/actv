@@ -10,6 +10,10 @@ module ACTV
       ACTV::EventValidator.new(response).valid?
     end
 
+    def course_map
+      @course_map ||= tag_by_description 'Camp type'
+    end
+
     def online_registration_available?
       if is_present?(self.registrationUrlAdr)
         if is_present?(self.legacy_data) && is_present?(self.legacy_data.onlineRegistration)

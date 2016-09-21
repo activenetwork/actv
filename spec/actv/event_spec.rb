@@ -33,6 +33,17 @@ describe ACTV::Event do
     end
   end
 
+  describe '#course_map' do
+    context 'when an Camp type tag description exists' do
+      let(:map_file) { 'https://commuserui-vip.qa.aw.dev.activenetwork.com/sys/filedownload/0/0/fb6f1821-e2f0-4635-96be-d970c0fcf26c/CourseMap_15260251_1469500165160/sddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd00ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd00dddddddddddddddddddddddddddddddddddddddddddddddddddddd99988' }
+      let(:asset_tags) { [ { tag: { tagId: '1801633', tagName: map_file, tagDescription: 'Camp type' } } ] }
+      its(:course_map) { should eq map_file }
+    end
+    context 'when an Camp type tag description does not exist' do
+      its(:course_map) { should be_nil }
+    end
+  end
+
   describe '#online_registration_available?' do
     context 'when online_registration_available is true' do
       before do
