@@ -11,7 +11,7 @@ module ACTV
     end
 
     def course_map
-      @course_map ||= tag_by_description 'Camp type'
+      @course_map ||= tag_by_description 'coursemap'
     end
 
     def online_registration_available?
