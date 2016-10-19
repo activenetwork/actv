@@ -5,7 +5,8 @@ module ACTV
 
     attr_reader :organizationDsc, :organizationGuid, :addressCityName, :fax, :sourceSystemGuid, :addressPostalCd,
        :organizationName, :addressStateProvinceCode, :addressCountryCd, :primaryContactPhone, :addressLine1Txt,
-       :primaryContactEmailAdr, :hideOrganizationContact, :addressLocalityName, :showOrganizationName, :primaryContactName, :addressLine2Txt
+       :primaryContactEmailAdr, :hideOrganizationContact, :addressLocalityName, :showOrganizationName, :primaryContactName, :addressLine2Txt,
+       :longitude, :latitude
 
     alias id organizationGuid
     alias name organizationName
