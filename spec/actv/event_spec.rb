@@ -61,7 +61,7 @@ describe ACTV::Event do
 
       context 'when legacy_data field online_registration is bool value true' do
         before do
-          subject.legacy_data.stub(:onlineRegistration).and_return("true")
+          subject.legacy_data.stub(:onlineRegistration).and_return(true)
           subject.stub(:registrationUrlAdr).and_return("something")
         end
 
