@@ -49,7 +49,7 @@ describe ACTV::Event do
   end
 
   describe '#online_registration_available?' do
-    context "when legacy_data is not present" do
+    context "when legacy_data is present" do
       context "when legacy_data field online_registration is string value 'true'" do
         before do
           subject.legacy_data.stub(:onlineRegistration).and_return("true")
@@ -94,21 +94,21 @@ describe ACTV::Event do
 
         its(:online_registration_available?) { should be_true }
       end
-    end
 
-    context "when legacy_data field online_registration is not present" do
-      before do
-        subject.legacy_data.stub(:onlineRegistration).and_return(nil)
-      end
+      context "when legacy_data field online_registration is not present" do
+        before do
+          subject.legacy_data.stub(:onlineRegistration).and_return(nil)
+        end
 
-      context "when registrationUrlAdr is present" do
-        before { subject.stub(:registrationUrlAdr).and_return("something") }
-        its(:online_registration_available?) { should be_true }
-      end
+        context "when registrationUrlAdr is present" do
+          before { subject.stub(:registrationUrlAdr).and_return("something") }
+          its(:online_registration_available?) { should be_true }
+        end
 
-      context "when registrationUrlAdr is not present" do
-        before { subject.stub(:registrationUrlAdr).and_return(nil) }
-        its(:online_registration_available?) { should be_false }
+        context "when registrationUrlAdr is not present" do
+          before { subject.stub(:registrationUrlAdr).and_return(nil) }
+          its(:online_registration_available?) { should be_false }
+        end
       end
     end
 
