@@ -16,7 +16,7 @@ module ACTV
 
     def online_registration_available?
       if is_present?(self.registrationUrlAdr)
-        if is_present?(self.legacy_data) && is_present?(self.legacy_data.onlineRegistration)
+        if is_present?(self.legacy_data) && is_present?(self.legacy_data.onlineRegistration.to_s)
           self.legacy_data.onlineRegistration.to_s.downcase == 'true'
         else
           true

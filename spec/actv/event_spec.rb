@@ -49,50 +49,64 @@ describe ACTV::Event do
   end
 
   describe '#online_registration_available?' do
-    context 'when online_registration_available is true' do
-      before do
-        subject.legacy_data.stub(:onlineRegistration).and_return("true")
-        subject.stub(:registrationUrlAdr).and_return("something")
+    context "when registrationUrlAdr is present" do
+      before { subject.stub(:registrationUrlAdr).and_return("something") }
+
+      context "when legacy_data is present" do
+        context "when online_registration field is string value 'true'" do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return("true") }
+          its(:online_registration_available?) { should be_true }
+        end
+
+        context 'when online_registration field is bool value true' do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return(true) }
+          its(:online_registration_available?) { should be_true }
+        end
+
+        context "when online_registration field is string value 'false'" do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return("false") }
+          its(:online_registration_available?) { should be_false }
+        end
+
+        context "when online_registration field is bool value false" do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return(false) }
+          its(:online_registration_available?) { should be_false }
+        end
+
+        context "when online_registration field is blank" do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return('') }
+          its(:online_registration_available?) { should be_true }
+        end
+
+        context "when online_registration field is not present" do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return(nil) }
+          its(:online_registration_available?) { should be_true }
+        end
       end
 
-      its(:online_registration_available?) { should be_true }
-    end
-
-    context "when online_registration_available is not true" do
-      before do
-        subject.legacy_data.stub(:onlineRegistration).and_return("false")
-        subject.stub(:registrationUrlAdr).and_return("something")
-      end
-
-      its(:online_registration_available?) { should be_false }
-    end
-
-    context "when online_registration_available is not present" do
-      before do
-        subject.legacy_data.stub(:onlineRegistration).and_return(nil)
-      end
-
-      context "when registrationUrlAdr is present" do
-        before { subject.stub(:registrationUrlAdr).and_return("something") }
+      context "when legacy_data is not present" do
+        before { subject.stub(:legacy_data).and_return(nil) }
         its(:online_registration_available?) { should be_true }
       end
-
-      context "when registrationUrlAdr is not present" do
-        before { subject.stub(:registrationUrlAdr).and_return(nil) }
-        its(:online_registration_available?) { should be_false }
-      end
     end
 
-    context "when legacy_data is not present" do
-      before { subject.stub(:legacy_data).and_return(nil) }
+    context "when registrationUrlAdr is not present" do
+      before { subject.stub(:registrationUrlAdr).and_return(nil) }
 
-      context "when registrationUrlAdr is present" do
-        before { subject.stub(:registrationUrlAdr).and_return("something") }
-        its(:online_registration_available?) { should be_true }
+      context "when legacy_data is present" do
+        context "when online_registration field is true" do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return(true) }
+          its(:online_registration_available?) { should be_false }
+        end
+
+        context "when online_registration field is false" do
+          before { subject.legacy_data.stub(:onlineRegistration).and_return(false) }
+          its(:online_registration_available?) { should be_false }
+        end
       end
 
-      context "when registrationUrlAdr is not present" do
-        before { subject.stub(:registrationUrlAdr).and_return(nil) }
+      context "when legacy_data is not present" do
+        before { subject.stub(:legacy_data).and_return(nil) }
         its(:online_registration_available?) { should be_false }
       end
     end
