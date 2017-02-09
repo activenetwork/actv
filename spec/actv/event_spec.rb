@@ -90,8 +90,8 @@ describe ACTV::Event do
       end
     end
 
-    context "when legacy_data is not present" do
-      before { subject.stub(:legacy_data).and_return(nil) }
+    context "when registrationUrlAdr is not present" do
+      before { subject.stub(:registrationUrlAdr).and_return(nil) }
 
       context "when legacy_data is present" do
         context "when online_registration field is true" do
