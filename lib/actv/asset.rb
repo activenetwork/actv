@@ -13,7 +13,6 @@ require 'actv/identity'
 require 'actv/place'
 require 'actv/recurrence'
 require 'actv/asset_source_system'
-require 'pry'
 
 module ACTV
   class Asset < ACTV::Identity
