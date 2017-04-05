@@ -22,7 +22,7 @@ module ACTV
 
     attr_reader :assetGuid, :assetName, :assetDsc, :activityStartDate, :activityStartTime, :activityEndDate, :activityEndTime,
       :homePageUrlAdr, :isRecurring, :contactName, :contactEmailAdr, :contactPhone, :showContact, :publishDate, :createdDate, :modifiedDate,
-      :authorName, :is_event, :is_article, :currencyCd, :contactTxt, :regReqMinAge, :regReqMaxAge, :regReqGenderCd
+      :authorName, :is_event, :is_article, :currencyCd, :contactTxt, :regReqMinAge, :regReqMaxAge, :regReqGenderCd, :sponsoredContent
 
     alias id assetGuid
     alias title assetName
@@ -47,6 +47,7 @@ module ACTV
     alias minimum_age regReqMinAge
     alias maximum_age regReqMaxAge
     alias required_gender regReqGenderCd
+    alias sponsored_content sponsoredContent
 
     def self.inherited base
       @types << base
@@ -354,6 +355,14 @@ module ACTV
       @attrs[:organization] || {}
     end
 
+    def sponsored?
+      sponsoredContent.present? && sponsoredContent[:enabled] && sponsored_date_available?
+    end
+
+    def sponsoredContent
+      @sponsoredContent ||= @attrs[:sponsoredContent] unless @attrs[:sponsoredContent].nil?
+    end
+
     private
 
     def child_assets_filtered_by_category category
@@ -402,6 +411,12 @@ module ACTV
     def kids_interest?
       interests = meta_interests.to_a.map(&:downcase)
       ['kids', 'family'].any? { |tag| interests.include? tag }
+    end
+
+    def sponsored_date_available?
+      start_time = Time.parse(sponsoredContent[:startDate])
+      end_time = Time.parse(sponsoredContent[:endDate])
+      start_time < Time.now && Time.now < end_time
     end
   end
 end
