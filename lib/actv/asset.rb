@@ -13,6 +13,7 @@ require 'actv/identity'
 require 'actv/place'
 require 'actv/recurrence'
 require 'actv/asset_source_system'
+require 'pry'
 
 module ACTV
   class Asset < ACTV::Identity
@@ -356,7 +357,7 @@ module ACTV
     end
 
     def sponsored?
-      sponsoredContent.present? && sponsoredContent[:enabled] && sponsored_date_available?
+      sponsoredContent.present? && sponsoredContent[:enabled].to_s == 'true' && sponsored_date_available?
     end
 
     def sponsoredContent
