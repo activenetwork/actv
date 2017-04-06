@@ -416,7 +416,7 @@ module ACTV
     def sponsored_date_available?
       start_time = Time.parse(sponsoredContent[:startDate])
       end_time = Time.parse(sponsoredContent[:endDate])
-      start_time < Time.now && Time.now < end_time
+      Time.now.between?(start_time, end_time)
     end
   end
 end

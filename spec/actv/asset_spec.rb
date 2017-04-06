@@ -595,7 +595,6 @@ describe ACTV::Asset do
     end
 
     context 'when sponsored date is invalaid and status is enabled' do
-
       let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2015-12-15T00:00:00', enabled: 'true', endDate: '2016-10-28T11:59:59' } } }
       it 'returns false' do
         expect(asset.sponsored?).to be_false
