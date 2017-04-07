@@ -558,43 +558,25 @@ describe ACTV::Asset do
     end
   end
 
-  describe '#sponsored_content' do
-    let(:response) { { assetGuid: 1 } }
-    let(:asset) { ACTV::Asset.new response }
-
-    context 'when sponsored content is nil' do
-      it 'returns nil' do
-        expect(asset.sponsored_content).to be_nil
-      end
-    end
-
-    context 'when sponsored content is exist' do
-      let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'false', endDate: '2017-10-28T11:59:59' } } }
-      it 'returns a hash' do
-        expect(asset.sponsored_content).to be_a Hash
-      end
-    end
-  end
-
   describe '#sponsored?' do
     let(:response) { { assetGuid: 1 } }
     let(:asset) { ACTV::Asset.new response }
 
-    context 'when sponsored status is unenabled' do
+    context 'when sponsored status is disabled' do
       let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'false', endDate: '2017-10-28T11:59:59' } } }
       it 'returns false' do
         expect(asset.sponsored?).to be_false
       end
     end
 
-    context 'when sponsored date is valaid and status is enabled' do
+    context 'when sponsored date is valid and status is disabled' do
       let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'true', endDate: Time.at(Time.now.to_i + 3600*24).strftime("%Y-%m-%dT%H:%I:%S") } } }
       it 'returns true' do
         expect(asset.sponsored?).to be_true
       end
     end
 
-    context 'when sponsored date is invalaid and status is enabled' do
+    context 'when sponsored date is invalid and status is enabled' do
       let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2015-12-15T00:00:00', enabled: 'true', endDate: '2016-10-28T11:59:59' } } }
       it 'returns false' do
         expect(asset.sponsored?).to be_false
