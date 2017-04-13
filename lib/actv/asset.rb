@@ -354,6 +354,10 @@ module ACTV
       @attrs[:organization] || {}
     end
 
+    def sponsored?
+      sponsoredContent.present? && sponsoredContent[:enabled].to_s == 'true' && sponsored_date_available?
+    end
+
     private
 
     def child_assets_filtered_by_category category
@@ -402,6 +406,16 @@ module ACTV
     def kids_interest?
       interests = meta_interests.to_a.map(&:downcase)
       ['kids', 'family'].any? { |tag| interests.include? tag }
+    end
+
+    def sponsoredContent
+      @sponsoredContent ||= @attrs[:sponsoredContent] unless @attrs[:sponsoredContent].nil?
+    end
+
+    def sponsored_date_available?
+      start_time = Time.parse(sponsoredContent[:startDate])
+      end_time = Time.parse(sponsoredContent[:endDate])
+      Time.now.between?(start_time, end_time)
     end
   end
 end

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'timecop'
 
 describe ACTV::Asset do
 
@@ -537,6 +538,7 @@ describe ACTV::Asset do
     let(:asset_references) { [] }
     let(:response) { { assetGuid: 1, assetReferences: asset_references } }
     let(:asset) { ACTV::Asset.new response }
+
     context 'when there are asset references' do
       let(:asset_references) { [ { referenceAsset: { assetGuid: "123" },
                                    referenceType: { referenceTypeName: "author" } } ] }
@@ -544,15 +546,46 @@ describe ACTV::Asset do
         expect(asset.references.first).to be_a ACTV::AssetReference
       end
     end
+
     context 'when there are no asset references' do
       it 'returns an empty array' do
         expect(asset.references).to be_empty
       end
     end
+
     context 'when there is no asset references field' do
       let(:response) { { assetGuid: 1 } }
       it 'returns an empty array' do
         expect(asset.references).to be_empty
+      end
+    end
+  end
+
+  describe '#sponsored?' do
+    before { Timecop.freeze(2017,1,1,0,0,0) }
+    after { Timecop.return }
+
+    let(:response) { { assetGuid: 1 } }
+    let(:asset) { ACTV::Asset.new response }
+
+    context 'when sponsored status is disabled' do
+      let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'false', endDate: '2017-1-28T11:59:59' } } }
+      it 'returns false' do
+        expect(asset.sponsored?).to be_false
+      end
+    end
+
+    context 'when sponsored date is valid and status is enabled' do
+      let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'true', endDate: '2017-1-28T11:59:59' } } }
+      it 'returns true' do
+        expect(asset.sponsored?).to be_true
+      end
+    end
+
+    context 'when sponsored date is invalid and status is enabled' do
+      let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2015-12-15T00:00:00', enabled: 'true', endDate: '2016-10-28T11:59:59' } } }
+      it 'returns false' do
+        expect(asset.sponsored?).to be_false
       end
     end
   end
