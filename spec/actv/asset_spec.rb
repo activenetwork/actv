@@ -562,13 +562,8 @@ describe ACTV::Asset do
   end
 
   describe '#sponsored?' do
-    before do
-      Timecop.freeze(2017,1,1,0,0,0)
-    end
-
-    after do
-      Timecop.return
-    end
+    before { Timecop.freeze(2017,1,1,0,0,0) }
+    after { Timecop.return }
 
     let(:response) { { assetGuid: 1 } }
     let(:asset) { ACTV::Asset.new response }
@@ -580,7 +575,7 @@ describe ACTV::Asset do
       end
     end
 
-    context 'when sponsored date is valid and status is disabled' do
+    context 'when sponsored date is valid and status is enabled' do
       let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'true', endDate: '2017-1-28T11:59:59' } } }
       it 'returns true' do
         expect(asset.sponsored?).to be_true
