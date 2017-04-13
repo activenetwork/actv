@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'timecop'
 
 describe ACTV::Asset do
 
@@ -545,11 +546,13 @@ describe ACTV::Asset do
         expect(asset.references.first).to be_a ACTV::AssetReference
       end
     end
+
     context 'when there are no asset references' do
       it 'returns an empty array' do
         expect(asset.references).to be_empty
       end
     end
+
     context 'when there is no asset references field' do
       let(:response) { { assetGuid: 1 } }
       it 'returns an empty array' do
@@ -570,7 +573,15 @@ describe ACTV::Asset do
     end
 
     context 'when sponsored date is valid and status is disabled' do
-      let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'true', endDate: Time.at(Time.now.to_i + 3600*24).strftime("%Y-%m-%dT%H:%I:%S") } } }
+      before do
+        Timecop.freeze(2017,1,1,0,0,0)
+      end
+
+      after do
+        Timecop.return
+      end
+
+      let(:response) { { assetGuid: 1, sponsoredContent: { startDate: '2016-12-15T00:00:00', enabled: 'true', endDate: '2017-1-28T11:59:59' } } }
       it 'returns true' do
         expect(asset.sponsored?).to be_true
       end
