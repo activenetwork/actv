@@ -1,6 +1,7 @@
 require 'faraday'
 require 'actv/error/bad_gateway'
 require 'actv/error/internal_server_error'
+require 'actv/error/service_not_found'
 require 'actv/error/service_unavailable'
 
 module ACTV
