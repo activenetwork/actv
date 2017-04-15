@@ -1,5 +1,6 @@
 require 'faraday'
 require 'actv/error/bad_gateway'
+require 'actv/error/gateway_timeout'
 require 'actv/error/internal_server_error'
 require 'actv/error/service_unavailable'
 
