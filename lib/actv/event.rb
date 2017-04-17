@@ -103,13 +103,13 @@ module ACTV
     # Returns the asset's registration open date
     # in UTC.  This is pulled from the salesStartDate
     def registration_open_date
-      Time.parse "#{authoritative_reg_start_date} UTC"
+      Time.parse parse_date_with_correct_timezone_or_offset(authoritative_reg_start_date)
     end
 
     # Returns the asset's registration end date
     # in UTC.  This is pulled from the salesEndDate
     def registration_close_date
-      Time.parse "#{authoritative_reg_end_date} UTC"
+      Time.parse parse_date_with_correct_timezone_or_offset(authoritative_reg_end_date)
     end
 
     # Returns the asset's start date
@@ -165,9 +165,21 @@ module ACTV
 
     private
 
+    def source_system_with_timezone_exception?
+      self.awcamps30? || self.awcamps? || self.regcenter2? || self.regcenter?
+    end
+
+    def parse_date_with_correct_timezone_or_offset date
+      "#{date} #{format_timezone_offset(place.timezoneOffset)}"
+    end
+
     # EG: -7 => "-0700"
     def format_timezone_offset(offset)
-      (offset < 0 ? "-" : "") << offset.abs.to_s.rjust(2,'0') << '00'
+      if offset.present? && source_system_with_timezone_exception?
+        (offset < 0 ? "-" : "") << offset.abs.to_s.rjust(2,'0') << '00'
+      else
+        "UTC"
+      end
     end
 
     def authoritative_reg_end_date
