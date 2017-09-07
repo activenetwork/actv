@@ -129,7 +129,7 @@ module ACTV
     end
 
     def image_url
-      defaultImage = 'http://www.active.com/images/events/hotrace.gif'
+      defaultImage = 'https://www.active.com/images/events/hotrace.gif'
       image = ''
 
       self.assetImages.each do |i|

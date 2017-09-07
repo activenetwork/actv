@@ -38,7 +38,7 @@ module ACTV
 
     def image_url
       if photo.url && photo.url.start_with?("/")
-        "http://www.active.com#{photo.url}"
+        "https://www.active.com#{photo.url}"
       else
         photo.url
       end

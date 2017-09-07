@@ -96,6 +96,9 @@ module ACTV
 
     def descriptions
       @descriptions ||= Array(@attrs[:assetDescriptions]).map do |description|
+        description[:description].to_s.to_s.gsub! 'http://www.active.com', 'https://www.active.com'
+        description[:description].to_s.to_s.gsub! 'http://content.active.com', 'https://content.active.com'
+        description[:description].to_s.to_s.gsub! 'http://photos-images.active.com', 'https://photos-images.active.com'
         ACTV::AssetDescription.new(description)
       end
     end
@@ -128,6 +131,11 @@ module ACTV
 
     def images
       @images ||= Array(@attrs[:assetImages]).map do |img|
+        img[:imageUrlAdr].to_s.sub! 'http://www.active.com', 'https://www.active.com'
+        img[:imageUrlAdr].to_s.sub! 'http://content.active.com', 'https://content.active.com'
+        img[:imageUrlAdr].to_s.sub! 'http://photos-images.active.com', 'https://photos-images.active.com'
+        img[:linkUrl].to_s.sub! 'http://www.active.com', 'https://www.active.com'
+        img[:linkUrl].to_s.sub! 'http://content.active.com', 'https://content.active.com'
         ACTV::AssetImage.new(img)
       end
     end
@@ -172,6 +180,7 @@ module ACTV
 
     def seo_urls
       @seo_urls ||= Array(@attrs[:assetSeoUrls]).map do |seo_url|
+        seo_url[:urlAdr].to_s.sub! 'http://www.active.com', 'https://www.active.com'
         ACTV::AssetSeoUrl.new(seo_url)
       end
     end
@@ -320,7 +329,7 @@ module ACTV
     end
 
     def image_path
-      default_image = 'http://www.active.com/images/events/hotrace.gif'
+      default_image = 'https://www.active.com/images/events/hotrace.gif'
       image = image_without_placeholder.imageUrlAdr rescue ""
 
       if image.empty? and (logoUrlAdr && logoUrlAdr != default_image && !(logoUrlAdr =~ URI::regexp).nil?)
@@ -373,7 +382,7 @@ module ACTV
     end
 
     def image_without_placeholder
-      default_image = 'http://www.active.com/images/events/hotrace.gif'
+      default_image = 'https://www.active.com/images/events/hotrace.gif'
       current_image = nil
 
       asset_images.each do |i|

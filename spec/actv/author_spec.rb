@@ -11,7 +11,7 @@ describe ACTV::Author do
   context 'when valid author asset is initialized' do
     its(:footer) { should start_with '<div class="article-signature-block">' }
     its(:bio) { should start_with 'Jacquie Cattanach is an avid runner and triathlete' }
-    its('photo.url') {should eq 'http://www.active.com/Assets/Running/Bios/jacquie-cattanach-bio.jpg'}
+    its('photo.url') {should eq 'https://www.active.com/Assets/Running/Bios/jacquie-cattanach-bio.jpg'}
     its(:name_from_footer) { should eq 'Jacquie Cattanach'}
   end
 
@@ -47,7 +47,7 @@ describe ACTV::Author do
   describe '#image_url' do
     context 'when photo url is a fully qualified url' do
       it 'returns the photo url' do
-        expect(author.image_url).to eq 'http://www.active.com/Assets/Running/Bios/jacquie-cattanach-bio.jpg'
+        expect(author.image_url).to eq 'https://www.active.com/Assets/Running/Bios/jacquie-cattanach-bio.jpg'
       end
     end
 
@@ -56,7 +56,7 @@ describe ACTV::Author do
         allow(author.photo).to receive(:url).and_return '/hello'
       end
       it 'returns the url for the active.com domain' do
-        expect(author.image_url).to eq 'http://www.active.com/hello'
+        expect(author.image_url).to eq 'https://www.active.com/hello'
       end
     end
   end
