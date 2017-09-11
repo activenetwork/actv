@@ -115,8 +115,14 @@ describe ACTV::Video do
   describe "#cover" do
     context "when a video image exists" do
       it "should return video cover" do
-        expect(video.cover).to eq("http://RODALE.images.worldnow.com/images/12508455_vtf.jpg")
+        expect(video.cover).to eq("https://rodale.images.worldnow.com/images/12508455_vtf.jpg")
       end
+    end
+  end
+
+  describe '#source' do
+    it 'starts with https' do
+      expect(video.source).to eq("https://rodale.videodownload.worldnow.com/RODALE_0906201614333627818AA.mp4")
     end
   end
 end

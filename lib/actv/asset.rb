@@ -96,9 +96,10 @@ module ACTV
 
     def descriptions
       @descriptions ||= Array(@attrs[:assetDescriptions]).map do |description|
-        description[:description].to_s.to_s.gsub! 'http://www.active.com', 'https://www.active.com'
-        description[:description].to_s.to_s.gsub! 'http://content.active.com', 'https://content.active.com'
-        description[:description].to_s.to_s.gsub! 'http://photos-images.active.com', 'https://photos-images.active.com'
+        description[:description].to_s.sub! /http:\/\/www.active.com/i, 'https://www.active.com'
+        description[:description].to_s.sub! /http:\/\/content.active.com/i, 'https://content.active.com'
+        description[:description].to_s.sub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
+        description[:description].to_s.sub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
         ACTV::AssetDescription.new(description)
       end
     end
@@ -131,11 +132,13 @@ module ACTV
 
     def images
       @images ||= Array(@attrs[:assetImages]).map do |img|
-        img[:imageUrlAdr].to_s.sub! 'http://www.active.com', 'https://www.active.com'
-        img[:imageUrlAdr].to_s.sub! 'http://content.active.com', 'https://content.active.com'
-        img[:imageUrlAdr].to_s.sub! 'http://photos-images.active.com', 'https://photos-images.active.com'
-        img[:linkUrl].to_s.sub! 'http://www.active.com', 'https://www.active.com'
-        img[:linkUrl].to_s.sub! 'http://content.active.com', 'https://content.active.com'
+        img[:imageUrlAdr].to_s.sub! /http:\/\/www.active.com/i, 'https://www.active.com'
+        img[:imageUrlAdr].to_s.sub! /http:\/\/content.active.com/i, 'https://content.active.com'
+        img[:imageUrlAdr].to_s.sub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
+        img[:imageUrlAdr].to_s.sub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
+        img[:linkUrl].to_s.sub! /http:\/\/www.active.com/i, 'https://www.active.com'
+        img[:linkUrl].to_s.sub! /http:\/\/content.active.com/i, 'https://content.active.com'
+        img[:linkUrl].to_s.sub!  /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
         ACTV::AssetImage.new(img)
       end
     end
