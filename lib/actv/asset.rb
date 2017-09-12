@@ -48,6 +48,19 @@ module ACTV
     alias maximum_age regReqMaxAge
     alias required_gender regReqGenderCd
 
+    def initialize options={}
+      super
+      options[:logoUrlAdr]=  replace_http_to_https options[:logoUrlAdr]
+    end
+
+    def replace_http_to_https content
+      content.to_s.gsub! /http:\/\/www.active.com/i, 'https://www.active.com'
+      content.to_s.gsub! /http:\/\/content.active.com/i, 'https://content.active.com'
+      content.to_s.gsub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
+      content.to_s.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
+      content
+    end
+
     def self.inherited base
       @types << base
     end
@@ -96,10 +109,7 @@ module ACTV
 
     def descriptions
       @descriptions ||= Array(@attrs[:assetDescriptions]).map do |description|
-        description[:description].to_s.sub! /http:\/\/www.active.com/i, 'https://www.active.com'
-        description[:description].to_s.sub! /http:\/\/content.active.com/i, 'https://content.active.com'
-        description[:description].to_s.sub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
-        description[:description].to_s.sub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
+        description[:description] = replace_http_to_https description[:description]
         ACTV::AssetDescription.new(description)
       end
     end
@@ -132,13 +142,8 @@ module ACTV
 
     def images
       @images ||= Array(@attrs[:assetImages]).map do |img|
-        img[:imageUrlAdr].to_s.sub! /http:\/\/www.active.com/i, 'https://www.active.com'
-        img[:imageUrlAdr].to_s.sub! /http:\/\/content.active.com/i, 'https://content.active.com'
-        img[:imageUrlAdr].to_s.sub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
-        img[:imageUrlAdr].to_s.sub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
-        img[:linkUrl].to_s.sub! /http:\/\/www.active.com/i, 'https://www.active.com'
-        img[:linkUrl].to_s.sub! /http:\/\/content.active.com/i, 'https://content.active.com'
-        img[:linkUrl].to_s.sub!  /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
+        img[:imageUrlAdr] = replace_http_to_https img[:imageUrlAdr]
+        img[:linkUrl] = replace_http_to_https img[:linkUrl]
         ACTV::AssetImage.new(img)
       end
     end
@@ -183,7 +188,7 @@ module ACTV
 
     def seo_urls
       @seo_urls ||= Array(@attrs[:assetSeoUrls]).map do |seo_url|
-        seo_url[:urlAdr].to_s.sub! 'http://www.active.com', 'https://www.active.com'
+        seo_url[:urlAdr] = replace_http_to_https seo_url[:urlAdr]
         ACTV::AssetSeoUrl.new(seo_url)
       end
     end
