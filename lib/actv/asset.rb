@@ -53,14 +53,6 @@ module ACTV
       options[:logoUrlAdr]=  replace_http_to_https options[:logoUrlAdr]
     end
 
-    def replace_http_to_https content
-      content.to_s.gsub! /http:\/\/www.active.com/i, 'https://www.active.com'
-      content.to_s.gsub! /http:\/\/content.active.com/i, 'https://content.active.com'
-      content.to_s.gsub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
-      content.to_s.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
-      content
-    end
-
     def self.inherited base
       @types << base
     end
@@ -433,6 +425,15 @@ module ACTV
       start_time = Time.parse(sponsoredContent[:startDate])
       end_time = Time.parse(sponsoredContent[:endDate])
       Time.now.between?(start_time, end_time)
+    end
+
+    def replace_http_to_https content
+      content.to_s.gsub! /http:\/\/www.active.com/i, 'https://www.active.com'
+      content.to_s.gsub! /http:\/\/content.active.com/i, 'https://content.active.com'
+      content.to_s.gsub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
+      content.to_s.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
+      content.to_s.gsub! /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
+      content
     end
   end
 end
