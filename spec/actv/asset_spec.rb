@@ -4,27 +4,27 @@ require 'timecop'
 describe ACTV::Asset do
 
   describe '#initialize' do
-    it 'return security link of www.active.com' do
+    it 'returns link with HTTPS protocol for www.active.com assets' do
       asset  = ACTV::Asset.new(assetGuid: 1, assetName: 'Asset #1', logoUrlAdr: 'http://www.active.com/images/logo.jpg')
       expect(asset.logoUrlAdr).to eq 'https://www.active.com/images/logo.jpg'
       end
 
-    it 'return security link of content.active.com' do
+    it 'returns link with HTTPS protocol for content.active.com' do
       asset  = ACTV::Asset.new(assetGuid: 1, assetName: 'Asset #1', logoUrlAdr: 'http://content.active.com/images/logo.jpg')
       expect(asset.logoUrlAdr).to eq 'https://content.active.com/images/logo.jpg'
     end
 
-    it 'return security link of photos-images.active.com' do
+    it 'returns link with HTTPS protocol for photos-images.active.com' do
       asset  = ACTV::Asset.new(assetGuid: 1, assetName: 'Asset #1', logoUrlAdr: 'http://photos-images.active.com/images/logo.jpg')
       expect(asset.logoUrlAdr).to eq 'https://photos-images.active.com/images/logo.jpg'
     end
 
-    it 'return security link of rodale.images.worldnow.com' do
+    it 'returns link with HTTPS protocol for rodale.images.worldnow.com' do
       asset  = ACTV::Asset.new(assetGuid: 1, assetName: 'Asset #1', logoUrlAdr: 'http://rodale.images.worldnow.com/images/logo.jpg')
       expect(asset.logoUrlAdr).to eq 'https://rodale.images.worldnow.com/images/logo.jpg'
     end
 
-    it 'return security link of rodale.videodownload.worldnow.com' do
+    it 'returns link with HTTPS protocol for rodale.videodownload.worldnow.com' do
       asset  = ACTV::Asset.new(assetGuid: 1, assetName: 'Asset #1', logoUrlAdr: 'http://rodale.videodownload.worldnow.com/images/logo.jpg')
       expect(asset.logoUrlAdr).to eq 'https://rodale.videodownload.worldnow.com/images/logo.jpg'
     end

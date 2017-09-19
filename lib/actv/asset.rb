@@ -50,7 +50,7 @@ module ACTV
 
     def initialize options={}
       super
-      options[:logoUrlAdr]=  replace_http_to_https options[:logoUrlAdr]
+      options[:logoUrlAdr]= replace_http_to_https options[:logoUrlAdr]
     end
 
     def self.inherited base
@@ -428,12 +428,13 @@ module ACTV
     end
 
     def replace_http_to_https content
-      content.to_s.gsub! /http:\/\/www.active.com/i, 'https://www.active.com'
-      content.to_s.gsub! /http:\/\/a2.active.com/i, 'https://a2.active.com'
-      content.to_s.gsub! /http:\/\/content.active.com/i, 'https://content.active.com'
-      content.to_s.gsub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
-      content.to_s.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
-      content.to_s.gsub! /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
+      content = content.to_s
+      content.gsub! /http:\/\/www.active.com/i, 'https://www.active.com'
+      content.gsub! /http:\/\/a2.active.com/i, 'https://a2.active.com'
+      content.gsub! /http:\/\/content.active.com/i, 'https://content.active.com'
+      content.gsub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
+      content.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
+      content.gsub! /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
       content
     end
   end
