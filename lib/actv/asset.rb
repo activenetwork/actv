@@ -101,7 +101,7 @@ module ACTV
 
     def descriptions
       @descriptions ||= Array(@attrs[:assetDescriptions]).map do |description|
-        description[:description] = replace_http_to_https description[:description]
+        description[:description] = convert_all_resource_to_https(replace_http_to_https description[:description])
         ACTV::AssetDescription.new(description)
       end
     end
@@ -425,6 +425,12 @@ module ACTV
       start_time = Time.parse(sponsoredContent[:startDate])
       end_time = Time.parse(sponsoredContent[:endDate])
       Time.now.between?(start_time, end_time)
+    end
+
+    def convert_all_resource_to_https content
+      content.gsub! /src=[\'](http:\/\/)/i, "src='https://"
+      content.gsub! /src=[\"](http:\/\/)/i, "src=\"https://"
+      content
     end
 
     def replace_http_to_https content
