@@ -59,7 +59,8 @@ module ACTV
     end
 
     def source
-      urlAdr.to_s.sub!  /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
+      urlAdr.to_s.sub! /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
+      urlAdr
     end
 
   end

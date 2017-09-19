@@ -429,6 +429,7 @@ module ACTV
 
     def replace_http_to_https content
       content.to_s.gsub! /http:\/\/www.active.com/i, 'https://www.active.com'
+      content.to_s.gsub! /http:\/\/a2.active.com/i, 'https://a2.active.com'
       content.to_s.gsub! /http:\/\/content.active.com/i, 'https://content.active.com'
       content.to_s.gsub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
       content.to_s.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
