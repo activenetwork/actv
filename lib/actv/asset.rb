@@ -428,17 +428,17 @@ module ACTV
     end
 
     def convert_all_resource_to_https content
-      content.gsub! /src=[\'](http:\/\/)/i, "src='https://"
-      content.gsub! /src=[\"](http:\/\/)/i, "src=\"https://"
+      content.gsub!(/src=[\'|\"](http:\/\/)/, "src='http://" => "src='https://", 'src="http://' => 'src="https://')
       content
     end
 
     def replace_http_to_https content
       content = content.to_s
-      content.gsub! /http:\/\/www.active.com/i, 'https://www.active.com'
-      content.gsub! /http:\/\/a2.active.com/i, 'https://a2.active.com'
-      content.gsub! /http:\/\/content.active.com/i, 'https://content.active.com'
-      content.gsub! /http:\/\/photos-images.active.com/i, 'https://photos-images.active.com'
+      content.gsub!(/http:\/\/(www.active.com|a2.active.com|content.active.com|photos-images.active.com)/,
+                    'http://www.active.com' => 'https://www.active.com',
+                    'http://a2.active.com' => 'https://a2.active.com',
+                    'http://content.active.com' => 'https://content.active.com',
+                    'http://photos-images.active.com' => 'https://photos-images.active.com')
       content.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
       content.gsub! /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
       content
