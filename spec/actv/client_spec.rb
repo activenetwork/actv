@@ -329,6 +329,16 @@ describe ACTV::Client do
     end
   end
 
+  describe '#multi_search' do
+    it 'sends get request to a3pi with encoded string' do
+      expect(client).to receive(:get).with('/v2/multisearch',
+                                           {'query_0' => '[category=articles+OR+quiz&per_page=2]',
+                                            'query_1' => '[category=event&per_page=3]'
+                                           }) {{body: {}}}
+      client.multi_search({category: 'articles OR quiz', per_page: 2}, {category: 'event', per_page: 3})
+    end
+  end
+
   ACTV::Configurable::CONFIG_KEYS.each do |key|
     it "has a default #{key.to_s.gsub('_', ' ')}" do
       expect(client.send key).to eq ACTV::Default.options[key]

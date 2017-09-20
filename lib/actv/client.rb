@@ -275,6 +275,31 @@ module ACTV
       end
     end
 
+    # Returns results with multiple query
+    # @param options list of options
+    # @example ACTV.multi_search({category: 'event', per_page: 4}, {category: 'articles OR quiz', per_page: 5})
+    def multi_search(*options)
+      results = []
+      query_index = 0
+
+      options_hash = options.inject({}) do |hash, options|
+        hash.merge! "query_#{query_index}" => "[#{URI.encode_www_form options}]"
+        query_index += 1
+        hash
+      end
+
+      if options_hash.present?
+        response = get("/v2/multisearch", options_hash)
+        response[:body].each_value do |sub_query|
+          sub_query[:results].each do |asset|
+            results << ACTV::Asset.from_response(body: asset)
+          end
+        end
+      end
+
+      results
+    end
+
     def asset_stats asset_id
       response = get("/v2/assets/#{asset_id}/stats")
       ACTV::AssetStatsResult.new response[:body]
