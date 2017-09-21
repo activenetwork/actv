@@ -101,7 +101,7 @@ module ACTV
 
     def descriptions
       @descriptions ||= Array(@attrs[:assetDescriptions]).map do |description|
-        description[:description] = convert_all_resource_to_https(replace_http_to_https description[:description])
+        description[:description] = convert_all_resource_to_https(description[:description])
         ACTV::AssetDescription.new(description)
       end
     end
@@ -434,13 +434,7 @@ module ACTV
 
     def replace_http_to_https content
       content = content.to_s
-      content.gsub!(/http:\/\/(www.active.com|a2.active.com|content.active.com|photos-images.active.com)/,
-                    'http://www.active.com' => 'https://www.active.com',
-                    'http://a2.active.com' => 'https://a2.active.com',
-                    'http://content.active.com' => 'https://content.active.com',
-                    'http://photos-images.active.com' => 'https://photos-images.active.com')
-      content.gsub! /http:\/\/rodale.images.worldnow.com/i, 'https://rodale.images.worldnow.com'
-      content.gsub! /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
+      content.gsub! 'http://', 'https://'
       content
     end
   end
