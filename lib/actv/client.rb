@@ -275,8 +275,8 @@ module ACTV
       end
     end
 
-    # Returns results with multiple query
-    # @param options list of options
+    # Returns results with multiple queries
+    # @param options list of search options
     # @example ACTV.multi_search({category: 'event', per_page: 4}, {category: 'articles OR quiz', per_page: 5})
     def multi_search(*options)
       results = []
