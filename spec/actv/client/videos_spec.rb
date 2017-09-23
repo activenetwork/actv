@@ -17,7 +17,7 @@ describe ACTV::Client do
       end
 
       it "should return the correct source" do
-        expect(video.source).to eq("http://rodale.videodownload.worldnow.com/RODALE_2505201618134176078AA.mp4")
+        expect(video.source).to eq("https://rodale.videodownload.worldnow.com/RODALE_2505201618134176078AA.mp4")
       end
     end
   end
