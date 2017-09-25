@@ -4,7 +4,6 @@ module ACTV
   class Video < Asset
     attr_reader :sorCreateDtm, :urlAdr
     alias publish_date sorCreateDtm
-    alias source urlAdr
     alias channel sub_topic
 
     def self.valid? response
@@ -57,6 +56,11 @@ module ACTV
 
     def is_video?
       true
+    end
+
+    def source
+      urlAdr.to_s.sub! /http:\/\/rodale.videodownload.worldnow.com/i, 'https://rodale.videodownload.worldnow.com'
+      urlAdr
     end
 
   end

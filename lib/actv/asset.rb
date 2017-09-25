@@ -48,6 +48,11 @@ module ACTV
     alias maximum_age regReqMaxAge
     alias required_gender regReqGenderCd
 
+    def initialize options={}
+      super
+      options[:logoUrlAdr]= replace_http_to_https options[:logoUrlAdr]
+    end
+
     def self.inherited base
       @types << base
     end
@@ -96,6 +101,7 @@ module ACTV
 
     def descriptions
       @descriptions ||= Array(@attrs[:assetDescriptions]).map do |description|
+        description[:description] = convert_all_resource_to_https(description[:description])
         ACTV::AssetDescription.new(description)
       end
     end
@@ -128,6 +134,8 @@ module ACTV
 
     def images
       @images ||= Array(@attrs[:assetImages]).map do |img|
+        img[:imageUrlAdr] = replace_http_to_https img[:imageUrlAdr]
+        img[:linkUrl] = replace_http_to_https img[:linkUrl]
         ACTV::AssetImage.new(img)
       end
     end
@@ -172,6 +180,7 @@ module ACTV
 
     def seo_urls
       @seo_urls ||= Array(@attrs[:assetSeoUrls]).map do |seo_url|
+        seo_url[:urlAdr] = replace_http_to_https seo_url[:urlAdr]
         ACTV::AssetSeoUrl.new(seo_url)
       end
     end
@@ -320,7 +329,7 @@ module ACTV
     end
 
     def image_path
-      default_image = 'http://www.active.com/images/events/hotrace.gif'
+      default_image = 'https://www.active.com/images/events/hotrace.gif'
       image = image_without_placeholder.imageUrlAdr rescue ""
 
       if image.empty? and (logoUrlAdr && logoUrlAdr != default_image && !(logoUrlAdr =~ URI::regexp).nil?)
@@ -373,7 +382,7 @@ module ACTV
     end
 
     def image_without_placeholder
-      default_image = 'http://www.active.com/images/events/hotrace.gif'
+      default_image = 'https://www.active.com/images/events/hotrace.gif'
       current_image = nil
 
       asset_images.each do |i|
@@ -416,6 +425,17 @@ module ACTV
       start_time = Time.parse(sponsoredContent[:startDate])
       end_time = Time.parse(sponsoredContent[:endDate])
       Time.now.between?(start_time, end_time)
+    end
+
+    def convert_all_resource_to_https content
+      content.gsub!(/src=[\'|\"](http:\/\/)/, "src='http://" => "src='https://", 'src="http://' => 'src="https://')
+      content
+    end
+
+    def replace_http_to_https content
+      content = content.to_s
+      content.gsub! 'http://', 'https://'
+      content
     end
   end
 end

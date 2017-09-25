@@ -64,7 +64,7 @@ describe ACTV::Client do
   describe "#asset_by_path" do
     context "with a valid url passed" do
       before do
-        @seo_url = "http://www.active.com/san-francisco-ca/running/crazy-eight-fall-2013"
+        @seo_url = "https://www.active.com/san-francisco-ca/running/crazy-eight-fall-2013"
         @seo_url_md5 = Digest::MD5.hexdigest(@seo_url )
 
         stub_get("/v2/seourls/#{@seo_url_md5}?load_asset=true").
