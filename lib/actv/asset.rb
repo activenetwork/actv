@@ -134,7 +134,7 @@ module ACTV
 
     def images
       @images ||= Array(@attrs[:assetImages]).map do |img|
-        img[:imageUrlAdr] = replace_http_to_https(img[:imageUrlAdr]) unless ['webpage'].include? img[:imageType].to_s.downcase
+        img[:imageUrlAdr] = replace_http_to_https(img[:imageUrlAdr]) unless 'MediaGalleryButton' == img[:imageName]
         ACTV::AssetImage.new(img)
       end
     end
