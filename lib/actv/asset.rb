@@ -134,8 +134,7 @@ module ACTV
 
     def images
       @images ||= Array(@attrs[:assetImages]).map do |img|
-        img[:imageUrlAdr] = replace_http_to_https img[:imageUrlAdr]
-        img[:linkUrl] = replace_http_to_https img[:linkUrl]
+        img[:imageUrlAdr] = replace_http_to_https(img[:imageUrlAdr]) if ['video','image'].include? img[:imageType].to_s.downcase
         ACTV::AssetImage.new(img)
       end
     end
