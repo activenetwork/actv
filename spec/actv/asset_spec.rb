@@ -169,23 +169,16 @@ describe ACTV::Asset do
       images.should eq []
     end
 
-    context 'when image type is video' do
-      let(:images) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetImages: [{imageUrlAdr: "http://www.active.com/img1.jpg", imageType: 'VIDEO'}]).images }
-      it 'returns imageUrlAdr start with https' do
-        expect(images.first.imageUrlAdr).to eq 'https://www.active.com/img1.jpg'
-      end
-    end
-
-    context 'when image type is image' do
+    context 'when imageType is not webpage' do
       let(:images) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetImages: [{imageUrlAdr: "http://www.active.com/img1.jpg", imageType: 'IMAGE'}]).images }
       it 'returns imageUrlAdr start with https' do
         expect(images.first.imageUrlAdr).to eq 'https://www.active.com/img1.jpg'
       end
     end
 
-    context 'when image type is not image or not video' do
-      let(:images) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetImages: [{imageUrlAdr: "http://www.active.com/img1.jpg", imageType: 'others'}]).images }
-      it 'returns imageUrlAdr start with https' do
+    context 'when imageType is webpage' do
+      let(:images) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetImages: [{imageUrlAdr: "http://www.active.com/img1.jpg", imageType: 'WEBPAGE'}]).images }
+      it 'returns imageUrlAdr start with http' do
         expect(images.first.imageUrlAdr).to eq 'http://www.active.com/img1.jpg'
       end
     end
