@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ACTV::Video do
-  let(:asset_images) { [{:imageUrlAdr => "http://rodale.images.worldnow.com/images/12508455_vtf.jpg", :imageName => "videoImage"}] }
+  let(:asset_images) { [{:imageUrlAdr => "http://rodale.images.worldnow.com/images/12508455_vtf.jpg", :imageName => "videoImage", :imageType => 'IMAGE'}] }
   let(:urlAdr) { "http://rodale.videodownload.worldnow.com/RODALE_0906201614333627818AA.mp4" }
   let(:asset_tags) { [{:tag => {:tagId => "1794337", :tagName => "video/mp4", :tagDescription => "type"}},
                       {:tag => {:tagId => "1794525", :tagName => "640", :tagDescription => "width"}},

@@ -168,6 +168,20 @@ describe ACTV::Asset do
       images.should be_a Array
       images.should eq []
     end
+
+    context 'when imageType is not MediaGalleryButton' do
+      let(:images) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetImages: [{imageUrlAdr: "http://www.active.com/img1.jpg", imageName: 'image2'}]).images }
+      it 'returns imageUrlAdr start with https' do
+        expect(images.first.imageUrlAdr).to eq 'https://www.active.com/img1.jpg'
+      end
+    end
+
+    context 'when imageType is MediaGalleryButton' do
+      let(:images) { ACTV::Asset.new(assetGuid: 1, assetName: "Asset #1", assetImages: [{imageUrlAdr: "http://www.active.com/img1.jpg", imageName: 'MediaGalleryButton'}]).images }
+      it 'returns imageUrlAdr start with http' do
+        expect(images.first.imageUrlAdr).to eq 'http://www.active.com/img1.jpg'
+      end
+    end
   end
 
   describe "#tags" do
