@@ -25,7 +25,7 @@ module ACTV
     end
 
     def kids_friendly_source_system?
-      p4p? || activenet? || awcamps30? || acm? || researched? || leagueone? || tennislinkteam? || tennislinktournament? || tennislinkusta? || awendurance?
+      researched? || p4p? || activenet? || awcamps30? || acm? || researched? || leagueone? || tennislinkteam? || tennislinktournament? || tennislinkusta? || awendurance?
     end
   end
 end
