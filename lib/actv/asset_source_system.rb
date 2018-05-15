@@ -14,7 +14,8 @@ module ACTV
         leagueone: "74742258-90FE-40ED-8A60-89F21DE93BFD",
         tennislinkteam: "0206DC72-C167-4B39-B299-0F2A27D8CBEF",
         tennislinktournament: "71D917DE-FA90-448A-90DA-C8852F7E03E2",
-        tennislinkusta: "3858B6E3-B52E-4E20-9A00-2AD8500B1BC3"
+        tennislinkusta: "3858B6E3-B52E-4E20-9A00-2AD8500B1BC3",
+        p4p: "909A9320-7907-4A87-9727-1816BAE3D84F"
     }
 
     SOURCE_SYSTEM_HASH.each_pair do |name, source_system_id|
@@ -24,7 +25,7 @@ module ACTV
     end
 
     def kids_friendly_source_system?
-      activenet? || awcamps30? || acm? || researched? || leagueone? || tennislinkteam? || tennislinktournament? || tennislinkusta? || awendurance?
+      p4p? || activenet? || awcamps30? || acm? || researched? || leagueone? || tennislinkteam? || tennislinktournament? || tennislinkusta? || awendurance?
     end
   end
 end
